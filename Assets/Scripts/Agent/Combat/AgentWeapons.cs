@@ -3,97 +3,72 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public enum AnimationStance
-{
-    TwoHanded, OneHandedShield, Bow
-}
-
 public class AgentWeapons : MonoBehaviour
 {
     public WeaponSlot primarySlot;
     public WeaponSlot secondarySlot;
-    public List<Weapon> carriedPrimaryWeapons;
-    public List<Weapon> carriedSecondaryWeapons;
+    public List<Weapon> carriedWeapons;
 
-    public AnimationStance CurrentStance { get; private set; }
-
-    private Queue<Weapon> primaryEquipQueue = new Queue<Weapon>();
-    private Queue<Weapon> secondaryEquipQueue = new Queue<Weapon>();
+    public WeaponStance CurrentStance { get; private set; }
 
     private Animator anim;
-    private Dictionary<AnimationStance, int> equipmentStanceLayers = new Dictionary<AnimationStance, int>();
+    private Dictionary<WeaponStance, int> equipmentStanceLayers = new Dictionary<WeaponStance, int>();
 
     private void Start()
     {
         anim = GetComponentInChildren<Animator>();
-        equipmentStanceLayers.Add(AnimationStance.TwoHanded, anim.GetLayerIndex("Two Handed"));
-        equipmentStanceLayers.Add(AnimationStance.OneHandedShield, anim.GetLayerIndex("One Handed Shield"));
-        equipmentStanceLayers.Add(AnimationStance.Bow, anim.GetLayerIndex("Bow"));
-        foreach (var primaryEquip in carriedPrimaryWeapons)
-        {
-            primaryEquipQueue.Enqueue(primaryEquip);
-        }
-        foreach (var secondaryEquip in carriedSecondaryWeapons)
-        {
-            secondaryEquipQueue.Enqueue(secondaryEquip);
-        }
+        equipmentStanceLayers.Add(WeaponStance.Unarmed, anim.GetLayerIndex("Unarmed"));
+        equipmentStanceLayers.Add(WeaponStance.TwoHanded, anim.GetLayerIndex("Two Handed"));
+        equipmentStanceLayers.Add(WeaponStance.OneHandedShield, anim.GetLayerIndex("One Handed Shield"));
+        equipmentStanceLayers.Add(WeaponStance.Shield, anim.GetLayerIndex("One Handed Shield"));
+        equipmentStanceLayers.Add(WeaponStance.Bow, anim.GetLayerIndex("Bow"));
     }
 
-    public void GoToNextPrimaryEquipment()
+    public void EquipWeapon(int numKey)
     {
-        if (primarySlot.CurrentlyEquipped != null)
+        if (numKey - 1 < carriedWeapons.Count && numKey - 1 >= 0)
         {
-            primaryEquipQueue.Enqueue(primarySlot.UnEquip());
-        }
-        if (primaryEquipQueue.Count > 0)
-        {
-            primarySlot.Equip(primaryEquipQueue.Dequeue());
+            Weapon toEquip = carriedWeapons[numKey - 1];
+            switch (toEquip.stance)
+            {
+                case WeaponStance.OneHandedShield:
+                    primarySlot.Equip(toEquip); 
+                    break;
+                case WeaponStance.TwoHanded:
+                    primarySlot.Equip(toEquip);
+                    secondarySlot.UnEquip();
+                    break;
+                case WeaponStance.Bow:
+                    secondarySlot.Equip(toEquip);
+                    primarySlot.UnEquip();
+                    break;
+                case WeaponStance.Shield:
+                    secondarySlot.UnEquip();
+                    secondarySlot.Equip(toEquip);
+                    if (primarySlot.CurrentlyEquipped?.stance == WeaponStance.TwoHanded)
+                    {
+                        primarySlot.UnEquip();
+                    }
+                    break;
+                default:
+                    primarySlot.UnEquip();
+                    secondarySlot.UnEquip();
+                    break;
+            }
             UpdateWeaponAnimation();
-        }
-        // if primary uses both hands, unequip secondary
-        if (primarySlot.CurrentlyEquipped?.usage == Weapon.Usage.Both)
-        {
-            secondaryEquipQueue.Enqueue(secondarySlot.UnEquip());
-        }
-    }
-
-    public void GoToNextSecondaryEquipment()
-    {
-        if (primarySlot.CurrentlyEquipped?.usage != Weapon.Usage.Both)
-        {
-            if (secondarySlot.CurrentlyEquipped != null)
-            {
-                secondaryEquipQueue.Enqueue(secondarySlot.UnEquip());
-            }
-            if (secondaryEquipQueue.Count > 0)
-            {
-                secondarySlot.Equip(secondaryEquipQueue.Dequeue());
-                UpdateWeaponAnimation();
-            }
         }
     }
 
     public void UpdateWeaponAnimation()
     {
-        if (primarySlot.CurrentlyEquipped?.GetType() == typeof(MeleeWeapon))
+        if (primarySlot.CurrentlyEquipped != null)
         {
-            if (primarySlot.CurrentlyEquipped?.usage == Weapon.Usage.Both)
-            {
-                CurrentStance = AnimationStance.TwoHanded;
-            }
-            else
-            {
-                CurrentStance = AnimationStance.OneHandedShield;
-            }
+            CurrentStance = primarySlot.CurrentlyEquipped.stance;
         }
-        else
+        else if (secondarySlot.CurrentlyEquipped != null)
         {
-            if (primarySlot.CurrentlyEquipped?.usage == Weapon.Usage.Both)
-            {
-                CurrentStance = AnimationStance.Bow;
-            }
+            CurrentStance = secondarySlot.CurrentlyEquipped.stance;
         }
-
         // set all animation stance layers to 0 weight
         foreach (var stance in equipmentStanceLayers)
         {

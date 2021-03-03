@@ -1,18 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class EquippingSecondary : CombatState
+public class Equipping : CombatState
 {
     private bool animationDone = false;
     private AgentAnimEvents animEvents;
-    private AgentWeapons equipment;
+    private AgentWeapons weapons;
 
-    public EquippingSecondary(GameObject gameObject) : base(gameObject)
+    public Equipping(GameObject gameObject) : base(gameObject)
     {
         animationHash = Animator.StringToHash("Equipping");
         transitionsTo.Add(new Transition(typeof(ReadyState), () => animationDone));
-        equipment = gameObject.GetComponent<AgentWeapons>();
+        weapons = gameObject.GetComponent<AgentWeapons>();
         animEvents = gameObject.GetComponentInChildren<AgentAnimEvents>();
     }
 
@@ -20,7 +21,7 @@ public class EquippingSecondary : CombatState
     {
         if (eventType == EventType.Finish)
         {
-            equipment.GoToNextSecondaryEquipment();
+            weapons.EquipWeapon(agentController.WeaponNumKey);
             animationDone = true;
         }
     }

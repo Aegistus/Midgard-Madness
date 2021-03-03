@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public abstract class AgentController : MonoBehaviour
 {
@@ -14,6 +15,6 @@ public abstract class AgentController : MonoBehaviour
     public bool Jump { get; protected set; }
     public bool Crouch { get; protected set; }
     public bool Run { get; protected set; }
-    public bool SwitchPrimary { get; protected set; }
-    public bool SwitchSecondary { get; protected set; }
+    public bool Equipping { get; protected set; }
+    public int WeaponNumKey { get; protected set; }
 }

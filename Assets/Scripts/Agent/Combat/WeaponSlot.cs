@@ -8,6 +8,7 @@ public class WeaponSlot : MonoBehaviour
 
     public void Equip(Weapon equipment)
     {
+        UnEquip();
         if (equipment != null)
         {
             CurrentlyEquipped = equipment;
@@ -18,11 +19,9 @@ public class WeaponSlot : MonoBehaviour
         }
     }
 
-    public Weapon UnEquip()
+    public void UnEquip()
     {
-        Weapon toReturn = CurrentlyEquipped;
+        CurrentlyEquipped?.gameObject.SetActive(false);
         CurrentlyEquipped = null;
-        toReturn?.gameObject.SetActive(false);
-        return toReturn;
     }
 }

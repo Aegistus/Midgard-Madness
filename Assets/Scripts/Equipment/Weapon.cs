@@ -4,10 +4,5 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
-    public enum Usage
-    {
-        Primary, Secondary, Both, Either
-    }
-
-    public Usage usage;
+    public WeaponStance stance;
 }

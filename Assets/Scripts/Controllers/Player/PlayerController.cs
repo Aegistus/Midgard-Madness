@@ -6,6 +6,8 @@ public class PlayerController : AgentController
 {
     public GameObject playerCam;
 
+    private readonly KeyCode[] numberKeys = { KeyCode.Alpha0, KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4, KeyCode.Alpha5, KeyCode.Alpha6, KeyCode.Alpha7, KeyCode.Alpha8, KeyCode.Alpha9 };
+
     private void Update()
     {
         Attack = Input.GetMouseButton(0);
@@ -17,8 +19,15 @@ public class PlayerController : AgentController
         Run = Input.GetKey(KeyCode.LeftShift);
         Jump = Input.GetKey(KeyCode.Space);
         Crouch = Input.GetKey(KeyCode.LeftControl);
-        SwitchPrimary = Input.mouseScrollDelta.y < 0;
-        SwitchSecondary = Input.mouseScrollDelta.y > 0;
+        Equipping = false;
+        for (int i = 0; i < numberKeys.Length; i++)
+        {
+            if (Input.GetKeyDown(numberKeys[i]))
+            {
+                WeaponNumKey = i;
+                Equipping = true;
+            }
+        }
         float xChange = Input.GetAxis("Mouse X");
         float yChange = Input.GetAxis("Mouse Y");
         float angle = Mathf.Rad2Deg * Mathf.Atan2(yChange, xChange);

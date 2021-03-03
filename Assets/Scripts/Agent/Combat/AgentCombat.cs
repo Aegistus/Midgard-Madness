@@ -24,8 +24,7 @@ public class AgentCombat : MonoBehaviour
             {typeof(Drawing), new Drawing(gameObject) },
             {typeof(Loosing), new Loosing(gameObject) },
 
-            {typeof(EquippingPrimary), new EquippingPrimary(gameObject) },
-            {typeof(EquippingSecondary), new EquippingSecondary(gameObject) },
+            {typeof(Equipping), new Equipping(gameObject) },
         };
         StateMachine.SetStates(states, typeof(ReadyState));
     }

@@ -18,8 +18,7 @@ public abstract class CombatState : State
     public Func<bool> RightSlashInput => () => agentController.AttackDirection == AttackDirection.Right;
     public Func<bool> LeftSlashInput => () => agentController.AttackDirection == AttackDirection.Left;
     public Func<bool> StabInput => () => agentController.AttackDirection == AttackDirection.Stab;
-    public Func<bool> SwitchPrimaryInput => () => agentController.SwitchPrimary;
-    public Func<bool> SwitchSecondaryInput => () => agentController.SwitchSecondary;
+    public Func<bool> EquipWeaponInput => () => agentController.Equipping;
 
     protected CombatState(GameObject gameObject) : base(gameObject)
     {

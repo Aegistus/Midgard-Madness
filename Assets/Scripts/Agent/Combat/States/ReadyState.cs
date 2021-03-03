@@ -12,8 +12,7 @@ public class ReadyState : CombatState
         transitionsTo.Add(new Transition(typeof(LeftSlashing), MeleeEquipped, AttackInput, LeftSlashInput));
         transitionsTo.Add(new Transition(typeof(Stabbing), MeleeEquipped, AttackInput, StabInput));
         transitionsTo.Add(new Transition(typeof(Drawing), RangedEquipped, AttackInput));
-        transitionsTo.Add(new Transition(typeof(EquippingPrimary), SwitchPrimaryInput));
-        transitionsTo.Add(new Transition(typeof(EquippingSecondary), SwitchSecondaryInput));
+        transitionsTo.Add(new Transition(typeof(Equipping), EquipWeaponInput));
     }
 
     public override void AfterExecution()
