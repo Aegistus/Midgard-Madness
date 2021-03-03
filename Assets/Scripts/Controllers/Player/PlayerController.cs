@@ -17,7 +17,6 @@ public class PlayerController : AgentController
         Run = Input.GetKey(KeyCode.LeftShift);
         Jump = Input.GetKey(KeyCode.Space);
         Crouch = Input.GetKey(KeyCode.LeftControl);
-        Roll = Input.GetKey(KeyCode.V);
         SwitchPrimary = Input.mouseScrollDelta.y < 0;
         SwitchSecondary = Input.mouseScrollDelta.y > 0;
         float xChange = Input.GetAxis("Mouse X");

@@ -14,7 +14,6 @@ public class Walking : OnGroundState
         transitionsTo.Add(new Transition(typeof(Idling), Not(Move)));
         transitionsTo.Add(new Transition(typeof(Running), Run));
         transitionsTo.Add(new Transition(typeof(Falling), Not(OnGround)));
-        transitionsTo.Add(new Transition(typeof(Rolling), Roll, Move));
     }
 
     public override void AfterExecution()

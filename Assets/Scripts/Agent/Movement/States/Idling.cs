@@ -9,9 +9,8 @@ public class Idling : OnGroundState
     public Idling(GameObject gameObject) : base(gameObject)
     {
         animationHash = Animator.StringToHash("Idling");
-        transitionsTo.Add(new Transition(typeof(Walking), Move, Not(Attacking)));
+        transitionsTo.Add(new Transition(typeof(Walking), Move, Not(Attack)));
         transitionsTo.Add(new Transition(typeof(Falling), Not(OnGround)));
-        transitionsTo.Add(new Transition(typeof(Rolling), Roll, Move));
     }
 
     public override void AfterExecution()

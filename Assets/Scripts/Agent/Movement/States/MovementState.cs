@@ -20,7 +20,6 @@ public abstract class MovementState : State
     public Func<bool> Jump => () => controller.Jump;
     public Func<bool> Run => () => controller.Run;
     public Func<bool> Crouch => () => controller.Crouch;
-    public Func<bool> Roll => () => controller.Roll;
     public Func<bool> OnGround => () => movement.IsGrounded();
     public Func<bool> NextToWall => () => IsNextToWall();
     public Func<bool> LedgeInReach => () => movement.ledgeDetector.CollidingWith == 0;
@@ -29,7 +28,8 @@ public abstract class MovementState : State
     public Func<bool> OtherSideOfVaultOpen => () => movement.vaultOtherSideDetector.CollidingWith == 0;
     public Func<bool> Rising => () => charController.velocity.y > .01f;
     public Func<bool> Falling => () => charController.velocity.y < -.1f;
-    public Func<bool> Attacking => () => combat.StateMachine.CurrentState is AttackingState;
+    public Func<bool> Attack => () => controller.Attack;
+    public Func<bool> Block => () => controller.Block;
 
     public MovementState(GameObject gameObject) : base(gameObject)
     {

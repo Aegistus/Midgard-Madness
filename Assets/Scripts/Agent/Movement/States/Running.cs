@@ -13,7 +13,6 @@ public class Running : OnGroundState
         transitionsTo.Add(new Transition(typeof(Idling), Not(Move), Not(Run)));
         transitionsTo.Add(new Transition(typeof(Falling), Not(OnGround)));
         transitionsTo.Add(new Transition(typeof(Sliding), Crouch));
-        transitionsTo.Add(new Transition(typeof(Rolling), Roll, Move));
     }
 
     public override void AfterExecution()
