@@ -22,10 +22,6 @@ public abstract class MovementState : State
     public Func<bool> Crouch => () => controller.Crouch;
     public Func<bool> OnGround => () => movement.IsGrounded();
     public Func<bool> NextToWall => () => IsNextToWall();
-    public Func<bool> LedgeInReach => () => movement.ledgeDetector.CollidingWith == 0;
-    public Func<bool> FacingHighWall => () => movement.wallDetectorUpper.CollidingWith > 0;
-    public Func<bool> FacingLowWall => () => movement.wallDetectorLower.CollidingWith > 0;
-    public Func<bool> OtherSideOfVaultOpen => () => movement.vaultOtherSideDetector.CollidingWith == 0;
     public Func<bool> Rising => () => charController.velocity.y > .01f;
     public Func<bool> Falling => () => charController.velocity.y < -.1f;
     public Func<bool> Attack => () => controller.Attack;

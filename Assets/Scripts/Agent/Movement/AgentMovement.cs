@@ -8,10 +8,6 @@ public class AgentMovement : MonoBehaviour
     public LayerMask groundLayer;
     public Transform lookDirection;
     public Transform agentModel;
-    public WallDetector wallDetectorUpper;
-    public WallDetector wallDetectorLower;
-    public LedgeDetector ledgeDetector;
-    public WallDetector vaultOtherSideDetector;
 
     [HideInInspector]
     public Vector3 velocity;

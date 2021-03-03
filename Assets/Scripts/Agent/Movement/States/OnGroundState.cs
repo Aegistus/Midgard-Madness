@@ -9,7 +9,7 @@ public abstract class OnGroundState : MovementState
     protected OnGroundState(GameObject gameObject) : base(gameObject)
     {
         transitionsTo.Add(new Transition(typeof(Crouching), Crouch, Not(Move)));
-        transitionsTo.Add(new Transition(typeof(Jumping), Jump, OnGround, Not(FacingHighWall)));
+        transitionsTo.Add(new Transition(typeof(Jumping), Jump, OnGround, Not(Block)));
         transitionsTo.Add(new Transition(typeof(Rolling), Block, Jump, Move));
     }
 
