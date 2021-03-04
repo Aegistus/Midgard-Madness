@@ -18,11 +18,10 @@ public class AgentCombat : MonoBehaviour
 
             {typeof(Blocking), new Blocking(gameObject) },
             {typeof(Stabbing), new Stabbing(gameObject) },
-            {typeof(RightSlashing), new RightSlashing(gameObject) },
-            {typeof(LeftSlashing), new LeftSlashing(gameObject) },
+            {typeof(MeleeAttacking), new MeleeAttacking(gameObject) },
 
-            {typeof(Drawing), new Drawing(gameObject) },
-            {typeof(Loosing), new Loosing(gameObject) },
+            {typeof(RangedAiming), new RangedAiming(gameObject) },
+            {typeof(RangedAttacking), new RangedAttacking(gameObject) },
 
             {typeof(Equipping), new Equipping(gameObject) },
         };

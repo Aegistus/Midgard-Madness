@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class AttackingState : CombatState
+public class MeleeAttacking : CombatState
 {
     protected AgentAnimEvents animEvents;
 
     private bool animationFinished = false;
 
-    public Func<bool> AnimationFinished => () => animationFinished;
-
-    public AttackingState(GameObject gameObject) : base(gameObject)
+    public MeleeAttacking(GameObject gameObject) : base(gameObject)
     {
-        transitionsTo.Add(new Transition(typeof(ReadyState), AnimationFinished));
+        transitionsTo.Add(new Transition(typeof(ReadyState), () => animationFinished));
+        animationHash = Animator.StringToHash("MeleeAttack");
         animEvents = gameObject.GetComponentInChildren<AgentAnimEvents>();
         animEvents.OnAnimationEvent += CheckAnimationEvent;
     }
@@ -33,7 +32,7 @@ public class AttackingState : CombatState
 
     public override void BeforeExecution()
     {
-        Debug.Log("Releasing");
+        Debug.Log("Melee Attack");
         anim.SetBool(animationHash, true);
         animationFinished = false;
     }

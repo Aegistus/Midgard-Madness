@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stabbing : AttackingState
+public class Stabbing : MeleeAttacking
 {
     public Stabbing(GameObject gameObject) : base(gameObject)
     {

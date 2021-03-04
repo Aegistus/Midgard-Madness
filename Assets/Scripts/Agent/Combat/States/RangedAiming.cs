@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Drawing : CombatState
+public class RangedAiming : CombatState
 {
-    public Drawing(GameObject gameObject) : base(gameObject)
+    public RangedAiming(GameObject gameObject) : base(gameObject)
     {
-        transitionsTo.Add(new Transition(typeof(Loosing), RangedEquipped, Not(AttackInput)));
-        animationHash = Animator.StringToHash("Drawing");
+        transitionsTo.Add(new Transition(typeof(RangedAttacking), RangedEquipped, Not(AttackInput)));
+        animationHash = Animator.StringToHash("RangedAim");
     }
 
     public override void AfterExecution()
@@ -17,7 +17,7 @@ public class Drawing : CombatState
 
     public override void BeforeExecution()
     {
-        Debug.Log("Drawing");
+        Debug.Log("Aiming");
         anim.SetBool(animationHash, true);
     }
 

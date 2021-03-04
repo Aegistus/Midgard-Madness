@@ -3,17 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Loosing : CombatState
+public class RangedAttacking : CombatState
 {
     private float timer = 0;
-    private float timerMax = 3f;
+    private float timerMax = 1f;
 
-    public Func<bool> TimerUp => () => timer >= timerMax;
-
-    public Loosing(GameObject gameObject) : base(gameObject)
+    public RangedAttacking(GameObject gameObject) : base(gameObject)
     {
-        transitionsTo.Add(new Transition(typeof(ReadyState), TimerUp));
-        animationHash = Animator.StringToHash("Loosing");
+        transitionsTo.Add(new Transition(typeof(ReadyState), () => timer >= timerMax));
+        animationHash = Animator.StringToHash("RangedAttack");
     }
 
     public override void AfterExecution()
@@ -23,8 +21,9 @@ public class Loosing : CombatState
 
     public override void BeforeExecution()
     {
-        Debug.Log("Loosing");
+        Debug.Log("Shooting");
         anim.SetBool(animationHash, true);
+        timer = 0;
     }
 
     public override void DuringExecution()

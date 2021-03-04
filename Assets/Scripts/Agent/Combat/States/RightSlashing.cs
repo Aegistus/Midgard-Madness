@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RightSlashing : AttackingState
+public class RightSlashing : MeleeAttacking
 {
     public RightSlashing(GameObject gameObject) : base(gameObject)
     {
