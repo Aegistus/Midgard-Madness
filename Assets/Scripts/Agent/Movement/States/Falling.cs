@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Falling : MovementState
 {
-    private float airMoveSpeed = .01f;
+    private float airMoveSpeed = 1f;
     Vector3 startingVelocity;
 
     public Falling(GameObject gameObject) : base(gameObject)
@@ -22,7 +22,7 @@ public class Falling : MovementState
     public override void BeforeExecution()
     {
         Debug.Log("Falling");
-        startingVelocity = movement.velocity;
+        startingVelocity = movement.Velocity;
         anim.SetLayerWeight(fullBodyLayer, 1);
         anim.SetBool(animationHash, true);
     }

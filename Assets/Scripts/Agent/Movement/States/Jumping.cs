@@ -3,7 +3,7 @@
 public class Jumping : MovementState
 {
     private float jumpForce = 5f;
-    private float airMoveSpeed = 2f;
+    private float airMoveSpeed = 3f;
     Vector3 startingVelocity;
 
     public Jumping(GameObject gameObject) : base(gameObject)
@@ -24,7 +24,7 @@ public class Jumping : MovementState
         Debug.Log("Jumping");
         anim.SetLayerWeight(fullBodyLayer, 1);
         anim.SetBool(animationHash, true);
-        startingVelocity = movement.velocity * .75f;
+        startingVelocity = movement.Velocity;
         movement.AddVerticalVelocity(jumpForce);
     }
 
@@ -32,7 +32,7 @@ public class Jumping : MovementState
     public override void DuringExecution()
     {
         newVelocity = GetAgentMovementInput();
-        movement.SetHorizontalVelocity(startingVelocity + newVelocity * airMoveSpeed);
+        movement.SetHorizontalVelocity(startingVelocity + (newVelocity * airMoveSpeed));
         RotateAgentModelToDirection(newVelocity);
     }
 }

@@ -9,8 +9,8 @@ public class AgentMovement : MonoBehaviour
     public Transform lookDirection;
     public Transform agentModel;
 
-    [HideInInspector]
-    public Vector3 velocity;
+    public Vector3 Velocity { get { return velocity; } private set { velocity = value; } }
+    private Vector3 velocity;
 
     public MovementState CurrentState => (MovementState)StateMachine.CurrentState;
 
@@ -38,7 +38,7 @@ public class AgentMovement : MonoBehaviour
 
     public void SetHorizontalVelocity(Vector3 velocity)
     {
-        this.velocity = new Vector3(velocity.x, this.velocity.y, velocity.z);
+        Velocity = new Vector3(velocity.x, Velocity.y, velocity.z);
     }
 
     public void AddVerticalVelocity(float vertVelocity)
@@ -74,7 +74,7 @@ public class AgentMovement : MonoBehaviour
         velocity.y = verticalVelocity;
         if (charController.enabled)
         {
-            charController.Move(velocity * Time.deltaTime);
+            charController.Move(Velocity * Time.deltaTime);
         }
     }
 }
