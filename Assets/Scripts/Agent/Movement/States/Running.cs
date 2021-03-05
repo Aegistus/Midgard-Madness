@@ -31,7 +31,7 @@ public class Running : OnGroundState
     {
         inputVelocity = GetAgentMovementInput();
         movement.SetHorizontalVelocity(inputVelocity * moveSpeed);
-        RotateAgentModelToDirection(inputVelocity);
+        movement.RotateAgentModelToDirection(inputVelocity);
         KeepGrounded();
     }
 

@@ -43,7 +43,7 @@ public class Rolling : OnGroundState
             inputVelocity = movement.agentModel.forward;
         }
         movement.SetHorizontalVelocity(inputVelocity * moveSpeed);
-        RotateAgentModelToDirection(inputVelocity);
+        movement.RotateAgentModelToDirection(inputVelocity);
         KeepGrounded();
     }
 }

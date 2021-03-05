@@ -51,17 +51,6 @@ public abstract class MovementState : State
         return false;
     }
 
-    Quaternion targetRotation, currentRotation;
-    protected void RotateAgentModelToDirection(Vector3 position, float rotationSpeed = 15f)
-    {
-        // make the agent's model rotate towards the direction
-        currentRotation = movement.agentModel.rotation;
-        movement.agentModel.LookAt(movement.agentModel.position + position);
-        targetRotation.eulerAngles = new Vector3(0, movement.agentModel.eulerAngles.y, 0);
-        movement.agentModel.rotation = currentRotation;
-        movement.agentModel.rotation = Quaternion.Lerp(currentRotation, targetRotation, rotationSpeed * Time.deltaTime);
-    }
-
     Vector3 newVelocity;
     protected Vector3 GetAgentMovementInput()
     {

@@ -33,6 +33,6 @@ public class Jumping : MovementState
     {
         newVelocity = GetAgentMovementInput();
         movement.SetHorizontalVelocity(startingVelocity + (newVelocity * airMoveSpeed));
-        RotateAgentModelToDirection(newVelocity);
+        movement.RotateAgentModelToDirection(newVelocity);
     }
 }

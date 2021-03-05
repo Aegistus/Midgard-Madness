@@ -13,7 +13,6 @@ public class SequenceNode : Node
 
     public override NodeState Evaluate()
     {
-        bool anyChildRunning = false;
         for (int i = 0; i < childNodes.Count; i++)
         {
             switch (childNodes[i].Evaluate())
@@ -22,13 +21,13 @@ public class SequenceNode : Node
                     CurrentState = NodeState.FAILURE;
                     return CurrentState;
                 case NodeState.RUNNING:
-                    anyChildRunning = true;
-                    continue;
+                    CurrentState = NodeState.RUNNING;
+                    return CurrentState;
                 case NodeState.SUCCESS:
                     continue;
             }
         }
-        CurrentState = anyChildRunning ? NodeState.RUNNING : NodeState.SUCCESS;
+        CurrentState = NodeState.SUCCESS;
         return CurrentState;
     }
 }

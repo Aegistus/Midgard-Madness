@@ -60,6 +60,17 @@ public class AgentMovement : MonoBehaviour
         return false;
     }
 
+    Quaternion targetRotation, currentRotation;
+    public void RotateAgentModelToDirection(Vector3 position, float rotationSpeed = 15f)
+    {
+        // make the agent's model rotate towards the direction
+        currentRotation = agentModel.rotation;
+        agentModel.LookAt(agentModel.position + position);
+        targetRotation.eulerAngles = new Vector3(0, agentModel.eulerAngles.y, 0);
+        agentModel.rotation = currentRotation;
+        agentModel.rotation = Quaternion.Lerp(currentRotation, targetRotation, rotationSpeed * Time.deltaTime);
+    }
+
     private void Update()
     {
         if (!IsGrounded())

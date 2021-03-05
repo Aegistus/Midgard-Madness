@@ -34,7 +34,7 @@ public class Falling : MovementState
         if (newVelocity.sqrMagnitude > 0)
         {
             movement.SetHorizontalVelocity(startingVelocity + newVelocity * airMoveSpeed);
-            RotateAgentModelToDirection(newVelocity);
+            movement.RotateAgentModelToDirection(newVelocity);
         }
     }
 }

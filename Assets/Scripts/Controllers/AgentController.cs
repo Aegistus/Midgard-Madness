@@ -5,16 +5,16 @@ using System;
 
 public abstract class AgentController : MonoBehaviour
 {
-    public AttackDirection AttackDirection { get; protected set; }
-    public bool Attack { get; protected set; }
-    public bool Block { get; protected set; }
-    public bool Forwards { get; protected set; }
-    public bool Backwards { get; protected set; }
-    public bool Left { get; protected set; }
-    public bool Right { get; protected set; }
-    public bool Jump { get; protected set; }
-    public bool Crouch { get; protected set; }
-    public bool Run { get; protected set; }
-    public bool Equipping { get; protected set; }
-    public int WeaponNumKey { get; protected set; }
+    public AttackDirection AttackDirection { get; set; }
+    public bool Attack { get; set; }
+    public bool Block { get; set; }
+    public bool Forwards { get; set; }
+    public bool Backwards { get; set; }
+    public bool Left { get; set; }
+    public bool Right { get; set; }
+    public bool Jump { get; set; }
+    public bool Crouch { get; set; }
+    public bool Run { get; set; }
+    public bool Equipping { get; set; }
+    public int WeaponNumKey { get; set; }
 }
