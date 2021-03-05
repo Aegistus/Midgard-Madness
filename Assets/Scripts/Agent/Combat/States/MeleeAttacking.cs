@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class MeleeAttacking : CombatState
+public class MeleeAttacking : AgentState
 {
     protected AgentAnimEvents animEvents;
 
@@ -11,7 +11,7 @@ public class MeleeAttacking : CombatState
 
     public MeleeAttacking(GameObject gameObject) : base(gameObject)
     {
-        transitionsTo.Add(new Transition(typeof(ReadyState), () => animationFinished));
+        transitionsTo.Add(new Transition(typeof(Idling), () => animationFinished));
         animationHash = Animator.StringToHash("MeleeAttack");
         animEvents = gameObject.GetComponentInChildren<AgentAnimEvents>();
         animEvents.OnAnimationEvent += CheckAnimationEvent;
@@ -35,6 +35,7 @@ public class MeleeAttacking : CombatState
         Debug.Log("Melee Attack");
         anim.SetBool(animationHash, true);
         animationFinished = false;
+        movement.SetHorizontalVelocity(Vector3.zero);
     }
 
     public override void DuringExecution()

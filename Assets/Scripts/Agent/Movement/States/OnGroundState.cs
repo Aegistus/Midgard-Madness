@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class OnGroundState : MovementState
+public abstract class OnGroundState : AgentState
 {
     RaycastHit rayHit;
 

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Jumping : MovementState
+public class Jumping : AgentState
 {
     private float jumpForce = 5f;
     private float airMoveSpeed = 3f;

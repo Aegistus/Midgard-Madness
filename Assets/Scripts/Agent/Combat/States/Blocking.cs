@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Blocking : CombatState
+public class Blocking : AgentState
 {
     public Blocking(GameObject gameObject) : base(gameObject)
     {
         animationHash = Animator.StringToHash("Blocking");
-        transitionsTo.Add(new Transition(typeof(ReadyState), Not(BlockInput)));
+        transitionsTo.Add(new Transition(typeof(Idling), Not(Block)));
     }
 
     public override void AfterExecution()
@@ -19,6 +19,7 @@ public class Blocking : CombatState
     {
         Debug.Log("Blocking");
         anim.SetBool(animationHash, true);
+        movement.SetHorizontalVelocity(Vector3.zero);
     }
 
     public override void DuringExecution()

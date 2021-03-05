@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Equipping : CombatState
+public class Equipping : AgentState
 {
     private bool animationDone = false;
     private AgentAnimEvents animEvents;
-    private AgentWeapons weapons;
 
     public Equipping(GameObject gameObject) : base(gameObject)
     {
         animationHash = Animator.StringToHash("Equipping");
-        transitionsTo.Add(new Transition(typeof(ReadyState), () => animationDone));
+        transitionsTo.Add(new Transition(typeof(Idling), () => animationDone));
         weapons = gameObject.GetComponent<AgentWeapons>();
         animEvents = gameObject.GetComponentInChildren<AgentAnimEvents>();
     }
@@ -21,7 +20,7 @@ public class Equipping : CombatState
     {
         if (eventType == EventType.Finish)
         {
-            weapons.EquipWeapon(agentController.WeaponNumKey);
+            weapons.EquipWeapon(controller.WeaponNumKey);
             animationDone = true;
         }
     }
@@ -37,6 +36,7 @@ public class Equipping : CombatState
         anim.SetBool(animationHash, true);
         animationDone = false;
         animEvents.OnAnimationEvent += EnableNewWeapon;
+        movement.SetHorizontalVelocity(Vector3.zero);
     }
 
     public override void DuringExecution()

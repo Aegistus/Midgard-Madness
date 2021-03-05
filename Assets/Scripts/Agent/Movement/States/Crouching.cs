@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Crouching : MovementState
+public class Crouching : AgentState
 {
     float crouchHeight = .5f;
 

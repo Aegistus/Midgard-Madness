@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Sliding : MovementState
+public class Sliding : AgentState
 {
     Func<bool> TimerUp => () => timer >= timerMax;
 

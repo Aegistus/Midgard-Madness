@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class MovementState : State
+public abstract class AgentState : State
 {
     protected Animator anim;
     protected int animationHash;
@@ -13,6 +13,7 @@ public abstract class MovementState : State
     protected AgentMovement movement;
     protected AgentController controller;
     protected AgentCombat combat;
+    protected AgentWeapons weapons;
     protected CharacterController charController;
     protected List<string> soundNames = new List<string>();
 
@@ -26,14 +27,18 @@ public abstract class MovementState : State
     public Func<bool> Falling => () => charController.velocity.y < -.1f;
     public Func<bool> Attack => () => controller.Attack;
     public Func<bool> Block => () => controller.Block;
+    public Func<bool> EquipWeaponInput => () => controller.Equipping;
+    public Func<bool> MeleeEquipped => () => weapons.primarySlot.CurrentlyEquipped?.GetType() == typeof(MeleeWeapon);
+    public Func<bool> RangedEquipped => () => weapons.primarySlot.CurrentlyEquipped?.GetType() == typeof(RangedWeapon) || weapons.secondarySlot.CurrentlyEquipped?.GetType() == typeof(RangedWeapon);
 
-    public MovementState(GameObject gameObject) : base(gameObject)
+    public AgentState(GameObject gameObject) : base(gameObject)
     {
         movement = gameObject.GetComponent<AgentMovement>();
         controller = gameObject.GetComponent<AgentController>();
         groundLayer = movement.groundLayer;
         charController = gameObject.GetComponent<CharacterController>();
         combat = gameObject.GetComponent<AgentCombat>();
+        weapons = gameObject.GetComponent<AgentWeapons>();
         anim = gameObject.GetComponentInChildren<Animator>();
         fullBodyLayer = anim.GetLayerIndex("Full Body");
     }

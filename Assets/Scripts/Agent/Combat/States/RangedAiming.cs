@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangedAiming : CombatState
+public class RangedAiming : AgentState
 {
     public RangedAiming(GameObject gameObject) : base(gameObject)
     {
-        transitionsTo.Add(new Transition(typeof(RangedAttacking), RangedEquipped, Not(AttackInput)));
+        transitionsTo.Add(new Transition(typeof(RangedAttacking), RangedEquipped, Not(Attack)));
         animationHash = Animator.StringToHash("RangedAim");
     }
 
@@ -19,6 +19,7 @@ public class RangedAiming : CombatState
     {
         Debug.Log("Aiming");
         anim.SetBool(animationHash, true);
+        movement.SetHorizontalVelocity(Vector3.zero);
     }
 
     public override void DuringExecution()

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Falling : MovementState
+public class Falling : AgentState
 {
     private float airMoveSpeed = 1f;
     Vector3 startingVelocity;

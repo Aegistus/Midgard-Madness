@@ -12,7 +12,7 @@ public class AgentMovement : MonoBehaviour
     public Vector3 Velocity { get { return velocity; } private set { velocity = value; } }
     private Vector3 velocity;
 
-    public MovementState CurrentState => (MovementState)StateMachine.CurrentState;
+    public AgentState CurrentState => (AgentState)StateMachine.CurrentState;
 
     public StateMachine StateMachine { get; private set; }
     private CharacterController charController;
@@ -32,6 +32,15 @@ public class AgentMovement : MonoBehaviour
             {typeof(Crouching), new Crouching(gameObject) },
             {typeof(Sliding), new Sliding(gameObject) },
             {typeof(Rolling), new Rolling(gameObject) },
+
+            {typeof(Blocking), new Blocking(gameObject) },
+            {typeof(Stabbing), new Stabbing(gameObject) },
+            {typeof(MeleeAttacking), new MeleeAttacking(gameObject) },
+
+            {typeof(RangedAiming), new RangedAiming(gameObject) },
+            {typeof(RangedAttacking), new RangedAttacking(gameObject) },
+
+            {typeof(Equipping), new Equipping(gameObject) },
         };
         StateMachine.SetStates(states, typeof(Idling));
     }

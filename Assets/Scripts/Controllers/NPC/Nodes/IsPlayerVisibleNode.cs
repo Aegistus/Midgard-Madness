@@ -13,7 +13,6 @@ public class IsPlayerVisibleNode : Node
 
     public override NodeState Evaluate()
     {
-        Debug.Log("NPC Checking Player Visibility");
         return fov.visibleTargets.Count > 0 ? NodeState.SUCCESS : NodeState.FAILURE;
     }
 }
