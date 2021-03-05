@@ -21,7 +21,6 @@ public class MoveToTargetNode : Node
 
     public override NodeState Evaluate()
     {
-        Debug.Log("NPC Moving To Target");
         if (fov.visibleTargets.Count > 0)
         {
             target = fov.visibleTargets[0];

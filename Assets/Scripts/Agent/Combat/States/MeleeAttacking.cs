@@ -11,7 +11,7 @@ public class MeleeAttacking : AgentState
 
     public MeleeAttacking(GameObject gameObject) : base(gameObject)
     {
-        transitionsTo.Add(new Transition(typeof(Idling), () => animationFinished));
+        transitionsTo.Add(new Transition(typeof(Idling), () => animationFinished, Not(Attack)));
         animationHash = Animator.StringToHash("MeleeAttack");
         animEvents = gameObject.GetComponentInChildren<AgentAnimEvents>();
         animEvents.OnAnimationEvent += CheckAnimationEvent;

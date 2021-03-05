@@ -15,7 +15,6 @@ public class EquipWeaponNode : Node
 
     public override NodeState Evaluate()
     {
-        Debug.Log("NPC Equipping Weapon");
         if (weapons.primarySlot.CurrentlyEquipped != null || weapons.secondarySlot.CurrentlyEquipped != null)
         {
             return NodeState.SUCCESS;

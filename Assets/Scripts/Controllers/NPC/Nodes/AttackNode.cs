@@ -14,7 +14,10 @@ public class AttackNode : Node
     public override NodeState Evaluate()
     {
         Debug.Log("NPC Attacking");
-        controller.Attack = true;
+        if (controller.Attack != true)
+        {
+            controller.Attack = true;
+        }
         return NodeState.SUCCESS;
     }
 }
