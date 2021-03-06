@@ -41,6 +41,8 @@ public class AgentMovement : MonoBehaviour
             {typeof(RangedAttacking), new RangedAttacking(gameObject) },
 
             {typeof(Equipping), new Equipping(gameObject) },
+
+            {typeof(Dying), new Dying(gameObject) },
         };
         StateMachine.SetStates(states, typeof(Idling));
     }

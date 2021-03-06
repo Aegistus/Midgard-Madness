@@ -9,6 +9,7 @@ public class AgentHealth : MonoBehaviour
 
     public event Action OnAgentDeath;
 
+    public bool IsDead { get; private set; } = false;
     public float CurrentHealth { get { return currentHealth; } }
 
     private float currentHealth;
@@ -31,7 +32,7 @@ public class AgentHealth : MonoBehaviour
 
     public void Kill()
     {
-        gameObject.SetActive(false);
+        IsDead = true;
         OnAgentDeath?.Invoke();
     }
 }

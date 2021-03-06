@@ -14,6 +14,7 @@ public abstract class AgentState : State
     protected AgentController controller;
     protected AgentCombat combat;
     protected AgentWeapons weapons;
+    protected AgentHealth health;
     protected CharacterController charController;
     protected List<string> soundNames = new List<string>();
 
@@ -30,6 +31,7 @@ public abstract class AgentState : State
     public Func<bool> EquipWeaponInput => () => controller.Equipping;
     public Func<bool> MeleeEquipped => () => weapons.primarySlot.CurrentlyEquipped?.GetType() == typeof(MeleeWeapon);
     public Func<bool> RangedEquipped => () => weapons.primarySlot.CurrentlyEquipped?.GetType() == typeof(RangedWeapon) || weapons.secondarySlot.CurrentlyEquipped?.GetType() == typeof(RangedWeapon);
+    public Func<bool> IsDead => () => health.IsDead;
 
     public AgentState(GameObject gameObject) : base(gameObject)
     {
@@ -39,8 +41,11 @@ public abstract class AgentState : State
         charController = gameObject.GetComponent<CharacterController>();
         combat = gameObject.GetComponent<AgentCombat>();
         weapons = gameObject.GetComponent<AgentWeapons>();
+        health = gameObject.GetComponent<AgentHealth>();
         anim = gameObject.GetComponentInChildren<Animator>();
         fullBodyLayer = anim.GetLayerIndex("Full Body");
+
+        transitionsTo.Add(new Transition(typeof(Dying), IsDead));
     }
 
     private bool IsNextToWall()
