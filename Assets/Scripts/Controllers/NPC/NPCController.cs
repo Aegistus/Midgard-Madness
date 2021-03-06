@@ -36,9 +36,11 @@ public class NPCController : AgentController
         stateMachine.SetStates(states, typeof(Wandering));
     }
 
-    public void SetDestination(Vector3 position)
+    public NodeState SetDestination(Vector3 position)
     {
         navAgent.SetDestination(position);
+        Forwards = true;
+        return NodeState.SUCCESS;
     }
 
     private void Update()
@@ -85,9 +87,7 @@ public class NPCController : AgentController
         Debug.Log("Finding Patrol Point");
         Vector3 randomPoint = new Vector3((Random.value * wanderDiameter) - (wanderDiameter/2), 0, (Random.value * wanderDiameter) - (wanderDiameter / 2));
         randomPoint += transform.position;
-        SetDestination(randomPoint);
-        Forwards = true;
-        return NodeState.SUCCESS;
+        return SetDestination(randomPoint);
     }
 
     public NodeState WalkToDestination()

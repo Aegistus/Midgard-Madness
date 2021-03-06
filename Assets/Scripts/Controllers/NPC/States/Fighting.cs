@@ -21,17 +21,17 @@ public class Fighting : NPCState
 
     protected override void CreateTree()
     {
-        ActionNode attackTargetNode = new ActionNode(() => controller.AttackEnemy());
-        ActionNode nearTargetNode = new ActionNode(() => AtDestination(1f));
-        SequenceNode attackSequence = new SequenceNode(new List<Node>() { attackTargetNode, nearTargetNode });
-
-        ActionNode moveToTargetNode = new ActionNode(() => SetDestination(fov.visibleTargets[0].position));
-
-        SelectorNode hasWeaponSelector = new SelectorNode(new List<Node>() { attackSequence, moveToTargetNode });
-
+        InverterNode noWeaponOut = new InverterNode(new ActionNode(() => HasWeaponEquipped()));
         ActionNode getWeaponOut = new ActionNode(() => controller.EquipWeapon());
+        SequenceNode equipSequence = new SequenceNode(new List<Node>() { noWeaponOut, getWeaponOut });
 
-        rootNode = new SelectorNode(new List<Node>() { hasWeaponSelector, getWeaponOut });
+        InverterNode notNearTarget = new InverterNode(new ActionNode(() => AtDestination(1f)));
+        ActionNode moveToTarget = new ActionNode(() => controller.SetDestination(fov.visibleTargets[0].position));
+        SequenceNode chaseSequence = new SequenceNode(new List<Node>() { notNearTarget, moveToTarget });
+
+        ActionNode attackTarget = new ActionNode(() => controller.AttackEnemy());
+
+        rootNode = new SelectorNode(new List<Node>() { equipSequence, chaseSequence, attackTarget });
     }
 
 }

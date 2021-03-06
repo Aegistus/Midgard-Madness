@@ -10,6 +10,7 @@ public abstract class NPCState : State
     protected NavMeshAgent navAgent;
     protected NPCController controller;
     protected FieldOfView fov;
+    protected AgentWeapons weapons;
 
     public Func<bool> PlayerInSight => () => fov.visibleTargets.Count > 0;
 
@@ -17,10 +18,10 @@ public abstract class NPCState : State
     {
         return Vector3.Distance(transform.position, navAgent.destination) <= maxDistance ? NodeState.SUCCESS : NodeState.FAILURE;
     }
-    public NodeState SetDestination(Vector3 position)
+
+    public NodeState HasWeaponEquipped()
     {
-        navAgent.SetDestination(position);
-        return NodeState.SUCCESS;
+        return weapons.primarySlot.CurrentlyEquipped != null || weapons.secondarySlot.CurrentlyEquipped != null ? NodeState.SUCCESS : NodeState.FAILURE;
     }
 
     protected NPCState(GameObject gameObject) : base(gameObject)
@@ -28,6 +29,7 @@ public abstract class NPCState : State
         navAgent = gameObject.GetComponent<NavMeshAgent>();
         controller = gameObject.GetComponent<NPCController>();
         fov = gameObject.GetComponent<FieldOfView>();
+        weapons = gameObject.GetComponent<AgentWeapons>();
         CreateTree();
     }
 
