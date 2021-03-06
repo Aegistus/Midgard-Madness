@@ -8,6 +8,8 @@ public class MeleeAttacking : AgentState
     protected AgentAnimEvents animEvents;
 
     private bool animationFinished = false;
+    private MeleeWeapon primary;
+    private MeleeWeapon secondary;
 
     public MeleeAttacking(GameObject gameObject) : base(gameObject)
     {
@@ -36,6 +38,26 @@ public class MeleeAttacking : AgentState
         anim.SetBool(animationHash, true);
         animationFinished = false;
         movement.SetHorizontalVelocity(Vector3.zero);
+        if (weapons.primarySlot.CurrentlyEquipped?.GetType() == typeof(MeleeWeapon))
+        {
+            primary = (MeleeWeapon)weapons.primarySlot.CurrentlyEquipped;
+            Debug.Log("Setting weapon damage state");
+            primary.EnterDamageState(2f);
+        }
+        else
+        {
+            primary = null;
+        }
+        if (weapons.secondarySlot.CurrentlyEquipped?.GetType() == typeof(MeleeWeapon))
+        {
+            secondary = (MeleeWeapon)weapons.secondarySlot.CurrentlyEquipped;
+            Debug.Log("Setting weapon damage state");
+            secondary.EnterDamageState(2f);
+        }
+        else
+        {
+            secondary = null;
+        }
     }
 
     public override void DuringExecution()
