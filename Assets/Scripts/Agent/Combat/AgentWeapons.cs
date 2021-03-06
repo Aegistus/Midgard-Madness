@@ -22,6 +22,44 @@ public class AgentWeapons : MonoBehaviour
         equipmentStanceLayers.Add(WeaponStance.OneHandedShield, anim.GetLayerIndex("One Handed Shield"));
         equipmentStanceLayers.Add(WeaponStance.Shield, anim.GetLayerIndex("One Handed Shield"));
         equipmentStanceLayers.Add(WeaponStance.Bow, anim.GetLayerIndex("Bow"));
+        foreach (var weapon in carriedWeapons)
+        {
+            if (weapon.stance == WeaponStance.Unarmed)
+            {
+                EquipWeapon(weapon);
+            }
+        }
+    }
+
+    public void EquipWeapon(Weapon toEquip)
+    {
+        switch (toEquip.stance)
+        {
+            case WeaponStance.OneHandedShield:
+                primarySlot.Equip(toEquip);
+                break;
+            case WeaponStance.TwoHanded:
+                primarySlot.Equip(toEquip);
+                secondarySlot.UnEquip();
+                break;
+            case WeaponStance.Bow:
+                secondarySlot.Equip(toEquip);
+                primarySlot.UnEquip();
+                break;
+            case WeaponStance.Shield:
+                secondarySlot.UnEquip();
+                secondarySlot.Equip(toEquip);
+                if (primarySlot.CurrentlyEquipped?.stance == WeaponStance.TwoHanded)
+                {
+                    primarySlot.UnEquip();
+                }
+                break;
+            default:
+                primarySlot.UnEquip();
+                secondarySlot.UnEquip();
+                break;
+        }
+        UpdateWeaponAnimation();
     }
 
     public void EquipWeapon(int numKey)
@@ -29,33 +67,7 @@ public class AgentWeapons : MonoBehaviour
         if (numKey - 1 < carriedWeapons.Count && numKey - 1 >= 0)
         {
             Weapon toEquip = carriedWeapons[numKey - 1];
-            switch (toEquip.stance)
-            {
-                case WeaponStance.OneHandedShield:
-                    primarySlot.Equip(toEquip); 
-                    break;
-                case WeaponStance.TwoHanded:
-                    primarySlot.Equip(toEquip);
-                    secondarySlot.UnEquip();
-                    break;
-                case WeaponStance.Bow:
-                    secondarySlot.Equip(toEquip);
-                    primarySlot.UnEquip();
-                    break;
-                case WeaponStance.Shield:
-                    secondarySlot.UnEquip();
-                    secondarySlot.Equip(toEquip);
-                    if (primarySlot.CurrentlyEquipped?.stance == WeaponStance.TwoHanded)
-                    {
-                        primarySlot.UnEquip();
-                    }
-                    break;
-                default:
-                    primarySlot.UnEquip();
-                    secondarySlot.UnEquip();
-                    break;
-            }
-            UpdateWeaponAnimation();
+            EquipWeapon(toEquip);
         }
     }
 
