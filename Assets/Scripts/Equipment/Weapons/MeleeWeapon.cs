@@ -27,10 +27,9 @@ public class MeleeWeapon : Weapon
         if (inDamageState)
         {
             AgentHealth health = other.GetComponentInParent<AgentHealth>();
-            if (health != null)
+            if (health != null && !transform.IsChildOf(health.transform)) // check to make sure not hitting self
             {
                 health.Damage(damage);
-                print("Hit: " + health.name + " for " + damage + " damage");
             }
         }
     }

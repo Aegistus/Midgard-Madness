@@ -21,6 +21,7 @@ public class AgentHealth : MonoBehaviour
     public void Damage(float damage)
     {
         currentHealth -= damage;
+        print("Hit: " + name + " for " + damage + " damage");
         if (currentHealth <= 0)
         {
             currentHealth = 0;
