@@ -11,7 +11,7 @@ public class Running : OnGroundState
         animationHash = Animator.StringToHash("Running");
         transitionsTo.Add(new Transition(typeof(Walking), Not(Run)));
         transitionsTo.Add(new Transition(typeof(Idling), Not(Move), Not(Run)));
-        transitionsTo.Add(new Transition(typeof(MeleeAttacking), MeleeEquipped, Attack));
+        transitionsTo.Add(new Transition(typeof(MomentumAttacking), MeleeEquipped, Attack));
         transitionsTo.Add(new Transition(typeof(RangedAiming), RangedEquipped, Attack));
         transitionsTo.Add(new Transition(typeof(Equipping), EquipWeaponInput));
         transitionsTo.Add(new Transition(typeof(Falling), Not(OnGround)));

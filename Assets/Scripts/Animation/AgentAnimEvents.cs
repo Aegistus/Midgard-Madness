@@ -5,7 +5,7 @@ using System;
 
 public enum EventType
 {
-    Begin, Finish, Release, FollowThru
+    Start, Finish
 }
 
 public class AgentAnimEvents : MonoBehaviour

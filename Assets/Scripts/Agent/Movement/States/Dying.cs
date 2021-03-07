@@ -21,7 +21,6 @@ public class Dying : AgentState
     public override void BeforeExecution()
     {
         animation = Random.Range(0, animationTotal);
-        anim.SetLayerWeight(fullBodyLayer, 1);
         anim.SetInteger(animationHash, animation);
     }
 

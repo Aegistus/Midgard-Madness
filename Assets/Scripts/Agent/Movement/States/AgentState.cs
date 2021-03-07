@@ -7,7 +7,6 @@ public abstract class AgentState : State
 {
     protected Animator anim;
     protected int animationHash;
-    protected int fullBodyLayer;
 
     protected LayerMask groundLayer;
     protected AgentMovement movement;
@@ -18,6 +17,7 @@ public abstract class AgentState : State
     protected CharacterController charController;
     protected AudioManager audioManager;
     protected List<string> soundNames = new List<string>();
+    protected AgentAnimEvents animEvents;
 
     public Func<bool> Move => () => controller.Forwards || controller.Backwards || controller.Right || controller.Left;
     public Func<bool> Jump => () => controller.Jump;
@@ -45,7 +45,7 @@ public abstract class AgentState : State
         health = gameObject.GetComponent<AgentHealth>();
         anim = gameObject.GetComponentInChildren<Animator>();
         audioManager = AudioManager.instance;
-        fullBodyLayer = anim.GetLayerIndex("Full Body");
+        animEvents = gameObject.GetComponentInChildren<AgentAnimEvents>();
 
         transitionsTo.Add(new Transition(typeof(Dying), IsDead));
     }

@@ -22,7 +22,6 @@ public class Rolling : OnGroundState
 
     public override void AfterExecution()
     {
-        anim.SetLayerWeight(fullBodyLayer, 0);
         anim.SetBool(animationHash, false);
     }
 

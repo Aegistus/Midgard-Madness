@@ -36,6 +36,7 @@ public class AgentMovement : MonoBehaviour
             {typeof(Blocking), new Blocking(gameObject) },
             {typeof(Stabbing), new Stabbing(gameObject) },
             {typeof(MeleeAttacking), new MeleeAttacking(gameObject) },
+            {typeof(MomentumAttacking), new MomentumAttacking(gameObject) },
 
             {typeof(RangedAiming), new RangedAiming(gameObject) },
             {typeof(RangedAttacking), new RangedAttacking(gameObject) },

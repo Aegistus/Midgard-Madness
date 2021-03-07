@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
-public class MeleeAttacking : AgentState
+public class MomentumAttacking : AgentState
 {
     private MeleeWeapon primary;
     private MeleeWeapon secondary;
@@ -12,10 +11,10 @@ public class MeleeAttacking : AgentState
     protected int attackAnimationSpeedHash;
     private float timer = 0;
 
-    public MeleeAttacking(GameObject gameObject) : base(gameObject)
+    public MomentumAttacking(GameObject gameObject) : base(gameObject)
     {
         transitionsTo.Add(new Transition(typeof(Idling), () => timer <= 0));
-        animVariantHash = Animator.StringToHash("AttackVariant");
+        animVariantHash = Animator.StringToHash("MomentumAttackVariant");
         attackAnimationSpeedHash = Animator.StringToHash("AttackSpeed");
     }
 
@@ -26,15 +25,15 @@ public class MeleeAttacking : AgentState
 
     public override void BeforeExecution()
     {
-        Debug.Log("Melee Attack");
-        int variant = UnityEngine.Random.Range(0, animVariantNumber);
+        Debug.Log("Momentum Attack");
+        int variant = Random.Range(0, animVariantNumber);
         anim.SetInteger(animVariantHash, variant);
-        movement.SetHorizontalVelocity(movement.Velocity * .2f);
+        movement.SetHorizontalVelocity(movement.Velocity * .8f);
         // have weapons enter damage state
         if (weapons.primarySlot.CurrentlyEquipped?.GetType() == typeof(MeleeWeapon))
         {
             primary = (MeleeWeapon)weapons.primarySlot.CurrentlyEquipped;
-            primary.EnterDamageState(2f, 1f);
+            primary.EnterDamageState(3f, 2f);
         }
         else
         {
@@ -43,7 +42,7 @@ public class MeleeAttacking : AgentState
         if (weapons.secondarySlot.CurrentlyEquipped?.GetType() == typeof(MeleeWeapon))
         {
             secondary = (MeleeWeapon)weapons.secondarySlot.CurrentlyEquipped;
-            secondary.EnterDamageState(2f, 1f);
+            secondary.EnterDamageState(3f, 2f);
         }
         else
         {
