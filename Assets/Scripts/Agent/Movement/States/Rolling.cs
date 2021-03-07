@@ -29,7 +29,6 @@ public class Rolling : OnGroundState
     public override void BeforeExecution()
     {
         Debug.Log("Rolling");
-        anim.SetLayerWeight(fullBodyLayer, 1);
         anim.SetBool(animationHash, true);
         timer = 0;
     }

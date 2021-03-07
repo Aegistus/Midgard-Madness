@@ -756,6 +756,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4828917950998017881, guid: 30b3028583673d04d9a7d7da078b9454, type: 3}
+      propertyPath: yMin
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828917950998017881, guid: 30b3028583673d04d9a7d7da078b9454, type: 3}
+      propertyPath: yMax
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4828917951006747454, guid: 30b3028583673d04d9a7d7da078b9454, type: 3}
       propertyPath: m_Name
       value: Player (1)
@@ -6349,7 +6357,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2695701669283117258
 MonoBehaviour:
   m_ObjectHideFlags: 0

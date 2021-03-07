@@ -15,7 +15,6 @@ public class Falling : AgentState
 
     public override void AfterExecution()
     {
-        anim.SetLayerWeight(fullBodyLayer, 0);
         anim.SetBool(animationHash, false);
     }
 
@@ -23,7 +22,6 @@ public class Falling : AgentState
     {
         Debug.Log("Falling");
         startingVelocity = movement.Velocity;
-        anim.SetLayerWeight(fullBodyLayer, 1);
         anim.SetBool(animationHash, true);
     }
 

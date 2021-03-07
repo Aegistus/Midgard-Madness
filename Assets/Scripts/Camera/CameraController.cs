@@ -6,6 +6,8 @@ public class CameraController : MonoBehaviour
 {
     public float xSensitivity = 1f;
     public float ySensitivity = 1f;
+    public float yMin = -1f;
+    public float yMax = 1f;
     public Transform lookTarget;
 
     private void Start()
@@ -19,5 +21,9 @@ public class CameraController : MonoBehaviour
         transform.LookAt(lookTarget);
         transform.RotateAround(lookTarget.position, Vector3.up, Input.GetAxis("Mouse X") * xSensitivity * Time.deltaTime);
         transform.RotateAround(lookTarget.position, -transform.right, Input.GetAxis("Mouse Y") * ySensitivity * Time.deltaTime);
+        if (transform.localPosition.y >= yMax || transform.localPosition.y <= yMin)
+        {
+            transform.RotateAround(lookTarget.position, -transform.right, -Input.GetAxis("Mouse Y") * ySensitivity * Time.deltaTime);
+        }
     }
 }

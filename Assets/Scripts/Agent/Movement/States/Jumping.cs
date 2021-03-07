@@ -15,14 +15,12 @@ public class Jumping : AgentState
 
     public override void AfterExecution()
     {
-        anim.SetLayerWeight(fullBodyLayer, 0);
         anim.SetBool(animationHash, false);
     }
 
     public override void BeforeExecution()
     {
         Debug.Log("Jumping");
-        anim.SetLayerWeight(fullBodyLayer, 1);
         anim.SetBool(animationHash, true);
         startingVelocity = movement.Velocity;
         movement.AddVerticalVelocity(jumpForce);

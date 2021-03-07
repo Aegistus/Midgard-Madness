@@ -11,13 +11,14 @@ public class MeleeAttacking : AgentState
     private MeleeWeapon secondary;
     private int animVariantHash;
     private int animVariantNumber = 3;
+    protected int attackAnimationSpeedHash;
     private float timer = 0;
-    private float maxTimer = 2f;
 
     public MeleeAttacking(GameObject gameObject) : base(gameObject)
     {
-        transitionsTo.Add(new Transition(typeof(Idling), () => timer >= maxTimer, Not(Attack)));
+        transitionsTo.Add(new Transition(typeof(Idling), () => timer <= 0));
         animVariantHash = Animator.StringToHash("AttackVariant");
+        attackAnimationSpeedHash = Animator.StringToHash("AttackSpeed");
         animEvents = gameObject.GetComponentInChildren<AgentAnimEvents>();
     }
 
@@ -31,8 +32,10 @@ public class MeleeAttacking : AgentState
         Debug.Log("Melee Attack");
         int variant = UnityEngine.Random.Range(0, animVariantNumber);
         anim.SetInteger(animVariantHash, variant);
-        timer = 0;
-        movement.SetHorizontalVelocity(Vector3.zero);
+        AnimatorClipInfo attackClip = anim.GetCurrentAnimatorClipInfo(0)[0];
+        timer = attackClip.clip.length / anim.GetFloat(attackAnimationSpeedHash);
+        Debug.Log(timer);
+        movement.SetHorizontalVelocity(movement.Velocity * .2f);
         // have weapons enter damage state
         if (weapons.primarySlot.CurrentlyEquipped?.GetType() == typeof(MeleeWeapon))
         {
@@ -56,6 +59,6 @@ public class MeleeAttacking : AgentState
 
     public override void DuringExecution()
     {
-        timer += Time.deltaTime;
+        timer -= Time.deltaTime;
     }
 }
