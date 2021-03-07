@@ -5,4 +5,5 @@ using UnityEngine;
 public abstract class Weapon : MonoBehaviour
 {
     public WeaponStance stance;
+    public AnimatorOverrideController animationController;
 }

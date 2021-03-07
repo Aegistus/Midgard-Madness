@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stance: 3
+  animationController: {fileID: 22100000, guid: 3f1a61612978c6347af26cec9be048b0, type: 2}
 --- !u!1001 &5107821773092695233
 PrefabInstance:
   m_ObjectHideFlags: 0

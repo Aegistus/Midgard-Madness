@@ -7,41 +7,36 @@ public class MeleeAttacking : AgentState
 {
     protected AgentAnimEvents animEvents;
 
-    private bool animationFinished = false;
     private MeleeWeapon primary;
     private MeleeWeapon secondary;
+    private int animVariantHash;
+    private int animVariantNumber = 3;
+    private float timer = 0;
+    private float maxTimer = 2f;
 
     public MeleeAttacking(GameObject gameObject) : base(gameObject)
     {
-        transitionsTo.Add(new Transition(typeof(Idling), () => animationFinished, Not(Attack)));
-        animationHash = Animator.StringToHash("MeleeAttack");
+        transitionsTo.Add(new Transition(typeof(Idling), () => timer >= maxTimer, Not(Attack)));
+        animVariantHash = Animator.StringToHash("AttackVariant");
         animEvents = gameObject.GetComponentInChildren<AgentAnimEvents>();
-        animEvents.OnAnimationEvent += CheckAnimationEvent;
-    }
-
-    private void CheckAnimationEvent(EventType eventType)
-    {
-        if (eventType == EventType.Finish)
-        {
-            animationFinished = true;
-        }
     }
 
     public override void AfterExecution()
     {
-        anim.SetBool(animationHash, false);
+        anim.SetInteger(animVariantHash, -1);
     }
 
     public override void BeforeExecution()
     {
         Debug.Log("Melee Attack");
-        anim.SetBool(animationHash, true);
-        animationFinished = false;
+        int variant = UnityEngine.Random.Range(0, animVariantNumber);
+        anim.SetInteger(animVariantHash, variant);
+        timer = 0;
         movement.SetHorizontalVelocity(Vector3.zero);
+        // have weapons enter damage state
         if (weapons.primarySlot.CurrentlyEquipped?.GetType() == typeof(MeleeWeapon))
         {
             primary = (MeleeWeapon)weapons.primarySlot.CurrentlyEquipped;
-            Debug.Log("Setting weapon damage state");
             primary.EnterDamageState(2f);
         }
         else
@@ -51,7 +46,6 @@ public class MeleeAttacking : AgentState
         if (weapons.secondarySlot.CurrentlyEquipped?.GetType() == typeof(MeleeWeapon))
         {
             secondary = (MeleeWeapon)weapons.secondarySlot.CurrentlyEquipped;
-            Debug.Log("Setting weapon damage state");
             secondary.EnterDamageState(2f);
         }
         else
@@ -62,6 +56,6 @@ public class MeleeAttacking : AgentState
 
     public override void DuringExecution()
     {
-
+        timer += Time.deltaTime;
     }
 }

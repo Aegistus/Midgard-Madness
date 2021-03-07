@@ -172,6 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stance: 2
+  animationController: {fileID: 22100000, guid: 7f2792d1dcb771241907ced9ce750c8f, type: 2}
   damage: 10
   blade: {fileID: 4348306766496075348}
 --- !u!54 &9130502795047227465

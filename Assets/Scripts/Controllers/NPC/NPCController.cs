@@ -74,7 +74,6 @@ public class NPCController : AgentController
 
     public NodeState AttackEnemy()
     {
-        Debug.Log("NPC Attacking");
         if (Attack != true)
         {
             Attack = true;

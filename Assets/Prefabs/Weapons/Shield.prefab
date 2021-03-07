@@ -141,3 +141,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stance: 4
+  animationController: {fileID: 22100000, guid: 7f2792d1dcb771241907ced9ce750c8f, type: 2}

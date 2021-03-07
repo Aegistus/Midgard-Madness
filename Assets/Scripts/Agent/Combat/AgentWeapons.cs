@@ -12,16 +12,10 @@ public class AgentWeapons : MonoBehaviour
     public WeaponStance CurrentStance { get; private set; }
 
     private Animator anim;
-    private Dictionary<WeaponStance, int> equipmentStanceLayers = new Dictionary<WeaponStance, int>();
 
     private void Start()
     {
         anim = GetComponentInChildren<Animator>();
-        equipmentStanceLayers.Add(WeaponStance.Unarmed, anim.GetLayerIndex("Unarmed"));
-        equipmentStanceLayers.Add(WeaponStance.TwoHanded, anim.GetLayerIndex("Two Handed"));
-        equipmentStanceLayers.Add(WeaponStance.OneHandedShield, anim.GetLayerIndex("One Handed Shield"));
-        equipmentStanceLayers.Add(WeaponStance.Shield, anim.GetLayerIndex("One Handed Shield"));
-        equipmentStanceLayers.Add(WeaponStance.Bow, anim.GetLayerIndex("Bow"));
         foreach (var weapon in carriedWeapons)
         {
             if (weapon.stance == WeaponStance.Unarmed)
@@ -73,19 +67,21 @@ public class AgentWeapons : MonoBehaviour
 
     public void UpdateWeaponAnimation()
     {
+        AnimatorOverrideController animController = null;
         if (primarySlot.CurrentlyEquipped != null)
         {
             CurrentStance = primarySlot.CurrentlyEquipped.stance;
+            animController = primarySlot.CurrentlyEquipped.animationController;
         }
         else if (secondarySlot.CurrentlyEquipped != null)
         {
             CurrentStance = secondarySlot.CurrentlyEquipped.stance;
+            animController = secondarySlot.CurrentlyEquipped.animationController;
         }
-        // set all animation stance layers to 0 weight
-        foreach (var stance in equipmentStanceLayers)
+        // set animation controller to the weapon's controller
+        if (animController != null)
         {
-            anim.SetLayerWeight(stance.Value, 0);
+            anim.runtimeAnimatorController = animController;
         }
-        anim.SetLayerWeight(equipmentStanceLayers[CurrentStance], 1);
     }
 }
