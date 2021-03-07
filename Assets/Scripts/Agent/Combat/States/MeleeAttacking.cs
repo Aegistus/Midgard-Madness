@@ -28,6 +28,10 @@ public class MeleeAttacking : AgentState
         {
             animationFinished = true;
         }
+        else if (eventType == EventType.WeaponSwish)
+        {
+            AudioManager.instance.PlaySoundGroupAtPosition("Light Swing", transform.position);
+        }
     }
 
     public override void AfterExecution()

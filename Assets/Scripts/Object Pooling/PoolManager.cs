@@ -53,8 +53,7 @@ public class PoolManager : MonoBehaviour
 
     public enum PoolTag
     {
-        BulletImpact, MuzzleFlash, BulletTrail, TankShellTrail, ChargingLaser, MediumExplosion, LargeExplosion, BackBlast,
-        ConstructionLaser, Electricity, Flame, MGMuzzleFlash, TankExplosion, ShotgunFlash, SniperFlash, SmallShellEject, LargeShellEject
+        SwordSlash
     }
 
     PoolObject objectFromPool;

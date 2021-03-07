@@ -27,6 +27,10 @@ public class MomentumAttacking : AgentState
         {
             animationFinished = true;
         }
+        else if (eventType == EventType.WeaponSwish)
+        {
+            audioManager.PlaySoundGroupAtPosition("Heavy Swing", transform.position);
+        }
     }
 
     public override void AfterExecution()

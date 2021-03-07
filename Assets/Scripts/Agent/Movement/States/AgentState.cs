@@ -16,6 +16,7 @@ public abstract class AgentState : State
     protected AgentHealth health;
     protected CharacterController charController;
     protected AudioManager audioManager;
+    protected PoolManager poolManager;
     protected List<string> soundNames = new List<string>();
     protected AgentAnimEvents animEvents;
 
@@ -45,6 +46,7 @@ public abstract class AgentState : State
         health = gameObject.GetComponent<AgentHealth>();
         anim = gameObject.GetComponentInChildren<Animator>();
         audioManager = AudioManager.instance;
+        poolManager = PoolManager.Instance;
         animEvents = gameObject.GetComponentInChildren<AgentAnimEvents>();
 
         transitionsTo.Add(new Transition(typeof(Dying), IsDead));
