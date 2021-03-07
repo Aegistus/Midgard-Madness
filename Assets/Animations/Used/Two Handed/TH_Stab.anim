@@ -49150,7 +49150,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 2
     messageOptions: 0
-  - time: 2.0833333
+  - time: 1.5
     functionName: CallAnimationEvent
     data: 
     objectReferenceParameter: {fileID: 0}
