@@ -6,8 +6,15 @@ public class MeleeWeapon : Weapon
 {
     public float damage;
     public Collider blade;
+    public string swingSoundName = "";
 
     private bool inDamageState = false;
+    private AudioManager audioMan;
+
+    private void Start()
+    {
+        audioMan = AudioManager.instance;
+    }
 
     public void EnterDamageState(float duration)
     {
@@ -17,6 +24,8 @@ public class MeleeWeapon : Weapon
     private IEnumerator DamageState(float duration)
     {
         inDamageState = true;
+        yield return new WaitForSeconds(.3f);
+        audioMan.PlaySoundGroupAtPosition(swingSoundName, transform.position);
         yield return new WaitForSeconds(duration);
         inDamageState = false;
     }

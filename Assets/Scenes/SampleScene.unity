@@ -5017,6 +5017,92 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1668140473}
   m_CullTransparentMesh: 0
+--- !u!1 &1765016733
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1765016735}
+  - component: {fileID: 1765016734}
+  m_Layer: 0
+  m_Name: Managers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1765016734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765016733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba3bc6f5854e1548801e7239ff26918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numOfPositionalSources: 100
+  mixerGroup: {fileID: 0}
+  soundGroups:
+  - name: Light Swing
+    allSounds:
+    - {fileID: 8300000, guid: dbfc476fdc57cf7478197af18a308d5a, type: 3}
+    - {fileID: 8300000, guid: 83c097893eff3c443b0c17c988e48a77, type: 3}
+    - {fileID: 8300000, guid: e3a181faa8e5fa545a56f46215a3bea9, type: 3}
+    - {fileID: 8300000, guid: 633609f80d9051c459b615d1368ca092, type: 3}
+    volume: 0.41
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    minimunDistance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Heavy Swing
+    allSounds:
+    - {fileID: 8300000, guid: 335e0afaa93986a4d861cce85e51e277, type: 3}
+    - {fileID: 8300000, guid: 5006499dbc01f9f48953f95dbc43d585, type: 3}
+    - {fileID: 8300000, guid: cf5a32d3fee014b4d81ffd002a992583, type: 3}
+    - {fileID: 8300000, guid: 221d9de3d8c0943489cc240149705670, type: 3}
+    volume: 0.39
+    volumeVariance: 0.1
+    pitch: 0.87
+    pitchVariance: 0.1
+    minimunDistance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Blade Equip
+    allSounds:
+    - {fileID: 8300000, guid: a58cd610b8259584a9d42cde24fb998d, type: 3}
+    volume: 0.64
+    volumeVariance: 0.1
+    pitch: 0.64
+    pitchVariance: 0.1
+    minimunDistance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  sounds: []
+--- !u!4 &1765016735
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765016733}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.8994609, y: 1.6885699, z: -5.0519485}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1788354520
 GameObject:
   m_ObjectHideFlags: 0

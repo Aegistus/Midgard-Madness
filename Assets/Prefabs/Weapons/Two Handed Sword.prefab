@@ -49,6 +49,7 @@ MonoBehaviour:
   animationController: {fileID: 22100000, guid: 70691573a508a0a4f9fab6c5fc02ad06, type: 2}
   damage: 50
   blade: {fileID: 3792369902256530970}
+  swingSoundName: Heavy Swing
 --- !u!54 &7347809325140954604
 Rigidbody:
   m_ObjectHideFlags: 0

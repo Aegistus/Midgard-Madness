@@ -16,6 +16,7 @@ public abstract class AgentState : State
     protected AgentWeapons weapons;
     protected AgentHealth health;
     protected CharacterController charController;
+    protected AudioManager audioManager;
     protected List<string> soundNames = new List<string>();
 
     public Func<bool> Move => () => controller.Forwards || controller.Backwards || controller.Right || controller.Left;
@@ -43,6 +44,7 @@ public abstract class AgentState : State
         weapons = gameObject.GetComponent<AgentWeapons>();
         health = gameObject.GetComponent<AgentHealth>();
         anim = gameObject.GetComponentInChildren<Animator>();
+        audioManager = AudioManager.instance;
         fullBodyLayer = anim.GetLayerIndex("Full Body");
 
         transitionsTo.Add(new Transition(typeof(Dying), IsDead));
