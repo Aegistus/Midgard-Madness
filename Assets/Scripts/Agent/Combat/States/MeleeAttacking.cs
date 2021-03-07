@@ -10,13 +10,24 @@ public class MeleeAttacking : AgentState
     private int animVariantHash;
     private int animVariantNumber = 3;
     protected int attackAnimationSpeedHash;
-    private float timer = 0;
+    //private float timer = 0;
+    private bool animationFinished = false;
 
     public MeleeAttacking(GameObject gameObject) : base(gameObject)
     {
-        transitionsTo.Add(new Transition(typeof(Idling), () => timer <= 0));
+        //transitionsTo.Add(new Transition(typeof(Idling), () => timer <= 0));
+        transitionsTo.Add(new Transition(typeof(Idling), () => animationFinished));
         animVariantHash = Animator.StringToHash("AttackVariant");
         attackAnimationSpeedHash = Animator.StringToHash("AttackSpeed");
+        animEvents.OnAnimationEvent += CheckAnimationEvent;
+    }
+
+    private void CheckAnimationEvent(EventType eventType)
+    {
+        if (eventType == EventType.Finish)
+        {
+            animationFinished = true;
+        }
     }
 
     public override void AfterExecution()
@@ -27,6 +38,7 @@ public class MeleeAttacking : AgentState
     public override void BeforeExecution()
     {
         Debug.Log("Melee Attack");
+        animationFinished = false;
         int variant = UnityEngine.Random.Range(0, animVariantNumber);
         anim.SetInteger(animVariantHash, variant);
         movement.SetHorizontalVelocity(movement.Velocity * .2f);
@@ -49,13 +61,13 @@ public class MeleeAttacking : AgentState
         {
             secondary = null;
         }
-        AnimatorStateInfo attackClip = anim.GetCurrentAnimatorStateInfo(0);
-        timer = attackClip.length / attackClip.speedMultiplier;
-        Debug.Log(attackClip.length);
+        //AnimatorStateInfo attackClip = anim.GetCurrentAnimatorStateInfo(0);
+        //timer = attackClip.length / attackClip.speedMultiplier;
+        //Debug.Log(attackClip.length);
     }
 
     public override void DuringExecution()
     {
-        timer -= Time.deltaTime;
+        //timer -= Time.deltaTime;
     }
 }
