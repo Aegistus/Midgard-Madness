@@ -23,6 +23,8 @@ public class Fighting : NPCState
     protected override void CreateTree()
     {
         ActionNode attackTarget = new ActionNode(() => controller.AttackEnemy());
+        WaitNode delay = new WaitNode(attackTarget, 2f);
+        SequenceNode attackSequence = new SequenceNode(new List<Node>() { delay, attackTarget });
 
         rootNode = new SelectorNode(new List<Node>() { attackTarget });
     }

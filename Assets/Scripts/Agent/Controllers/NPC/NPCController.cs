@@ -28,6 +28,7 @@ public class NPCController : AgentController
             {typeof(Wandering), new Wandering(gameObject) },
             {typeof(Searching), new Searching(gameObject) },
             {typeof(Fighting), new Fighting(gameObject) },
+            {typeof(Chasing), new Chasing(gameObject) },
         };
         AIStateMachine = new StateMachine();
         AIStateMachine.SetStates(states, typeof(Wandering));

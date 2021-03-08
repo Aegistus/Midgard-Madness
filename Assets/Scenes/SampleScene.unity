@@ -6952,9 +6952,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67f627bb41ff6ac4d9b0110cba78ade5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tickInterval: 0.1
   wanderDiameter: 5
   wanderWaitTime: 5
-  attackRadius: 2
+  attackRadius: 0.1
 --- !u!114 &2695701669283117259
 MonoBehaviour:
   m_ObjectHideFlags: 0

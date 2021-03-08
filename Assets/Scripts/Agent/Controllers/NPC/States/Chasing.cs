@@ -7,7 +7,7 @@ public class Chasing : NPCState
     public Chasing(GameObject gameObject) : base(gameObject)
     {
         transitionsTo.Add(new Transition(typeof(Wandering), Not(PlayerInSight)));
-        transitionsTo.Add(new Transition(typeof(Fighting), () => AtDestination(controller.attackRadius) == NodeState.SUCCESS));
+        transitionsTo.Add(new Transition(typeof(Fighting), () => AtDestination(controller.attackRadius) == NodeState.SUCCESS, () => HasWeaponEquipped() == NodeState.SUCCESS));
     }
 
     public override void AfterExecution()
@@ -26,8 +26,10 @@ public class Chasing : NPCState
         ActionNode getWeaponOut = new ActionNode(() => controller.EquipWeapon());
         SequenceNode equipSequence = new SequenceNode(new List<Node>() { noWeaponOut, getWeaponOut });
 
-        InverterNode notNearTarget = new InverterNode(new ActionNode(() => AtDestination(1f)));
+        InverterNode notNearTarget = new InverterNode(new ActionNode(() => AtDestination(controller.attackRadius)));
         ActionNode moveToTarget = new ActionNode(() => controller.SetDestination(fov.visibleTargets[0].position, true));
         SequenceNode chaseSequence = new SequenceNode(new List<Node>() { notNearTarget, moveToTarget });
+
+        rootNode = new SelectorNode(new List<Node>() { equipSequence, chaseSequence });
     }
 }

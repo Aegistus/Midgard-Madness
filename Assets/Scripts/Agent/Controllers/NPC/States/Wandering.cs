@@ -9,7 +9,7 @@ public class Wandering : NPCState
 
     public Wandering(GameObject gameObject) : base(gameObject)
     {
-        transitionsTo.Add(new Transition(typeof(Fighting), PlayerInSight));
+        transitionsTo.Add(new Transition(typeof(Chasing), PlayerInSight));
     }
 
     public override void AfterExecution()
