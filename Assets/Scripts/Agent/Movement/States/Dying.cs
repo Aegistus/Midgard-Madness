@@ -26,6 +26,6 @@ public class Dying : AgentState
 
     public override void DuringExecution()
     {
-
+        movement.SetHorizontalVelocity(Vector3.zero);
     }
 }

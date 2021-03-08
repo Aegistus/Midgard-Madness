@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7724353473750236291}
   - component: {fileID: 7724353473748853349}
   - component: {fileID: 7724353473747933181}
-  - component: {fileID: 7770857125200810807}
+  - component: {fileID: 7164914750122664518}
   m_Layer: 0
   m_Name: SM_Wep_Shield_08
   m_TagString: Untagged
@@ -82,8 +82,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7770857125200810807
-MeshCollider:
+--- !u!65 &7164914750122664518
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -92,10 +92,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43237252280663386, guid: 4290f5ba66a364e43b5c9c16c293b917, type: 2}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 0.20579363}
+  m_Center: {x: -0.00000031367034, y: 2.3634933e-10, z: 0.03172126}
 --- !u!1 &7724353475411519667
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,3 +141,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stance: 4
   animationController: {fileID: 22100000, guid: 7f2792d1dcb771241907ced9ce750c8f, type: 2}
+  shieldCollider: {fileID: 7164914750122664518}

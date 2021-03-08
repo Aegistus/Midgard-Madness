@@ -33,6 +33,7 @@ public abstract class AgentState : State
     public Func<bool> EquipWeaponInput => () => controller.Equipping;
     public Func<bool> MeleeEquipped => () => weapons.primarySlot.CurrentlyEquipped?.GetType() == typeof(MeleeWeapon);
     public Func<bool> RangedEquipped => () => weapons.primarySlot.CurrentlyEquipped?.GetType() == typeof(RangedWeapon) || weapons.secondarySlot.CurrentlyEquipped?.GetType() == typeof(RangedWeapon);
+    public Func<bool> ShieldEquipped => () => weapons.secondarySlot.CurrentlyEquipped?.GetType() == typeof(Shield);
     public Func<bool> IsDead => () => health.IsDead;
 
     public AgentState(GameObject gameObject) : base(gameObject)
@@ -50,6 +51,7 @@ public abstract class AgentState : State
         animEvents = gameObject.GetComponentInChildren<AgentAnimEvents>();
 
         transitionsTo.Add(new Transition(typeof(Dying), IsDead));
+        transitionsTo.Add(new Transition(typeof(ImpactState), () => health.TookDamage));
     }
 
     private bool IsNextToWall()

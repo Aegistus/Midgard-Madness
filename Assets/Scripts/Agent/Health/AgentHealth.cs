@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using CodeMonkey.Utils;
 
 public class AgentHealth : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class AgentHealth : MonoBehaviour
     public event Action OnAgentDeath;
 
     public bool IsDead { get; private set; } = false;
+    public bool TookDamage { get; private set; } = false;
     public float CurrentHealth { get { return currentHealth; } }
 
     private float currentHealth;
@@ -22,7 +24,7 @@ public class AgentHealth : MonoBehaviour
     public void Damage(float damage)
     {
         currentHealth -= damage;
-        print("Hit: " + name + " for " + damage + " damage");
+        UtilsClass.DrawTextUI(damage.ToString(), Vector2.zero, 10, UtilsClass.GetDefaultFont());
         if (currentHealth <= 0)
         {
             currentHealth = 0;
@@ -34,5 +36,19 @@ public class AgentHealth : MonoBehaviour
     {
         IsDead = true;
         OnAgentDeath?.Invoke();
+    }
+
+    float lastHealth;
+    private void Update()
+    {
+        if (lastHealth > currentHealth)
+        {
+            TookDamage = true;
+        }
+        else
+        {
+            TookDamage = false;
+        }
+        lastHealth = currentHealth;
     }
 }

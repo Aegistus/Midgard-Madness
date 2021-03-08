@@ -6,7 +6,6 @@ using System;
 public class Equipping : AgentState
 {
     private bool animationDone = false;
-    private AgentAnimEvents animEvents;
 
     public Equipping(GameObject gameObject) : base(gameObject)
     {

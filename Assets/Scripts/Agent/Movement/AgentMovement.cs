@@ -18,7 +18,7 @@ public class AgentMovement : MonoBehaviour
     private CharacterController charController;
     private float verticalVelocity;
 
-    private void Awake()
+    private void Start()
     {
         StateMachine = new StateMachine();
         charController = GetComponent<CharacterController>();
@@ -43,6 +43,7 @@ public class AgentMovement : MonoBehaviour
 
             {typeof(Equipping), new Equipping(gameObject) },
 
+            {typeof(ImpactState), new ImpactState(gameObject) },
             {typeof(Dying), new Dying(gameObject) },
         };
         StateMachine.SetStates(states, typeof(Idling));

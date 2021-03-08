@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class Blocking : AgentState
 {
+    //private float blockTime = 1f;
+    //private float shieldBlockTime = 4f;
+    private float timer = 0;
+
     public Blocking(GameObject gameObject) : base(gameObject)
     {
         animationHash = Animator.StringToHash("Blocking");
         transitionsTo.Add(new Transition(typeof(Idling), Not(Block)));
+        //transitionsTo.Add(new Transition(typeof(Idling), ShieldEquipped, () => timer >= shieldBlockTime));
+        //transitionsTo.Add(new Transition(typeof(Idling), Not(ShieldEquipped), () => timer >= blockTime));
     }
 
     public override void AfterExecution()
@@ -20,10 +26,11 @@ public class Blocking : AgentState
         Debug.Log("Blocking");
         anim.SetBool(animationHash, true);
         movement.SetHorizontalVelocity(Vector3.zero);
+        timer = 0;
     }
 
     public override void DuringExecution()
     {
-
+        timer += Time.deltaTime;
     }
 }
