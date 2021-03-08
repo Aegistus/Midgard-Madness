@@ -9,5 +9,5 @@ public abstract class Node
 
     public NodeState CurrentState { get; protected set; }
 
-    public abstract NodeState Evaluate();
+    public abstract NodeState Evaluate(float deltaTime);
 }

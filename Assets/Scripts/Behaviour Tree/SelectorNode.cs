@@ -11,11 +11,11 @@ public class SelectorNode : Node
         this.childNodes = childNodes;
     }
 
-    public override NodeState Evaluate()
+    public override NodeState Evaluate(float deltaTime)
     {
         for (int i = 0; i < childNodes.Count; i++)
         {
-            switch (childNodes[i].Evaluate())
+            switch (childNodes[i].Evaluate(deltaTime))
             {
                 case NodeState.FAILURE:
                     continue;

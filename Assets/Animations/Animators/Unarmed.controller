@@ -277,7 +277,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Impact
+    m_ConditionEvent: TakingDamage
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1746185601090217219}
@@ -1142,7 +1142,7 @@ AnimatorController:
     m_DefaultInt: -1
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: Impact
+  - m_Name: TakingDamage
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0

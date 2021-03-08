@@ -7,8 +7,11 @@ using Random = UnityEngine.Random;
 
 public class NPCController : AgentController
 {
+    public float tickInterval = .1f;
+
     public float wanderDiameter = 5f;
     public float wanderWaitTime = 5f;
+    public float attackRadius = 2f;
 
     private AgentWeapons weapons;
     private NavMeshAgent navAgent;
@@ -28,6 +31,7 @@ public class NPCController : AgentController
         };
         AIStateMachine = new StateMachine();
         AIStateMachine.SetStates(states, typeof(Wandering));
+        StartCoroutine(RunAIStateMachine());
     }
 
     public NodeState SetDestination(Vector3 position, bool running)
@@ -43,18 +47,21 @@ public class NPCController : AgentController
 
     private IEnumerator RunAIStateMachine()
     {
-        Attack = false;
-        Block = false;
-        Forwards = false;
-        Backwards = false;
-        Left = false;
-        Right = false;
-        Jump = false;
-        Crouch = false;
-        Run = false;
-        Equipping = false;
-        AIStateMachine.ExecuteState();
-        yield return new WaitForSeconds(.1f);
+        while (true)
+        {
+            Attack = false;
+            Block = false;
+            Forwards = false;
+            Backwards = false;
+            Left = false;
+            Right = false;
+            Jump = false;
+            Crouch = false;
+            Run = false;
+            Equipping = false;
+            AIStateMachine.ExecuteState();
+            yield return new WaitForSeconds(tickInterval);
+        }
     }
 
     public NodeState EquipWeapon()

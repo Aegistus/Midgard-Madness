@@ -13,7 +13,7 @@ public class ActionNode : Node
         this.action = action;
     }
 
-    public override NodeState Evaluate()
+    public override NodeState Evaluate(float deltaTime)
     {
         switch (action())
         {

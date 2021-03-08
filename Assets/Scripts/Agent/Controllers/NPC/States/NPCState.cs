@@ -37,6 +37,6 @@ public abstract class NPCState : State
 
     public override void DuringExecution()
     {
-        rootNode.Evaluate();
+        rootNode.Evaluate(controller.tickInterval);
     }
 }

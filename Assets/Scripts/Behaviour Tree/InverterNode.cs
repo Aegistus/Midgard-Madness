@@ -11,9 +11,9 @@ public class InverterNode : Node
         this.childNode = childNode;
     }
 
-    public override NodeState Evaluate()
+    public override NodeState Evaluate(float deltaTime)
     {
-        switch (childNode.Evaluate())
+        switch (childNode.Evaluate(deltaTime))
         {
             case NodeState.SUCCESS:
                 CurrentState = NodeState.FAILURE;

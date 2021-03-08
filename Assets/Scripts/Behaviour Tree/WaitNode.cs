@@ -14,12 +14,12 @@ public class WaitNode : Node
         this.maxTimer = maxTimer;
     }
 
-    public override NodeState Evaluate()
+    public override NodeState Evaluate(float deltaTime)
     {
-        timer += Time.deltaTime;
+        timer += deltaTime;
         if (timer >= maxTimer)
         {
-            CurrentState = childNode.Evaluate();
+            CurrentState = childNode.Evaluate(deltaTime);
             timer = 0;
         }
         else
