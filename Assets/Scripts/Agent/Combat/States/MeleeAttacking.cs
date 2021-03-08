@@ -45,7 +45,7 @@ public class MeleeAttacking : AgentState
         animationFinished = false;
         int variant = UnityEngine.Random.Range(0, animVariantNumber);
         anim.SetInteger(animVariantHash, variant);
-        movement.SetHorizontalVelocity(movement.Velocity * .2f);
+        self.SetHorizontalVelocity(self.Velocity * .2f);
         // have weapons enter damage state
         if (weapons.primarySlot.CurrentlyEquipped?.GetType() == typeof(MeleeWeapon))
         {

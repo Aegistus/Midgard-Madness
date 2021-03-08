@@ -19,7 +19,7 @@ public class RangedAiming : AgentState
     {
         Debug.Log("Aiming");
         anim.SetBool(animationHash, true);
-        movement.SetHorizontalVelocity(Vector3.zero);
+        self.SetHorizontalVelocity(Vector3.zero);
     }
 
     public override void DuringExecution()

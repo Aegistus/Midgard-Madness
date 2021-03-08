@@ -44,7 +44,7 @@ public class MomentumAttacking : AgentState
         animationFinished = false;
         int variant = Random.Range(0, animVariantNumber);
         anim.SetInteger(animVariantHash, variant);
-        movement.SetHorizontalVelocity(movement.Velocity * .8f);
+        self.SetHorizontalVelocity(self.Velocity * .8f);
         // have weapons enter damage state
         if (weapons.primarySlot.CurrentlyEquipped?.GetType() == typeof(MeleeWeapon))
         {

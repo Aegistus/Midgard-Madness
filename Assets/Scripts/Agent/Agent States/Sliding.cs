@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class RangedAttacking : AgentState
+public class Sliding : AgentState
 {
-    private float timer = 0;
-    private float timerMax = 1f;
+    Func<bool> TimerUp => () => timer >= timerMax;
 
-    public RangedAttacking(GameObject gameObject) : base(gameObject)
+    float timerMax = 1.1f;
+    float timer;
+
+    float slideSpeed = 8f;
+
+    public Sliding(GameObject gameObject) : base(gameObject)
     {
-        transitionsTo.Add(new Transition(typeof(Idling), () => timer >= timerMax));
-        animationHash = Animator.StringToHash("RangedAttack");
+        animationHash = Animator.StringToHash("Sliding");
+        transitionsTo.Add(new Transition(typeof(Running), TimerUp));
     }
 
     public override void AfterExecution()
@@ -21,10 +25,9 @@ public class RangedAttacking : AgentState
 
     public override void BeforeExecution()
     {
-        Debug.Log("Shooting");
         anim.SetBool(animationHash, true);
+        self.SetHorizontalVelocity(self.agentModel.forward * slideSpeed);
         timer = 0;
-        self.SetHorizontalVelocity(Vector3.zero);
     }
 
     public override void DuringExecution()

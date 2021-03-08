@@ -24,7 +24,6 @@ public class AgentHealth : MonoBehaviour
     public void Damage(float damage)
     {
         currentHealth -= damage;
-        UtilsClass.DrawTextUI(damage.ToString(), Vector2.zero, 10, UtilsClass.GetDefaultFont());
         if (currentHealth <= 0)
         {
             currentHealth = 0;
