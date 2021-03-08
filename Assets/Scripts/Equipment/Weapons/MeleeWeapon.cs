@@ -6,11 +6,30 @@ public class MeleeWeapon : Weapon
 {
     public float damage;
     public Collider blade;
+    public float minimumDamageSpeed = 2f;
 
     private bool inDamageState = false;
     private float damageModifier = 1;
     private List<AgentHealth> hitAgents = new List<AgentHealth>();
     private Coroutine damageStateRoutine;
+    private Rigidbody rb;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
+    private void Update()
+    {
+        if (rb.velocity.sqrMagnitude > Mathf.Pow(minimumDamageSpeed, 2))
+        {
+            blade.enabled = true;
+        }
+        else
+        {
+            blade.enabled = false;
+        }
+    }
 
     public void EnterDamageState(float duration, float damageModifier)
     {
