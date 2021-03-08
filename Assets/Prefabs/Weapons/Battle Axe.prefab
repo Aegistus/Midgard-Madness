@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stance: 1
-  animationController: {fileID: 22100000, guid: 70691573a508a0a4f9fab6c5fc02ad06, type: 2}
+  animationController: {fileID: 22100000, guid: 826fad661c341c5499d9ddc384ad8f01, type: 2}
   damage: 20
   blade: {fileID: 2202094307776307806}
   minimumDamageSpeed: 2
@@ -135,8 +135,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6039084337097544862}
-  m_LocalRotation: {x: -0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0.194, y: 0.042, z: 0.877}
+  m_LocalRotation: {x: -0.3285774, y: 0.54747903, z: -0.62612855, w: 0.4475117}
+  m_LocalPosition: {x: 0.024, y: 0.009, z: 0.656}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2202094307776307801}
