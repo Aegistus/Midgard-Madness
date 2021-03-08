@@ -89,11 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40c58605a977cc40a5c87991b974443, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stance: 1
-  animationController: {fileID: 22100000, guid: 826fad661c341c5499d9ddc384ad8f01, type: 2}
-  damage: 20
+  stats: {fileID: 11400000, guid: 452e0f37a964335428283b21bee95d9a, type: 2}
   blade: {fileID: 2202094307776307806}
-  minimumDamageSpeed: 2
 --- !u!54 &2202094309573705523
 Rigidbody:
   m_ObjectHideFlags: 0

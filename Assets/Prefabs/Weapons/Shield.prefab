@@ -139,6 +139,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a9de6440b1736c45b03b7222ba28de5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stance: 4
-  animationController: {fileID: 22100000, guid: 7f2792d1dcb771241907ced9ce750c8f, type: 2}
-  shieldCollider: {fileID: 7164914750122664518}
+  stats: {fileID: 11400000, guid: d9278ca9011618c458e2eb9e68de186b, type: 2}

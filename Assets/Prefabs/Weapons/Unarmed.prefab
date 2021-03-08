@@ -43,6 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40c58605a977cc40a5c87991b974443, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stance: 0
-  damage: 10
+  stats: {fileID: 11400000, guid: 499486c95eca43941af08d188169dfe7, type: 2}
   blade: {fileID: 0}

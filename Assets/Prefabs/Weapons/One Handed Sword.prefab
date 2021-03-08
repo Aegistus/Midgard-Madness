@@ -171,11 +171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40c58605a977cc40a5c87991b974443, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stance: 2
-  animationController: {fileID: 22100000, guid: 7f2792d1dcb771241907ced9ce750c8f, type: 2}
-  damage: 10
+  stats: {fileID: 11400000, guid: a0641265f049f804a98df7a456b40970, type: 2}
   blade: {fileID: 4348306766496075348}
-  swingSoundName: Light Swing
 --- !u!54 &9130502795047227465
 Rigidbody:
   m_ObjectHideFlags: 0

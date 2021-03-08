@@ -18,7 +18,7 @@ public class AgentWeapons : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         foreach (var weapon in carriedWeapons)
         {
-            if (weapon.stance == WeaponStance.Unarmed)
+            if (weapon.stats?.stance == WeaponStance.Unarmed)
             {
                 EquipWeapon(weapon);
             }
@@ -27,7 +27,7 @@ public class AgentWeapons : MonoBehaviour
 
     public void EquipWeapon(Weapon toEquip)
     {
-        switch (toEquip.stance)
+        switch (toEquip.stats.stance)
         {
             case WeaponStance.OneHandedShield:
                 primarySlot.Equip(toEquip);
@@ -43,7 +43,7 @@ public class AgentWeapons : MonoBehaviour
             case WeaponStance.Shield:
                 secondarySlot.UnEquip();
                 secondarySlot.Equip(toEquip);
-                if (primarySlot.CurrentlyEquipped?.stance == WeaponStance.TwoHanded)
+                if (primarySlot.CurrentlyEquipped?.stats.stance == WeaponStance.TwoHanded)
                 {
                     primarySlot.UnEquip();
                 }
@@ -70,13 +70,13 @@ public class AgentWeapons : MonoBehaviour
         AnimatorOverrideController animController = null;
         if (primarySlot.CurrentlyEquipped != null)
         {
-            CurrentStance = primarySlot.CurrentlyEquipped.stance;
-            animController = primarySlot.CurrentlyEquipped.animationController;
+            CurrentStance = primarySlot.CurrentlyEquipped.stats.stance;
+            animController = primarySlot.CurrentlyEquipped.stats.weaponAnimationSet;
         }
         else if (secondarySlot.CurrentlyEquipped != null)
         {
-            CurrentStance = secondarySlot.CurrentlyEquipped.stance;
-            animController = secondarySlot.CurrentlyEquipped.animationController;
+            CurrentStance = secondarySlot.CurrentlyEquipped.stats.stance;
+            animController = secondarySlot.CurrentlyEquipped.stats.weaponAnimationSet;
         }
         // set animation controller to the weapon's controller
         if (animController != null)
