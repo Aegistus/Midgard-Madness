@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 public class Dying : AgentState
 {
     int animation = 0;
-    int animationTotal = 6;
+    int animationVariantsTotal = 5;
 
     public Dying(GameObject gameObject) : base(gameObject)
     {
@@ -20,7 +20,7 @@ public class Dying : AgentState
 
     public override void BeforeExecution()
     {
-        animation = Random.Range(0, animationTotal);
+        animation = Random.Range(0, animationVariantsTotal);
         anim.SetInteger(animationHash, animation);
     }
 
