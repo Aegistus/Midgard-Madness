@@ -10,12 +10,10 @@ public class MeleeAttacking : AgentState
     private int animVariantHash;
     private int animVariantNumber = 3;
     protected int attackAnimationSpeedHash;
-    //private float timer = 0;
     private bool animationFinished = false;
 
     public MeleeAttacking(GameObject gameObject) : base(gameObject)
     {
-        //transitionsTo.Add(new Transition(typeof(Idling), () => timer <= 0));
         transitionsTo.Add(new Transition(typeof(Idling), () => animationFinished));
         animVariantHash = Animator.StringToHash("AttackVariant");
         attackAnimationSpeedHash = Animator.StringToHash("AttackSpeed");
@@ -65,13 +63,10 @@ public class MeleeAttacking : AgentState
         {
             secondary = null;
         }
-        //AnimatorStateInfo attackClip = anim.GetCurrentAnimatorStateInfo(0);
-        //timer = attackClip.length / attackClip.speedMultiplier;
-        //Debug.Log(attackClip.length);
     }
 
     public override void DuringExecution()
     {
-        //timer -= Time.deltaTime;
+        self.RotateAgentModelToDirection(self.lookDirection.forward);
     }
 }

@@ -39,14 +39,7 @@ public class Walking : OnGroundState
     {
         inputVelocity = GetAgentMovementInput();
         self.SetHorizontalVelocity(inputVelocity * moveSpeed);
-        if (weapons.CurrentStance == WeaponStance.Unarmed)
-        {
-            self.RotateAgentModelToDirection(inputVelocity);
-        }
-        else
-        {
-            self.RotateAgentModelToDirection(self.lookDirection.forward);
-        }
+        self.RotateAgentModelToDirection(inputVelocity);
         KeepGrounded();
     }
 
