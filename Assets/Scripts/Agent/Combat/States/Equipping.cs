@@ -19,7 +19,6 @@ public class Equipping : AgentState
     {
         if (eventType == EventType.Finish)
         {
-            weapons.EquipWeapon(controller.WeaponNumKey);
             animationDone = true;
         }
     }
@@ -32,6 +31,7 @@ public class Equipping : AgentState
 
     public override void BeforeExecution()
     {
+        weapons.EquipWeapon(controller.WeaponNumKey);
         anim.SetBool(animationHash, true);
         animationDone = false;
         animEvents.OnAnimationEvent += EnableNewWeapon;
