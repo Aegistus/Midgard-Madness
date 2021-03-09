@@ -45,6 +45,7 @@ public class MeleeWeapon : Weapon
                 health.Damage(stats.damage * damageModifier);
                 hitAgents.Add(health);
                 AudioManager.instance.PlaySoundGroupAtPosition("Sword Hit", transform.position);
+                PoolManager.Instance.GetObjectFromPoolWithLifeTime(PoolManager.PoolTag.Blood, other.ClosestPoint(transform.position), Quaternion.identity, 3f);
             }
         }
     }
