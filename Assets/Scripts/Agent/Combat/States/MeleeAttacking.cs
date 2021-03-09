@@ -22,19 +22,30 @@ public class MeleeAttacking : AgentState
 
     private void CheckAnimationEvent(EventType eventType)
     {
-        if (eventType == EventType.Finish)
+        switch (eventType)
         {
-            animationFinished = true;
-        }
-        else if (eventType == EventType.WeaponSwish)
-        {
-            AudioManager.instance.PlaySoundGroupAtPosition("Light Swing", transform.position);
+            case EventType.Finish:
+                animationFinished = true;
+                break;
+            case EventType.WeaponSwish:
+                AudioManager.instance.PlaySoundGroupAtPosition("Light Swing", transform.position);
+                break;
+            case EventType.DamageStart:
+                primary?.EnterDamageState(1f);
+                secondary?.EnterDamageState(1f); 
+                break;
+            case EventType.DamageEnd:
+                primary?.ExitDamageState();
+                secondary?.ExitDamageState();
+                break;
         }
     }
 
     public override void AfterExecution()
     {
         anim.SetInteger(animVariantHash, -1);
+        primary?.ExitDamageState();
+        secondary?.ExitDamageState();
     }
 
     public override void BeforeExecution()
@@ -48,7 +59,6 @@ public class MeleeAttacking : AgentState
         if (weapons.primarySlot.CurrentlyEquipped?.GetType() == typeof(MeleeWeapon))
         {
             primary = (MeleeWeapon)weapons.primarySlot.CurrentlyEquipped;
-            primary.EnterDamageState(2f, 1f);
         }
         else
         {
@@ -57,7 +67,6 @@ public class MeleeAttacking : AgentState
         if (weapons.secondarySlot.CurrentlyEquipped?.GetType() == typeof(MeleeWeapon))
         {
             secondary = (MeleeWeapon)weapons.secondarySlot.CurrentlyEquipped;
-            secondary.EnterDamageState(2f, 1f);
         }
         else
         {

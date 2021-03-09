@@ -11,23 +11,31 @@ public class MeleeWeapon : Weapon
     private List<AgentHealth> hitAgents = new List<AgentHealth>();
     private Coroutine damageStateRoutine;
 
-    public void EnterDamageState(float duration, float damageModifier)
+    public void EnterDamageState(float damageModifier, float duration)
     {
-        this.damageModifier = damageModifier;
-        hitAgents = new List<AgentHealth>();
+        EnterDamageState(damageModifier);
         damageStateRoutine = StartCoroutine(DamageState(duration));
     }
 
-    public void AbortDamageState()
+    public void EnterDamageState(float damageModifier)
     {
-        StopCoroutine(damageStateRoutine);
+        inDamageState = true;
+        this.damageModifier = damageModifier;
+        hitAgents = new List<AgentHealth>();
+    }
+
+    public void ExitDamageState()
+    {
+        if (damageStateRoutine != null)
+        {
+            StopCoroutine(damageStateRoutine);
+        }
         inDamageState = false;
         damageModifier = 1;
     }
 
     private IEnumerator DamageState(float duration)
     {
-        inDamageState = true;
         yield return new WaitForSeconds(duration);
         inDamageState = false;
         damageModifier = 1;
