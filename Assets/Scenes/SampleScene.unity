@@ -4757,6 +4757,46 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
+  - name: Sword Hit
+    allSounds:
+    - {fileID: 8300000, guid: dac39e5d2d40083438bca684dac3fa0b, type: 3}
+    - {fileID: 8300000, guid: 57747956644780640bbf69c514ea627b, type: 3}
+    - {fileID: 8300000, guid: 1c075d51e6fb5174baef51dab0cc2ae1, type: 3}
+    - {fileID: 8300000, guid: ef5c957631943764c868366071774602, type: 3}
+    - {fileID: 8300000, guid: a021502560a9f24409733729e32d30d4, type: 3}
+    - {fileID: 8300000, guid: f94f56946d2765546b934e019c07377b, type: 3}
+    - {fileID: 8300000, guid: 4a154b4fed556ea4b83656485da23f4b, type: 3}
+    - {fileID: 8300000, guid: 01e441b833d745d49ba492bf21dc6d89, type: 3}
+    - {fileID: 8300000, guid: 6de06ed63c7627546a5772f59df26850, type: 3}
+    - {fileID: 8300000, guid: 107f4b79d50604847bfee56a9c0c4867, type: 3}
+    volume: 0.64
+    volumeVariance: 0.1
+    pitch: 0.64
+    pitchVariance: 0.1
+    minimunDistance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Taking Damage
+    allSounds:
+    - {fileID: 8300000, guid: adf48869b034fe2488738dcb0a352d37, type: 3}
+    - {fileID: 8300000, guid: 37cd207003ec0044d91b6e7e0ad7710f, type: 3}
+    - {fileID: 8300000, guid: d039f26b13c341c4786b70573f67a61f, type: 3}
+    - {fileID: 8300000, guid: afd341ce0424c63479810946e27aeda8, type: 3}
+    - {fileID: 8300000, guid: 39ba9207600e3504dbfa2d1e6289d102, type: 3}
+    - {fileID: 8300000, guid: 4549dab93675181488911bf1cde7939d, type: 3}
+    - {fileID: 8300000, guid: 325f64105692cb74c8d7c6c2b32b13ad, type: 3}
+    - {fileID: 8300000, guid: 6c2f86db27a60134c82b338a533d05ee, type: 3}
+    - {fileID: 8300000, guid: 89ea5a25bf1dace4f80eb780fe3a8d38, type: 3}
+    - {fileID: 8300000, guid: 1330f242ff080c5439fc38bd991d4077, type: 3}
+    volume: 0.64
+    volumeVariance: 0.1
+    pitch: 0.64
+    pitchVariance: 0.1
+    minimunDistance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
   sounds: []
 --- !u!4 &1765016735
 Transform:
