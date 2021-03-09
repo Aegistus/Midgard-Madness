@@ -21,15 +21,8 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'mixamo.com' has import animation warnings that
-      might lower retargeting quality:\nNote: Activate translation DOF on avatar
-      to improve retargeting quality.\n\t'Ball_R' is inbetween humanoid transforms
-      and has rotation animation that will be discarded.\n\t'Ball_L' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n"
-    animationRetargetingWarnings: "\nRetargeting quality report for clip 'mixamo.com':\n\tRightLowerArm
-      average position error 42.7 mm and maximum position error 46.8 mm at time 0:
-      0 (0.0%) Frame 0\n\tRightHand average position error 72.7 mm and maximum position
-      error 79.2 mm at time 0: 0 (0.0%) Frame 0\n"
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 1
     importAnimatedCustomProperties: 0
     importConstraints: 0
@@ -446,7 +439,7 @@ ModelImporter:
     skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 2
+  animationType: 3
   humanoidOversampling: 1
   avatarSetup: 1
   additionalBone: 0
