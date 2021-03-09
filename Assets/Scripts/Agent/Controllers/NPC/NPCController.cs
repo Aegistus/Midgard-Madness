@@ -15,6 +15,7 @@ public class NPCController : AgentController
 
     private AgentWeapons weapons;
     private NavMeshAgent navAgent;
+    public Transform Target { get; set; }
 
     public StateMachine AIStateMachine { get; private set; }
     public NPCState CurrentState => (NPCState)AIStateMachine.CurrentState;
@@ -104,5 +105,18 @@ public class NPCController : AgentController
             Run = true;
         }
         return NodeState.SUCCESS;
+    }
+
+    public void OnDrawGizmos()
+    {
+        if (Application.isPlaying)
+        {
+            Gizmos.color = Color.red;
+            Vector3[] path = navAgent.path.corners;
+            foreach (var point in path)
+            {
+                Gizmos.DrawSphere(point, .1f);
+            }
+        }
     }
 }

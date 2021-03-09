@@ -32,15 +32,22 @@ public class Walking : OnGroundState
     {
         anim.SetBool(animationHash, true);
         self.SetHorizontalVelocity(Vector3.zero);
+        if (navAgent != null)
+        {
+            navAgent.speed = moveSpeed;
+        }
     }
 
     Vector3 inputVelocity;
     public override void DuringExecution()
     {
-        inputVelocity = GetAgentMovementInput();
-        self.SetHorizontalVelocity(inputVelocity * moveSpeed);
-        self.RotateAgentModelToDirection(inputVelocity);
-        KeepGrounded();
+        if (navAgent == null)
+        {
+            inputVelocity = GetAgentMovementInput();
+            self.SetHorizontalVelocity(inputVelocity * moveSpeed);
+            self.RotateAgentModelToDirection(inputVelocity);
+            KeepGrounded();
+        }
     }
 
 }

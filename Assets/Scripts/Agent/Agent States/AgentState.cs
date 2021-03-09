@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public abstract class AgentState : State
 {
@@ -18,6 +19,7 @@ public abstract class AgentState : State
     protected PoolManager poolManager;
     protected List<string> soundNames = new List<string>();
     protected AgentAnimEvents animEvents;
+    protected NavMeshAgent navAgent;
 
     public Func<bool> Move => () => controller.Forwards || controller.Backwards || controller.Right || controller.Left;
     public Func<bool> Jump => () => controller.Jump;
@@ -47,6 +49,7 @@ public abstract class AgentState : State
         audioManager = AudioManager.instance;
         poolManager = PoolManager.Instance;
         animEvents = gameObject.GetComponentInChildren<AgentAnimEvents>();
+        navAgent = gameObject.GetComponent<NavMeshAgent>();
 
         transitionsTo.Add(new Transition(typeof(Dying), IsDead));
         transitionsTo.Add(new Transition(typeof(TakingDamage), () => health.TookDamage));

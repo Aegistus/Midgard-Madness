@@ -19,14 +19,15 @@ public class Wandering : NPCState
 
     public override void BeforeExecution()
     {
-        Debug.Log("Wandering");
+        Debug.Log("NPC Wandering");
+        navAgent.SetDestination(transform.position);
     }
 
     protected override void CreateTree()
     {
         ActionNode findNewDestination = new ActionNode(() => controller.SetRandomDestination(false));
         WaitNode waitNode = new WaitNode(findNewDestination, waitTime);
-        ActionNode atDestination = new ActionNode(() => AtDestination(1));
+        ActionNode atDestination = new ActionNode(() => AtDestination(.3f));
         SequenceNode findNewPointSequence = new SequenceNode(new List<Node>() { atDestination, waitNode });
 
         ActionNode walkToDestination = new ActionNode(() => controller.MoveToDestination(false));

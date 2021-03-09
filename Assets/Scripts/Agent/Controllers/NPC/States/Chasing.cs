@@ -18,6 +18,8 @@ public class Chasing : NPCState
     public override void BeforeExecution()
     {
         Debug.Log("NPC Chasing");
+        controller.Target = fov.visibleTargets[0];
+        controller.SetDestination(transform.position, false);
     }
 
     protected override void CreateTree()
@@ -27,8 +29,9 @@ public class Chasing : NPCState
         SequenceNode equipSequence = new SequenceNode(new List<Node>() { noWeaponOut, getWeaponOut });
 
         InverterNode notNearTarget = new InverterNode(new ActionNode(() => AtDestination(controller.attackRadius)));
-        ActionNode moveToTarget = new ActionNode(() => controller.SetDestination(fov.visibleTargets[0].position, true));
-        SequenceNode chaseSequence = new SequenceNode(new List<Node>() { notNearTarget, moveToTarget });
+        ActionNode setTarget = new ActionNode(() => controller.SetDestination(controller.Target.position, true));
+        ActionNode moveToTarget = new ActionNode(() => controller.MoveToDestination(true));
+        SequenceNode chaseSequence = new SequenceNode(new List<Node>() { notNearTarget, setTarget, moveToTarget });
 
         rootNode = new SelectorNode(new List<Node>() { equipSequence, chaseSequence });
     }

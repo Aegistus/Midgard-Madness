@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Agent : MonoBehaviour
 {
@@ -16,12 +17,14 @@ public class Agent : MonoBehaviour
 
     public StateMachine StateMachine { get; private set; }
     private CharacterController charController;
+    private NavMeshAgent navAgent;
     private float verticalVelocity;
 
     private void Start()
     {
         StateMachine = new StateMachine();
         charController = GetComponent<CharacterController>();
+        navAgent = GetComponent<NavMeshAgent>();
         Dictionary<Type, State> states = new Dictionary<Type, State>()
         {
             {typeof(Idling), new Idling(gameObject) },
@@ -95,7 +98,7 @@ public class Agent : MonoBehaviour
         }
         StateMachine.ExecuteState();
         velocity.y = verticalVelocity;
-        if (charController.enabled)
+        if (charController.enabled && navAgent == null)
         {
             charController.Move(Velocity * Time.deltaTime);
         }
