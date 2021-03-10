@@ -18,8 +18,9 @@ public class RangedWeapon : Weapon
 
     }
 
-    public void RangedAttack()
+    public void RangedAttack(Ray aim)
     {
-        GameObject projectile = Instantiate(rangedStats.projectile, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
+        Transform projectileTransform = Instantiate(rangedStats.projectile, projectileSpawnPoint.position, projectileSpawnPoint.rotation).transform;
+        projectileTransform.LookAt(aim.GetPoint(10));
     }
 }
