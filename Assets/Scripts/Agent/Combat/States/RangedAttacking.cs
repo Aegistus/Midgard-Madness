@@ -26,11 +26,17 @@ public class RangedAttacking : AgentState
     public override void AfterExecution()
     {
         anim.SetBool(animationHash, false);
+        if (controller.GetType() == typeof(PlayerController))
+        {
+            PlayerController player = (PlayerController)controller;
+            player.ResetCameraPosition();
+        }
     }
 
     public override void BeforeExecution()
     {
         Debug.Log("Shooting");
+        animationFinished = false;
         if (weapons.primarySlot.CurrentlyEquipped?.GetType() == typeof(RangedWeapon))
         {
             weapon = (RangedWeapon)weapons.primarySlot.CurrentlyEquipped;
