@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class Blocking : AgentState
 {
-    //private float blockTime = 1f;
-    //private float shieldBlockTime = 4f;
+    private float blockTime = .5f;
     private float timer = 0;
 
     public Blocking(GameObject gameObject) : base(gameObject)
     {
         animationHash = Animator.StringToHash("Blocking");
-        transitionsTo.Add(new Transition(typeof(Idling), Not(Block)));
-        //transitionsTo.Add(new Transition(typeof(Idling), ShieldEquipped, () => timer >= shieldBlockTime));
-        //transitionsTo.Add(new Transition(typeof(Idling), Not(ShieldEquipped), () => timer >= blockTime));
+        transitionsTo.Add(new Transition(typeof(BlockingCooldown), Not(Block)));
+        transitionsTo.Add(new Transition(typeof(BlockingCooldown), Not(ShieldEquipped), () => timer >= blockTime));
     }
 
     public override void AfterExecution()
@@ -32,5 +30,6 @@ public class Blocking : AgentState
     public override void DuringExecution()
     {
         timer += Time.deltaTime;
+        self.RotateAgentModelToDirection(self.lookDirection.forward);
     }
 }

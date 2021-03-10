@@ -15,7 +15,7 @@ public class Running : OnGroundState
         transitionsTo.Add(new Transition(typeof(RangedAiming), RangedEquipped, Attack));
         transitionsTo.Add(new Transition(typeof(Equipping), EquipWeaponInput));
         transitionsTo.Add(new Transition(typeof(Falling), Not(OnGround)));
-        transitionsTo.Add(new Transition(typeof(Sliding), Crouch));
+        transitionsTo.Add(new Transition(typeof(Blocking), Block));
     }
 
     public override void AfterExecution()

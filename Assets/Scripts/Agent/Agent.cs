@@ -37,6 +37,7 @@ public class Agent : MonoBehaviour
             {typeof(Rolling), new Rolling(gameObject) },
 
             {typeof(Blocking), new Blocking(gameObject) },
+            {typeof(BlockingCooldown), new BlockingCooldown(gameObject) },
             {typeof(MeleeAttacking), new MeleeAttacking(gameObject) },
             {typeof(MomentumAttacking), new MomentumAttacking(gameObject) },
 
