@@ -11,10 +11,16 @@ public class MeleeAttacking : AgentState
     private int animVariantNumber = 3;
     protected int attackAnimationSpeedHash;
     private bool animationFinished = false;
+    private float timer = 0;
+    private float canAttackAgainTime = .8f;
 
     public MeleeAttacking(GameObject gameObject) : base(gameObject)
     {
         transitionsTo.Add(new Transition(typeof(Idling), () => animationFinished));
+        Transition attackCombo = new Transition(typeof(MeleeAttacking), () => timer >= canAttackAgainTime, Attack);
+        attackCombo.CanTransitionToSelf = true;
+        transitionsTo.Add(attackCombo);
+        transitionsTo.Add(new Transition(typeof(Blocking), () => timer >= canAttackAgainTime, Block));
         animVariantHash = Animator.StringToHash("AttackVariant");
         attackAnimationSpeedHash = Animator.StringToHash("AttackSpeed");
         animEvents.OnAnimationEvent += CheckAnimationEvent;
@@ -46,6 +52,7 @@ public class MeleeAttacking : AgentState
         anim.SetInteger(animVariantHash, -1);
         primary?.ExitDamageState();
         secondary?.ExitDamageState();
+        timer = 0;
     }
 
     public override void BeforeExecution()
@@ -72,10 +79,12 @@ public class MeleeAttacking : AgentState
         {
             secondary = null;
         }
+        timer = 0;
     }
 
     public override void DuringExecution()
     {
         self.RotateAgentModelToDirection(self.lookDirection.forward);
+        timer += Time.deltaTime;
     }
 }

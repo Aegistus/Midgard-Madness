@@ -5,8 +5,6 @@ using UnityEngine;
 public class Walking : OnGroundState
 {
     private float moveSpeed = 3f;
-    private int strafeLeftHash = Animator.StringToHash("StrafeLeft");
-    private int strafeRightHash = Animator.StringToHash("StrafeRight");
 
     public Walking(GameObject gameObject) : base(gameObject)
     {
@@ -17,14 +15,11 @@ public class Walking : OnGroundState
         transitionsTo.Add(new Transition(typeof(Equipping), EquipWeaponInput));
         transitionsTo.Add(new Transition(typeof(Running), Run));
         transitionsTo.Add(new Transition(typeof(Falling), Not(OnGround)));
+        transitionsTo.Add(new Transition(typeof(Blocking), Block));
     }
 
     public override void AfterExecution()
     {
-        //if (movement.velocity.y > 0)
-        //{
-        //    movement.AddVerticalVelocity(0);
-        //}
         anim.SetBool(animationHash, false);
     }
 

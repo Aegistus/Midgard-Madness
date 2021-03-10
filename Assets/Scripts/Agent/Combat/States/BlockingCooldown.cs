@@ -10,6 +10,7 @@ public class BlockingCooldown : AgentState
     public BlockingCooldown(GameObject gameObject) : base(gameObject)
     {
         transitionsTo.Add(new Transition(typeof(Idling), () => timer >= cooldownTime));
+        transitionsTo.Add(new Transition(typeof(MeleeAttacking), Attack));
         transitionsTo.Add(new Transition(typeof(Walking), Move));
         animationHash = Animator.StringToHash("Idling");
     }

@@ -43,7 +43,10 @@ public abstract class State
         {
             if (transitionsTo[i].Condition())
             {
-                return transitionsTo[i].ToState;
+                if (transitionsTo[i].ToState != GetType() || transitionsTo[i].CanTransitionToSelf)
+                {
+                    return transitionsTo[i].ToState;
+                }
             }
         }
         return null;

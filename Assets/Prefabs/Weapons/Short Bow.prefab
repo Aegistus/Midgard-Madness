@@ -10,13 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 5107821774026955919}
   - component: {fileID: 2804345481433514830}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Short Bow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5107821774026955919
 Transform:
   m_ObjectHideFlags: 0
@@ -44,8 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 676f5ebe7276c78499f965ea49593a8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stance: 3
-  animationController: {fileID: 22100000, guid: 3f1a61612978c6347af26cec9be048b0, type: 2}
+  stats: {fileID: 0}
 --- !u!1001 &5107821773092695233
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -97,9 +96,49 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -88.531
       objectReference: {fileID: 0}
+    - target: {fileID: -7394139286770079549, guid: 1c96cb79f3a96b04d8ee75ffe64c5d89, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1c96cb79f3a96b04d8ee75ffe64c5d89, type: 3}
       propertyPath: m_Name
       value: Rigged_Bow_NativeAmerican_Testing
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1c96cb79f3a96b04d8ee75ffe64c5d89, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1038887651504466892, guid: 1c96cb79f3a96b04d8ee75ffe64c5d89, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1369116466411341515, guid: 1c96cb79f3a96b04d8ee75ffe64c5d89, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1988072623387850914, guid: 1c96cb79f3a96b04d8ee75ffe64c5d89, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5049903120431377691, guid: 1c96cb79f3a96b04d8ee75ffe64c5d89, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5214423504690929740, guid: 1c96cb79f3a96b04d8ee75ffe64c5d89, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5332809968238436118, guid: 1c96cb79f3a96b04d8ee75ffe64c5d89, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7347908270763617970, guid: 1c96cb79f3a96b04d8ee75ffe64c5d89, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7527027850352686058, guid: 1c96cb79f3a96b04d8ee75ffe64c5d89, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c96cb79f3a96b04d8ee75ffe64c5d89, type: 3}

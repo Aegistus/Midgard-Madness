@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7724353473748853349}
   - component: {fileID: 7724353473747933181}
   - component: {fileID: 7164914750122664518}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Wep_Shield_08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7724353473749893749}
-  m_LocalRotation: {x: 0.69991064, y: 0.052586056, z: 0.12089251, w: -0.7019579}
-  m_LocalPosition: {x: 0.053, y: -0.001, z: 0.014}
+  m_LocalRotation: {x: 0.95273626, y: -0.04523705, z: -0.029573876, w: -0.29895258}
+  m_LocalPosition: {x: -0.005, y: -0.01, z: -0.006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7724353475411519693}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -145.088, y: 2.0480042, z: 4.7929993}
 --- !u!33 &7724353473748853349
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -105,7 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7724353475411519693}
   - component: {fileID: 7572411837256435088}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}

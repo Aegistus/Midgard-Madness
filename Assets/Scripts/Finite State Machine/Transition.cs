@@ -11,6 +11,11 @@ public class Transition
     /// </summary>
     public Func<bool> Condition { get; }
 
+    /// <summary>
+    /// Can this state transition to itself?
+    /// </summary>
+    public bool CanTransitionToSelf { get; set; } = false;
+
     public Transition(Type toState, Func<bool> condition)
     {
         ToState = toState;

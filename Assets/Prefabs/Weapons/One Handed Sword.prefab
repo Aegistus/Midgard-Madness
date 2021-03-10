@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 7579398949594022980}
   - component: {fileID: 7579398949596858544}
   - component: {fileID: 7579398949596183932}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Wep_Sword_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ Transform:
   - {fileID: 5535546845864352441}
   m_Father: {fileID: 7579398949746302355}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -103.113, y: 0, z: -12.026978}
+  m_LocalEulerAnglesHint: {x: 61.917, y: 12.838, z: -150.976}
 --- !u!33 &7579398949596858544
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -137,13 +137,13 @@ GameObject:
   - component: {fileID: 7579398949746302355}
   - component: {fileID: 3331656789191085088}
   - component: {fileID: 9130502795047227465}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: One Handed Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7579398949746302355
 Transform:
   m_ObjectHideFlags: 0

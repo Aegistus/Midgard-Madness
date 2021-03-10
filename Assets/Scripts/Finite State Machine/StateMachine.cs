@@ -81,7 +81,7 @@ public class StateMachine
         }
 
         nextState = CheckAllTransitions();
-        if (nextState != null && nextState != CurrentState.GetType())
+        if (nextState != null)
         {
             SwitchToNewState(nextState);
         }
