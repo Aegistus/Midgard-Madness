@@ -17,14 +17,22 @@ public class RangedAttacking : AgentState
 
     void CheckAnimationEvent(EventType eventType)
     {
-        if (eventType == EventType.Finish)
+        if (isCurrentState)
         {
-            animationFinished = true;
+            if (eventType == EventType.Finish)
+            {
+                animationFinished = true;
+            }
+            else if (eventType == EventType.WeaponSound)
+            {
+                audioManager.PlaySoundAtPosition("Bow Loose", transform.position);
+            }
         }
     }
 
     public override void AfterExecution()
     {
+        isCurrentState = false;
         anim.SetBool(animationHash, false);
         if (controller.GetType() == typeof(PlayerController))
         {
@@ -36,6 +44,7 @@ public class RangedAttacking : AgentState
     public override void BeforeExecution()
     {
         Debug.Log("Shooting");
+        isCurrentState = true;
         animationFinished = false;
         if (weapons.primarySlot.CurrentlyEquipped?.GetType() == typeof(RangedWeapon))
         {

@@ -22,6 +22,8 @@ public abstract class AgentState : State
     protected AgentAnimEvents animEvents;
     protected NavMeshAgent navAgent;
 
+    protected bool isCurrentState = false;
+
     public Func<bool> Move => () => controller.Forwards || controller.Backwards || controller.Right || controller.Left;
     public Func<bool> Jump => () => controller.Jump;
     public Func<bool> Run => () => controller.Run;

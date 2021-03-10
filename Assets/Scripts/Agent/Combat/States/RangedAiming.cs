@@ -10,10 +10,23 @@ public class RangedAiming : AgentState
     {
         transitionsTo.Add(new Transition(typeof(RangedAttacking), RangedEquipped, Not(Attack)));
         animationHash = Animator.StringToHash("RangedAim");
+        animEvents.OnAnimationEvent += CheckAnimationEvents;
+    }
+
+    private void CheckAnimationEvents(EventType type)
+    {
+        if (isCurrentState)
+        {
+            if (type == EventType.WeaponSound)
+            {
+                audioManager.PlaySoundAtPosition("Bow Draw", transform.position);
+            }
+        }
     }
 
     public override void AfterExecution()
     {
+        isCurrentState = false;
         anim.SetBool(animationHash, false);
         //if (controller.GetType() == typeof(PlayerController))
         //{
@@ -25,6 +38,7 @@ public class RangedAiming : AgentState
     public override void BeforeExecution()
     {
         Debug.Log("Aiming");
+        isCurrentState = true;
         anim.SetBool(animationHash, true);
         self.SetHorizontalVelocity(Vector3.zero);
         if (controller.GetType() == typeof(PlayerController))

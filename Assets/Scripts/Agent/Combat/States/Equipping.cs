@@ -36,7 +36,7 @@ public class Equipping : AgentState
         animationDone = false;
         animEvents.OnAnimationEvent += EnableNewWeapon;
         self.SetHorizontalVelocity(Vector3.zero);
-        audioManager.PlaySoundGroupAtPosition("Blade Equip", transform.position);
+        audioManager.PlaySoundAtPosition("Blade Equip", transform.position);
     }
 
     public override void DuringExecution()

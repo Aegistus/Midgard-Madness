@@ -24,7 +24,7 @@ public class AgentHealth : MonoBehaviour
     public void Damage(float damage)
     {
         currentHealth -= damage;
-        AudioManager.instance.PlaySoundGroupAtPosition("Taking Damage", transform.position);
+        AudioManager.instance.PlaySoundAtPosition("Taking Damage", transform.position);
         if (currentHealth <= 0)
         {
             currentHealth = 0;

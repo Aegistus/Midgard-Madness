@@ -1,0 +1,252 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2214367657740723313
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2214367657740723315}
+  - component: {fileID: 2214367657740723314}
+  - component: {fileID: 2214367657740723276}
+  m_Layer: 0
+  m_Name: Managers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2214367657740723315
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2214367657740723313}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.8994609, y: 1.6885699, z: -5.0519485}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2214367657740723314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2214367657740723313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba3bc6f5854e1548801e7239ff26918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numOfPositionalSources: 100
+  mixerGroup: {fileID: 0}
+  soundGroups:
+  - name: Light Swing
+    allSounds:
+    - {fileID: 8300000, guid: c35ac46bc22cd5f448db820946ed2b7b, type: 3}
+    - {fileID: 8300000, guid: d3e5ef54e3b0f204f8b451d120635e65, type: 3}
+    - {fileID: 8300000, guid: 6552ee6da32ac204fbdf5affca64eaa2, type: 3}
+    - {fileID: 8300000, guid: f8ed24536bf9f224c843adc7afb46d66, type: 3}
+    volume: 0.41
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    minimunDistance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Heavy Swing
+    allSounds:
+    - {fileID: 8300000, guid: c27096313cf15ec41a06a19178165077, type: 3}
+    - {fileID: 8300000, guid: 71c1be29136ca6f4eac5c51561106a3e, type: 3}
+    - {fileID: 8300000, guid: 29960e96c67ee574b88bba01edb1fc05, type: 3}
+    - {fileID: 8300000, guid: bb9d7f0211684274c8e47648c21930b6, type: 3}
+    volume: 0.39
+    volumeVariance: 0.1
+    pitch: 0.87
+    pitchVariance: 0.1
+    minimunDistance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Blade Equip
+    allSounds:
+    - {fileID: 8300000, guid: a58cd610b8259584a9d42cde24fb998d, type: 3}
+    volume: 0.64
+    volumeVariance: 0.1
+    pitch: 0.64
+    pitchVariance: 0.1
+    minimunDistance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Sword Hit
+    allSounds:
+    - {fileID: 8300000, guid: dac39e5d2d40083438bca684dac3fa0b, type: 3}
+    - {fileID: 8300000, guid: 57747956644780640bbf69c514ea627b, type: 3}
+    - {fileID: 8300000, guid: 1c075d51e6fb5174baef51dab0cc2ae1, type: 3}
+    - {fileID: 8300000, guid: ef5c957631943764c868366071774602, type: 3}
+    - {fileID: 8300000, guid: a021502560a9f24409733729e32d30d4, type: 3}
+    - {fileID: 8300000, guid: f94f56946d2765546b934e019c07377b, type: 3}
+    - {fileID: 8300000, guid: 4a154b4fed556ea4b83656485da23f4b, type: 3}
+    - {fileID: 8300000, guid: 01e441b833d745d49ba492bf21dc6d89, type: 3}
+    - {fileID: 8300000, guid: 6de06ed63c7627546a5772f59df26850, type: 3}
+    - {fileID: 8300000, guid: 107f4b79d50604847bfee56a9c0c4867, type: 3}
+    volume: 0.64
+    volumeVariance: 0.1
+    pitch: 0.64
+    pitchVariance: 0.1
+    minimunDistance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Taking Damage
+    allSounds:
+    - {fileID: 8300000, guid: adf48869b034fe2488738dcb0a352d37, type: 3}
+    - {fileID: 8300000, guid: 37cd207003ec0044d91b6e7e0ad7710f, type: 3}
+    - {fileID: 8300000, guid: d039f26b13c341c4786b70573f67a61f, type: 3}
+    - {fileID: 8300000, guid: afd341ce0424c63479810946e27aeda8, type: 3}
+    - {fileID: 8300000, guid: 39ba9207600e3504dbfa2d1e6289d102, type: 3}
+    - {fileID: 8300000, guid: 4549dab93675181488911bf1cde7939d, type: 3}
+    - {fileID: 8300000, guid: 325f64105692cb74c8d7c6c2b32b13ad, type: 3}
+    - {fileID: 8300000, guid: 6c2f86db27a60134c82b338a533d05ee, type: 3}
+    - {fileID: 8300000, guid: 89ea5a25bf1dace4f80eb780fe3a8d38, type: 3}
+    - {fileID: 8300000, guid: 1330f242ff080c5439fc38bd991d4077, type: 3}
+    volume: 0.64
+    volumeVariance: 0.1
+    pitch: 0.64
+    pitchVariance: 0.1
+    minimunDistance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Sword Block
+    allSounds:
+    - {fileID: 8300000, guid: 83cac3bc376378d43bd83d67f77c8eee, type: 3}
+    - {fileID: 8300000, guid: 184dbcb5e5dfca64bb47d0c23cb12708, type: 3}
+    - {fileID: 8300000, guid: 17d200e760f156440b91db56ef48ab39, type: 3}
+    - {fileID: 8300000, guid: d6c27fe46467c37469c89839373c1561, type: 3}
+    - {fileID: 8300000, guid: f5f42f01e7ce9c949b78be2ecf3d3e83, type: 3}
+    - {fileID: 8300000, guid: b1d3fd80f077b494cb4945f819718ebf, type: 3}
+    - {fileID: 8300000, guid: 3ce8b1ccae981ce4f8b2544bf105aa5a, type: 3}
+    - {fileID: 8300000, guid: b314a92fab3a72043ba914e6c8c1a003, type: 3}
+    - {fileID: 8300000, guid: f07ca7f8c11462d4dba3f55b05bcde42, type: 3}
+    - {fileID: 8300000, guid: 03cff154f93a1174a8fac91036f37b7a, type: 3}
+    - {fileID: 8300000, guid: 6535727cc2f903c45a6148c9723582ea, type: 3}
+    volume: 0.429
+    volumeVariance: 0.1
+    pitch: 0.64
+    pitchVariance: 0.1
+    minimunDistance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Bow Draw
+    allSounds:
+    - {fileID: 8300000, guid: 7636aa5d7d8202844b58229a671b7f28, type: 3}
+    - {fileID: 8300000, guid: 5775fdcf6c001fb4d8008fcdcce36c9d, type: 3}
+    - {fileID: 8300000, guid: 0723f2625c1f92c44afcd18bd83dd76b, type: 3}
+    - {fileID: 8300000, guid: e3828b08fa352e74b9bd7217ca2f9525, type: 3}
+    volume: 0.29
+    volumeVariance: 0.1
+    pitch: 0.64
+    pitchVariance: 0.1
+    minimunDistance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Bow Loose
+    allSounds:
+    - {fileID: 8300000, guid: dd67de261c43e244aa7924e7a3e875e5, type: 3}
+    - {fileID: 8300000, guid: 538aa04c1f6b09745beaacfd7ae1504d, type: 3}
+    - {fileID: 8300000, guid: 86daf1e40e7c8fb4697d231931e0b695, type: 3}
+    - {fileID: 8300000, guid: 588446ae372434f49a1b233a5d9e56ab, type: 3}
+    - {fileID: 8300000, guid: b667869e6aa42564eacad2efe612e9b9, type: 3}
+    - {fileID: 8300000, guid: 1464ec3efbf285f42b6fa3a7eb220d40, type: 3}
+    - {fileID: 8300000, guid: 9e1fbd64752f67a4cb256a05b89a7faa, type: 3}
+    - {fileID: 8300000, guid: 9a9a39210d6f3544a87d6eea19fce11b, type: 3}
+    - {fileID: 8300000, guid: c62d0c0716934b340beb239f4ef40e0a, type: 3}
+    - {fileID: 8300000, guid: d5ad18aaa48e5ed42aa03b576e68dc13, type: 3}
+    - {fileID: 8300000, guid: 7d1a9ab66232e3742888f225cbe02f6e, type: 3}
+    - {fileID: 8300000, guid: 27ebf56f1252fb34b88ed7bbd50b3faf, type: 3}
+    - {fileID: 8300000, guid: 25be0226fb5a77d4e9ebb0f8e28e0259, type: 3}
+    - {fileID: 8300000, guid: 9978b683fc6910c4bb625922cc893352, type: 3}
+    - {fileID: 8300000, guid: 149bd76e86098b546ba6ad628d976272, type: 3}
+    volume: 0.429
+    volumeVariance: 0.1
+    pitch: 0.64
+    pitchVariance: 0.1
+    minimunDistance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Arrow Loose
+    allSounds:
+    - {fileID: 8300000, guid: bacffc33c5f8e484f8732e4d8f0a01e9, type: 3}
+    - {fileID: 8300000, guid: 3261529aa7cb9354da32b0975ec8faa7, type: 3}
+    - {fileID: 8300000, guid: c25803f72c8a8b441abbdc0dc298d436, type: 3}
+    - {fileID: 8300000, guid: 0c2a2233e1ce29d49ba70c168796b0ef, type: 3}
+    - {fileID: 8300000, guid: d99e8fc2c5eed1040ac3a7bdf9dda13c, type: 3}
+    - {fileID: 8300000, guid: 6331a39dd61f1964793274cd17d6736e, type: 3}
+    - {fileID: 8300000, guid: 7ad8826694569c44aa067abbfaced208, type: 3}
+    - {fileID: 8300000, guid: 9bf852f89c6a9c14097641b966edd113, type: 3}
+    - {fileID: 8300000, guid: 8eec0dc038a235f4197f4d99a1cf1df2, type: 3}
+    - {fileID: 8300000, guid: 0f18beef03367dd42a962fbee4cecf9d, type: 3}
+    - {fileID: 8300000, guid: dcd2fc17dbb7c2245968ed6dd62d81c7, type: 3}
+    - {fileID: 8300000, guid: c9d50493c1b4c0a4f97b76556364ba0b, type: 3}
+    - {fileID: 8300000, guid: 2217666e5291e3b44b01fd098821f9ce, type: 3}
+    - {fileID: 8300000, guid: d45258dd8e50a3e449d84c153036b8e5, type: 3}
+    - {fileID: 8300000, guid: 219944d1cb2e7264b9eba461576efecc, type: 3}
+    volume: 0.429
+    volumeVariance: 0.1
+    pitch: 0.64
+    pitchVariance: 0.1
+    minimunDistance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Projectile Impact
+    allSounds:
+    - {fileID: 8300000, guid: 7a5f5423e81b9084eb41e7e2e846dbdf, type: 3}
+    - {fileID: 8300000, guid: fe44af6cc011ce14ea425da5e6406ec9, type: 3}
+    - {fileID: 8300000, guid: 38a9e10c1b65a5243b16f591eb98f16d, type: 3}
+    - {fileID: 8300000, guid: f40285b97c54c89459951f32649e4143, type: 3}
+    - {fileID: 8300000, guid: 2bb20e2baa1c38946934bc7fc1f27c30, type: 3}
+    - {fileID: 8300000, guid: d51fb3c0fb66d6343ab082dc257cc0a7, type: 3}
+    - {fileID: 8300000, guid: 2a50da6abf9c5a04ca2e7c264b716a92, type: 3}
+    - {fileID: 8300000, guid: 43161e48516d35e48aa9ed690d676a73, type: 3}
+    - {fileID: 8300000, guid: df03abc40cfd3d24db5a5886343523f4, type: 3}
+    - {fileID: 8300000, guid: e0ea478d26f8f7c42804f5091a36597d, type: 3}
+    volume: 0.429
+    volumeVariance: 0.1
+    pitch: 0.64
+    pitchVariance: 0.1
+    minimunDistance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+--- !u!114 &2214367657740723276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2214367657740723313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29f63f03469dea9468f096ffef665601, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - tag: 0
+    objectPrefab: {fileID: 1489431029902184, guid: 4430919f14c50f84085d287cbcb2c30e, type: 3}
+    size: 30
+  - tag: 1
+    objectPrefab: {fileID: 1067536016464596, guid: 57e18706e2792ff4bb5561ed74b796e2, type: 3}
+    size: 30

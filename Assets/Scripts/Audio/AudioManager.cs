@@ -12,7 +12,6 @@ public class AudioManager : MonoBehaviour
 	public AudioMixerGroup mixerGroup;
 
 	public SoundGroup[] soundGroups;
-	public Sound[] sounds;
 
 	private Queue<AudioSource> positionalSources = new Queue<AudioSource>();
 
@@ -26,15 +25,6 @@ public class AudioManager : MonoBehaviour
 		{
 			instance = this;
 			//DontDestroyOnLoad(gameObject);
-		}
-
-		foreach (Sound s in sounds)
-		{
-			s.source = gameObject.AddComponent<AudioSource>();
-			s.source.clip = s.clip;
-			s.source.loop = s.loop;
-
-			s.source.outputAudioMixerGroup = mixerGroup;
 		}
 		foreach (SoundGroup g in soundGroups)
 		{
@@ -54,22 +44,7 @@ public class AudioManager : MonoBehaviour
         }
 	}
 
-	public void PlaySound(string soundName)
-	{
-		Sound sound = Array.Find(sounds, item => item.name == soundName);
-		if (sound == null)
-		{
-			Debug.LogWarning("Sound: " + soundName + " not found!");
-			return;
-		}
-
-		sound.source.volume = sound.volume * (1f + UnityEngine.Random.Range(-sound.volumeVariance / 2f, sound.volumeVariance / 2f));
-		sound.source.pitch = sound.pitch * (1f + UnityEngine.Random.Range(-sound.pitchVariance / 2f, sound.pitchVariance / 2f));
-
-		sound.source.Play();
-	}
-
-	public void PlaySoundGroup(string soundGroupName)
+	public void PlaySound(string soundGroupName)
     {
 		SoundGroup group = Array.Find(soundGroups, item => item.name == soundGroupName);
 		if (group == null)
@@ -85,27 +60,7 @@ public class AudioManager : MonoBehaviour
 		group.source.Play();
 	}
 
-	public void PlaySoundAtPosition(string soundName, Vector3 position)
-    {
-		Sound sound = Array.Find(sounds, item => item.name == soundName);
-		if (sound == null)
-		{
-			Debug.LogWarning("Sound: " + soundName + " not found!");
-			return;
-		}
-		
-		sound.source.volume = sound.volume * (1f + UnityEngine.Random.Range(-sound.volumeVariance / 2f, sound.volumeVariance / 2f));
-		sound.source.minDistance = sound.minimunDistance;
-
-		AudioSource source = positionalSources.Dequeue();
-		source.pitch = sound.pitch * (1f + UnityEngine.Random.Range(-sound.pitchVariance / 2f, sound.pitchVariance / 2f));
-		source.transform.position = position;
-		source.clip = sound.clip;
-		source.Play();
-		positionalSources.Enqueue(source);
-	}
-
-	public void PlaySoundGroupAtPosition(string soundGroupName, Vector3 position)
+	public void PlaySoundAtPosition(string soundGroupName, Vector3 position)
     {
 		SoundGroup group = Array.Find(soundGroups, item => item.name == soundGroupName);
 		if (group == null)
@@ -127,7 +82,7 @@ public class AudioManager : MonoBehaviour
 
 	public void StopPlaying(string soundName)
 	{
-		Sound sound = Array.Find(sounds, item => item.name == soundName);
+		SoundGroup sound = Array.Find(soundGroups, item => item.name == soundName);
 		if (sound == null)
 		{
 			Debug.LogWarning("Sound: " + soundName + " not found!");

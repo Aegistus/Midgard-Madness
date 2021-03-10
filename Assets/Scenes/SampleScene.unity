@@ -756,14 +756,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1508286285, guid: 30b3028583673d04d9a7d7da078b9454, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2270045120293023607, guid: 30b3028583673d04d9a7d7da078b9454, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4828917951006747454, guid: 30b3028583673d04d9a7d7da078b9454, type: 3}
       propertyPath: m_Name
       value: Player (1)
@@ -5075,173 +5067,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1668140473}
   m_CullTransparentMesh: 0
---- !u!1 &1765016733
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1765016735}
-  - component: {fileID: 1765016734}
-  - component: {fileID: 1765016736}
-  m_Layer: 0
-  m_Name: Managers
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1765016734
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1765016733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ba3bc6f5854e1548801e7239ff26918, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numOfPositionalSources: 100
-  mixerGroup: {fileID: 0}
-  soundGroups:
-  - name: Light Swing
-    allSounds:
-    - {fileID: 8300000, guid: c35ac46bc22cd5f448db820946ed2b7b, type: 3}
-    - {fileID: 8300000, guid: d3e5ef54e3b0f204f8b451d120635e65, type: 3}
-    - {fileID: 8300000, guid: 6552ee6da32ac204fbdf5affca64eaa2, type: 3}
-    - {fileID: 8300000, guid: f8ed24536bf9f224c843adc7afb46d66, type: 3}
-    volume: 0.41
-    volumeVariance: 0.1
-    pitch: 1
-    pitchVariance: 0.1
-    minimunDistance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: Heavy Swing
-    allSounds:
-    - {fileID: 8300000, guid: c27096313cf15ec41a06a19178165077, type: 3}
-    - {fileID: 8300000, guid: 71c1be29136ca6f4eac5c51561106a3e, type: 3}
-    - {fileID: 8300000, guid: 29960e96c67ee574b88bba01edb1fc05, type: 3}
-    - {fileID: 8300000, guid: bb9d7f0211684274c8e47648c21930b6, type: 3}
-    volume: 0.39
-    volumeVariance: 0.1
-    pitch: 0.87
-    pitchVariance: 0.1
-    minimunDistance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: Blade Equip
-    allSounds:
-    - {fileID: 8300000, guid: a58cd610b8259584a9d42cde24fb998d, type: 3}
-    volume: 0.64
-    volumeVariance: 0.1
-    pitch: 0.64
-    pitchVariance: 0.1
-    minimunDistance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: Sword Hit
-    allSounds:
-    - {fileID: 8300000, guid: dac39e5d2d40083438bca684dac3fa0b, type: 3}
-    - {fileID: 8300000, guid: 57747956644780640bbf69c514ea627b, type: 3}
-    - {fileID: 8300000, guid: 1c075d51e6fb5174baef51dab0cc2ae1, type: 3}
-    - {fileID: 8300000, guid: ef5c957631943764c868366071774602, type: 3}
-    - {fileID: 8300000, guid: a021502560a9f24409733729e32d30d4, type: 3}
-    - {fileID: 8300000, guid: f94f56946d2765546b934e019c07377b, type: 3}
-    - {fileID: 8300000, guid: 4a154b4fed556ea4b83656485da23f4b, type: 3}
-    - {fileID: 8300000, guid: 01e441b833d745d49ba492bf21dc6d89, type: 3}
-    - {fileID: 8300000, guid: 6de06ed63c7627546a5772f59df26850, type: 3}
-    - {fileID: 8300000, guid: 107f4b79d50604847bfee56a9c0c4867, type: 3}
-    volume: 0.64
-    volumeVariance: 0.1
-    pitch: 0.64
-    pitchVariance: 0.1
-    minimunDistance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: Taking Damage
-    allSounds:
-    - {fileID: 8300000, guid: adf48869b034fe2488738dcb0a352d37, type: 3}
-    - {fileID: 8300000, guid: 37cd207003ec0044d91b6e7e0ad7710f, type: 3}
-    - {fileID: 8300000, guid: d039f26b13c341c4786b70573f67a61f, type: 3}
-    - {fileID: 8300000, guid: afd341ce0424c63479810946e27aeda8, type: 3}
-    - {fileID: 8300000, guid: 39ba9207600e3504dbfa2d1e6289d102, type: 3}
-    - {fileID: 8300000, guid: 4549dab93675181488911bf1cde7939d, type: 3}
-    - {fileID: 8300000, guid: 325f64105692cb74c8d7c6c2b32b13ad, type: 3}
-    - {fileID: 8300000, guid: 6c2f86db27a60134c82b338a533d05ee, type: 3}
-    - {fileID: 8300000, guid: 89ea5a25bf1dace4f80eb780fe3a8d38, type: 3}
-    - {fileID: 8300000, guid: 1330f242ff080c5439fc38bd991d4077, type: 3}
-    volume: 0.64
-    volumeVariance: 0.1
-    pitch: 0.64
-    pitchVariance: 0.1
-    minimunDistance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: Sword Block
-    allSounds:
-    - {fileID: 8300000, guid: 83cac3bc376378d43bd83d67f77c8eee, type: 3}
-    - {fileID: 8300000, guid: 184dbcb5e5dfca64bb47d0c23cb12708, type: 3}
-    - {fileID: 8300000, guid: 17d200e760f156440b91db56ef48ab39, type: 3}
-    - {fileID: 8300000, guid: d6c27fe46467c37469c89839373c1561, type: 3}
-    - {fileID: 8300000, guid: f5f42f01e7ce9c949b78be2ecf3d3e83, type: 3}
-    - {fileID: 8300000, guid: b1d3fd80f077b494cb4945f819718ebf, type: 3}
-    - {fileID: 8300000, guid: 3ce8b1ccae981ce4f8b2544bf105aa5a, type: 3}
-    - {fileID: 8300000, guid: b314a92fab3a72043ba914e6c8c1a003, type: 3}
-    - {fileID: 8300000, guid: f07ca7f8c11462d4dba3f55b05bcde42, type: 3}
-    - {fileID: 8300000, guid: 03cff154f93a1174a8fac91036f37b7a, type: 3}
-    - {fileID: 8300000, guid: 6535727cc2f903c45a6148c9723582ea, type: 3}
-    volume: 0.429
-    volumeVariance: 0.1
-    pitch: 0.64
-    pitchVariance: 0.1
-    minimunDistance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  sounds: []
---- !u!4 &1765016735
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1765016733}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.8994609, y: 1.6885699, z: -5.0519485}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1765016736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1765016733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29f63f03469dea9468f096ffef665601, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pools:
-  - tag: 0
-    objectPrefab: {fileID: 1489431029902184, guid: 4430919f14c50f84085d287cbcb2c30e, type: 3}
-    size: 30
-  - tag: 1
-    objectPrefab: {fileID: 1067536016464596, guid: 57e18706e2792ff4bb5561ed74b796e2, type: 3}
-    size: 30
 --- !u!1 &1788354520
 GameObject:
   m_ObjectHideFlags: 0
@@ -6845,6 +6670,63 @@ CapsuleCollider:
   m_Height: 0.5
   m_Direction: 0
   m_Center: {x: 0.16, y: 0, z: 0}
+--- !u!1001 &2214367659196932332
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2214367657740723313, guid: 79585479c58ac3641a2024c24001ba83, type: 3}
+      propertyPath: m_Name
+      value: Managers
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214367657740723315, guid: 79585479c58ac3641a2024c24001ba83, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.8994609
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214367657740723315, guid: 79585479c58ac3641a2024c24001ba83, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.6885699
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214367657740723315, guid: 79585479c58ac3641a2024c24001ba83, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.0519485
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214367657740723315, guid: 79585479c58ac3641a2024c24001ba83, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214367657740723315, guid: 79585479c58ac3641a2024c24001ba83, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214367657740723315, guid: 79585479c58ac3641a2024c24001ba83, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214367657740723315, guid: 79585479c58ac3641a2024c24001ba83, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214367657740723315, guid: 79585479c58ac3641a2024c24001ba83, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214367657740723315, guid: 79585479c58ac3641a2024c24001ba83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214367657740723315, guid: 79585479c58ac3641a2024c24001ba83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214367657740723315, guid: 79585479c58ac3641a2024c24001ba83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 79585479c58ac3641a2024c24001ba83, type: 3}
 --- !u!114 &2555862442217338930
 MonoBehaviour:
   m_ObjectHideFlags: 0

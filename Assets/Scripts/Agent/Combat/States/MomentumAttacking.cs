@@ -28,9 +28,9 @@ public class MomentumAttacking : AgentState
         {
             animationFinished = true;
         }
-        else if (eventType == EventType.WeaponSwish)
+        else if (eventType == EventType.WeaponSound)
         {
-            audioManager.PlaySoundGroupAtPosition("Heavy Swing", transform.position);
+            audioManager.PlaySoundAtPosition("Heavy Swing", transform.position);
         }
     }
 

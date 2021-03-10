@@ -31,27 +31,31 @@ public class MeleeAttacking : AgentState
 
     private void CheckAnimationEvent(EventType eventType)
     {
-        switch (eventType)
+        if (isCurrentState)
         {
-            case EventType.Finish:
-                animationFinished = true;
-                break;
-            case EventType.WeaponSwish:
-                AudioManager.instance.PlaySoundGroupAtPosition("Light Swing", transform.position);
-                break;
-            case EventType.DamageStart:
-                primary?.EnterDamageState(1f);
-                secondary?.EnterDamageState(1f); 
-                break;
-            case EventType.DamageEnd:
-                primary?.ExitDamageState();
-                secondary?.ExitDamageState();
-                break;
+            switch (eventType)
+            {
+                case EventType.Finish:
+                    animationFinished = true;
+                    break;
+                case EventType.WeaponSound:
+                    AudioManager.instance.PlaySoundAtPosition("Light Swing", transform.position);
+                    break;
+                case EventType.DamageStart:
+                    primary?.EnterDamageState(1f);
+                    secondary?.EnterDamageState(1f);
+                    break;
+                case EventType.DamageEnd:
+                    primary?.ExitDamageState();
+                    secondary?.ExitDamageState();
+                    break;
+            }
         }
     }
 
     public override void AfterExecution()
     {
+        isCurrentState = false;
         anim.SetInteger(animVariantHash, -1);
         primary?.ExitDamageState();
         secondary?.ExitDamageState();
@@ -61,6 +65,7 @@ public class MeleeAttacking : AgentState
     public override void BeforeExecution()
     {
         Debug.Log("Melee Attack");
+        isCurrentState = true;
         if (stamina.CurrentAttackStamina >= staminaCost)
         {
             hasEnoughStamina = true;
