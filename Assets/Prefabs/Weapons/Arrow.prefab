@@ -4888,9 +4888,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71b3eecac32d4ed4b84783fea707e3e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 150
+  speed: 75
   damage: 10
   damageModifier: 1
+  startSoundName: Arrow Loose
+  impactSoundName: Projectile Impact
 --- !u!1001 &4871672379470009241
 PrefabInstance:
   m_ObjectHideFlags: 0

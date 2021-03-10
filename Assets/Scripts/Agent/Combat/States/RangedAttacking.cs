@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class RangedAttacking : AgentState
 {
@@ -34,11 +33,11 @@ public class RangedAttacking : AgentState
     {
         isCurrentState = false;
         anim.SetBool(animationHash, false);
-        if (controller.GetType() == typeof(PlayerController))
-        {
-            PlayerController player = (PlayerController)controller;
-            player.ResetCameraPosition();
-        }
+        //if (controller.GetType() == typeof(PlayerController))
+        //{
+        //    PlayerController player = (PlayerController)controller;
+        //    player.ResetCameraPosition();
+        //}
     }
 
     public override void BeforeExecution()
