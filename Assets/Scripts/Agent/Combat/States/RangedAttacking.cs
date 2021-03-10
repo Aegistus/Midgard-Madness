@@ -5,12 +5,12 @@ using System;
 
 public class RangedAttacking : AgentState
 {
-    private float timer = 0;
-    private float timerMax = 1f;
+    private bool animationFinished = false;
+    private RangedWeaponStats stats;
 
     public RangedAttacking(GameObject gameObject) : base(gameObject)
     {
-        transitionsTo.Add(new Transition(typeof(Idling), () => timer >= timerMax));
+        transitionsTo.Add(new Transition(typeof(Idling), () => animationFinished));
         animationHash = Animator.StringToHash("RangedAttack");
     }
 
@@ -22,13 +22,21 @@ public class RangedAttacking : AgentState
     public override void BeforeExecution()
     {
         Debug.Log("Shooting");
+        if (weapons.primarySlot.CurrentlyEquipped?.GetType() == typeof(RangedWeapon))
+        {
+            stats = (RangedWeaponStats)weapons.primarySlot.CurrentlyEquipped.stats;
+        }
+        else if (weapons.primarySlot.CurrentlyEquipped?.GetType() == typeof(RangedWeapon))
+        {
+            stats = (RangedWeaponStats)weapons.secondarySlot.CurrentlyEquipped.stats;
+        }
         anim.SetBool(animationHash, true);
-        timer = 0;
         self.SetHorizontalVelocity(Vector3.zero);
+        
     }
 
     public override void DuringExecution()
     {
-        timer += Time.deltaTime;
+
     }
 }

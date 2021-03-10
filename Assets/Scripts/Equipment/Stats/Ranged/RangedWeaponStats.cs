@@ -6,4 +6,5 @@ using UnityEngine;
 public class RangedWeaponStats : WeaponStats
 {
     public GameObject projectile;
+    
 }
