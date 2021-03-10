@@ -13,10 +13,12 @@ public class MeleeAttacking : AgentState
     private bool animationFinished = false;
     private float timer = 0;
     private float canAttackAgainTime = .8f;
+    private float staminaCost = 20f;
 
     public MeleeAttacking(GameObject gameObject) : base(gameObject)
     {
         transitionsTo.Add(new Transition(typeof(Idling), () => animationFinished));
+        transitionsTo.Add(new Transition(typeof(Idling), () => stamina.CurrentAttackStamina < staminaCost));
         Transition attackCombo = new Transition(typeof(MeleeAttacking), () => timer >= canAttackAgainTime, Attack);
         attackCombo.CanTransitionToSelf = true;
         transitionsTo.Add(attackCombo);
@@ -80,6 +82,7 @@ public class MeleeAttacking : AgentState
             secondary = null;
         }
         timer = 0;
+        stamina.DepleteAttackStamina(staminaCost);
     }
 
     public override void DuringExecution()

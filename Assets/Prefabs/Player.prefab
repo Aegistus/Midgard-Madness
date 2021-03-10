@@ -194,6 +194,7 @@ GameObject:
   - component: {fileID: 1680635285654721201}
   - component: {fileID: 642693443397125044}
   - component: {fileID: 4585698859150296084}
+  - component: {fileID: 2904597762984913288}
   - component: {fileID: 1298001867}
   - component: {fileID: 8304828692594970045}
   m_Layer: 10
@@ -283,6 +284,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+--- !u!114 &2904597762984913288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4828917951006747454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 244758bd889798d4ab5a6e8818b1b660, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxStamina: 100
+  replenishRate: 2
+  replenishDelay: 1
 --- !u!143 &1298001867
 CharacterController:
   m_ObjectHideFlags: 0

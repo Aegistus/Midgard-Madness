@@ -5,11 +5,13 @@ using UnityEngine;
 public class Running : OnGroundState
 {
     private float moveSpeed = 6f;
+    private float staminaCost = 10f;
 
     public Running(GameObject gameObject) : base(gameObject)
     {
         animationHash = Animator.StringToHash("Running");
         transitionsTo.Add(new Transition(typeof(Walking), Not(Run)));
+        transitionsTo.Add(new Transition(typeof(Walking), () => stamina.CurrentMoveStamina == 0));
         transitionsTo.Add(new Transition(typeof(Idling), Not(Move), Not(Run)));
         transitionsTo.Add(new Transition(typeof(MomentumAttacking), MeleeEquipped, Attack));
         transitionsTo.Add(new Transition(typeof(RangedAiming), RangedEquipped, Attack));
@@ -43,6 +45,7 @@ public class Running : OnGroundState
             self.RotateAgentModelToDirection(inputVelocity);
             KeepGrounded();
         }
+        stamina.DepleteMoveStamina(staminaCost * Time.deltaTime);
     }
 
 }

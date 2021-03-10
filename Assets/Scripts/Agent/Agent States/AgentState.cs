@@ -14,6 +14,7 @@ public abstract class AgentState : State
     protected AgentController controller;
     protected AgentWeapons weapons;
     protected AgentHealth health;
+    protected AgentStamina stamina;
     protected CharacterController charController;
     protected AudioManager audioManager;
     protected PoolManager poolManager;
@@ -45,6 +46,7 @@ public abstract class AgentState : State
         charController = gameObject.GetComponent<CharacterController>();
         weapons = gameObject.GetComponent<AgentWeapons>();
         health = gameObject.GetComponent<AgentHealth>();
+        stamina = gameObject.GetComponent<AgentStamina>();
         anim = gameObject.GetComponentInChildren<Animator>();
         audioManager = AudioManager.instance;
         poolManager = PoolManager.Instance;
