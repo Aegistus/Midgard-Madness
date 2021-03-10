@@ -16,4 +16,4 @@ MonoBehaviour:
   damage: 10
   attackSpeed: 1
   weaponAnimationSet: {fileID: 22100000, guid: 3f1a61612978c6347af26cec9be048b0, type: 2}
-  projectile: {fileID: 0}
+  projectile: {fileID: 4871672378310208938, guid: 977d94e58ee8fbb4985de6b2a8fd3381, type: 3}

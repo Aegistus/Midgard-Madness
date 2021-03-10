@@ -24,6 +24,6 @@ public class RangedAiming : AgentState
 
     public override void DuringExecution()
     {
-
+        self.RotateAgentModelToDirection(self.lookDirection.forward);
     }
 }

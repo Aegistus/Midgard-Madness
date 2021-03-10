@@ -20,6 +20,6 @@ public class RangedWeapon : Weapon
 
     public void RangedAttack()
     {
-        GameObject projectile = Instantiate(rangedStats.projectile);
+        GameObject projectile = Instantiate(rangedStats.projectile, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
     }
 }

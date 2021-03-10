@@ -6,12 +6,21 @@ using System;
 public class RangedAttacking : AgentState
 {
     private bool animationFinished = false;
-    private RangedWeaponStats stats;
+    private RangedWeapon weapon;
 
     public RangedAttacking(GameObject gameObject) : base(gameObject)
     {
         transitionsTo.Add(new Transition(typeof(Idling), () => animationFinished));
         animationHash = Animator.StringToHash("RangedAttack");
+        animEvents.OnAnimationEvent += CheckAnimationEvent;
+    }
+
+    void CheckAnimationEvent(EventType eventType)
+    {
+        if (eventType == EventType.Finish)
+        {
+            animationFinished = true;
+        }
     }
 
     public override void AfterExecution()
@@ -24,15 +33,18 @@ public class RangedAttacking : AgentState
         Debug.Log("Shooting");
         if (weapons.primarySlot.CurrentlyEquipped?.GetType() == typeof(RangedWeapon))
         {
-            stats = (RangedWeaponStats)weapons.primarySlot.CurrentlyEquipped.stats;
+            weapon = (RangedWeapon)weapons.primarySlot.CurrentlyEquipped;
         }
-        else if (weapons.primarySlot.CurrentlyEquipped?.GetType() == typeof(RangedWeapon))
+        else if (weapons.secondarySlot.CurrentlyEquipped?.GetType() == typeof(RangedWeapon))
         {
-            stats = (RangedWeaponStats)weapons.secondarySlot.CurrentlyEquipped.stats;
+            weapon = (RangedWeapon)weapons.secondarySlot.CurrentlyEquipped;
         }
         anim.SetBool(animationHash, true);
         self.SetHorizontalVelocity(Vector3.zero);
-        
+        if (weapon != null)
+        {
+            weapon.RangedAttack();
+        }
     }
 
     public override void DuringExecution()
