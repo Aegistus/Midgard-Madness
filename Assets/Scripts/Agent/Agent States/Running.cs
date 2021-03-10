@@ -6,12 +6,13 @@ public class Running : OnGroundState
 {
     private float moveSpeed = 6f;
     private float staminaCost = 10f;
+    private bool hasEnoughStamina = true;
 
     public Running(GameObject gameObject) : base(gameObject)
     {
         animationHash = Animator.StringToHash("Running");
         transitionsTo.Add(new Transition(typeof(Walking), Not(Run)));
-        transitionsTo.Add(new Transition(typeof(Walking), () => stamina.CurrentMoveStamina == 0));
+        transitionsTo.Add(new Transition(typeof(Walking), () => !hasEnoughStamina));
         transitionsTo.Add(new Transition(typeof(Idling), Not(Move), Not(Run)));
         transitionsTo.Add(new Transition(typeof(MomentumAttacking), MeleeEquipped, Attack));
         transitionsTo.Add(new Transition(typeof(RangedAiming), RangedEquipped, Attack));
@@ -28,11 +29,20 @@ public class Running : OnGroundState
     public override void BeforeExecution()
     {
         Debug.Log("Running");
-        anim.SetBool(animationHash, true);
-        if (navAgent != null)
+        if (stamina.CurrentMoveStamina >= staminaCost)
         {
-            navAgent.speed = moveSpeed;
+            anim.SetBool(animationHash, true);
+            if (navAgent != null)
+            {
+                navAgent.speed = moveSpeed;
+            }
+            hasEnoughStamina = true;
         }
+        else
+        {
+            hasEnoughStamina = false;
+        }
+ 
     }
 
     Vector3 inputVelocity;
@@ -45,7 +55,14 @@ public class Running : OnGroundState
             self.RotateAgentModelToDirection(inputVelocity);
             KeepGrounded();
         }
-        stamina.DepleteMoveStamina(staminaCost * Time.deltaTime);
+        if (stamina.CurrentMoveStamina >= staminaCost * Time.deltaTime)
+        {
+            stamina.DepleteMoveStamina(staminaCost * Time.deltaTime);
+        }
+        else
+        {
+            hasEnoughStamina = false;
+        }
     }
 
 }

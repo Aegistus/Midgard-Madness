@@ -296,8 +296,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 244758bd889798d4ab5a6e8818b1b660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxStamina: 100
-  replenishRate: 2
+  maxStamina: 50
+  replenishRate: 10
   replenishDelay: 1
 --- !u!143 &1298001867
 CharacterController:

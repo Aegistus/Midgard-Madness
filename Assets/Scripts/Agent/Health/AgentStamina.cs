@@ -7,8 +7,8 @@ public class AgentStamina : MonoBehaviour
     public float CurrentMoveStamina { get; private set; }
     public float CurrentAttackStamina { get; private set; }
 
-    [SerializeField] private float maxStamina = 100;
-    [SerializeField] private float replenishRate = 2f;
+    public float maxStamina = 100;
+    [SerializeField] private float replenishRate = 10f;
     [SerializeField] private float replenishDelay = 1f;
     private float attackStaminaTimer = 0;
     private float moveStaminaTimer = 0;
@@ -83,6 +83,5 @@ public class AgentStamina : MonoBehaviour
         {
             attackStaminaTimer += Time.deltaTime;
         }
-        print(CurrentMoveStamina);
     }
 }

@@ -16,7 +16,7 @@ public class StaminaBarUI : MonoBehaviour
 
     private void Update()
     {
-        attackStaminaBar.localScale = new Vector3(stamina.CurrentAttackStamina / 100f, 1, 1);
-        moveStaminaBar.localScale = new Vector3(stamina.CurrentMoveStamina / 100f, 1, 1);
+        attackStaminaBar.localScale = new Vector3(stamina.CurrentAttackStamina / stamina.maxStamina, 1, 1);
+        moveStaminaBar.localScale = new Vector3(stamina.CurrentMoveStamina / stamina.maxStamina, 1, 1);
     }
 }

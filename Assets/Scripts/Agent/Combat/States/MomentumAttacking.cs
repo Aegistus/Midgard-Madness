@@ -11,11 +11,12 @@ public class MomentumAttacking : AgentState
     protected int attackAnimationSpeedHash;
     private bool animationFinished = false;
     private float staminaCost = 40f;
+    private bool hasEnoughStamina = true;
 
     public MomentumAttacking(GameObject gameObject) : base(gameObject)
     {
         transitionsTo.Add(new Transition(typeof(Idling), () => animationFinished));
-        transitionsTo.Add(new Transition(typeof(Idling), () => stamina.CurrentAttackStamina < staminaCost));
+        transitionsTo.Add(new Transition(typeof(Idling), () => !hasEnoughStamina));
         animVariantHash = Animator.StringToHash("MomentumAttackVariant");
         attackAnimationSpeedHash = Animator.StringToHash("AttackSpeed");
         animEvents.OnAnimationEvent += CheckAnimationEvent;
@@ -41,30 +42,38 @@ public class MomentumAttacking : AgentState
     public override void BeforeExecution()
     {
         Debug.Log("Momentum Attack");
-        animationFinished = false;
-        int variant = Random.Range(0, animVariantNumber);
-        anim.SetInteger(animVariantHash, variant);
-        self.SetHorizontalVelocity(self.Velocity * .5f);
-        // have weapons enter damage state
-        if (weapons.primarySlot.CurrentlyEquipped?.GetType() == typeof(MeleeWeapon))
+        if (stamina.CurrentAttackStamina >= staminaCost)
         {
-            primary = (MeleeWeapon)weapons.primarySlot.CurrentlyEquipped;
-            primary.EnterDamageState(3f, 2f);
+            hasEnoughStamina = true;
+            animationFinished = false;
+            int variant = Random.Range(0, animVariantNumber);
+            anim.SetInteger(animVariantHash, variant);
+            self.SetHorizontalVelocity(self.Velocity * .5f);
+            // have weapons enter damage state
+            if (weapons.primarySlot.CurrentlyEquipped?.GetType() == typeof(MeleeWeapon))
+            {
+                primary = (MeleeWeapon)weapons.primarySlot.CurrentlyEquipped;
+                primary.EnterDamageState(3f, 2f);
+            }
+            else
+            {
+                primary = null;
+            }
+            if (weapons.secondarySlot.CurrentlyEquipped?.GetType() == typeof(MeleeWeapon))
+            {
+                secondary = (MeleeWeapon)weapons.secondarySlot.CurrentlyEquipped;
+                secondary.EnterDamageState(3f, 2f);
+            }
+            else
+            {
+                secondary = null;
+            }
+            stamina.DepleteAttackStamina(staminaCost);
         }
         else
         {
-            primary = null;
+            hasEnoughStamina = false;
         }
-        if (weapons.secondarySlot.CurrentlyEquipped?.GetType() == typeof(MeleeWeapon))
-        {
-            secondary = (MeleeWeapon)weapons.secondarySlot.CurrentlyEquipped;
-            secondary.EnterDamageState(3f, 2f);
-        }
-        else
-        {
-            secondary = null;
-        }
-        stamina.DepleteAttackStamina(staminaCost);
     }
 
     public override void DuringExecution()
