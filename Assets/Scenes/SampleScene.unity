@@ -4899,6 +4899,27 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
+  - name: Sword Block
+    allSounds:
+    - {fileID: 8300000, guid: 83cac3bc376378d43bd83d67f77c8eee, type: 3}
+    - {fileID: 8300000, guid: 184dbcb5e5dfca64bb47d0c23cb12708, type: 3}
+    - {fileID: 8300000, guid: 17d200e760f156440b91db56ef48ab39, type: 3}
+    - {fileID: 8300000, guid: d6c27fe46467c37469c89839373c1561, type: 3}
+    - {fileID: 8300000, guid: f5f42f01e7ce9c949b78be2ecf3d3e83, type: 3}
+    - {fileID: 8300000, guid: b1d3fd80f077b494cb4945f819718ebf, type: 3}
+    - {fileID: 8300000, guid: 3ce8b1ccae981ce4f8b2544bf105aa5a, type: 3}
+    - {fileID: 8300000, guid: b314a92fab3a72043ba914e6c8c1a003, type: 3}
+    - {fileID: 8300000, guid: f07ca7f8c11462d4dba3f55b05bcde42, type: 3}
+    - {fileID: 8300000, guid: 03cff154f93a1174a8fac91036f37b7a, type: 3}
+    - {fileID: 8300000, guid: 6535727cc2f903c45a6148c9723582ea, type: 3}
+    volume: 0.429
+    volumeVariance: 0.1
+    pitch: 0.64
+    pitchVariance: 0.1
+    minimunDistance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
   sounds: []
 --- !u!4 &1765016735
 Transform:
@@ -4929,6 +4950,9 @@ MonoBehaviour:
   pools:
   - tag: 0
     objectPrefab: {fileID: 1489431029902184, guid: 4430919f14c50f84085d287cbcb2c30e, type: 3}
+    size: 30
+  - tag: 1
+    objectPrefab: {fileID: 1067536016464596, guid: 57e18706e2792ff4bb5561ed74b796e2, type: 3}
     size: 30
 --- !u!1 &1788354520
 GameObject:
