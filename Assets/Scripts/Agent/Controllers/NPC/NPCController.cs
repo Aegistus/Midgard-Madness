@@ -16,6 +16,7 @@ public class NPCController : AgentController
     private AgentWeapons weapons;
     private NavMeshAgent navAgent;
     public Transform Target { get; set; }
+    public Vector3 Destination => navAgent.destination;
 
     public StateMachine AIStateMachine { get; private set; }
     public NPCState CurrentState => (NPCState)AIStateMachine.CurrentState;

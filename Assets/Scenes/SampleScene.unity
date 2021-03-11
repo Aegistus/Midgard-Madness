@@ -6807,7 +6807,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tickInterval: 0.1
-  wanderDiameter: 5
+  wanderDiameter: 10
   wanderWaitTime: 5
   attackRadius: 2
 --- !u!114 &2695701669283117259
@@ -6822,7 +6822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 933f27ed8a5cf43359d7caf0a5f5e732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRadius: 12.07
+  viewRadius: 5
   viewAngle: 185
   targetMask:
     serializedVersion: 2

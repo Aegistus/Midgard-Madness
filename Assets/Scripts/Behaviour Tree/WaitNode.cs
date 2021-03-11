@@ -17,6 +17,7 @@ public class WaitNode : Node
     public override NodeState Evaluate(float deltaTime)
     {
         timer += deltaTime;
+        Debug.Log(timer);
         if (timer >= maxTimer)
         {
             CurrentState = childNode.Evaluate(deltaTime);

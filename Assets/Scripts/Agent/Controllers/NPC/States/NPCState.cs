@@ -7,7 +7,6 @@ using System;
 public abstract class NPCState : State
 {
     protected SelectorNode rootNode;
-    protected NavMeshAgent navAgent;
     protected NPCController controller;
     protected FieldOfView fov;
     protected AgentWeapons weapons;
@@ -16,7 +15,7 @@ public abstract class NPCState : State
 
     protected NodeState AtDestination(float maxDistance)
     {
-        return Vector3.Distance(transform.position, navAgent.destination) <= maxDistance ? NodeState.SUCCESS : NodeState.FAILURE;
+        return Vector3.Distance(transform.position, controller.Destination) <= maxDistance ? NodeState.SUCCESS : NodeState.FAILURE;
     }
 
     public NodeState HasWeaponEquipped()
@@ -26,7 +25,6 @@ public abstract class NPCState : State
 
     protected NPCState(GameObject gameObject) : base(gameObject)
     {
-        navAgent = gameObject.GetComponent<NavMeshAgent>();
         controller = gameObject.GetComponent<NPCController>();
         fov = gameObject.GetComponent<FieldOfView>();
         weapons = gameObject.GetComponent<AgentWeapons>();
