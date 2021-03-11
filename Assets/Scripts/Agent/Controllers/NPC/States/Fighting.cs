@@ -19,6 +19,7 @@ public class Fighting : NPCState
     {
         Debug.Log("NPC Fighting");
         controller.MomentumAttackEnemy();
+
     }
 
     protected override void CreateTree()

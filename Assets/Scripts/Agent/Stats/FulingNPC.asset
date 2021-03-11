@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d368d2497b95054b910e4093e9ee2dc, type: 3}
-  m_Name: VikingNPC
+  m_Name: FulingNPC
   m_EditorClassIdentifier: 
-  maxHealth: 75
+  maxHealth: 50
   healthRegenRate: 2
-  maxStamina: 50
+  maxStamina: 100
   staminaRegenRate: 5
   staminaRegenDelay: 2
   runCost: 2
@@ -27,8 +27,8 @@ MonoBehaviour:
   momentumAttackCost: 25
   rangedAimCost: 2
   blockCost: 5
-  walkSpeed: 3
-  runSpeed: 6
+  walkSpeed: 4
+  runSpeed: 8
   rollSpeed: 5
   attackSpeed: 1
   jumpForce: 5

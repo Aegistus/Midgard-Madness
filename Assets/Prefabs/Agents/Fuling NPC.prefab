@@ -3512,7 +3512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ab486e0d865a44389448ace0bf1139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentStats: {fileID: 11400000, guid: b8bce07506ce9144588b8f1c2a969b62, type: 2}
+  agentStats: {fileID: 11400000, guid: efeb16d6c84d8234299f21ab115cceb7, type: 2}
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
