@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fighting : NPCState
+public class AIFighting : NPCState
 {
-    public Fighting(GameObject gameObject) : base(gameObject)
+    public AIFighting(GameObject gameObject) : base(gameObject)
     {
-        transitionsTo.Add(new Transition(typeof(Wandering), Not(PlayerInSight)));
-        transitionsTo.Add(new Transition(typeof(Chasing), PlayerInSight, () => AtDestination(controller.attackRadius) != NodeState.SUCCESS));
+        transitionsTo.Add(new Transition(typeof(AIWandering), Not(PlayerInSight)));
+        transitionsTo.Add(new Transition(typeof(AIChasing), PlayerInSight, () => AtDestination(controller.attackRadius) != NodeState.SUCCESS));
     }
 
     public override void AfterExecution()

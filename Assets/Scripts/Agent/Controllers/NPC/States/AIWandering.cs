@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Wandering : NPCState
+public class AIWandering : NPCState
 {
-    public Wandering(GameObject gameObject) : base(gameObject)
+    public AIWandering(GameObject gameObject) : base(gameObject)
     {
-        transitionsTo.Add(new Transition(typeof(Chasing), PlayerInSight));
+        transitionsTo.Add(new Transition(typeof(AIChasing), PlayerInSight));
     }
 
     public override void AfterExecution()

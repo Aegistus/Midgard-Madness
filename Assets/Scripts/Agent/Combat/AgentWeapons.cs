@@ -7,7 +7,8 @@ public class AgentWeapons : MonoBehaviour
 {
     public WeaponSlot primarySlot;
     public WeaponSlot secondarySlot;
-    private List<Weapon> carriedWeapons;
+
+    public List<Weapon> CarriedWeapons { get; private set; }
 
     public WeaponStance CurrentStance { get; private set; }
 
@@ -16,8 +17,8 @@ public class AgentWeapons : MonoBehaviour
     private void Start()
     {
         anim = GetComponentInChildren<Animator>();
-        carriedWeapons = GetComponentsInChildren<Weapon>().ToList();
-        foreach (var weapon in carriedWeapons)
+        CarriedWeapons = GetComponentsInChildren<Weapon>().ToList();
+        foreach (var weapon in CarriedWeapons)
         {
             weapon.gameObject.SetActive(false);
         }
@@ -25,7 +26,7 @@ public class AgentWeapons : MonoBehaviour
 
     public void EquipUnarmed()
     {
-        foreach (var weapon in carriedWeapons)
+        foreach (var weapon in CarriedWeapons)
         {
             if (weapon.stats?.stance == WeaponStance.Unarmed)
             {
@@ -67,9 +68,9 @@ public class AgentWeapons : MonoBehaviour
 
     public void EquipWeapon(int numKey)
     {
-        if (numKey - 1 < carriedWeapons.Count && numKey - 1 >= 0)
+        if (numKey - 1 < CarriedWeapons.Count && numKey - 1 >= 0)
         {
-            Weapon toEquip = carriedWeapons[numKey - 1];
+            Weapon toEquip = CarriedWeapons[numKey - 1];
             EquipWeapon(toEquip);
         }
     }

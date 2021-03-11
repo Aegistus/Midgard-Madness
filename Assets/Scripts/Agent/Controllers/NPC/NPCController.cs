@@ -27,13 +27,13 @@ public class NPCController : AgentController
         navAgent = GetComponent<NavMeshAgent>();
         Dictionary<Type, State> states = new Dictionary<Type, State>()
         {
-            {typeof(Wandering), new Wandering(gameObject) },
-            {typeof(Searching), new Searching(gameObject) },
-            {typeof(Fighting), new Fighting(gameObject) },
-            {typeof(Chasing), new Chasing(gameObject) },
+            {typeof(AIWandering), new AIWandering(gameObject) },
+            {typeof(AISearching), new AISearching(gameObject) },
+            {typeof(AIFighting), new AIFighting(gameObject) },
+            {typeof(AIChasing), new AIChasing(gameObject) },
         };
         AIStateMachine = new StateMachine();
-        AIStateMachine.SetStates(states, typeof(Wandering));
+        AIStateMachine.SetStates(states, typeof(AIWandering));
         StartCoroutine(RunAIStateMachine());
     }
 
@@ -67,17 +67,21 @@ public class NPCController : AgentController
         }
     }
 
-    public NodeState EquipWeapon()
+    public NodeState EquipWeapon(int weaponChoice)
     {
         if (weapons.primarySlot.CurrentlyEquipped != null || weapons.secondarySlot.CurrentlyEquipped != null)
         {
             return NodeState.SUCCESS;
         }
-        else
+        else if (weaponChoice >= 0 && weaponChoice < weapons.CarriedWeapons.Count)
         {
             Equipping = true;
-            WeaponNumKey = 1;
-            return weapons.primarySlot.CurrentlyEquipped != null || weapons.secondarySlot.CurrentlyEquipped != null ? NodeState.SUCCESS : NodeState.FAILURE;
+            WeaponNumKey = weaponChoice;
+            return NodeState.SUCCESS;
+        }
+        else
+        {
+            return NodeState.SUCCESS;
         }
     }
 

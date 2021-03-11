@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Searching : NPCState
+public class AISearching : NPCState
 {
-    public Searching(GameObject gameObject) : base(gameObject)
+    public AISearching(GameObject gameObject) : base(gameObject)
     {
 
     }
