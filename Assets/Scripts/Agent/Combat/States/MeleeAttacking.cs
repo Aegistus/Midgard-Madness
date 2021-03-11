@@ -12,7 +12,7 @@ public class MeleeAttacking : AgentState
     protected int attackAnimationSpeedHash;
     private bool animationFinished = false;
     private float timer = 0;
-    private float canAttackAgainTime = .8f;
+    private float canAttackAgainTime = .75f;
 
     public MeleeAttacking(GameObject gameObject) : base(gameObject)
     {

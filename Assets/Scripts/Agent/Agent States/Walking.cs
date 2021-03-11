@@ -13,7 +13,7 @@ public class Walking : OnGroundState
         transitionsTo.Add(new Transition(typeof(MeleeAttacking), MeleeEquipped, Attack));
         transitionsTo.Add(new Transition(typeof(RangedAiming), RangedEquipped, Attack));
         transitionsTo.Add(new Transition(typeof(Equipping), EquipWeaponInput));
-        transitionsTo.Add(new Transition(typeof(Running), Run));
+        transitionsTo.Add(new Transition(typeof(Running), Run, HasMoveStamina));
         transitionsTo.Add(new Transition(typeof(Falling), Not(OnGround)));
         transitionsTo.Add(new Transition(typeof(Blocking), Block));
     }

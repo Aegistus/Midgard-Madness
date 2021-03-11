@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 public class Agent : MonoBehaviour
 {
+    public AgentStats agentStats;
     public LayerMask groundLayer;
     public Transform lookDirection;
     public Transform agentModel;

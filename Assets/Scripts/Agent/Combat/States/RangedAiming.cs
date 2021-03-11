@@ -9,6 +9,7 @@ public class RangedAiming : AgentState
     public RangedAiming(GameObject gameObject) : base(gameObject)
     {
         transitionsTo.Add(new Transition(typeof(RangedAttacking), RangedEquipped, Not(Attack)));
+        transitionsTo.Add(new Transition(typeof(Idling), Not(HasEnoughAttackStamina)));
         animationHash = Animator.StringToHash("RangedAim");
         animEvents.OnAnimationEvent += CheckAnimationEvents;
         attackStaminaCost = 3f;

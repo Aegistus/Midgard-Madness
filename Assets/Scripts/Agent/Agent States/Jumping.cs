@@ -27,6 +27,7 @@ public class Jumping : AgentState
             anim.SetBool(animationHash, true);
             startingVelocity = self.Velocity;
             self.AddVerticalVelocity(jumpForce);
+            stamina.DepleteMoveStamina(moveStaminaCost);
         }
     }
 

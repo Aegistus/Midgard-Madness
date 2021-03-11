@@ -13,8 +13,8 @@ public class Idling : OnGroundState
         transitionsTo.Add(new Transition(typeof(Falling), Not(OnGround)));
         transitionsTo.Add(new Transition(typeof(Blocking), Block));
 
-        transitionsTo.Add(new Transition(typeof(MeleeAttacking), MeleeEquipped, Attack));
-        transitionsTo.Add(new Transition(typeof(RangedAiming), RangedEquipped, Attack));
+        transitionsTo.Add(new Transition(typeof(MeleeAttacking), MeleeEquipped, Attack, HasAttackStamina));
+        transitionsTo.Add(new Transition(typeof(RangedAiming), RangedEquipped, Attack, HasAttackStamina));
         transitionsTo.Add(new Transition(typeof(Equipping), EquipWeaponInput));
     }
 

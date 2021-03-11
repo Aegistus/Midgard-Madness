@@ -11,6 +11,7 @@ public abstract class AgentState : State
 
     protected LayerMask groundLayer;
     protected Agent self;
+    protected AgentStats agentStats;
     protected AgentController controller;
     protected AgentWeapons weapons;
     protected AgentHealth health;
@@ -44,6 +45,8 @@ public abstract class AgentState : State
     public Func<bool> IsDead => () => health.IsDead;
     public Func<bool> HasEnoughMoveStamina => () => stamina.CurrentAttackStamina >= attackStaminaCost;
     public Func<bool> HasEnoughAttackStamina => () => stamina.CurrentMoveStamina >= moveStaminaCost;
+    public Func<bool> HasMoveStamina => () => stamina.CurrentMoveStamina > 0;
+    public Func<bool> HasAttackStamina => () => stamina.CurrentAttackStamina > 0;
 
     public AgentState(GameObject gameObject) : base(gameObject)
     {
@@ -62,8 +65,6 @@ public abstract class AgentState : State
 
         transitionsTo.Add(new Transition(typeof(Dying), IsDead));
         transitionsTo.Add(new Transition(typeof(TakingDamage), () => health.TookDamage));
-        transitionsTo.Add(new Transition(typeof(Idling), Not(HasEnoughAttackStamina)));
-        transitionsTo.Add(new Transition(typeof(Idling), Not(HasEnoughMoveStamina)));
     }
 
     private bool IsNextToWall()

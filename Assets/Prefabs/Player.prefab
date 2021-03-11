@@ -191,8 +191,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4828917951006747455}
   - component: {fileID: 4828917951006747450}
-  - component: {fileID: 1680635285654721201}
   - component: {fileID: 642693443397125044}
+  - component: {fileID: 1680635285654721201}
   - component: {fileID: 4585698859150296084}
   - component: {fileID: 2904597762984913288}
   - component: {fileID: 1298001867}
@@ -234,6 +234,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCam: {fileID: 4828917950998017885}
+--- !u!114 &642693443397125044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4828917951006747454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9ab486e0d865a44389448ace0bf1139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentStats: {fileID: 11400000, guid: b8bce07506ce9144588b8f1c2a969b62, type: 2}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  lookDirection: {fileID: 4828917951431313739}
+  agentModel: {fileID: 6801081108730475623}
 --- !u!114 &1680635285654721201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,23 +272,6 @@ MonoBehaviour:
   - {fileID: 154519853997821052}
   - {fileID: 9190012365844541624}
   - {fileID: 8771228726768389012}
---- !u!114 &642693443397125044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4828917951006747454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9ab486e0d865a44389448ace0bf1139, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  lookDirection: {fileID: 4828917951431313739}
-  agentModel: {fileID: 6801081108730475623}
 --- !u!114 &4585698859150296084
 MonoBehaviour:
   m_ObjectHideFlags: 0
