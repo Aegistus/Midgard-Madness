@@ -17,7 +17,7 @@ public class MeleeAttacking : AgentState
     public MeleeAttacking(GameObject gameObject) : base(gameObject)
     {
         transitionsTo.Add(new Transition(typeof(Idling), () => animationFinished));
-        Transition attackCombo = new Transition(typeof(MeleeAttacking), () => timer >= canAttackAgainTime, Attack);
+        Transition attackCombo = new Transition(typeof(MeleeAttacking), () => timer >= canAttackAgainTime, Attack, () => vigor.CurrentVigor >= agentStats.meleeAttackCost);
         attackCombo.CanTransitionToSelf = true;
         transitionsTo.Add(attackCombo);
         transitionsTo.Add(new Transition(typeof(Blocking), () => timer >= canAttackAgainTime, Block));

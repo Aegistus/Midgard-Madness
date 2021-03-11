@@ -11,7 +11,7 @@ public class Idling : OnGroundState
         animationHash = Animator.StringToHash("Idling");
         transitionsTo.Add(new Transition(typeof(Walking), Move));
         transitionsTo.Add(new Transition(typeof(Falling), Not(OnGround)));
-        transitionsTo.Add(new Transition(typeof(Blocking), Block));
+        transitionsTo.Add(new Transition(typeof(Blocking), Block, () => vigor.CurrentVigor >= agentStats.blockCost));
 
         transitionsTo.Add(new Transition(typeof(MeleeAttacking), MeleeEquipped, Attack, () => vigor.CurrentVigor >= agentStats.meleeAttackCost));
         transitionsTo.Add(new Transition(typeof(RangedAiming), RangedEquipped, Attack, () => vigor.CurrentVigor >= agentStats.rangedAimCost));
