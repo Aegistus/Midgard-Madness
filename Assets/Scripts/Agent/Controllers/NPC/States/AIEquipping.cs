@@ -20,11 +20,12 @@ public class AIEquipping : NPCState
     public override void BeforeExecution()
     {
         Debug.Log("AI Equipping Weapon");
+        done = false;
         availableWeapons = weapons.CarriedWeapons;
         controller.SetDestination(transform.position, false);
         for (int i = 0; i < availableWeapons.Count; i++)
         {
-            if (availableWeapons[i].stats.stance != WeaponStance.Shield)
+            if (availableWeapons[i].stats.stance != WeaponStance.Shield && availableWeapons[i].stats.stance != WeaponStance.Unarmed)
             {
                 weapons.EquipWeapon(i + 1); // plus 1 to get the numKey
                 break;
@@ -34,6 +35,7 @@ public class AIEquipping : NPCState
         {
             if (IndexOfWeaponType(WeaponStance.Shield) != -1)
             {
+                Debug.Log("Equipping shield");
                 weapons.EquipWeapon(IndexOfWeaponType(WeaponStance.Shield) + 1); // + 1 to get numKey
             }
         }
