@@ -107,6 +107,18 @@ public class NPCController : AgentController
         return NodeState.SUCCESS;
     }
 
+    public NodeState NearTarget(float distance)
+    {
+        if (Vector3.Distance(transform.position, Target.position) <= distance)
+        {
+            return NodeState.SUCCESS;
+        }
+        else
+        {
+            return NodeState.FAILURE;
+        }
+    }
+
     public void OnDrawGizmos()
     {
         if (Application.isPlaying)

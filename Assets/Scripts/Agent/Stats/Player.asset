@@ -16,11 +16,13 @@ MonoBehaviour:
   healthRegenRate: 2
   maxStamina: 50
   staminaRegenRate: 5
-  runCost: 2
+  staminaRegenDelay: 2
+  runCost: 5
   jumpCost: 10
   rollCost: 20
   maxVigor: 50
   vigorRegenRate: 5
+  vigorRegenDelay: 2
   meleeAttackCost: 10
   momentumAttackCost: 25
   rangedAimCost: 2
