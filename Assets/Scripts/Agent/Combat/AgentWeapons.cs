@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
+using System.Linq;
 
 public class AgentWeapons : MonoBehaviour
 {
     public WeaponSlot primarySlot;
     public WeaponSlot secondarySlot;
-    public List<Weapon> carriedWeapons;
+    private List<Weapon> carriedWeapons;
 
     public WeaponStance CurrentStance { get; private set; }
 
@@ -16,11 +16,16 @@ public class AgentWeapons : MonoBehaviour
     private void Start()
     {
         anim = GetComponentInChildren<Animator>();
+        carriedWeapons = GetComponentsInChildren<Weapon>().ToList();
         foreach (var weapon in carriedWeapons)
         {
             if (weapon.stats?.stance == WeaponStance.Unarmed)
             {
                 EquipWeapon(weapon);
+            }
+            else
+            {
+                weapon.gameObject.SetActive(false);
             }
         }
     }
