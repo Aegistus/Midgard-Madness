@@ -12,6 +12,7 @@ public class Blocking : AgentState
         animationHash = Animator.StringToHash("Blocking");
         transitionsTo.Add(new Transition(typeof(BlockingCooldown), Not(Block)));
         transitionsTo.Add(new Transition(typeof(BlockingCooldown), Not(ShieldEquipped), () => timer >= blockTime));
+        attackStaminaCost = 3f;
     }
 
     public override void AfterExecution()
@@ -21,15 +22,19 @@ public class Blocking : AgentState
 
     public override void BeforeExecution()
     {
-        Debug.Log("Blocking");
-        anim.SetBool(animationHash, true);
-        self.SetHorizontalVelocity(Vector3.zero);
-        timer = 0;
+        if (HasEnoughAttackStamina())
+        {
+            Debug.Log("Blocking");
+            anim.SetBool(animationHash, true);
+            self.SetHorizontalVelocity(Vector3.zero);
+            timer = 0;
+        }
     }
 
     public override void DuringExecution()
     {
         timer += Time.deltaTime;
         self.RotateAgentModelToDirection(self.lookDirection.forward);
+        stamina.DepleteAttackStamina(attackStaminaCost * Time.deltaTime);
     }
 }

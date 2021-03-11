@@ -13,13 +13,10 @@ public class MeleeAttacking : AgentState
     private bool animationFinished = false;
     private float timer = 0;
     private float canAttackAgainTime = .8f;
-    private float staminaCost = 20f;
-    private bool hasEnoughStamina = true;
 
     public MeleeAttacking(GameObject gameObject) : base(gameObject)
     {
         transitionsTo.Add(new Transition(typeof(Idling), () => animationFinished));
-        transitionsTo.Add(new Transition(typeof(Idling), () => !hasEnoughStamina));
         Transition attackCombo = new Transition(typeof(MeleeAttacking), () => timer >= canAttackAgainTime, Attack);
         attackCombo.CanTransitionToSelf = true;
         transitionsTo.Add(attackCombo);
@@ -27,6 +24,7 @@ public class MeleeAttacking : AgentState
         animVariantHash = Animator.StringToHash("AttackVariant");
         attackAnimationSpeedHash = Animator.StringToHash("AttackSpeed");
         animEvents.OnAnimationEvent += CheckAnimationEvent;
+        attackStaminaCost = 10f;
     }
 
     private void CheckAnimationEvent(EventType eventType)
@@ -66,9 +64,8 @@ public class MeleeAttacking : AgentState
     {
         Debug.Log("Melee Attack");
         isCurrentState = true;
-        if (stamina.CurrentAttackStamina >= staminaCost)
+        if (HasEnoughAttackStamina())
         {
-            hasEnoughStamina = true;
             animationFinished = false;
             int variant = UnityEngine.Random.Range(0, animVariantNumber);
             anim.SetInteger(animVariantHash, variant);
@@ -91,13 +88,8 @@ public class MeleeAttacking : AgentState
                 secondary = null;
             }
             timer = 0;
-            stamina.DepleteAttackStamina(staminaCost);
+            stamina.DepleteAttackStamina(attackStaminaCost);
         }
-        else
-        {
-            hasEnoughStamina = false;
-        }
-
     }
 
     public override void DuringExecution()

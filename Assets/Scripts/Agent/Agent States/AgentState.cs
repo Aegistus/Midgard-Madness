@@ -22,6 +22,9 @@ public abstract class AgentState : State
     protected AgentAnimEvents animEvents;
     protected NavMeshAgent navAgent;
 
+    protected float moveStaminaCost = -1f;
+    protected float attackStaminaCost = -1f;
+
     protected bool isCurrentState = false;
 
     public Func<bool> Move => () => controller.Forwards || controller.Backwards || controller.Right || controller.Left;
@@ -39,6 +42,8 @@ public abstract class AgentState : State
     public Func<bool> RangedEquipped => () => weapons.primarySlot.CurrentlyEquipped?.GetType() == typeof(RangedWeapon) || weapons.secondarySlot.CurrentlyEquipped?.GetType() == typeof(RangedWeapon);
     public Func<bool> ShieldEquipped => () => weapons.secondarySlot.CurrentlyEquipped?.GetType() == typeof(Shield);
     public Func<bool> IsDead => () => health.IsDead;
+    public Func<bool> HasEnoughMoveStamina => () => stamina.CurrentAttackStamina >= attackStaminaCost;
+    public Func<bool> HasEnoughAttackStamina => () => stamina.CurrentMoveStamina >= moveStaminaCost;
 
     public AgentState(GameObject gameObject) : base(gameObject)
     {
@@ -57,6 +62,8 @@ public abstract class AgentState : State
 
         transitionsTo.Add(new Transition(typeof(Dying), IsDead));
         transitionsTo.Add(new Transition(typeof(TakingDamage), () => health.TookDamage));
+        transitionsTo.Add(new Transition(typeof(Idling), Not(HasEnoughAttackStamina)));
+        transitionsTo.Add(new Transition(typeof(Idling), Not(HasEnoughMoveStamina)));
     }
 
     private bool IsNextToWall()

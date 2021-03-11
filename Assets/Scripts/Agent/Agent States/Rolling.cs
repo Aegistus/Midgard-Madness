@@ -18,6 +18,7 @@ public class Rolling : OnGroundState
         transitionsTo.Add(new Transition(typeof(Walking), TimerUp, Move, Not(Run)));
         transitionsTo.Add(new Transition(typeof(Running), TimerUp, Move, Run));
         animationHash = Animator.StringToHash("Rolling");
+        moveStaminaCost = 20f;
     }
 
     public override void AfterExecution()
@@ -28,8 +29,11 @@ public class Rolling : OnGroundState
     public override void BeforeExecution()
     {
         Debug.Log("Rolling");
-        anim.SetBool(animationHash, true);
-        timer = 0;
+        if (HasEnoughMoveStamina())
+        {
+            anim.SetBool(animationHash, true);
+            timer = 0;
+        }
     }
 
     public override void DuringExecution()

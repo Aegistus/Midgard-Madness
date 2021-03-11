@@ -11,6 +11,7 @@ public class Jumping : AgentState
         animationHash = Animator.StringToHash("Jumping");
         transitionsTo.Add(new Transition(typeof(Falling), Falling));
         transitionsTo.Add(new Transition(typeof(Idling), OnGround, Not(Rising), Not(Falling)));
+        moveStaminaCost = 10f;
     }
 
     public override void AfterExecution()
@@ -21,9 +22,12 @@ public class Jumping : AgentState
     public override void BeforeExecution()
     {
         Debug.Log("Jumping");
-        anim.SetBool(animationHash, true);
-        startingVelocity = self.Velocity;
-        self.AddVerticalVelocity(jumpForce);
+        if (HasEnoughMoveStamina())
+        {
+            anim.SetBool(animationHash, true);
+            startingVelocity = self.Velocity;
+            self.AddVerticalVelocity(jumpForce);
+        }
     }
 
     Vector3 newVelocity;

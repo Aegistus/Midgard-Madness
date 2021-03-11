@@ -10,16 +10,14 @@ public class MomentumAttacking : AgentState
     private int animVariantNumber = 3;
     protected int attackAnimationSpeedHash;
     private bool animationFinished = false;
-    private float staminaCost = 40f;
-    private bool hasEnoughStamina = true;
 
     public MomentumAttacking(GameObject gameObject) : base(gameObject)
     {
         transitionsTo.Add(new Transition(typeof(Idling), () => animationFinished));
-        transitionsTo.Add(new Transition(typeof(Idling), () => !hasEnoughStamina));
         animVariantHash = Animator.StringToHash("MomentumAttackVariant");
         attackAnimationSpeedHash = Animator.StringToHash("AttackSpeed");
         animEvents.OnAnimationEvent += CheckAnimationEvent;
+        attackStaminaCost = 20f;
     }
 
     private void CheckAnimationEvent(EventType eventType)
@@ -42,9 +40,8 @@ public class MomentumAttacking : AgentState
     public override void BeforeExecution()
     {
         Debug.Log("Momentum Attack");
-        if (stamina.CurrentAttackStamina >= staminaCost)
+        if (HasEnoughAttackStamina())
         {
-            hasEnoughStamina = true;
             animationFinished = false;
             int variant = Random.Range(0, animVariantNumber);
             anim.SetInteger(animVariantHash, variant);
@@ -68,11 +65,7 @@ public class MomentumAttacking : AgentState
             {
                 secondary = null;
             }
-            stamina.DepleteAttackStamina(staminaCost);
-        }
-        else
-        {
-            hasEnoughStamina = false;
+            stamina.DepleteAttackStamina(attackStaminaCost);
         }
     }
 

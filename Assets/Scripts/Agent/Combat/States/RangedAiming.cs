@@ -11,6 +11,7 @@ public class RangedAiming : AgentState
         transitionsTo.Add(new Transition(typeof(RangedAttacking), RangedEquipped, Not(Attack)));
         animationHash = Animator.StringToHash("RangedAim");
         animEvents.OnAnimationEvent += CheckAnimationEvents;
+        attackStaminaCost = 3f;
     }
 
     private void CheckAnimationEvents(EventType type)
@@ -37,19 +38,23 @@ public class RangedAiming : AgentState
 
     public override void BeforeExecution()
     {
-        Debug.Log("Aiming");
-        isCurrentState = true;
-        anim.SetBool(animationHash, true);
-        self.SetHorizontalVelocity(Vector3.zero);
-        //if (controller.GetType() == typeof(PlayerController))
-        //{
-        //    PlayerController player = (PlayerController)controller;
-        //    player.ShiftCameraPosition(cameraShift);
-        //}
+        if (HasEnoughAttackStamina())
+        {
+            Debug.Log("Aiming");
+            isCurrentState = true;
+            anim.SetBool(animationHash, true);
+            self.SetHorizontalVelocity(Vector3.zero);
+            //if (controller.GetType() == typeof(PlayerController))
+            //{
+            //    PlayerController player = (PlayerController)controller;
+            //    player.ShiftCameraPosition(cameraShift);
+            //}
+        }
     }
 
     public override void DuringExecution()
     {
         self.RotateAgentModelToDirection(self.lookDirection.forward);
+        stamina.DepleteAttackStamina(attackStaminaCost * Time.deltaTime);
     }
 }

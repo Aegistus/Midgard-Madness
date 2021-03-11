@@ -5,20 +5,18 @@ using UnityEngine;
 public class Running : OnGroundState
 {
     private float moveSpeed = 6f;
-    private float staminaCost = 10f;
-    private bool hasEnoughStamina = true;
 
     public Running(GameObject gameObject) : base(gameObject)
     {
         animationHash = Animator.StringToHash("Running");
         transitionsTo.Add(new Transition(typeof(Walking), Not(Run)));
-        transitionsTo.Add(new Transition(typeof(Walking), () => !hasEnoughStamina));
         transitionsTo.Add(new Transition(typeof(Idling), Not(Move), Not(Run)));
         transitionsTo.Add(new Transition(typeof(MomentumAttacking), MeleeEquipped, Attack));
         transitionsTo.Add(new Transition(typeof(RangedAiming), RangedEquipped, Attack));
         transitionsTo.Add(new Transition(typeof(Equipping), EquipWeaponInput));
         transitionsTo.Add(new Transition(typeof(Falling), Not(OnGround)));
         transitionsTo.Add(new Transition(typeof(Blocking), Block));
+        moveStaminaCost = 10f;
     }
 
     public override void AfterExecution()
@@ -29,20 +27,14 @@ public class Running : OnGroundState
     public override void BeforeExecution()
     {
         Debug.Log("Running");
-        if (stamina.CurrentMoveStamina >= staminaCost)
+        if (HasEnoughMoveStamina())
         {
             anim.SetBool(animationHash, true);
             if (navAgent != null)
             {
                 navAgent.speed = moveSpeed;
             }
-            hasEnoughStamina = true;
         }
-        else
-        {
-            hasEnoughStamina = false;
-        }
- 
     }
 
     Vector3 inputVelocity;
@@ -55,14 +47,7 @@ public class Running : OnGroundState
             self.RotateAgentModelToDirection(inputVelocity);
             KeepGrounded();
         }
-        if (stamina.CurrentMoveStamina >= staminaCost * Time.deltaTime)
-        {
-            stamina.DepleteMoveStamina(staminaCost * Time.deltaTime);
-        }
-        else
-        {
-            hasEnoughStamina = false;
-        }
+        stamina.DepleteMoveStamina(moveStaminaCost * Time.deltaTime);
     }
 
 }

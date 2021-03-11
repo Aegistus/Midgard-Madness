@@ -33,7 +33,6 @@ public class Agent : MonoBehaviour
             {typeof(Falling), new Falling(gameObject) },
             {typeof(Running), new Running(gameObject) },
             {typeof(Crouching), new Crouching(gameObject) },
-            {typeof(Sliding), new Sliding(gameObject) },
             {typeof(Rolling), new Rolling(gameObject) },
 
             {typeof(Blocking), new Blocking(gameObject) },
