@@ -31,6 +31,7 @@ public class NPCController : AgentController
             {typeof(AISearching), new AISearching(gameObject) },
             {typeof(AIFighting), new AIFighting(gameObject) },
             {typeof(AIChasing), new AIChasing(gameObject) },
+            {typeof(AIEquipping), new AIEquipping(gameObject) },
         };
         AIStateMachine = new StateMachine();
         AIStateMachine.SetStates(states, typeof(AIWandering));
@@ -73,10 +74,11 @@ public class NPCController : AgentController
 
     public void EquipWeapon(int weaponChoice)
     {
+        print("Attempting to Equip");
         if (weaponChoice >= 0 && weaponChoice < weapons.CarriedWeapons.Count)
         {
             Equipping = true;
-            WeaponNumKey = weaponChoice;
+            weapons.EquipWeapon(weaponChoice);
         }
     }
 
@@ -123,15 +125,15 @@ public class NPCController : AgentController
         }
     }
 
-    public NodeState NearTarget(float distance)
+    public bool NearTarget(float distance)
     {
         if (Vector3.Distance(transform.position, Target.position) <= distance)
         {
-            return NodeState.SUCCESS;
+            return true;
         }
         else
         {
-            return NodeState.FAILURE;
+            return false;
         }
     }
 

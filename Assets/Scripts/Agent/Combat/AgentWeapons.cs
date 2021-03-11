@@ -24,6 +24,11 @@ public class AgentWeapons : MonoBehaviour
         }
     }
 
+    public bool HasWeaponEquipped()
+    {
+        return primarySlot.CurrentlyEquipped != null || secondarySlot.CurrentlyEquipped != null;
+    }
+
     public void EquipUnarmed()
     {
         foreach (var weapon in CarriedWeapons)
@@ -57,6 +62,10 @@ public class AgentWeapons : MonoBehaviour
                 {
                     primarySlot.UnEquip();
                 }
+                break;
+            case WeaponStance.BattleAxe:
+                secondarySlot.UnEquip();
+                primarySlot.Equip(toEquip);
                 break;
             default:
                 primarySlot.UnEquip();

@@ -15,4 +15,4 @@ MonoBehaviour:
   stance: 4
   damage: 0
   attackSpeed: 0
-  weaponAnimationSet: {fileID: 0}
+  weaponAnimationSet: {fileID: 22100000, guid: 7f2792d1dcb771241907ced9ce750c8f, type: 2}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8500b9568fb779b4db96d783710e3ff6, type: 3}
   m_Name: Battle Axe
   m_EditorClassIdentifier: 
-  stance: 1
+  stance: 5
   damage: 30
   attackSpeed: 1
   weaponAnimationSet: {fileID: 22100000, guid: 826fad661c341c5499d9ddc384ad8f01, type: 2}

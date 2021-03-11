@@ -18,8 +18,7 @@ public class AIFighting : NPCState
     public override void BeforeExecution()
     {
         Debug.Log("NPC Fighting");
-        controller.MomentumAttackEnemy();
-
+        controller.SetDestination(transform.position, false);
     }
 
     protected override void CreateTree()

@@ -13,11 +13,6 @@ public abstract class NPCState : State
 
     public Func<bool> PlayerInSight => () => fov.visibleTargets.Count > 0;
 
-    public NodeState HasWeaponEquipped()
-    {
-        return weapons.primarySlot.CurrentlyEquipped != null || weapons.secondarySlot.CurrentlyEquipped != null ? NodeState.SUCCESS : NodeState.FAILURE;
-    }
-
     protected NPCState(GameObject gameObject) : base(gameObject)
     {
         controller = gameObject.GetComponent<NPCController>();

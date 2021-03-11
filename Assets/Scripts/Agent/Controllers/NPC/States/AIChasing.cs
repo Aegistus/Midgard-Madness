@@ -7,7 +7,8 @@ public class AIChasing : NPCState
     public AIChasing(GameObject gameObject) : base(gameObject)
     {
         transitionsTo.Add(new Transition(typeof(AIWandering), Not(PlayerInSight)));
-        transitionsTo.Add(new Transition(typeof(AIFighting), () => controller.NearTarget(controller.attackRadius) == NodeState.SUCCESS, () => HasWeaponEquipped() == NodeState.SUCCESS));
+        transitionsTo.Add(new Transition(typeof(AIEquipping), Not(() => weapons.HasWeaponEquipped())));
+        transitionsTo.Add(new Transition(typeof(AIFighting), () => controller.NearTarget(controller.attackRadius), () => weapons.HasWeaponEquipped()));
     }
 
     public override void AfterExecution()
@@ -19,20 +20,16 @@ public class AIChasing : NPCState
     {
         Debug.Log("NPC Chasing");
         controller.Target = fov.visibleTargets[0];
-        controller.SetDestination(transform.position, false);
+        controller.SetDestination(transform.position, true);
     }
 
     protected override void CreateTree()
     {
-        InverterNode noWeaponOut = new InverterNode(new ConditionNode(() => HasWeaponEquipped()));
-        ActionNode getWeaponOut = new ActionNode(() => controller.EquipWeapon(0));
-        SequenceNode equipSequence = new SequenceNode(new List<Node>() { noWeaponOut, getWeaponOut });
-
-        InverterNode notNearTarget = new InverterNode(new ConditionNode(() => controller.NearTarget(controller.attackRadius)));
+        InverterNode notNearTarget = new InverterNode(new ConditionNode(() => Node.ConvertToState(controller.NearTarget(controller.attackRadius))));
         ActionNode setTarget = new ActionNode(() => controller.SetDestination(controller.Target.position, true));
         ActionNode moveToTarget = new ActionNode(() => controller.MoveToDestination(true));
-        SequenceNode chaseSequence = new SequenceNode(new List<Node>() { notNearTarget, setTarget, moveToTarget });
+        SequenceNode chaseSequence = new SequenceNode(new List<Node>() { setTarget, moveToTarget });
 
-        rootNode = new SelectorNode(new List<Node>() { equipSequence, chaseSequence });
+        rootNode = new SelectorNode(new List<Node>() { chaseSequence });
     }
 }
