@@ -37,7 +37,7 @@ public class NPCController : AgentController
         StartCoroutine(RunAIStateMachine());
     }
 
-    public NodeState SetDestination(Vector3 position, bool running)
+    public void SetDestination(Vector3 position, bool running)
     {
         navAgent.SetDestination(position);
         Forwards = true;
@@ -45,7 +45,11 @@ public class NPCController : AgentController
         {
             Run = true;
         }
-        return NodeState.SUCCESS;
+    }
+
+    public bool AtDestination(float maxDistance)
+    {
+        return Vector3.Distance(transform.position, Destination) <= maxDistance;
     }
 
     private IEnumerator RunAIStateMachine()
@@ -67,21 +71,12 @@ public class NPCController : AgentController
         }
     }
 
-    public NodeState EquipWeapon(int weaponChoice)
+    public void EquipWeapon(int weaponChoice)
     {
-        if (weapons.primarySlot.CurrentlyEquipped != null || weapons.secondarySlot.CurrentlyEquipped != null)
-        {
-            return NodeState.SUCCESS;
-        }
-        else if (weaponChoice >= 0 && weaponChoice < weapons.CarriedWeapons.Count)
+        if (weaponChoice >= 0 && weaponChoice < weapons.CarriedWeapons.Count)
         {
             Equipping = true;
             WeaponNumKey = weaponChoice;
-            return NodeState.SUCCESS;
-        }
-        else
-        {
-            return NodeState.SUCCESS;
         }
     }
 
@@ -111,22 +106,21 @@ public class NPCController : AgentController
         return NodeState.SUCCESS;
     }
 
-    public NodeState SetRandomDestination(bool running)
+    public void SetRandomDestination(bool running)
     {
         Debug.Log("Finding Patrol Point");
         Vector3 randomPoint = new Vector3((Random.value * wanderDiameter) - (wanderDiameter/2), 0, (Random.value * wanderDiameter) - (wanderDiameter / 2));
         randomPoint += transform.position;
-        return SetDestination(randomPoint, running);
+        SetDestination(randomPoint, running);
     }
 
-    public NodeState MoveToDestination(bool running)
+    public void MoveToDestination(bool running)
     {
         Forwards = true;
         if (running)
         {
             Run = true;
         }
-        return NodeState.SUCCESS;
     }
 
     public NodeState NearTarget(float distance)

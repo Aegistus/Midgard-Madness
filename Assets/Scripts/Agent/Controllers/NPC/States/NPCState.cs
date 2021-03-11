@@ -13,19 +13,9 @@ public abstract class NPCState : State
 
     public Func<bool> PlayerInSight => () => fov.visibleTargets.Count > 0;
 
-    protected NodeState AtDestination(float maxDistance)
-    {
-        return Vector3.Distance(transform.position, controller.Destination) <= maxDistance ? NodeState.SUCCESS : NodeState.FAILURE;
-    }
-
     public NodeState HasWeaponEquipped()
     {
         return weapons.primarySlot.CurrentlyEquipped != null || weapons.secondarySlot.CurrentlyEquipped != null ? NodeState.SUCCESS : NodeState.FAILURE;
-    }
-
-    public NodeState IsRunning()
-    {
-        return controller.Run ? NodeState.SUCCESS : NodeState.FAILURE;
     }
 
     protected NPCState(GameObject gameObject) : base(gameObject)

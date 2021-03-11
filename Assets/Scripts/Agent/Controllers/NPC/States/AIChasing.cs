@@ -24,11 +24,11 @@ public class AIChasing : NPCState
 
     protected override void CreateTree()
     {
-        InverterNode noWeaponOut = new InverterNode(new ActionNode(() => HasWeaponEquipped()));
-        ActionNode getWeaponOut = new ActionNode(() => controller.EquipWeapon());
+        InverterNode noWeaponOut = new InverterNode(new ConditionNode(() => HasWeaponEquipped()));
+        ActionNode getWeaponOut = new ActionNode(() => controller.EquipWeapon(0));
         SequenceNode equipSequence = new SequenceNode(new List<Node>() { noWeaponOut, getWeaponOut });
 
-        InverterNode notNearTarget = new InverterNode(new ActionNode(() => controller.NearTarget(controller.attackRadius)));
+        InverterNode notNearTarget = new InverterNode(new ConditionNode(() => controller.NearTarget(controller.attackRadius)));
         ActionNode setTarget = new ActionNode(() => controller.SetDestination(controller.Target.position, true));
         ActionNode moveToTarget = new ActionNode(() => controller.MoveToDestination(true));
         SequenceNode chaseSequence = new SequenceNode(new List<Node>() { notNearTarget, setTarget, moveToTarget });

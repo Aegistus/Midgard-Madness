@@ -12,7 +12,7 @@ public class AIEquipping : NPCState
 
     public AIEquipping(GameObject gameObject) : base(gameObject)
     {
-
+        transitionsTo.Add(new Transition(typeof(AIChasing), () => controller.Equipping));
     }
 
     public override void AfterExecution()
@@ -33,23 +33,23 @@ public class AIEquipping : NPCState
     {
         ActionNode equipPrimary = new ActionNode(() => controller.EquipWeapon(primaryChoice));
         ActionNode equipSecondary = new ActionNode(() => controller.EquipWeapon(secondaryChoice));
-        ActionNode hasSecondaryChosen = new ActionNode(() => primaryChosen ? NodeState.SUCCESS : NodeState.FAILURE);
-        ActionNode hasPrimaryChosen = new ActionNode(() => secondaryChosen ? NodeState.SUCCESS : NodeState.FAILURE);
+        ConditionNode hasSecondaryChosen = new ConditionNode(() => Node.ConvertToState(primaryChosen));
+        ConditionNode hasPrimaryChosen = new ConditionNode(() => Node.ConvertToState(secondaryChosen));
         SequenceNode equipSequence = new SequenceNode(new List<Node>() {hasPrimaryChosen, hasSecondaryChosen, equipPrimary, equipSecondary});
 
-        ActionNode choosePrimary = new ActionNode(() => ChoosePrimary());
-        ActionNode chooseSecondary = new ActionNode(() => ChooseSecondary());
+        ActionNode choosePrimary = new ActionNode(() => primaryChosen = true);
+        ActionNode chooseSecondary = new ActionNode(() => secondaryChosen = true);
 
-        ActionNode chooseTwoHanded = new ActionNode(() => SetPrimaryChoice(IndexOfWeaponType(WeaponStance.TwoHanded)));
-        ActionNode hasTwoHanded = new ActionNode(() => IndexOfWeaponType(WeaponStance.TwoHanded) != -1 ? NodeState.SUCCESS : NodeState.FAILURE);
+        ActionNode chooseTwoHanded = new ActionNode(() => primaryChoice = IndexOfWeaponType(WeaponStance.TwoHanded));
+        ConditionNode hasTwoHanded = new ConditionNode(() => Node.ConvertToState(IndexOfWeaponType(WeaponStance.TwoHanded) != -1));
         SequenceNode chooseTwoHandedSequence = new SequenceNode(new List<Node>() { hasTwoHanded, chooseTwoHanded, choosePrimary, chooseSecondary });
 
-        ActionNode chooseOneHanded = new ActionNode(() => SetPrimaryChoice(IndexOfWeaponType(WeaponStance.OneHandedShield)));
-        ActionNode hasOneHanded = new ActionNode(() => IndexOfWeaponType(WeaponStance.OneHandedShield) != -1 ? NodeState.SUCCESS : NodeState.FAILURE);
+        ActionNode chooseOneHanded = new ActionNode(() => primaryChoice = IndexOfWeaponType(WeaponStance.OneHandedShield));
+        ConditionNode hasOneHanded = new ConditionNode(() => Node.ConvertToState(IndexOfWeaponType(WeaponStance.OneHandedShield) != -1));
         SequenceNode chooseOneHandedSequence = new SequenceNode(new List<Node>() { hasOneHanded, chooseOneHanded, choosePrimary });
 
-        ActionNode chooseShield = new ActionNode(() => SetSecondaryChoice(IndexOfWeaponType(WeaponStance.Shield)));
-        ActionNode hasShield = new ActionNode(() => IndexOfWeaponType(WeaponStance.Shield) != -1 ? NodeState.SUCCESS : NodeState.FAILURE);
+        ActionNode chooseShield = new ActionNode(() => secondaryChoice = IndexOfWeaponType(WeaponStance.Shield));
+        ConditionNode hasShield = new ConditionNode(() => Node.ConvertToState(IndexOfWeaponType(WeaponStance.Shield) != -1));
         SequenceNode chooseShieldSequence = new SequenceNode(new List<Node>() { hasShield, chooseShield, chooseSecondary });
 
         SelectorNode shieldSelector = new SelectorNode(new List<Node>() { chooseShieldSequence, chooseSecondary });
@@ -57,18 +57,6 @@ public class AIEquipping : NPCState
         SelectorNode chooseWeaponsSelector = new SelectorNode(new List<Node>() { chooseTwoHandedSequence, chooseOneHandedSequence, shieldSelector });
 
         rootNode = new SelectorNode(new List<Node>() { equipSequence, chooseWeaponsSelector });
-    }
-
-    protected NodeState ChoosePrimary()
-    {
-        primaryChosen = true;
-        return NodeState.SUCCESS;
-    }
-
-    protected NodeState ChooseSecondary()
-    {
-        secondaryChosen = true;
-        return NodeState.SUCCESS;
     }
 
     protected int IndexOfWeaponType(WeaponStance stance)
@@ -81,18 +69,6 @@ public class AIEquipping : NPCState
             }
         }
         return -1;
-    }
-
-    protected NodeState SetPrimaryChoice(int choice)
-    {
-        primaryChoice = choice;
-        return NodeState.SUCCESS;
-    }
-
-    protected NodeState SetSecondaryChoice(int choice)
-    {
-        secondaryChoice = choice;
-        return NodeState.SUCCESS;
     }
 
 }

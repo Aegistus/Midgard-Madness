@@ -7,7 +7,7 @@ public class AIFighting : NPCState
     public AIFighting(GameObject gameObject) : base(gameObject)
     {
         transitionsTo.Add(new Transition(typeof(AIWandering), Not(PlayerInSight)));
-        transitionsTo.Add(new Transition(typeof(AIChasing), PlayerInSight, () => AtDestination(controller.attackRadius) != NodeState.SUCCESS));
+        transitionsTo.Add(new Transition(typeof(AIChasing), PlayerInSight, () => controller.AtDestination(controller.attackRadius)));
     }
 
     public override void AfterExecution()

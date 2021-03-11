@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ActionNode : Node
 {
-    public delegate NodeState ActionNodeDelegate();
+    public delegate void ActionNodeDelegate();
 
     private ActionNodeDelegate action;
 
@@ -15,20 +15,8 @@ public class ActionNode : Node
 
     public override NodeState Evaluate(float deltaTime)
     {
-        switch (action())
-        {
-            case NodeState.SUCCESS:
-                CurrentState = NodeState.SUCCESS;
-                return NodeState.SUCCESS;
-            case NodeState.RUNNING:
-                CurrentState = NodeState.RUNNING;
-                return NodeState.RUNNING;
-            case NodeState.FAILURE:
-                CurrentState = NodeState.FAILURE;
-                return NodeState.FAILURE;
-            default:
-                CurrentState = NodeState.FAILURE;
-                return NodeState.SUCCESS;
-        }
+        action();
+        CurrentState = NodeState.SUCCESS;
+        return CurrentState;
     }
 }

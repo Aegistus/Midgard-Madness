@@ -27,10 +27,10 @@ public class AIWandering : NPCState
     {
         ActionNode findNewDestination = new ActionNode(() => controller.SetRandomDestination(false));
         WaitNode waitNode = new WaitNode(findNewDestination, controller.wanderWaitTime);
-        ActionNode atDestination = new ActionNode(() => AtDestination(1));
+        ConditionNode atDestination = new ConditionNode(() => Node.ConvertToState(controller.AtDestination(1)));
         SequenceNode findNewPointSequence = new SequenceNode(new List<Node>() { atDestination, waitNode, findNewDestination });
 
-        InverterNode notAtDestination = new InverterNode(new ActionNode(() => AtDestination(1)));
+        InverterNode notAtDestination = new InverterNode(new ConditionNode(() => Node.ConvertToState(controller.AtDestination(1))));
         ActionNode walkToDestination = new ActionNode(() => controller.MoveToDestination(false));
         SequenceNode walkingSequence = new SequenceNode(new List<Node> { notAtDestination, walkToDestination });
 
