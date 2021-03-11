@@ -6,7 +6,7 @@ using CodeMonkey.Utils;
 
 public class AgentHealth : MonoBehaviour
 {
-    public float maxHealth = 100f;
+    public float MaxHealth => stats.maxHealth;
 
     public event Action OnAgentDeath;
 
@@ -15,10 +15,12 @@ public class AgentHealth : MonoBehaviour
     public float CurrentHealth { get { return currentHealth; } }
 
     private float currentHealth;
+    private AgentStats stats;
 
     private void Awake()
     {
-        currentHealth = maxHealth;
+        stats = GetComponent<Agent>().agentStats;
+        currentHealth = MaxHealth;
     }
 
     public void Damage(float damage)

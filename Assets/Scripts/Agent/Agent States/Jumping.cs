@@ -2,8 +2,8 @@
 
 public class Jumping : AgentState
 {
-    private float jumpForce = 5f;
-    private float airMoveSpeed = 3f;
+    private float JumpForce => agentStats.jumpForce;
+    private float AirMoveSpeed => agentStats.airMoveSpeed;
     Vector3 startingVelocity;
 
     public Jumping(GameObject gameObject) : base(gameObject)
@@ -11,7 +11,6 @@ public class Jumping : AgentState
         animationHash = Animator.StringToHash("Jumping");
         transitionsTo.Add(new Transition(typeof(Falling), Falling));
         transitionsTo.Add(new Transition(typeof(Idling), OnGround, Not(Rising), Not(Falling)));
-        moveStaminaCost = 10f;
     }
 
     public override void AfterExecution()
@@ -22,20 +21,17 @@ public class Jumping : AgentState
     public override void BeforeExecution()
     {
         Debug.Log("Jumping");
-        if (HasEnoughMoveStamina())
-        {
-            anim.SetBool(animationHash, true);
-            startingVelocity = self.Velocity;
-            self.AddVerticalVelocity(jumpForce);
-            stamina.DepleteMoveStamina(moveStaminaCost);
-        }
+        anim.SetBool(animationHash, true);
+        startingVelocity = self.Velocity;
+        self.AddVerticalVelocity(JumpForce);
+        stamina.DepleteStamina(agentStats.jumpCost);
     }
 
     Vector3 newVelocity;
     public override void DuringExecution()
     {
         newVelocity = GetAgentMovementInput();
-        self.SetHorizontalVelocity(startingVelocity + (newVelocity * airMoveSpeed));
+        self.SetHorizontalVelocity(startingVelocity + (newVelocity * AirMoveSpeed));
         self.RotateAgentModelToDirection(newVelocity);
     }
 }

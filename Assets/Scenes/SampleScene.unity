@@ -2677,6 +2677,7 @@ GameObject:
   m_Component:
   - component: {fileID: 961978978}
   - component: {fileID: 961978979}
+  - component: {fileID: 961978980}
   m_Layer: 5
   m_Name: Stamina Bars
   m_TagString: Untagged
@@ -2717,8 +2718,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aaff7e540d3cec4db6d2c71c27fedc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackStaminaBar: {fileID: 7956905851540007281}
-  moveStaminaBar: {fileID: 912768444}
+  staminaBar: {fileID: 912768444}
+--- !u!114 &961978980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961978977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dd6c7ae5a7ec5140be1e053699fa12c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vigorBar: {fileID: 7956905851540007281}
 --- !u!1 &976093145
 GameObject:
   m_ObjectHideFlags: 0
@@ -3249,7 +3262,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1252828743}
   m_Layer: 10
-  m_Name: Move Stamina
+  m_Name: Stamina
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4567,7 +4580,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1526798048}
   m_Layer: 10
-  m_Name: Attack Stamina
+  m_Name: Vigor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6769,6 +6782,7 @@ GameObject:
   - component: {fileID: 8158303483286536518}
   - component: {fileID: 7962790066460758083}
   - component: {fileID: 6469810060022175715}
+  - component: {fileID: 2695701669283117263}
   - component: {fileID: 2695701669283117262}
   - component: {fileID: 7379936511620447292}
   - component: {fileID: 2695701669283117260}
@@ -6867,9 +6881,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 244758bd889798d4ab5a6e8818b1b660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxStamina: 100
-  replenishRate: 2
-  replenishDelay: 1
+--- !u!114 &2695701669283117263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2695701669283117257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65bd5d2d7c709934d9859d0a96984c49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2892493526098648062
 GameObject:
   m_ObjectHideFlags: 0
@@ -10489,7 +10512,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6033328aa41e8df4ab95eb27a9f3ab37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
 --- !u!136 &6836988424255744935
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10713,7 +10735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ab486e0d865a44389448ace0bf1139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentStats: {fileID: 0}
+  agentStats: {fileID: 11400000, guid: 9e3c22e462ddf0742b05b2b8badf8ebc, type: 2}
   groundLayer:
     serializedVersion: 2
     m_Bits: 256

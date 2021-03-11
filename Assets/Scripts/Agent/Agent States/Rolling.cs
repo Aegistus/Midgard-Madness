@@ -8,7 +8,7 @@ public class Rolling : OnGroundState
     private float timer = 0;
     private float maxTimer = 1.7f;
     private Vector3 inputVelocity;
-    private float moveSpeed = 5f;
+    private float MoveSpeed => agentStats.rollSpeed;
 
     public Func<bool> TimerUp => () => timer >= maxTimer;
 
@@ -18,7 +18,6 @@ public class Rolling : OnGroundState
         transitionsTo.Add(new Transition(typeof(Walking), TimerUp, Move, Not(Run)));
         transitionsTo.Add(new Transition(typeof(Running), TimerUp, Move, Run));
         animationHash = Animator.StringToHash("Rolling");
-        moveStaminaCost = 20f;
     }
 
     public override void AfterExecution()
@@ -29,11 +28,9 @@ public class Rolling : OnGroundState
     public override void BeforeExecution()
     {
         Debug.Log("Rolling");
-        if (HasEnoughMoveStamina())
-        {
-            anim.SetBool(animationHash, true);
-            timer = 0;
-        }
+        anim.SetBool(animationHash, true);
+        timer = 0;
+        stamina.DepleteStamina(agentStats.rollCost);
     }
 
     public override void DuringExecution()
@@ -44,7 +41,7 @@ public class Rolling : OnGroundState
         {
             inputVelocity = self.agentModel.forward;
         }
-        self.SetHorizontalVelocity(inputVelocity * moveSpeed);
+        self.SetHorizontalVelocity(inputVelocity * MoveSpeed);
         self.RotateAgentModelToDirection(inputVelocity);
         KeepGrounded();
     }

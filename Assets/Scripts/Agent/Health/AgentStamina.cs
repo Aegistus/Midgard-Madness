@@ -4,84 +4,51 @@ using UnityEngine;
 
 public class AgentStamina : MonoBehaviour
 {
-    public float CurrentMoveStamina { get; private set; }
-    public float CurrentAttackStamina { get; private set; }
+    public float CurrentStamina { get; private set; }
 
-    public float maxStamina = 100;
-    [SerializeField] private float replenishRate = 10f;
-    [SerializeField] private float replenishDelay = 1f;
-    private float attackStaminaTimer = 0;
-    private float moveStaminaTimer = 0;
+    public float MaxStamina => stats.maxStamina;
+    private float staminaTimer = 0;
+
+    private AgentStats stats;
 
     private void Start()
     {
-        CurrentMoveStamina = maxStamina;
-        CurrentAttackStamina = maxStamina;
-        attackStaminaTimer = replenishDelay;
-        moveStaminaTimer = replenishDelay;
+        stats = gameObject.GetComponent<Agent>().agentStats;
+        CurrentStamina = MaxStamina;
+        staminaTimer = stats.staminaRegenDelay;
     }
 
-    public void DepleteMoveStamina(float amount)
+    public void DepleteStamina(float amount)
     {
-        CurrentMoveStamina -= amount;
-        if (CurrentMoveStamina < 0)
+        CurrentStamina -= amount;
+        if (CurrentStamina < 0)
         {
-            CurrentMoveStamina = 0;
+            CurrentStamina = 0;
         }
-        moveStaminaTimer = 0;
+        staminaTimer = 0;
     }
 
-    public void ReplenishMoveStamina(float amount)
+    public void ReplenishStamina(float amount)
     {
-        if (CurrentMoveStamina < maxStamina)
+        if (CurrentStamina < MaxStamina)
         {
-            CurrentMoveStamina += amount;
-            if (CurrentMoveStamina > maxStamina)
+            CurrentStamina += amount;
+            if (CurrentStamina > MaxStamina)
             {
-                CurrentMoveStamina = maxStamina;
-            }
-        }
-    }
-
-    public void DepleteAttackStamina(float amount)
-    {
-        CurrentAttackStamina -= amount;
-        if (CurrentAttackStamina < 0)
-        {
-            CurrentAttackStamina = 0;
-        }
-        attackStaminaTimer = 0;
-    }
-
-    public void ReplenishAttackStamina(float amount)
-    {
-        if (CurrentAttackStamina < maxStamina)
-        {
-            CurrentAttackStamina += amount;
-            if (CurrentAttackStamina > maxStamina)
-            {
-                CurrentAttackStamina = maxStamina;
+                CurrentStamina = MaxStamina;
             }
         }
     }
 
     private void Update()
     {
-        if (moveStaminaTimer >= replenishDelay)
+        if (staminaTimer >= stats.staminaRegenDelay)
         {
-            ReplenishMoveStamina(replenishRate * Time.deltaTime);
+            ReplenishStamina(stats.staminaRegenRate * Time.deltaTime);
         }
         else
         {
-            moveStaminaTimer += Time.deltaTime;
-        }
-        if (attackStaminaTimer >= replenishDelay)
-        {
-            ReplenishAttackStamina(replenishRate * Time.deltaTime);
-        }
-        else
-        {
-            attackStaminaTimer += Time.deltaTime;
+            staminaTimer += Time.deltaTime;
         }
     }
 }

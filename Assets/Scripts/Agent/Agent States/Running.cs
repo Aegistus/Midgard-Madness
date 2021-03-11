@@ -4,20 +4,17 @@ using UnityEngine;
 
 public class Running : OnGroundState
 {
-    private float moveSpeed = 6f;
-
     public Running(GameObject gameObject) : base(gameObject)
     {
         animationHash = Animator.StringToHash("Running");
         transitionsTo.Add(new Transition(typeof(Walking), Not(Run)));
         transitionsTo.Add(new Transition(typeof(Idling), Not(Move), Not(Run)));
-        transitionsTo.Add(new Transition(typeof(Walking), Not(HasEnoughMoveStamina)));
+        transitionsTo.Add(new Transition(typeof(Walking), () => stamina.CurrentStamina < agentStats.runCost));
         transitionsTo.Add(new Transition(typeof(MomentumAttacking), MeleeEquipped, Attack));
         transitionsTo.Add(new Transition(typeof(RangedAiming), RangedEquipped, Attack));
         transitionsTo.Add(new Transition(typeof(Equipping), EquipWeaponInput));
         transitionsTo.Add(new Transition(typeof(Falling), Not(OnGround)));
         transitionsTo.Add(new Transition(typeof(Blocking), Block));
-        moveStaminaCost = 10f;
     }
 
     public override void AfterExecution()
@@ -28,13 +25,10 @@ public class Running : OnGroundState
     public override void BeforeExecution()
     {
         Debug.Log("Running");
-        if (HasEnoughMoveStamina())
+        anim.SetBool(animationHash, true);
+        if (navAgent != null)
         {
-            anim.SetBool(animationHash, true);
-            if (navAgent != null)
-            {
-                navAgent.speed = moveSpeed;
-            }
+            navAgent.speed = agentStats.runSpeed;
         }
     }
 
@@ -44,11 +38,11 @@ public class Running : OnGroundState
         if (navAgent == null)
         {
             inputVelocity = GetAgentMovementInput();
-            self.SetHorizontalVelocity(inputVelocity * moveSpeed);
+            self.SetHorizontalVelocity(inputVelocity * agentStats.runSpeed);
             self.RotateAgentModelToDirection(inputVelocity);
             KeepGrounded();
         }
-        stamina.DepleteMoveStamina(moveStaminaCost * Time.deltaTime);
+        stamina.DepleteStamina(agentStats.runCost * Time.deltaTime);
     }
 
 }

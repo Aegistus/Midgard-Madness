@@ -9,10 +9,9 @@ public class RangedAiming : AgentState
     public RangedAiming(GameObject gameObject) : base(gameObject)
     {
         transitionsTo.Add(new Transition(typeof(RangedAttacking), RangedEquipped, Not(Attack)));
-        transitionsTo.Add(new Transition(typeof(Idling), Not(HasEnoughAttackStamina)));
+        transitionsTo.Add(new Transition(typeof(Idling), () => vigor.CurrentVigor < agentStats.rangedAimCost));
         animationHash = Animator.StringToHash("RangedAim");
         animEvents.OnAnimationEvent += CheckAnimationEvents;
-        attackStaminaCost = 3f;
     }
 
     private void CheckAnimationEvents(EventType type)
@@ -39,23 +38,20 @@ public class RangedAiming : AgentState
 
     public override void BeforeExecution()
     {
-        if (HasEnoughAttackStamina())
-        {
-            Debug.Log("Aiming");
-            isCurrentState = true;
-            anim.SetBool(animationHash, true);
-            self.SetHorizontalVelocity(Vector3.zero);
-            //if (controller.GetType() == typeof(PlayerController))
-            //{
-            //    PlayerController player = (PlayerController)controller;
-            //    player.ShiftCameraPosition(cameraShift);
-            //}
-        }
+        Debug.Log("Aiming");
+        isCurrentState = true;
+        anim.SetBool(animationHash, true);
+        self.SetHorizontalVelocity(Vector3.zero);
+        //if (controller.GetType() == typeof(PlayerController))
+        //{
+        //    PlayerController player = (PlayerController)controller;
+        //    player.ShiftCameraPosition(cameraShift);
+        //}
     }
 
     public override void DuringExecution()
     {
         self.RotateAgentModelToDirection(self.lookDirection.forward);
-        stamina.DepleteAttackStamina(attackStaminaCost * Time.deltaTime);
+        vigor.DepleteVigor(agentStats.rangedAimCost * Time.deltaTime);
     }
 }

@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class Walking : OnGroundState
 {
-    private float moveSpeed = 3f;
+    private float MoveSpeed => agentStats.walkSpeed;
 
     public Walking(GameObject gameObject) : base(gameObject)
     {
         animationHash = Animator.StringToHash("Walking");
         transitionsTo.Add(new Transition(typeof(Idling), Not(Move)));
-        transitionsTo.Add(new Transition(typeof(MeleeAttacking), MeleeEquipped, Attack));
-        transitionsTo.Add(new Transition(typeof(RangedAiming), RangedEquipped, Attack));
+        transitionsTo.Add(new Transition(typeof(MeleeAttacking), MeleeEquipped, Attack, () => vigor.CurrentVigor >= agentStats.meleeAttackCost));
+        transitionsTo.Add(new Transition(typeof(RangedAiming), RangedEquipped, Attack, () => vigor.CurrentVigor >= agentStats.rangedAimCost));
         transitionsTo.Add(new Transition(typeof(Equipping), EquipWeaponInput));
-        transitionsTo.Add(new Transition(typeof(Running), Run, HasMoveStamina));
+        transitionsTo.Add(new Transition(typeof(Running), Run, () => stamina.CurrentStamina >= agentStats.runCost));
         transitionsTo.Add(new Transition(typeof(Falling), Not(OnGround)));
-        transitionsTo.Add(new Transition(typeof(Blocking), Block));
+        transitionsTo.Add(new Transition(typeof(Blocking), Block, () => vigor.CurrentVigor >= agentStats.blockCost));
     }
 
     public override void AfterExecution()
@@ -29,7 +29,7 @@ public class Walking : OnGroundState
         self.SetHorizontalVelocity(Vector3.zero);
         if (navAgent != null)
         {
-            navAgent.speed = moveSpeed;
+            navAgent.speed = MoveSpeed;
         }
     }
 
@@ -39,7 +39,7 @@ public class Walking : OnGroundState
         if (navAgent == null)
         {
             inputVelocity = GetAgentMovementInput();
-            self.SetHorizontalVelocity(inputVelocity * moveSpeed);
+            self.SetHorizontalVelocity(inputVelocity * MoveSpeed);
             self.RotateAgentModelToDirection(inputVelocity);
             KeepGrounded();
         }

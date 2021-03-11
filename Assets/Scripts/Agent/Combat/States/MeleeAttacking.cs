@@ -24,7 +24,6 @@ public class MeleeAttacking : AgentState
         animVariantHash = Animator.StringToHash("AttackVariant");
         attackAnimationSpeedHash = Animator.StringToHash("AttackSpeed");
         animEvents.OnAnimationEvent += CheckAnimationEvent;
-        attackStaminaCost = 10f;
     }
 
     private void CheckAnimationEvent(EventType eventType)
@@ -64,32 +63,29 @@ public class MeleeAttacking : AgentState
     {
         Debug.Log("Melee Attack");
         isCurrentState = true;
-        if (HasEnoughAttackStamina())
+        animationFinished = false;
+        int variant = UnityEngine.Random.Range(0, animVariantNumber);
+        anim.SetInteger(animVariantHash, variant);
+        self.SetHorizontalVelocity(self.Velocity * .2f);
+        // have weapons enter damage state
+        if (weapons.primarySlot.CurrentlyEquipped?.GetType() == typeof(MeleeWeapon))
         {
-            animationFinished = false;
-            int variant = UnityEngine.Random.Range(0, animVariantNumber);
-            anim.SetInteger(animVariantHash, variant);
-            self.SetHorizontalVelocity(self.Velocity * .2f);
-            // have weapons enter damage state
-            if (weapons.primarySlot.CurrentlyEquipped?.GetType() == typeof(MeleeWeapon))
-            {
-                primary = (MeleeWeapon)weapons.primarySlot.CurrentlyEquipped;
-            }
-            else
-            {
-                primary = null;
-            }
-            if (weapons.secondarySlot.CurrentlyEquipped?.GetType() == typeof(MeleeWeapon))
-            {
-                secondary = (MeleeWeapon)weapons.secondarySlot.CurrentlyEquipped;
-            }
-            else
-            {
-                secondary = null;
-            }
-            timer = 0;
-            stamina.DepleteAttackStamina(attackStaminaCost);
+            primary = (MeleeWeapon)weapons.primarySlot.CurrentlyEquipped;
         }
+        else
+        {
+            primary = null;
+        }
+        if (weapons.secondarySlot.CurrentlyEquipped?.GetType() == typeof(MeleeWeapon))
+        {
+            secondary = (MeleeWeapon)weapons.secondarySlot.CurrentlyEquipped;
+        }
+        else
+        {
+            secondary = null;
+        }
+        timer = 0;
+        vigor.DepleteVigor(agentStats.meleeAttackCost);
     }
 
     public override void DuringExecution()

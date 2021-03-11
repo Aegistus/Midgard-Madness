@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class StaminaBarUI : MonoBehaviour
 {
-    public Transform attackStaminaBar;
-    public Transform moveStaminaBar;
+    public Transform staminaBar;
 
     private AgentStamina stamina;
 
@@ -16,7 +15,6 @@ public class StaminaBarUI : MonoBehaviour
 
     private void Update()
     {
-        attackStaminaBar.localScale = new Vector3(stamina.CurrentAttackStamina / stamina.maxStamina, 1, 1);
-        moveStaminaBar.localScale = new Vector3(stamina.CurrentMoveStamina / stamina.maxStamina, 1, 1);
+        staminaBar.localScale = new Vector3(stamina.CurrentStamina / stamina.MaxStamina, 1, 1);
     }
 }

@@ -16,15 +16,13 @@ public abstract class AgentState : State
     protected AgentWeapons weapons;
     protected AgentHealth health;
     protected AgentStamina stamina;
+    protected AgentVigor vigor;
     protected CharacterController charController;
     protected AudioManager audioManager;
     protected PoolManager poolManager;
     protected List<string> soundNames = new List<string>();
     protected AgentAnimEvents animEvents;
     protected NavMeshAgent navAgent;
-
-    protected float moveStaminaCost = -1f;
-    protected float attackStaminaCost = -1f;
 
     protected bool isCurrentState = false;
 
@@ -43,20 +41,18 @@ public abstract class AgentState : State
     public Func<bool> RangedEquipped => () => weapons.primarySlot.CurrentlyEquipped?.GetType() == typeof(RangedWeapon) || weapons.secondarySlot.CurrentlyEquipped?.GetType() == typeof(RangedWeapon);
     public Func<bool> ShieldEquipped => () => weapons.secondarySlot.CurrentlyEquipped?.GetType() == typeof(Shield);
     public Func<bool> IsDead => () => health.IsDead;
-    public Func<bool> HasEnoughMoveStamina => () => stamina.CurrentAttackStamina >= attackStaminaCost;
-    public Func<bool> HasEnoughAttackStamina => () => stamina.CurrentMoveStamina >= moveStaminaCost;
-    public Func<bool> HasMoveStamina => () => stamina.CurrentMoveStamina > 0;
-    public Func<bool> HasAttackStamina => () => stamina.CurrentAttackStamina > 0;
 
     public AgentState(GameObject gameObject) : base(gameObject)
     {
         self = gameObject.GetComponent<Agent>();
+        agentStats = self.agentStats;
         controller = gameObject.GetComponent<AgentController>();
         groundLayer = self.groundLayer;
         charController = gameObject.GetComponent<CharacterController>();
         weapons = gameObject.GetComponent<AgentWeapons>();
         health = gameObject.GetComponent<AgentHealth>();
         stamina = gameObject.GetComponent<AgentStamina>();
+        vigor = gameObject.GetComponent<AgentVigor>();
         anim = gameObject.GetComponentInChildren<Animator>();
         audioManager = AudioManager.instance;
         poolManager = PoolManager.Instance;

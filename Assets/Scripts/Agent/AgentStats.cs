@@ -12,6 +12,7 @@ public class AgentStats : ScriptableObject
     [Header("Stamina")]
     public float maxStamina = 50f;
     public float staminaRegenRate = 5f;
+    public float staminaRegenDelay = 2f;
 
     [Header("Stamina Costs")]
     public float runCost = 2;
@@ -21,6 +22,7 @@ public class AgentStats : ScriptableObject
     [Header("Vigor")]
     public float maxVigor = 50;
     public float vigorRegenRate = 5f;
+    public float vigorRegenDelay = 2f;
 
     [Header("Vigor Costs")]
     public float meleeAttackCost = 10;
