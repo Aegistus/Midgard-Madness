@@ -20,6 +20,7 @@ public class Wandering : NPCState
         Debug.Log("NPC Wandering");
         controller.SetDestination(transform.position, false);
         controller.SetRandomDestination(false);
+        controller.UnEquipAll();
     }
 
     protected override void CreateTree()

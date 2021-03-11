@@ -19,13 +19,17 @@ public class AgentWeapons : MonoBehaviour
         carriedWeapons = GetComponentsInChildren<Weapon>().ToList();
         foreach (var weapon in carriedWeapons)
         {
+            weapon.gameObject.SetActive(false);
+        }
+    }
+
+    public void EquipUnarmed()
+    {
+        foreach (var weapon in carriedWeapons)
+        {
             if (weapon.stats?.stance == WeaponStance.Unarmed)
             {
                 EquipWeapon(weapon);
-            }
-            else
-            {
-                weapon.gameObject.SetActive(false);
             }
         }
     }

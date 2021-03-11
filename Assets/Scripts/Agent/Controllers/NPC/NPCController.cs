@@ -81,6 +81,12 @@ public class NPCController : AgentController
         }
     }
 
+    public NodeState UnEquipAll()
+    {
+        weapons.EquipUnarmed();
+        return NodeState.SUCCESS;
+    }
+
     public NodeState AttackEnemy()
     {
         if (Attack != true)
