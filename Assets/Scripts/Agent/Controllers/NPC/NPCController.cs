@@ -90,6 +90,17 @@ public class NPCController : AgentController
         return NodeState.SUCCESS;
     }
 
+    public NodeState MomentumAttackEnemy()
+    {
+        Forwards = true;
+        Run = true;
+        if (Attack != true)
+        {
+            Attack = true;
+        }
+        return NodeState.SUCCESS;
+    }
+
     public NodeState SetRandomDestination(bool running)
     {
         Debug.Log("Finding Patrol Point");

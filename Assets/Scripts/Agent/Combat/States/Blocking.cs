@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Blocking : AgentState
 {
-    private float blockTime = .5f;
+    private float blockTime = 2f;
     private float timer = 0;
 
     public Blocking(GameObject gameObject) : base(gameObject)

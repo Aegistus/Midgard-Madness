@@ -23,6 +23,11 @@ public abstract class NPCState : State
         return weapons.primarySlot.CurrentlyEquipped != null || weapons.secondarySlot.CurrentlyEquipped != null ? NodeState.SUCCESS : NodeState.FAILURE;
     }
 
+    public NodeState IsRunning()
+    {
+        return controller.Run ? NodeState.SUCCESS : NodeState.FAILURE;
+    }
+
     protected NPCState(GameObject gameObject) : base(gameObject)
     {
         controller = gameObject.GetComponent<NPCController>();
