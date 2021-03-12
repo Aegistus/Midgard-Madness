@@ -13,6 +13,7 @@ public class Running : OnGroundState
         transitionsTo.Add(new Transition(typeof(MomentumAttacking), MeleeEquipped, Attack, () => vigor.CurrentVigor >= agentStats.momentumAttackCost));
         transitionsTo.Add(new Transition(typeof(RangedAiming), RangedEquipped, Attack, () => vigor.CurrentVigor >= agentStats.rangedAimCost));
         transitionsTo.Add(new Transition(typeof(Equipping), EquipWeaponInput));
+        transitionsTo.Add(new Transition(typeof(UnEquipping), UnEquipWeapon));
         transitionsTo.Add(new Transition(typeof(Falling), Not(OnGround)));
         transitionsTo.Add(new Transition(typeof(Blocking), Block, () => vigor.CurrentVigor >= agentStats.blockCost));
     }

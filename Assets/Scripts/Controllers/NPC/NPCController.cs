@@ -86,7 +86,7 @@ public class NPCController : AgentController
 
     public void UnEquipAll()
     {
-        weapons.EquipUnarmed();
+        weapons.UnEquipAll();
     }
 
     public NodeState AttackEnemy()

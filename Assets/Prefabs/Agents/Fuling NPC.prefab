@@ -3498,7 +3498,7 @@ MonoBehaviour:
   tickInterval: 0.1
   wanderDiameter: 10
   wanderWaitTime: 5
-  attackRadius: 2
+  attackRadius: 3
 --- !u!114 &139568716642311914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3531,6 +3531,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   primarySlot: {fileID: 565068732218422191}
   secondarySlot: {fileID: 2422155858712741909}
+  unarmedController: {fileID: 9100000, guid: 66ef409bd95faa6498ecfeb9535fbbb6, type: 2}
 --- !u!114 &3938181935033030986
 MonoBehaviour:
   m_ObjectHideFlags: 0

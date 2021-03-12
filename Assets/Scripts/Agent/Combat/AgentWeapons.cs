@@ -7,6 +7,7 @@ public class AgentWeapons : MonoBehaviour
 {
     public WeaponSlot primarySlot;
     public WeaponSlot secondarySlot;
+    public RuntimeAnimatorController unarmedController;
 
     public List<Weapon> CarriedWeapons { get; private set; }
 
@@ -29,15 +30,11 @@ public class AgentWeapons : MonoBehaviour
         return primarySlot.CurrentlyEquipped != null || secondarySlot.CurrentlyEquipped != null;
     }
 
-    public void EquipUnarmed()
+    public void UnEquipAll()
     {
-        foreach (var weapon in CarriedWeapons)
-        {
-            if (weapon.stats?.stance == WeaponStance.Unarmed)
-            {
-                EquipWeapon(weapon);
-            }
-        }
+        primarySlot.UnEquip();
+        secondarySlot.UnEquip();
+        UpdateWeaponAnimation();
     }
 
     public void EquipWeapon(Weapon toEquip)
@@ -69,6 +66,7 @@ public class AgentWeapons : MonoBehaviour
                 break;
             default:
                 primarySlot.UnEquip();
+                primarySlot.Equip(toEquip);
                 secondarySlot.UnEquip();
                 break;
         }
@@ -101,6 +99,10 @@ public class AgentWeapons : MonoBehaviour
         if (animController != null)
         {
             anim.runtimeAnimatorController = animController;
+        }
+        else
+        {
+            anim.runtimeAnimatorController = unarmedController;
         }
     }
 }

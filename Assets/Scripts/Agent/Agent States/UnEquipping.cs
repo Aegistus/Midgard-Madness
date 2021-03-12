@@ -1,13 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
-public class Equipping : AgentState
+public class UnEquipping : AgentState
 {
     private bool animationDone = false;
 
-    public Equipping(GameObject gameObject) : base(gameObject)
+    public UnEquipping(GameObject gameObject) : base(gameObject)
     {
         animationHash = Animator.StringToHash("Equipping");
         transitionsTo.Add(new Transition(typeof(Idling), () => animationDone));
@@ -31,7 +30,8 @@ public class Equipping : AgentState
 
     public override void BeforeExecution()
     {
-        weapons.EquipWeapon(controller.WeaponNumKey);
+        Debug.Log("UnEquipping");
+        weapons.UnEquipAll();
         anim.SetBool(animationHash, true);
         animationDone = false;
         animEvents.OnAnimationEvent += EnableNewWeapon;

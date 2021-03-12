@@ -45,6 +45,7 @@ public class Agent : MonoBehaviour
             {typeof(RangedAttacking), new RangedAttacking(gameObject) },
 
             {typeof(Equipping), new Equipping(gameObject) },
+            {typeof(UnEquipping), new UnEquipping(gameObject) },
 
             {typeof(TakingDamage), new TakingDamage(gameObject) },
             {typeof(Dying), new Dying(gameObject) },

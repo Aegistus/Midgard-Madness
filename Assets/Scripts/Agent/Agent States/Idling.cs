@@ -16,6 +16,7 @@ public class Idling : OnGroundState
         transitionsTo.Add(new Transition(typeof(MeleeAttacking), MeleeEquipped, Attack, () => vigor.CurrentVigor >= agentStats.meleeAttackCost));
         transitionsTo.Add(new Transition(typeof(RangedAiming), RangedEquipped, Attack, () => vigor.CurrentVigor >= agentStats.rangedAimCost));
         transitionsTo.Add(new Transition(typeof(Equipping), EquipWeaponInput));
+        transitionsTo.Add(new Transition(typeof(UnEquipping), UnEquipWeapon));
     }
 
     public override void AfterExecution()

@@ -37,6 +37,7 @@ public abstract class AgentState : State
     public Func<bool> Attack => () => controller.Attack;
     public Func<bool> Block => () => controller.Block;
     public Func<bool> EquipWeaponInput => () => controller.Equipping;
+    public Func<bool> UnEquipWeapon => () => controller.UnEquipping;
     public Func<bool> MeleeEquipped => () => weapons.primarySlot.CurrentlyEquipped?.GetType() == typeof(MeleeWeapon);
     public Func<bool> RangedEquipped => () => weapons.primarySlot.CurrentlyEquipped?.GetType() == typeof(RangedWeapon) || weapons.secondarySlot.CurrentlyEquipped?.GetType() == typeof(RangedWeapon);
     public Func<bool> ShieldEquipped => () => weapons.secondarySlot.CurrentlyEquipped?.GetType() == typeof(Shield);

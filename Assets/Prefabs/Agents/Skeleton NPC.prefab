@@ -3099,7 +3099,7 @@ MonoBehaviour:
   tickInterval: 0.1
   wanderDiameter: 10
   wanderWaitTime: 5
-  attackRadius: 2
+  attackRadius: 3
 --- !u!114 &1725498439170554104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3132,6 +3132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   primarySlot: {fileID: 9164295959312862174}
   secondarySlot: {fileID: 9164295959313107992}
+  unarmedController: {fileID: 9100000, guid: 66ef409bd95faa6498ecfeb9535fbbb6, type: 2}
 --- !u!114 &2358427328183910232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3517,7 +3518,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7724353475411519667, guid: 2933ec6aa311ab44e8f477226e58e3de, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7724353475411519667, guid: 2933ec6aa311ab44e8f477226e58e3de, type: 3}
       propertyPath: m_Layer
@@ -3595,7 +3596,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7579398949746302354, guid: b2ec4fe99cb7def4d8e6d2de6fb8f2cb, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7579398949746302355, guid: b2ec4fe99cb7def4d8e6d2de6fb8f2cb, type: 3}
       propertyPath: m_LocalPosition.x

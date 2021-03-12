@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class AIFighting : NPCState
 {
+
     public AIFighting(GameObject gameObject) : base(gameObject)
     {
-        transitionsTo.Add(new Transition(typeof(AISearching), Not(PlayerInSight)));
-        transitionsTo.Add(new Transition(typeof(AIChasing), PlayerInSight, Not(() => controller.NearTarget(controller.attackRadius))));
+        Func<bool> NotAttacking = Not(() => agent.CurrentState.GetType() != typeof(MeleeAttacking));
+        transitionsTo.Add(new Transition(typeof(AISearching), NotAttacking, Not(PlayerInSight)));
+        transitionsTo.Add(new Transition(typeof(AIChasing), NotAttacking, PlayerInSight, Not(() => controller.NearTarget(controller.attackRadius))));
     }
 
     public override void AfterExecution()
@@ -19,7 +22,7 @@ public class AIFighting : NPCState
     {
         Debug.Log("NPC Fighting");
         controller.SetDestination(transform.position, false);
-        if (Random.value > .5) // 50/50 chance
+        if (UnityEngine.Random.value > .5) // 50/50 chance
         {
             controller.MomentumAttackEnemy();
         }
