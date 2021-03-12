@@ -6,7 +6,7 @@ public class AIChasing : NPCState
 {
     public AIChasing(GameObject gameObject) : base(gameObject)
     {
-        transitionsTo.Add(new Transition(typeof(AIWandering), Not(PlayerInSight)));
+        transitionsTo.Add(new Transition(typeof(AISearching), Not(PlayerInSight)));
         transitionsTo.Add(new Transition(typeof(AIEquipping), Not(() => weapons.HasWeaponEquipped())));
         transitionsTo.Add(new Transition(typeof(AIFighting), () => controller.NearTarget(controller.attackRadius - 1), () => weapons.HasWeaponEquipped()));
     }

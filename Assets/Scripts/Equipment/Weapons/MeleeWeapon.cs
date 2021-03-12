@@ -6,6 +6,7 @@ public class MeleeWeapon : Weapon
 {
     public Collider blade;
 
+    private MeleeWeaponStats MeleeStats => (MeleeWeaponStats)stats;
     private bool inDamageState = false;
     private float damageModifier = 1;
     private List<AgentHealth> hitAgents = new List<AgentHealth>();

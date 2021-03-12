@@ -35,6 +35,7 @@ public class PlayerController : AgentController
                 Equipping = true;
             }
         }
+        UnEquipping = Input.GetKey(KeyCode.R);
     }
 
     public void ShiftCameraPosition(Vector3 newPosition)

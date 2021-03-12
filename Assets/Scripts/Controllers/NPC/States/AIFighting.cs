@@ -6,7 +6,7 @@ public class AIFighting : NPCState
 {
     public AIFighting(GameObject gameObject) : base(gameObject)
     {
-        transitionsTo.Add(new Transition(typeof(AIWandering), Not(PlayerInSight)));
+        transitionsTo.Add(new Transition(typeof(AISearching), Not(PlayerInSight)));
         transitionsTo.Add(new Transition(typeof(AIChasing), PlayerInSight, Not(() => controller.NearTarget(controller.attackRadius))));
     }
 
