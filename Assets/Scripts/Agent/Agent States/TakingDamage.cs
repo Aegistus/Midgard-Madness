@@ -16,14 +16,21 @@ public class TakingDamage : AgentState
     public override void AfterExecution()
     {
         anim.SetBool(animationHash, false);
+        if (navAgent)
+        {
+            navAgent.enabled = true;
+        }
     }
 
     public override void BeforeExecution()
     {
         timer = maxTimer;
         anim.SetBool(animationHash, true);
+        if (navAgent)
+        {
+            navAgent.enabled = false;
+        }
         Debug.Log("Taking Damage");
-        self.SetHorizontalVelocity(self.Velocity * .1f);
     }
 
     public override void DuringExecution()

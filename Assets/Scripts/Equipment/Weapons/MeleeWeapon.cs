@@ -56,7 +56,7 @@ public class MeleeWeapon : Weapon
                     // check to make sure not hitting self or multi-hitting one agent
                     if (health != null && !hitAgents.Contains(health) && !transform.IsChildOf(health.transform))
                     {
-                        health.Damage(stats.damage * damageModifier);
+                        health.Damage(stats.damage * damageModifier, transform.position, MeleeStats.knockbackForce);
                         hitAgents.Add(health);
                         AudioManager.instance.PlaySoundAtPosition("Sword Hit", transform.position);
                         PoolManager.Instance.GetObjectFromPoolWithLifeTime(PoolManager.PoolTag.Blood, other.ClosestPoint(transform.position), Quaternion.identity, 3f);

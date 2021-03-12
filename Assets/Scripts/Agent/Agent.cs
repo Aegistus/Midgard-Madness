@@ -100,9 +100,13 @@ public class Agent : MonoBehaviour
         }
         StateMachine.ExecuteState();
         velocity.y = verticalVelocity;
-        if (charController.enabled && navAgent == null)
+        if (charController.enabled)
         {
-            charController.Move(Velocity * Time.deltaTime);
+            if (navAgent == null || navAgent.enabled == false)
+            {
+                charController.Move(Velocity * Time.deltaTime);
+            }
         }
+
     }
 }

@@ -9,6 +9,7 @@ public class Projectile : MonoBehaviour
     public float speed = 1f;
     public float damage = 10f;
     public float damageModifier = 1f;
+    public float knockbackForce = 1f;
     public string startSoundName = "Arrow Loose";
     public string impactSoundName = "Projectile Impact";
 
@@ -33,7 +34,7 @@ public class Projectile : MonoBehaviour
         {
             if (agent.CurrentState.GetType() != typeof(Blocking))
             {
-                health.Damage(damage * damageModifier);
+                health.Damage(damage * damageModifier, transform.position, knockbackForce);
             }
             else
             {

@@ -756,30 +756,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1368765354, guid: 30b3028583673d04d9a7d7da078b9454, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2040406367, guid: 30b3028583673d04d9a7d7da078b9454, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2053876681, guid: 30b3028583673d04d9a7d7da078b9454, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1317969725039963669, guid: 30b3028583673d04d9a7d7da078b9454, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2270045120293023607, guid: 30b3028583673d04d9a7d7da078b9454, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2332702484977452824, guid: 30b3028583673d04d9a7d7da078b9454, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4828917951006747454, guid: 30b3028583673d04d9a7d7da078b9454, type: 3}
       propertyPath: m_Name
       value: Player (1)
