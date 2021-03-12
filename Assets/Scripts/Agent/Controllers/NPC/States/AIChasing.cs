@@ -8,7 +8,7 @@ public class AIChasing : NPCState
     {
         transitionsTo.Add(new Transition(typeof(AIWandering), Not(PlayerInSight)));
         transitionsTo.Add(new Transition(typeof(AIEquipping), Not(() => weapons.HasWeaponEquipped())));
-        transitionsTo.Add(new Transition(typeof(AIFighting), () => controller.NearTarget(controller.attackRadius), () => weapons.HasWeaponEquipped()));
+        transitionsTo.Add(new Transition(typeof(AIFighting), () => controller.NearTarget(controller.attackRadius - 1), () => weapons.HasWeaponEquipped()));
     }
 
     public override void AfterExecution()
@@ -25,7 +25,7 @@ public class AIChasing : NPCState
 
     protected override void CreateTree()
     {
-        InverterNode notNearTarget = new InverterNode(new ConditionNode(() => Node.ConvertToState(controller.NearTarget(controller.attackRadius))));
+        InverterNode notNearTarget = new InverterNode(new ConditionNode(() => Node.ConvertToState(controller.NearTarget(controller.attackRadius - 1))));
         ActionNode setTarget = new ActionNode(() => controller.SetDestination(controller.Target.position, true));
         ActionNode moveToTarget = new ActionNode(() => controller.MoveToDestination(true));
         SequenceNode chaseSequence = new SequenceNode(new List<Node>() { setTarget, moveToTarget });

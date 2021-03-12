@@ -5948,6 +5948,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Viking NPC
       objectReference: {fileID: 0}
+    - target: {fileID: 6977930941514205864, guid: e830a77845cf71a4c81dbf01990fb137, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6977930941514205865, guid: e830a77845cf71a4c81dbf01990fb137, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

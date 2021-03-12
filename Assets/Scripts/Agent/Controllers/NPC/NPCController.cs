@@ -13,6 +13,7 @@ public class NPCController : AgentController
     public float wanderWaitTime = 5f;
     public float attackRadius = 2f;
 
+    private Agent agent;
     private AgentWeapons weapons;
     private NavMeshAgent navAgent;
     public Transform Target { get; set; }
@@ -23,6 +24,7 @@ public class NPCController : AgentController
 
     private void Awake()
     {
+        agent = GetComponent<Agent>();
         weapons = GetComponent<AgentWeapons>();
         navAgent = GetComponent<NavMeshAgent>();
         Dictionary<Type, State> states = new Dictionary<Type, State>()
@@ -95,6 +97,12 @@ public class NPCController : AgentController
             Attack = true;
         }
         return NodeState.SUCCESS;
+    }
+
+    public void LookAt(Transform target)
+    {
+        print("looking");
+        agent.lookDirection.LookAt(target);
     }
 
     public NodeState MomentumAttackEnemy()

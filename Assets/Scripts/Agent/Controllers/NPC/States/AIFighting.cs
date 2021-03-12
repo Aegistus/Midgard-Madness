@@ -7,7 +7,7 @@ public class AIFighting : NPCState
     public AIFighting(GameObject gameObject) : base(gameObject)
     {
         transitionsTo.Add(new Transition(typeof(AIWandering), Not(PlayerInSight)));
-        transitionsTo.Add(new Transition(typeof(AIChasing), PlayerInSight, () => controller.AtDestination(controller.attackRadius)));
+        transitionsTo.Add(new Transition(typeof(AIChasing), PlayerInSight, Not(() => controller.NearTarget(controller.attackRadius))));
     }
 
     public override void AfterExecution()
@@ -19,6 +19,10 @@ public class AIFighting : NPCState
     {
         Debug.Log("NPC Fighting");
         controller.SetDestination(transform.position, false);
+        if (Random.value > .5) // 50/50 chance
+        {
+            controller.MomentumAttackEnemy();
+        }
     }
 
     protected override void CreateTree()
@@ -31,7 +35,9 @@ public class AIFighting : NPCState
         WaitNode delay = new WaitNode(attackTarget, 2f);
         SequenceNode attackSequence = new SequenceNode(new List<Node>() { delay, attackTarget });
 
-        rootNode = new SelectorNode(new List<Node>() { attackSequence });
+        ActionNode lookAtTarget = new ActionNode(() => controller.LookAt(controller.Target));
+
+        rootNode = new SelectorNode(new List<Node>() { attackSequence, lookAtTarget });
     }
 
 }
