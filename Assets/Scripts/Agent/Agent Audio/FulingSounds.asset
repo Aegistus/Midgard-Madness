@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bffc65699c7985e4b96f2b73f3d84125, type: 3}
+  m_Name: FulingSounds
+  m_EditorClassIdentifier: 
+  breathing:
+    name: 
+    allSounds: []
+    volume: 0.75
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    minimunDistance: 1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  heavyBreathing:
+    name: 
+    allSounds: []
+    volume: 0.75
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    minimunDistance: 1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  footsteps:
+    name: 
+    allSounds:
+    - {fileID: 8300000, guid: ddc7fb1f4a6eeda41ab9e5151af02f17, type: 3}
+    - {fileID: 8300000, guid: 49a3a007d419ce24a95f8eb1b5ffac2b, type: 3}
+    - {fileID: 8300000, guid: c54927113d714ec49b693c33978b3c7c, type: 3}
+    - {fileID: 8300000, guid: 77f4c8e0343917a4b9e62cade236c2cf, type: 3}
+    - {fileID: 8300000, guid: 15b84b6615e41e244943498b86d5006a, type: 3}
+    volume: 0.32
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    minimunDistance: 1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  attack:
+    name: 
+    allSounds: []
+    volume: 0.75
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    minimunDistance: 1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  hit:
+    name: 
+    allSounds: []
+    volume: 0.75
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    minimunDistance: 1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  death:
+    name: 
+    allSounds:
+    - {fileID: 8300000, guid: 6eddfe6424166e949bafe3fbd0f2d6e1, type: 3}
+    - {fileID: 8300000, guid: cd79adfa04d82764da620d9e856e8b92, type: 3}
+    - {fileID: 8300000, guid: edc0816be6166dd4381b7d3ae78e260b, type: 3}
+    - {fileID: 8300000, guid: fe4728be9270ee648855fbd6cb6dd033, type: 3}
+    volume: 0.3
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    minimunDistance: 1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}

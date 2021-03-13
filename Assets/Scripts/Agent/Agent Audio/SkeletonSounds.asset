@@ -81,6 +81,8 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 4e581d0b5c817a443af6b5d7e031c9e6, type: 3}
     - {fileID: 8300000, guid: 3e4d099209415f849b52dd9f24acb0f9, type: 3}
     - {fileID: 8300000, guid: 5cd5ed03350cd344e8acdc4c24dbcf71, type: 3}
+    - {fileID: 8300000, guid: 7e93d63c0cbc5394e9fcb9bfd8043571, type: 3}
+    - {fileID: 8300000, guid: d9e3f03640857f64d9b172d61a27ea97, type: 3}
     volume: 0.25
     volumeVariance: 0.1
     pitch: 1
