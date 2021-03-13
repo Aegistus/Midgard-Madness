@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bffc65699c7985e4b96f2b73f3d84125, type: 3}
+  m_Name: SkeletonSounds
+  m_EditorClassIdentifier: 
+  breathing:
+    name: 
+    allSounds: []
+    volume: 0.75
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    minimunDistance: 1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  heavyBreathing:
+    name: 
+    allSounds: []
+    volume: 0.75
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    minimunDistance: 1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  footsteps:
+    name: 
+    allSounds:
+    - {fileID: 8300000, guid: 990525a84b89a384cb69b42e631e3958, type: 3}
+    - {fileID: 8300000, guid: 16a46555d085b7a42b804a035aa54df1, type: 3}
+    - {fileID: 8300000, guid: 908333a44ee1fee43b2cfeb80090ff08, type: 3}
+    - {fileID: 8300000, guid: 7cb49425882f84e44b49790ce323a675, type: 3}
+    - {fileID: 8300000, guid: 5cc791ef4df23184bb2a27b360919e65, type: 3}
+    volume: 0.47
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    minimunDistance: 1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  attack:
+    name: 
+    allSounds:
+    - {fileID: 8300000, guid: 9ead219084b22b74f8df3c8431e685f5, type: 3}
+    - {fileID: 8300000, guid: 8202d66fe78cfa042bc751da21d965ef, type: 3}
+    - {fileID: 8300000, guid: 49d8cdbec0d020848b2763e29f346e05, type: 3}
+    - {fileID: 8300000, guid: 86238539d0ef13d45959d365718e8f98, type: 3}
+    - {fileID: 8300000, guid: fcd4474125b607544875fe18c12ec175, type: 3}
+    - {fileID: 8300000, guid: f56d2699439a1ae4096b92f0abee94b4, type: 3}
+    - {fileID: 8300000, guid: 4b63b2f91c972c741b3baa0f32954e7f, type: 3}
+    - {fileID: 8300000, guid: cf0f7b39880eed345a5053e78b0a1d12, type: 3}
+    - {fileID: 8300000, guid: ab4748b2ccdc5624da7540721baddac8, type: 3}
+    - {fileID: 8300000, guid: a327296276194de45a7d3bdc065ed858, type: 3}
+    volume: 0.42
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    minimunDistance: 1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  hit:
+    name: 
+    allSounds:
+    - {fileID: 8300000, guid: d11d6d66100ce4e40b8a08b9d8eb3907, type: 3}
+    - {fileID: 8300000, guid: 4a209efd8628fb844871db9d11a23fe0, type: 3}
+    - {fileID: 8300000, guid: e6831b7f932154b43bdbd492ccb671e1, type: 3}
+    - {fileID: 8300000, guid: cc47a64ebd9fd79478440efbcfca01fc, type: 3}
+    - {fileID: 8300000, guid: 4e581d0b5c817a443af6b5d7e031c9e6, type: 3}
+    - {fileID: 8300000, guid: 3e4d099209415f849b52dd9f24acb0f9, type: 3}
+    - {fileID: 8300000, guid: 5cd5ed03350cd344e8acdc4c24dbcf71, type: 3}
+    volume: 0.4
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    minimunDistance: 1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  death:
+    name: 
+    allSounds:
+    - {fileID: 8300000, guid: 892020eabb02a844c8dbb282defaf043, type: 3}
+    - {fileID: 8300000, guid: 08b99e6d0c1c7f1449a2c26b715e7e1b, type: 3}
+    - {fileID: 8300000, guid: da279a3e3d860e24b9f0517c65bf441b, type: 3}
+    - {fileID: 8300000, guid: e01c5085b64aa1c42922369d1b455911, type: 3}
+    - {fileID: 8300000, guid: 49e2aae9b6b07f04ba1fdae4ba702d42, type: 3}
+    - {fileID: 8300000, guid: b6b3de21939e33b41b3ef2e9a6c4f74b, type: 3}
+    - {fileID: 8300000, guid: e6229276add5b06478a7cc2335cda14c, type: 3}
+    - {fileID: 8300000, guid: 5a8418df587fe6a46a20d658b5c16975, type: 3}
+    - {fileID: 8300000, guid: 4959b4addde4daa4abf075c9d6dd27b5, type: 3}
+    - {fileID: 8300000, guid: e1d02252fd1629b49aa3739818594278, type: 3}
+    - {fileID: 8300000, guid: d5084d13fe733134c8df4256e878a25a, type: 3}
+    - {fileID: 8300000, guid: 194a5a8fdd494474992ae1cca361a458, type: 3}
+    - {fileID: 8300000, guid: f43cb26982680ce40a794d22b0139ab9, type: 3}
+    volume: 0.42
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    minimunDistance: 1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
