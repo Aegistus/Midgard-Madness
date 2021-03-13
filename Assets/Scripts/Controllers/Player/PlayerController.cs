@@ -7,12 +7,14 @@ public class PlayerController : AgentController
     public GameObject playerCam;
 
     private Vector3 originalCamPosition;
+    private Camera mainCam;
 
     private readonly KeyCode[] numberKeys = { KeyCode.Alpha0, KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4, KeyCode.Alpha5, KeyCode.Alpha6, KeyCode.Alpha7, KeyCode.Alpha8, KeyCode.Alpha9 };
 
     private void Start()
     {
         originalCamPosition = playerCam.transform.localPosition;
+        mainCam = playerCam.GetComponent<Camera>();
     }
 
     private void Update()
@@ -36,6 +38,7 @@ public class PlayerController : AgentController
             }
         }
         UnEquipping = Input.GetKey(KeyCode.R);
+        Aim = mainCam.ScreenPointToRay(Input.mousePosition);
     }
 
     public void ShiftCameraPosition(Vector3 newPosition)

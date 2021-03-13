@@ -57,7 +57,7 @@ public class RangedAttacking : AgentState
         self.SetHorizontalVelocity(Vector3.zero);
         if (weapon != null)
         {
-            weapon.RangedAttack(Camera.main.ScreenPointToRay(Input.mousePosition));
+            weapon.RangedAttack(controller.Aim);
         }
     }
 

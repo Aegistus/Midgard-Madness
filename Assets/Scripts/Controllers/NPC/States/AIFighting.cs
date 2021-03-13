@@ -28,6 +28,12 @@ public class AIFighting : NPCState
         }
     }
 
+    public override void DuringExecution()
+    {
+        base.DuringExecution();
+        controller.LookAt(controller.Target);
+    }
+
     protected override void CreateTree()
     {
         //ActionNode momentumAttack = new ActionNode(() => controller.MomentumAttackEnemy());
@@ -38,9 +44,7 @@ public class AIFighting : NPCState
         WaitNode delay = new WaitNode(attackTarget, 2f);
         SequenceNode attackSequence = new SequenceNode(new List<Node>() { delay, attackTarget });
 
-        ActionNode lookAtTarget = new ActionNode(() => controller.LookAt(controller.Target));
-
-        rootNode = new SelectorNode(new List<Node>() { attackSequence, lookAtTarget });
+        rootNode = new SelectorNode(new List<Node>() { attackSequence });
     }
 
 }

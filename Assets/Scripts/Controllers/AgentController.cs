@@ -17,4 +17,5 @@ public abstract class AgentController : MonoBehaviour
     public bool Equipping { get; protected set; }
     public int WeaponNumKey { get; protected set; }
     public bool UnEquipping { get; protected set; }
+    public Ray Aim { get; protected set; }
 }

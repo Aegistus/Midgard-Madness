@@ -72,6 +72,11 @@ public class NPCController : AgentController
             Crouch = false;
             Run = false;
             Equipping = false;
+            if (Target != null)
+            {
+                Vector3 randomOffset = Target.position + new Vector3(Random.Range(-.5f, .5f), Random.Range(-.5f, .5f), Random.Range(-.5f, .5f));
+                Aim = new Ray(transform.position, randomOffset - transform.position);
+            }
             AIStateMachine.ExecuteState();
             yield return new WaitForSeconds(tickInterval);
         }
