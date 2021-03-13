@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Javelin
+  m_Controller: {fileID: 9100000, guid: 66ef409bd95faa6498ecfeb9535fbbb6, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: b0ea368bc5561274d99e5837b2f5c17f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c22ee6fe8c62b9446ab5dbb0832a6c7c, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 05b512e2e3819d54c937a0bae75e7a5b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2715955498f089442a4603887a87ef2c, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: fb05e9d28fab4284c95067e3e6fe594f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 3d3214decde4da14aa86c8ce566caaeb, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: af8ada9f877d9b144b6a9a114bddef73, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 9361fd0825af9ff4dbc61ebc9ecf1c23, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 0ec86c5e7e946b84a9245b45faeb611c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c510dfb44a68ce644b090c301dd95b3f, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: efe2a91f477062240ade9f5a13331d2f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c9525a73f4e314f41a2b536a0c4dcf88, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 1f7370cdc358a524dacecb9aee2f4653, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7a55f58318e490944ac6392d45b54a16, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 218d1793947d7ff49a8da50174b0aa7e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 46ce79599c69fe648ab8affd7069fb83, type: 2}

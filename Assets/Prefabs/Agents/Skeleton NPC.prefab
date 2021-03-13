@@ -3198,6 +3198,7 @@ MonoBehaviour:
   wanderDiameter: 10
   wanderWaitTime: 5
   attackRadius: 20
+  attackWaitTime: 5
 --- !u!114 &1725498439170554104
 MonoBehaviour:
   m_ObjectHideFlags: 0

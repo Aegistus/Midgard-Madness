@@ -12,6 +12,7 @@ public class NPCController : AgentController
     public float wanderDiameter = 5f;
     public float wanderWaitTime = 5f;
     public float attackRadius = 2f;
+    public float attackWaitTime = 2f;
 
     private Agent agent;
     private AgentWeapons weapons;
