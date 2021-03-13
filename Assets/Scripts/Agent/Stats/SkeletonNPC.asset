@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d368d2497b95054b910e4093e9ee2dc, type: 3}
   m_Name: SkeletonNPC
   m_EditorClassIdentifier: 
-  maxHealth: 125
+  maxHealth: 50
   healthRegenRate: 2
   maxStamina: 0
   staminaRegenRate: 5

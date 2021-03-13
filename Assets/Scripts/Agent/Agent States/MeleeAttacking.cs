@@ -69,6 +69,7 @@ public class MeleeAttacking : AgentState
         animationFinished = false;
         int variant = UnityEngine.Random.Range(0, animVariantNumber);
         anim.SetInteger(animVariantHash, variant);
+        anim.SetFloat(attackAnimationSpeedHash, self.agentStats.attackSpeed);
         if (self.agentSounds)
         {
             audio.clip = self.agentSounds.attack.GetRandomAudioClip();
