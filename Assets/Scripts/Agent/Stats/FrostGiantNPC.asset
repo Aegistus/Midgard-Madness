@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 300
   healthRegenRate: 4
-  maxStamina: 50
+  maxStamina: 0
   staminaRegenRate: 5
   staminaRegenDelay: 2
   runCost: 2

@@ -21,7 +21,10 @@ public class Idling : OnGroundState
 
     public override void AfterExecution()
     {
+        audio.loop = false;
+        audio.Stop();
         anim.SetBool(animationHash, false);
+
     }
 
     public override void BeforeExecution()
@@ -31,6 +34,12 @@ public class Idling : OnGroundState
         self.SetHorizontalVelocity(Vector3.zero);
         self.SetVerticalVelocity(0);
         KeepGrounded();
+        if (self.agentSounds)
+        {
+            audio.clip = self.agentSounds.breathing?.GetRandomAudioClip();
+            audio.loop = true;
+            audio.Play();
+        }
     }
 
     public override void DuringExecution()

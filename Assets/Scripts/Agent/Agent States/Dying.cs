@@ -23,6 +23,12 @@ public class Dying : AgentState
         self.SetHorizontalVelocity(Vector3.zero);
         animation = Random.Range(0, animationVariantsTotal);
         anim.SetInteger(animationHash, animation);
+        if (self.agentSounds)
+        {
+            audio.clip = self.agentSounds.death.GetRandomAudioClip();
+            audio.loop = false;
+            audio.Play();
+        }
         if(navAgent)
         {
             navAgent.enabled = false;

@@ -23,6 +23,7 @@ public abstract class AgentState : State
     protected List<string> soundNames = new List<string>();
     protected AgentAnimEvents animEvents;
     protected NavMeshAgent navAgent;
+    protected AudioSource audio;
 
     protected bool isCurrentState = false;
 
@@ -59,6 +60,7 @@ public abstract class AgentState : State
         poolManager = PoolManager.Instance;
         animEvents = gameObject.GetComponentInChildren<AgentAnimEvents>();
         navAgent = gameObject.GetComponent<NavMeshAgent>();
+        audio = gameObject.GetComponentInChildren<AudioSource>();
 
         transitionsTo.Add(new Transition(typeof(Dying), IsDead));
         transitionsTo.Add(new Transition(typeof(TakingDamage), () => health.TookDamage));

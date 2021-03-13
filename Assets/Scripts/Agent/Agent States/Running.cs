@@ -21,12 +21,19 @@ public class Running : OnGroundState
     public override void AfterExecution()
     {
         anim.SetBool(animationHash, false);
+        audio.Stop();
     }
 
     public override void BeforeExecution()
     {
         Debug.Log("Running");
         anim.SetBool(animationHash, true);
+        if (self.agentSounds)
+        {
+            audio.clip = self.agentSounds.heavyBreathing.GetRandomAudioClip();
+            audio.loop = true;
+            audio.Play();
+        }
         if (navAgent != null)
         {
             navAgent.speed = agentStats.runSpeed;

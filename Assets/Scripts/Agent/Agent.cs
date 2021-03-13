@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class Agent : MonoBehaviour
 {
     public AgentStats agentStats;
+    public AgentSounds agentSounds;
     public LayerMask groundLayer;
     public Transform lookDirection;
     public Transform agentModel;
@@ -107,6 +108,6 @@ public class Agent : MonoBehaviour
                 charController.Move(Velocity * Time.deltaTime);
             }
         }
-
     }
+
 }

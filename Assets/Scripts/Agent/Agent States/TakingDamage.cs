@@ -16,6 +16,7 @@ public class TakingDamage : AgentState
     public override void AfterExecution()
     {
         anim.SetBool(animationHash, false);
+        audio.Stop();
         if (navAgent)
         {
             navAgent.enabled = true;
@@ -26,6 +27,12 @@ public class TakingDamage : AgentState
     {
         timer = maxTimer;
         anim.SetBool(animationHash, true);
+        if (self.agentSounds)
+        {
+            audio.clip = self.agentSounds.hit.GetRandomAudioClip();
+            audio.loop = false;
+            audio.Play();
+        }
         if (navAgent)
         {
             navAgent.enabled = false;

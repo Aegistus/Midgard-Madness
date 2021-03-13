@@ -22,11 +22,19 @@ public class Walking : OnGroundState
     public override void AfterExecution()
     {
         anim.SetBool(animationHash, false);
+        audio.Stop();
+        audio.loop = false;
     }
 
     public override void BeforeExecution()
     {
         anim.SetBool(animationHash, true);
+        if (self.agentSounds)
+        {
+            audio.clip = self.agentSounds.breathing.GetRandomAudioClip();
+            audio.loop = true;
+            audio.Play();
+        }
         self.SetHorizontalVelocity(Vector3.zero);
         if (navAgent != null)
         {

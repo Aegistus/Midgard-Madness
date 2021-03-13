@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bffc65699c7985e4b96f2b73f3d84125, type: 3}
+  m_Name: FrostGiantSounds
+  m_EditorClassIdentifier: 
+  breathing:
+    name: 
+    allSounds:
+    - {fileID: 8300000, guid: cb7aaf8aebeb7ad4ba104b42958f0503, type: 3}
+    volume: 0.75
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    minimunDistance: 1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  heavyBreathing:
+    name: 
+    allSounds:
+    - {fileID: 8300000, guid: 6f10f4c3abfb56546a2946f5b86e6e90, type: 3}
+    volume: 0.75
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    minimunDistance: 1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  footsteps:
+    name: 
+    allSounds:
+    - {fileID: 8300000, guid: a9d6aaab27db1664394a70a0de6a2caf, type: 3}
+    - {fileID: 8300000, guid: cbb858701bb95e1428e375ffc5160088, type: 3}
+    - {fileID: 8300000, guid: 5e1b3c2cee9ee0c4ab8d68d02620ab36, type: 3}
+    - {fileID: 8300000, guid: 820c7d2e158effb4f8b9ca9997181db6, type: 3}
+    - {fileID: 8300000, guid: ef9483338d4f2f4448da46c593ae260f, type: 3}
+    volume: 0.75
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    minimunDistance: 1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  attack:
+    name: 
+    allSounds:
+    - {fileID: 8300000, guid: 206e20263f8fb8a439fab9c1d38f420b, type: 3}
+    - {fileID: 8300000, guid: c8873493c359bba4db2baaa5b2965cb1, type: 3}
+    - {fileID: 8300000, guid: e9642ea6907949d47a0fb165fb5679f2, type: 3}
+    volume: 0.75
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.28
+    minimunDistance: 1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  hit:
+    name: 
+    allSounds:
+    - {fileID: 8300000, guid: 2cf1906bf1fea5c478b31ac082ea89fe, type: 3}
+    - {fileID: 8300000, guid: b5e7d46cf4b6ffc409bc159e587fe564, type: 3}
+    volume: 0.75
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    minimunDistance: 1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  death:
+    name: 
+    allSounds:
+    - {fileID: 8300000, guid: dfc5265aaabbe4a43b1652dcc9f3ac67, type: 3}
+    - {fileID: 8300000, guid: eccf2ca8348997c4a877196b582ced98, type: 3}
+    volume: 0.75
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    minimunDistance: 1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}

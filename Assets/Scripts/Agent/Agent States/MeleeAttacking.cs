@@ -56,6 +56,7 @@ public class MeleeAttacking : AgentState
     {
         isCurrentState = false;
         anim.SetInteger(animVariantHash, -1);
+        audio.Stop();
         primary?.ExitDamageState();
         secondary?.ExitDamageState();
         timer = 0;
@@ -68,6 +69,13 @@ public class MeleeAttacking : AgentState
         animationFinished = false;
         int variant = UnityEngine.Random.Range(0, animVariantNumber);
         anim.SetInteger(animVariantHash, variant);
+        if (self.agentSounds)
+        {
+            audio.clip = self.agentSounds.attack.GetRandomAudioClip();
+            audio.loop = false;
+            audio.Play();
+        }
+
         self.SetHorizontalVelocity(self.Velocity * .2f);
         // have weapons enter damage state
         if (weapons.primarySlot.CurrentlyEquipped?.GetType() == typeof(MeleeWeapon))

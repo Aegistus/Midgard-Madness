@@ -30,6 +30,10 @@ public class SoundGroup
 
 	public AudioClip GetRandomAudioClip()
     {
+		if (allSounds.Length == 0)
+        {
+			return null;
+        }
 		return allSounds[Random.Range(0, allSounds.Length)];
     }
 }
