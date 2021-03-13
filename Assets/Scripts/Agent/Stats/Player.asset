@@ -21,7 +21,7 @@ MonoBehaviour:
   jumpCost: 10
   rollCost: 20
   maxVigor: 50
-  vigorRegenRate: 5
+  vigorRegenRate: 10
   vigorRegenDelay: 2
   meleeAttackCost: 10
   momentumAttackCost: 25
