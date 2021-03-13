@@ -29,6 +29,6 @@ public class PlayerHealthUI : MonoBehaviour
 
     private void Update()
     {
-        healthBar.localScale = new Vector3(player.CurrentHealth / 100f, 1, 1);
+        healthBar.localScale = new Vector3(player.CurrentHealth / player.MaxHealth, 1, 1);
     }
 }

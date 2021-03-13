@@ -16,6 +16,6 @@ public class HealthBarUI : MonoBehaviour
 
     private void Update()
     {
-        healthBar.localScale = new Vector3(agent.CurrentHealth / 100f, 1, 1);
+        healthBar.localScale = new Vector3(agent.CurrentHealth / agent.MaxHealth, 1, 1);
     }
 }
