@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d17a920e5e10e4092364ef68d9caee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSensitivity: 400
-  ySensitivity: 400
+  xSensitivity: 300
+  ySensitivity: 300
   yMin: -2
   yMax: 2.5
   lookTarget: {fileID: 4828917952222175164}
@@ -877,7 +877,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6801081108730357173
 Transform:
   m_ObjectHideFlags: 0
@@ -1645,7 +1645,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6801081108730458795
 Transform:
   m_ObjectHideFlags: 0

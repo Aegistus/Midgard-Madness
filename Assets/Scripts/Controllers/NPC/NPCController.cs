@@ -42,7 +42,7 @@ public class NPCController : AgentController
 
     public void SetDestination(Vector3 position, bool running)
     {
-        navAgent.SetDestination(position);
+        navAgent?.SetDestination(position);
         Forwards = true;
         if (running)
         {
