@@ -88,7 +88,7 @@ MonoBehaviour:
   tickInterval: 0.1
   wanderDiameter: 10
   wanderWaitTime: 5
-  attackRadius: 6
+  attackRadius: 7
 --- !u!114 &5432033745861858049
 MonoBehaviour:
   m_ObjectHideFlags: 0
