@@ -9,6 +9,7 @@ public class AgentHealth : MonoBehaviour
     public float MaxHealth => stats.maxHealth;
 
     public event Action OnAgentDeath;
+    public event Action OnAgentTakeDamage;
 
     public bool IsDead { get; private set; } = false;
     public bool TookDamage { get; private set; } = false;
@@ -30,6 +31,7 @@ public class AgentHealth : MonoBehaviour
         currentHealth -= damage;
         agent.SetHorizontalVelocity((transform.position - origin) * force);
         AudioManager.instance.PlaySoundAtPosition("Taking Damage", transform.position);
+        OnAgentTakeDamage?.Invoke();
         if (currentHealth <= 0)
         {
             currentHealth = 0;

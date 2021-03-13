@@ -28,7 +28,8 @@ public class Dying : AgentState
             navAgent.enabled = false;
         }
         charController.enabled = false;
-        gameObject.GetComponentInChildren<HealthBarUI>().gameObject.SetActive(false);
+        gameObject.GetComponentInChildren<HealthBarUI>()?.gameObject.SetActive(false);
+        gameObject.GetComponentInChildren<HealthBarUI>()?.gameObject.SetActive(false);
         Collider[] colliders = gameObject.GetComponentsInChildren<Collider>();
         foreach (var collider in colliders)
         {

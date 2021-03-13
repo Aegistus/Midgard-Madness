@@ -531,6 +531,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12a3fe04421beea4bacd9b9472cae524, type: 3}
+--- !u!1001 &834253175
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6977930941514205864, guid: e830a77845cf71a4c81dbf01990fb137, type: 3}
+      propertyPath: m_Name
+      value: Viking NPC
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977930941514205865, guid: e830a77845cf71a4c81dbf01990fb137, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -24.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977930941514205865, guid: e830a77845cf71a4c81dbf01990fb137, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977930941514205865, guid: e830a77845cf71a4c81dbf01990fb137, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 20.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977930941514205865, guid: e830a77845cf71a4c81dbf01990fb137, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977930941514205865, guid: e830a77845cf71a4c81dbf01990fb137, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977930941514205865, guid: e830a77845cf71a4c81dbf01990fb137, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977930941514205865, guid: e830a77845cf71a4c81dbf01990fb137, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977930941514205865, guid: e830a77845cf71a4c81dbf01990fb137, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977930941514205865, guid: e830a77845cf71a4c81dbf01990fb137, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977930941514205865, guid: e830a77845cf71a4c81dbf01990fb137, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977930941514205865, guid: e830a77845cf71a4c81dbf01990fb137, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e830a77845cf71a4c81dbf01990fb137, type: 3}
 --- !u!1001 &872730734
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -541,6 +598,10 @@ PrefabInstance:
     - target: {fileID: 6636826674764402802, guid: 04d9f5c7974316d4ba515bbd70b10873, type: 3}
       propertyPath: m_Name
       value: Skeleton NPC (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6636826674764402802, guid: 04d9f5c7974316d4ba515bbd70b10873, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6636826674764402803, guid: 04d9f5c7974316d4ba515bbd70b10873, type: 3}
       propertyPath: m_LocalPosition.x
@@ -812,6 +873,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton NPC
       objectReference: {fileID: 0}
+    - target: {fileID: 6636826674764402802, guid: 04d9f5c7974316d4ba515bbd70b10873, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6636826674764402803, guid: 04d9f5c7974316d4ba515bbd70b10873, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17.02
@@ -868,6 +933,10 @@ PrefabInstance:
     - target: {fileID: 6636826674764402802, guid: 04d9f5c7974316d4ba515bbd70b10873, type: 3}
       propertyPath: m_Name
       value: Skeleton NPC (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6636826674764402802, guid: 04d9f5c7974316d4ba515bbd70b10873, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6636826674764402803, guid: 04d9f5c7974316d4ba515bbd70b10873, type: 3}
       propertyPath: m_LocalPosition.x
