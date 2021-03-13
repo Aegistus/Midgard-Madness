@@ -13,6 +13,7 @@ public class Blocking : AgentState
         transitionsTo.Add(new Transition(typeof(BlockingCooldown), Not(Block)));
         transitionsTo.Add(new Transition(typeof(BlockingCooldown), Not(ShieldEquipped), () => timer >= blockTime));
         transitionsTo.Add(new Transition(typeof(Idling), () => vigor.CurrentVigor < agentStats.blockCost));
+        transitionsTo.Add(new Transition(typeof(Rolling), Block, Jump, Move));
     }
 
     public override void AfterExecution()
