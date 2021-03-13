@@ -38,6 +38,15 @@ public class Running : OnGroundState
         {
             navAgent.speed = agentStats.runSpeed;
         }
+        animEvents.OnAnimationEvent += FootstepEvent;
+    }
+
+    private void FootstepEvent(EventType obj)
+    {
+        if (obj == EventType.Footstep)
+        {
+            audioManager.PlaySoundAtPosition(self.agentSounds.footsteps, transform.position);
+        }
     }
 
     Vector3 inputVelocity;

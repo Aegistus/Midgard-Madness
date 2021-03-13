@@ -80,6 +80,26 @@ public class AudioManager : MonoBehaviour
 		positionalSources.Enqueue(source);
 	}
 
+	public void PlaySoundAtPosition(AudioClip sound, Vector3 position)
+    {
+		AudioSource source = positionalSources.Dequeue();
+		source.pitch = 1;
+		source.transform.position = position;
+		source.clip = sound;
+		source.Play();
+		positionalSources.Enqueue(source);
+	}
+
+	public void PlaySoundAtPosition(SoundGroup sound, Vector3 position)
+    {
+		AudioSource source = positionalSources.Dequeue();
+		source.pitch = 1;
+		source.transform.position = position;
+		source.clip = sound.GetRandomAudioClip();
+		source.Play();
+		positionalSources.Enqueue(source);
+	}
+
 	public void StopPlaying(string soundName)
 	{
 		SoundGroup sound = Array.Find(soundGroups, item => item.name == soundName);

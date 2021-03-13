@@ -5,7 +5,7 @@ using System;
 
 public enum EventType
 {
-    Start, Finish, WeaponSound, DamageStart, DamageEnd
+    Start, Finish, WeaponSound, DamageStart, DamageEnd, Footstep
 }
 
 public class AgentAnimEvents : MonoBehaviour

@@ -24,6 +24,7 @@ public class Walking : OnGroundState
         anim.SetBool(animationHash, false);
         audio.Stop();
         audio.loop = false;
+        animEvents.OnAnimationEvent -= FootstepEvent;
     }
 
     public override void BeforeExecution()
@@ -39,6 +40,15 @@ public class Walking : OnGroundState
         if (navAgent != null)
         {
             navAgent.speed = MoveSpeed;
+        }
+        animEvents.OnAnimationEvent += FootstepEvent;
+    }
+
+    private void FootstepEvent(EventType obj)
+    {
+        if (obj == EventType.Footstep)
+        {
+            audioManager.PlaySoundAtPosition(self.agentSounds.footsteps, transform.position);
         }
     }
 
