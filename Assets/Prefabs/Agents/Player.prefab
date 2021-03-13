@@ -248,7 +248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agentStats: {fileID: 11400000, guid: b8bce07506ce9144588b8f1c2a969b62, type: 2}
-  agentSounds: {fileID: 0}
+  agentSounds: {fileID: 11400000, guid: 0467ffa7dfd53f248b124f286722688d, type: 2}
   groundLayer:
     serializedVersion: 2
     m_Bits: 256

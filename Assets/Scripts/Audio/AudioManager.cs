@@ -93,7 +93,8 @@ public class AudioManager : MonoBehaviour
 	public void PlaySoundAtPosition(SoundGroup sound, Vector3 position)
     {
 		AudioSource source = positionalSources.Dequeue();
-		source.pitch = 1;
+		source.pitch = sound.pitch;
+		source.volume = sound.volume;
 		source.transform.position = position;
 		source.clip = sound.GetRandomAudioClip();
 		source.Play();

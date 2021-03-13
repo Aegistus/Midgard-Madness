@@ -46,7 +46,7 @@ public class Walking : OnGroundState
 
     private void FootstepEvent(EventType obj)
     {
-        if (obj == EventType.Footstep)
+        if (obj == EventType.Footstep && self.agentSounds != null)
         {
             audioManager.PlaySoundAtPosition(self.agentSounds.footsteps, transform.position);
         }
