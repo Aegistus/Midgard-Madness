@@ -39,6 +39,15 @@ public class AgentHealth : MonoBehaviour
         }
     }
 
+    public void Heal(float amount)
+    {
+        currentHealth += amount;
+        if (currentHealth > MaxHealth)
+        {
+            currentHealth = MaxHealth;
+        }
+    }
+
     public void Kill()
     {
         IsDead = true;
@@ -57,5 +66,9 @@ public class AgentHealth : MonoBehaviour
             TookDamage = false;
         }
         lastHealth = currentHealth;
+        if (!TookDamage && !IsDead)
+        {
+            Heal(stats.healthRegenRate * Time.deltaTime);
+        }
     }
 }
