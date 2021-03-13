@@ -16,3 +16,4 @@ MonoBehaviour:
   damage: 10
   attackSpeed: 1
   weaponAnimationSet: {fileID: 22100000, guid: 7f2792d1dcb771241907ced9ce750c8f, type: 2}
+  knockbackForce: 1

@@ -364,6 +364,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4828917950998017881, guid: 30b3028583673d04d9a7d7da078b9454, type: 3}
+      propertyPath: ySensitivity
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828917950998017881, guid: 30b3028583673d04d9a7d7da078b9454, type: 3}
+      propertyPath: xSensitivity
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 4828917951006747454, guid: 30b3028583673d04d9a7d7da078b9454, type: 3}
       propertyPath: m_Name
       value: Player

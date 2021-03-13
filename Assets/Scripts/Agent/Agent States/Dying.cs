@@ -20,12 +20,23 @@ public class Dying : AgentState
 
     public override void BeforeExecution()
     {
+        self.SetHorizontalVelocity(Vector3.zero);
         animation = Random.Range(0, animationVariantsTotal);
         anim.SetInteger(animationHash, animation);
+        if(navAgent)
+        {
+            navAgent.enabled = false;
+        }
+        charController.enabled = false;
+        gameObject.GetComponentInChildren<HealthBarUI>().gameObject.SetActive(false);
+        Collider[] colliders = gameObject.GetComponentsInChildren<Collider>();
+        foreach (var collider in colliders)
+        {
+            collider.enabled = false;
+        }
     }
 
     public override void DuringExecution()
     {
-        self.SetHorizontalVelocity(Vector3.zero);
     }
 }
