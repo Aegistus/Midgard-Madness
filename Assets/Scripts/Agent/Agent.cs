@@ -71,7 +71,7 @@ public class Agent : MonoBehaviour
 
     public bool IsGrounded()
     {
-        if (Physics.BoxCast(transform.position, Vector3.one / 15, Vector3.down, transform.rotation, .5f, groundLayer))
+        if (Physics.BoxCast(transform.position, Vector3.one / 20, Vector3.down, transform.rotation, .75f, groundLayer))
         {
             return true;
         }
