@@ -8,7 +8,7 @@ public class AIFighting : NPCState
 
     public AIFighting(GameObject gameObject) : base(gameObject)
     {
-        Func<bool> NotAttacking = Not(() => agent.CurrentState.GetType() != typeof(MeleeAttacking));
+        Func<bool> NotAttacking = Not(() => agent.CurrentState.GetType() != typeof(MeleeAttacking) && agent.CurrentState.GetType() != typeof(RangedAttacking));
         transitionsTo.Add(new Transition(typeof(AISearching), NotAttacking, Not(PlayerInSight)));
         transitionsTo.Add(new Transition(typeof(AIChasing), NotAttacking, PlayerInSight, Not(() => controller.NearTarget(controller.attackRadius))));
     }

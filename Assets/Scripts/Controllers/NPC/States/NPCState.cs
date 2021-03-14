@@ -8,16 +8,14 @@ public abstract class NPCState : State
 {
     protected SelectorNode rootNode;
     protected NPCController controller;
-    protected FieldOfView fov;
     protected Agent agent;
     protected AgentWeapons weapons;
 
-    public Func<bool> PlayerInSight => () => fov.visibleTargets.Count > 0;
+    public Func<bool> PlayerInSight => () => controller.Target != null;
 
     protected NPCState(GameObject gameObject) : base(gameObject)
     {
         controller = gameObject.GetComponent<NPCController>();
-        fov = gameObject.GetComponent<FieldOfView>();
         agent = gameObject.GetComponent<Agent>();
         weapons = gameObject.GetComponent<AgentWeapons>();
         CreateTree();

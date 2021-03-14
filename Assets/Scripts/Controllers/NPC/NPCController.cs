@@ -17,6 +17,7 @@ public class NPCController : AgentController
     private Agent agent;
     private AgentWeapons weapons;
     private NavMeshAgent navAgent;
+    private FieldOfView fov;
     public Transform Target { get; set; }
     public Vector3 Destination => navAgent.destination;
 
@@ -28,6 +29,7 @@ public class NPCController : AgentController
         agent = GetComponent<Agent>();
         weapons = GetComponent<AgentWeapons>();
         navAgent = GetComponent<NavMeshAgent>();
+        fov = GetComponent<FieldOfView>();
         Dictionary<Type, State> states = new Dictionary<Type, State>()
         {
             {typeof(AIWandering), new AIWandering(gameObject) },
@@ -39,6 +41,18 @@ public class NPCController : AgentController
         AIStateMachine = new StateMachine();
         AIStateMachine.SetStates(states, typeof(AIWandering));
         StartCoroutine(RunAIStateMachine());
+    }
+
+    private void Update()
+    {
+        if (fov.visibleTargets.Count > 0)
+        {
+            Target = fov.visibleTargets[0];
+        }
+        else
+        {
+            Target = null;
+        }
     }
 
     public void SetDestination(Vector3 position, bool running)
@@ -109,7 +123,6 @@ public class NPCController : AgentController
 
     public void LookAt(Transform target)
     {
-        print("looking");
         agent.lookDirection.LookAt(target);
     }
 

@@ -19,10 +19,6 @@ public class AIChasing : NPCState
     public override void BeforeExecution()
     {
         Debug.Log("NPC Chasing");
-        if (fov.visibleTargets.Count > 0)
-        {
-            controller.Target = fov.visibleTargets[0];
-        }
         controller.SetDestination(transform.position, true);
     }
 

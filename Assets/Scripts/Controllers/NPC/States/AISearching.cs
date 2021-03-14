@@ -22,13 +22,13 @@ public class AISearching : NPCState
     public override void BeforeExecution()
     {
         Debug.Log("NPC Searching");
-        controller.SetDestination(controller.Target.position, false);
-        controller.Target = null;
+        controller.SetDestination(transform.forward * 10, false);
     }
 
     public override void DuringExecution()
     {
         base.DuringExecution();
+        controller.MoveToDestination(false);
         timer += Time.deltaTime;
     }
 
