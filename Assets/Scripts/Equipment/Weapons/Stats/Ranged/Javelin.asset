@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0427fe8126008c46966dcfd1efd83fa, type: 3}
   m_Name: Javelin
   m_EditorClassIdentifier: 
-  stance: 0
+  stance: 2
   damage: 0
-  attackSpeed: 0
-  weaponAnimationSet: {fileID: 0}
-  projectile: {fileID: 0}
+  attackSpeed: 1
+  weaponAnimationSet: {fileID: 22100000, guid: 238db5fe2e5770b47886c3f5cd3e8d1e, type: 2}
+  projectile: {fileID: 6949956660515334160, guid: fab9579a11e65be4eb33ade5d879bc83, type: 3}

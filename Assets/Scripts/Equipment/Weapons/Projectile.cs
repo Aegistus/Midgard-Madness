@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 public class Projectile : MonoBehaviour
 {
-    public float speed = 1f;
+    public float force = 1f;
     public float damage = 10f;
     public float damageModifier = 1f;
     public float knockbackForce = 1f;
@@ -19,11 +19,7 @@ public class Projectile : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         AudioManager.instance.PlaySoundAtPosition(startSoundName, transform.position);
-    }
-
-    private void Update()
-    {
-        rb.AddForce(transform.forward * speed);
+        rb.AddForce(transform.forward * force);
     }
 
     private void OnTriggerEnter(Collider other)

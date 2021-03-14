@@ -89,6 +89,7 @@ MonoBehaviour:
   wanderDiameter: 10
   wanderWaitTime: 5
   attackRadius: 3
+  attackWaitTime: 2
 --- !u!114 &3115956831990735394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1303,7 +1304,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
