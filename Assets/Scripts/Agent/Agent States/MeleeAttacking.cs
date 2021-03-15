@@ -13,6 +13,7 @@ public class MeleeAttacking : AgentState
     private bool animationFinished = false;
     private float timer = 0;
     private float canAttackAgainTime = .75f;
+    private float MoveSpeed => agentStats.walkSpeed * .5f;
 
     public MeleeAttacking(GameObject gameObject) : base(gameObject)
     {
@@ -99,9 +100,16 @@ public class MeleeAttacking : AgentState
         vigor.DepleteVigor(agentStats.meleeAttackCost);
     }
 
+    Vector3 inputVelocity;
     public override void DuringExecution()
     {
         self.RotateAgentModelToDirection(self.lookDirection.forward);
         timer += Time.deltaTime;
+        if (navAgent == null)
+        {
+            inputVelocity = GetAgentMovementInput();
+            self.SetHorizontalVelocity(inputVelocity * MoveSpeed);
+            self.RotateAgentModelToDirection(inputVelocity);
+        }
     }
 }
