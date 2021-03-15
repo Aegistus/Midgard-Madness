@@ -21,6 +21,7 @@ public class Running : OnGroundState
     public override void AfterExecution()
     {
         anim.SetBool(animationHash, false);
+        animEvents.OnAnimationEvent -= FootstepEvent;
         audio.Stop();
     }
 

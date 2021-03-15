@@ -40,6 +40,7 @@ public class AudioManager : MonoBehaviour
 			AudioSource newPositional = new GameObject().AddComponent<AudioSource>();
 			newPositional.transform.parent = positionalSourceParent;
 			newPositional.spatialBlend = 1;
+			newPositional.maxDistance = 15;
 			positionalSources.Enqueue(newPositional);
         }
 	}
