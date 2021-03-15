@@ -26,6 +26,7 @@ public class AIChasing : NPCState
     {
         InverterNode notNearTarget = new InverterNode(new ConditionNode(() => Node.ConvertToState(controller.NearTarget(controller.attackRadius - 1))));
         ActionNode setTarget = new ActionNode(() => controller.SetDestination(controller.Target.position, true));
+        ConditionNode hasTarget = new ConditionNode(() => Node.ConvertToState(controller.Target != null));
         ActionNode moveToTarget = new ActionNode(() => controller.MoveToDestination(true));
         SequenceNode chaseSequence = new SequenceNode(new List<Node>() { setTarget, moveToTarget });
 

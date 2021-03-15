@@ -50,7 +50,7 @@ GameObject:
   - component: {fileID: 5988456728716938570}
   - component: {fileID: 7152170009587605269}
   m_Layer: 0
-  m_Name: Warrior NPC
+  m_Name: Viking Warrior NPC
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,6 +86,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tickInterval: 0.1
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 1024
   wanderDiameter: 10
   wanderWaitTime: 5
   attackRadius: 3

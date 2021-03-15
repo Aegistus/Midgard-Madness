@@ -86,9 +86,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tickInterval: 0.1
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 1024
   wanderDiameter: 10
   wanderWaitTime: 5
   attackRadius: 7
+  attackWaitTime: 2
 --- !u!114 &5432033745861858049
 MonoBehaviour:
   m_ObjectHideFlags: 0

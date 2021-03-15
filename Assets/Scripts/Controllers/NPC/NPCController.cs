@@ -8,6 +8,7 @@ using Random = UnityEngine.Random;
 public class NPCController : AgentController
 {
     public float tickInterval = .1f;
+    public LayerMask playerLayer;
 
     public float wanderDiameter = 5f;
     public float wanderWaitTime = 5f;
@@ -18,7 +19,8 @@ public class NPCController : AgentController
     private AgentWeapons weapons;
     private NavMeshAgent navAgent;
     private FieldOfView fov;
-    public Transform Target { get; set; }
+    public Transform Target { get; private set; }
+    public Vector3 TargetLastPosition { get; private set; }
     public Vector3 Destination => navAgent.destination;
 
     public StateMachine AIStateMachine { get; private set; }
@@ -43,15 +45,24 @@ public class NPCController : AgentController
         StartCoroutine(RunAIStateMachine());
     }
 
+    RaycastHit rayHit;
     private void Update()
     {
         if (fov.visibleTargets.Count > 0)
         {
             Target = fov.visibleTargets[0];
         }
+        else if (Physics.SphereCast(transform.position, 3f, Vector3.one, out rayHit, 1, playerLayer))
+        {
+            Target = rayHit.transform;
+        }
         else
         {
             Target = null;
+        }
+        if (Target != null)
+        {
+            TargetLastPosition = Target.position;
         }
     }
 

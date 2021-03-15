@@ -22,7 +22,7 @@ public class AISearching : NPCState
     public override void BeforeExecution()
     {
         Debug.Log("NPC Searching");
-        controller.SetDestination(transform.forward * 10, false);
+        controller.SetDestination(controller.TargetLastPosition, false);
     }
 
     public override void DuringExecution()
