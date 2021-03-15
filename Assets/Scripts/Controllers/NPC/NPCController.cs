@@ -123,13 +123,20 @@ public class NPCController : AgentController
         weapons.UnEquipAll();
     }
 
-    public NodeState AttackEnemy()
+    public void AttackEnemy()
     {
         if (Attack != true)
         {
             Attack = true;
         }
-        return NodeState.SUCCESS;
+    }
+
+    public void BlockAttack()
+    {
+        if (Block != true)
+        {
+            Block = true;
+        }
     }
 
     public void LookAt(Transform target)

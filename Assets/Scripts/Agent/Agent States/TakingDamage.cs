@@ -5,7 +5,7 @@ using UnityEngine;
 public class TakingDamage : AgentState
 {
     float timer = 0;
-    float maxTimer = 1f;
+    float maxTimer = .5f;
 
     public TakingDamage(GameObject gameObject) : base(gameObject)
     {

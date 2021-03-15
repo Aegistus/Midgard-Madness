@@ -19,6 +19,7 @@ public class AgentWeapons : MonoBehaviour
     private void Start()
     {
         anim = GetComponentInChildren<Animator>();
+        anim.runtimeAnimatorController = unarmedController;
         CarriedWeapons = GetComponentsInChildren<Weapon>().ToList();
         foreach (var weapon in CarriedWeapons)
         {

@@ -23,6 +23,7 @@ public class Jumping : AgentState
         Debug.Log("Jumping");
         anim.SetBool(animationHash, true);
         startingVelocity = self.Velocity;
+        self.SetVerticalVelocity(0);
         self.AddVerticalVelocity(JumpForce);
         stamina.DepleteStamina(agentStats.jumpCost);
     }

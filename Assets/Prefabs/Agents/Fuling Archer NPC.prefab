@@ -96,7 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   primarySlot: {fileID: 5684981956973966562}
   secondarySlot: {fileID: 7543426120793411416}
-  unarmedController: {fileID: 9100000, guid: 66ef409bd95faa6498ecfeb9535fbbb6, type: 2}
+  unarmedController: {fileID: 22100000, guid: 5cdbaabffad45384d9b07297e0f86b77, type: 2}
 --- !u!114 &9193430575652675079
 MonoBehaviour:
   m_ObjectHideFlags: 0

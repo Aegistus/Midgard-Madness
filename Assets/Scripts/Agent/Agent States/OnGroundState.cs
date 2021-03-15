@@ -15,7 +15,7 @@ public abstract class OnGroundState : AgentState
 
     protected void KeepGrounded()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, out rayHit, .75f, groundLayer) && Not(Jump)())
+        if (OnGround() && Not(Jump)())
         {
             self.SetVerticalVelocity(-10f);
         }

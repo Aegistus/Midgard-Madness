@@ -18,7 +18,7 @@ MonoBehaviour:
   staminaRegenRate: 15
   staminaRegenDelay: 2
   runCost: 5
-  jumpCost: 10
+  jumpCost: 5
   rollCost: 20
   maxVigor: 100
   vigorRegenRate: 15
