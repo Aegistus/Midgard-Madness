@@ -41,7 +41,7 @@ public class AIFighting : NPCState
         //SequenceNode momentumAttackSequence = new SequenceNode(new List<Node> { isRunning, momentumAttack });
 
         ActionNode attackTarget = new ActionNode(() => controller.AttackEnemy());
-        WaitNode delay = new WaitNode(attackTarget, controller.attackWaitTime);
+        WaitNode delay = new WaitNode(attackTarget, UnityEngine.Random.value * controller.attackWaitTime);
         SequenceNode attackSequence = new SequenceNode(new List<Node>() { delay, attackTarget });
 
         rootNode = new SelectorNode(new List<Node>() { attackSequence });

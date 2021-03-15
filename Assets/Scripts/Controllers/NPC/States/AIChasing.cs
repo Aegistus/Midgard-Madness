@@ -28,7 +28,7 @@ public class AIChasing : NPCState
         ActionNode setTarget = new ActionNode(() => controller.SetDestination(controller.Target.position, true));
         ConditionNode hasTarget = new ConditionNode(() => Node.ConvertToState(controller.Target != null));
         ActionNode moveToTarget = new ActionNode(() => controller.MoveToDestination(true));
-        SequenceNode chaseSequence = new SequenceNode(new List<Node>() { setTarget, moveToTarget });
+        SequenceNode chaseSequence = new SequenceNode(new List<Node>() { hasTarget, setTarget, moveToTarget });
 
         rootNode = new SelectorNode(new List<Node>() { chaseSequence });
     }
