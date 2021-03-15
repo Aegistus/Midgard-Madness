@@ -874,7 +874,7 @@ GameObject:
   - component: {fileID: 6801081108730357173}
   - component: {fileID: 6801081108733184723}
   m_Layer: 10
-  m_Name: Character_Shieldmadien
+  m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -938,7 +938,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300036, guid: a177b0e6ff26a894180468c168e802cc, type: 3}
+  m_Mesh: {fileID: 4300020, guid: fd7d68a65822e4a44a9ef78850e64cfc, type: 3}
   m_Bones:
   - {fileID: 6801081108730450365}
   - {fileID: 6801081108730381205}
