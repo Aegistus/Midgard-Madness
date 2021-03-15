@@ -7,5 +7,6 @@ public abstract class WeaponStats : ScriptableObject
     public WeaponStance stance;
     public float damage;
     public float attackSpeed;
+    public float movementMultiplier = 1f;
     public AnimatorOverrideController weaponAnimationSet;
 }

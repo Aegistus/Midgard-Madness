@@ -15,5 +15,6 @@ MonoBehaviour:
   stance: 0
   damage: 10
   attackSpeed: 1
+  movementMultiplier: 1.5
   weaponAnimationSet: {fileID: 0}
   knockbackForce: 1

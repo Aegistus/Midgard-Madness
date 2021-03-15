@@ -14,6 +14,7 @@ public class AgentWeapons : MonoBehaviour
     public WeaponStance CurrentStance { get; private set; }
 
     private Animator anim;
+    private int moveSpeedHash = Animator.StringToHash("MoveSpeed");
 
     private void Start()
     {
@@ -89,11 +90,17 @@ public class AgentWeapons : MonoBehaviour
         {
             CurrentStance = primarySlot.CurrentlyEquipped.stats.stance;
             animController = primarySlot.CurrentlyEquipped.stats.weaponAnimationSet;
+            anim.SetFloat(moveSpeedHash, primarySlot.CurrentlyEquipped.stats.movementMultiplier);
         }
         else if (secondarySlot.CurrentlyEquipped != null)
         {
             CurrentStance = secondarySlot.CurrentlyEquipped.stats.stance;
             animController = secondarySlot.CurrentlyEquipped.stats.weaponAnimationSet;
+            anim.SetFloat(moveSpeedHash, secondarySlot.CurrentlyEquipped.stats.movementMultiplier);
+        }
+        else
+        {
+            anim.SetFloat(moveSpeedHash, 1);
         }
         // set animation controller to the weapon's controller
         if (animController != null)
@@ -104,5 +111,6 @@ public class AgentWeapons : MonoBehaviour
         {
             anim.runtimeAnimatorController = unarmedController;
         }
+
     }
 }
