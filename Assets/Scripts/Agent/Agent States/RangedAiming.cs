@@ -5,10 +5,12 @@ using UnityEngine;
 public class RangedAiming : AgentState
 {
     //private Vector3 cameraShift = new Vector3(1.15f, 0, -1.5f);
+    private float timer = 0f;
+    private float maxTimer = .75f;
 
     public RangedAiming(GameObject gameObject) : base(gameObject)
     {
-        transitionsTo.Add(new Transition(typeof(RangedAttacking), RangedEquipped, Not(Attack)));
+        transitionsTo.Add(new Transition(typeof(RangedAttacking), RangedEquipped, Not(Attack), () => timer >= maxTimer));
         transitionsTo.Add(new Transition(typeof(Idling), () => vigor.CurrentVigor < agentStats.rangedAimCost));
         animationHash = Animator.StringToHash("RangedAim");
         animEvents.OnAnimationEvent += CheckAnimationEvents;
@@ -42,6 +44,7 @@ public class RangedAiming : AgentState
         isCurrentState = true;
         anim.SetBool(animationHash, true);
         self.SetHorizontalVelocity(Vector3.zero);
+        timer = 0;
         //if (controller.GetType() == typeof(PlayerController))
         //{
         //    PlayerController player = (PlayerController)controller;
@@ -53,5 +56,6 @@ public class RangedAiming : AgentState
     {
         self.RotateAgentModelToDirection(self.lookDirection.forward);
         vigor.DepleteVigor(agentStats.rangedAimCost * Time.deltaTime);
+        timer += Time.deltaTime;
     }
 }
