@@ -14,6 +14,7 @@ public class Projectile : MonoBehaviour
     public string impactSoundName = "Projectile Impact";
 
     private Rigidbody rb;
+    private List<AgentHealth> hitHealths = new List<AgentHealth>();
 
     private void Start()
     {
@@ -30,7 +31,11 @@ public class Projectile : MonoBehaviour
         {
             if (agent.CurrentState.GetType() != typeof(Blocking))
             {
-                health.Damage(damage * damageModifier, transform.position, knockbackForce);
+                if (!hitHealths.Contains(health))
+                {
+                    health.Damage(damage * damageModifier, transform.position, knockbackForce);
+                    hitHealths.Add(health);
+                }
             }
             else
             {
