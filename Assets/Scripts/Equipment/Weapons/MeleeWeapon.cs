@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class MeleeWeapon : Weapon
 {
     public Collider blade;
@@ -49,12 +50,12 @@ public class MeleeWeapon : Weapon
         {
             AgentHealth health = other.GetComponentInParent<AgentHealth>();
             Agent agent = other.GetComponentInParent<Agent>();
-            if (agent != null)
+            if (agent != null && health != null)
             {
                 if (agent.CurrentState.GetType() != typeof(Blocking))
                 {
-                    // check to make sure not hitting self or multi-hitting one agent
-                    if (health != null && !hitAgents.Contains(health) && !transform.IsChildOf(health.transform))
+                    // check to make sure not hitting self, multi-hitting one agent, or hitting someone with the same tag
+                    if (!hitAgents.Contains(health) && !transform.IsChildOf(health.transform) && !transform.root.CompareTag(health.tag))
                     {
                         health.Damage(stats.damage * damageModifier, transform.position, MeleeStats.knockbackForce);
                         hitAgents.Add(health);
