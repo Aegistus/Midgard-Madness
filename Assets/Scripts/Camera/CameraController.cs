@@ -14,6 +14,14 @@ public class CameraController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        GetComponentInParent<AgentHealth>().OnAgentDeath += DisableCamera;
+    }
+
+    private void DisableCamera()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        enabled = false;
     }
 
     private void Update()
