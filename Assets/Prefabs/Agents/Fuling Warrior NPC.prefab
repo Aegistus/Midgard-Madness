@@ -1156,7 +1156,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5075219479475812136}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -2, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_Children:
   - {fileID: 5075219479475764896}
@@ -3619,6 +3619,8 @@ MonoBehaviour:
     m_Bits: 256
   lookDirection: {fileID: 5334324646104122082}
   agentModel: {fileID: 5075219479475779228}
+  groundCheckRadius: 0.75
+  groundCheckHeight: 0
 --- !u!114 &2186013462298071023
 MonoBehaviour:
   m_ObjectHideFlags: 0

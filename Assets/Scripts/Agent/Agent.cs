@@ -11,11 +11,14 @@ public class Agent : MonoBehaviour
     public LayerMask groundLayer;
     public Transform lookDirection;
     public Transform agentModel;
+    public float groundCheckRadius = .75f;
+    public float groundCheckHeight = 0;
 
     public Vector3 Velocity { get { return velocity; } private set { velocity = value; } }
     private Vector3 velocity;
 
     public AgentState CurrentState => (AgentState)StateMachine.CurrentState;
+    public bool Grounded { get; private set; }
 
     public StateMachine StateMachine { get; private set; }
     private CharacterController charController;
@@ -71,7 +74,7 @@ public class Agent : MonoBehaviour
 
     public bool IsGrounded()
     {
-        if (Physics.BoxCast(transform.position, Vector3.one / 15, Vector3.down, transform.rotation, 1f, groundLayer))
+        if (Physics.CheckSphere(new Vector3(transform.position.x, transform.position.y + groundCheckHeight, transform.position.z), groundCheckRadius, groundLayer))
         {
             return true;
         }
