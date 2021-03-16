@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d368d2497b95054b910e4093e9ee2dc, type: 3}
   m_Name: FrostGiantNPC
   m_EditorClassIdentifier: 
-  maxHealth: 300
+  maxHealth: 500
   healthRegenRate: 4
+  toughness: 20
   maxStamina: 0
   staminaRegenRate: 5
   staminaRegenDelay: 2

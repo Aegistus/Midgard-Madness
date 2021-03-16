@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 1000
-  damage: 50
+  damage: 40
   damageModifier: 1
   knockbackForce: 2
   startSoundName: Arrow Loose
