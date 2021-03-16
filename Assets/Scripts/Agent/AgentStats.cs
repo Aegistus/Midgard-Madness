@@ -8,6 +8,7 @@ public class AgentStats : ScriptableObject
     [Header("Health")]
     public float maxHealth = 100;
     public float healthRegenRate = 2f;
+    public float toughness = 20f; // Damage % needs to be greater than this percent in order to trigger a flinch
 
     [Header("Stamina")]
     public float maxStamina = 50f;

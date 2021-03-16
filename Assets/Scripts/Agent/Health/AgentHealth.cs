@@ -7,12 +7,13 @@ using CodeMonkey.Utils;
 public class AgentHealth : MonoBehaviour
 {
     public float MaxHealth => stats.maxHealth;
+    public float Toughness => stats.toughness;
 
     public event Action OnAgentDeath;
     public event Action OnAgentTakeDamage;
 
     public bool IsDead { get; private set; } = false;
-    public bool TookDamage { get; private set; } = false;
+    public bool TookSignificatDamage { get; private set; } = false;
     public float CurrentHealth { get { return currentHealth; } }
 
     private float currentHealth;
@@ -57,16 +58,16 @@ public class AgentHealth : MonoBehaviour
     float lastHealth;
     private void Update()
     {
-        if (lastHealth > currentHealth)
+        if (lastHealth / MaxHealth > currentHealth / MaxHealth + Toughness / 100)
         {
-            TookDamage = true;
+            TookSignificatDamage = true;
         }
         else
         {
-            TookDamage = false;
+            TookSignificatDamage = false;
         }
         lastHealth = currentHealth;
-        if (!TookDamage && !IsDead)
+        if (!TookSignificatDamage && !IsDead)
         {
             Heal(stats.healthRegenRate * Time.deltaTime);
         }

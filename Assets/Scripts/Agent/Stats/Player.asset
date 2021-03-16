@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d368d2497b95054b910e4093e9ee2dc, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
   healthRegenRate: 2
+  toughness: 20
   maxStamina: 100
   staminaRegenRate: 15
   staminaRegenDelay: 2
