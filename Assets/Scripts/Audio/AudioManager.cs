@@ -95,7 +95,7 @@ public class AudioManager : MonoBehaviour
     {
 		AudioSource source = positionalSources.Dequeue();
 		source.pitch = sound.pitch;
-		//source.volume = sound.volume;
+		source.volume = sound.volume;
 		source.transform.position = position;
 		source.clip = sound.GetRandomAudioClip();
 		source.Play();
