@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class AgentWeapons : MonoBehaviour
 {
@@ -9,8 +10,8 @@ public class AgentWeapons : MonoBehaviour
     public WeaponSlot secondarySlot;
     public RuntimeAnimatorController unarmedController;
 
+    public event Action OnEquippedChange;
     public List<Weapon> CarriedWeapons { get; private set; }
-
     public WeaponStance CurrentStance { get; private set; }
 
     private Animator anim;
@@ -73,6 +74,7 @@ public class AgentWeapons : MonoBehaviour
                 break;
         }
         UpdateWeaponAnimation();
+        OnEquippedChange?.Invoke();
     }
 
     public void EquipWeapon(int numKey)
