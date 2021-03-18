@@ -24,6 +24,10 @@ public class EquipUI : MonoBehaviour
         Weapon secondary = playerWeapons.secondarySlot.CurrentlyEquipped;
         int primaryIndex = -1;
         int secondaryIndex = -1;
+        if (playerWeapons == null || playerWeapons.CarriedWeapons == null)
+        {
+            return;
+        }
         for (int i = 0; i < playerWeapons.CarriedWeapons.Count; i++)
         {
             if (playerWeapons.CarriedWeapons[i] == primary)
@@ -46,5 +50,10 @@ public class EquipUI : MonoBehaviour
                 panels[i].color = notEquippedColor;
             }
         }
+    }
+
+    private void OnDestroy()
+    {
+        playerWeapons.OnEquippedChange -= UpdateWeaponEquipState;
     }
 }
