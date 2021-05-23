@@ -33,14 +33,15 @@ public class AgentAnimation : MonoBehaviour
             {typeof(Falling), Animator.StringToHash("Falling") },
             {typeof(Crouching), Animator.StringToHash("Crouching") },
         };
+        agent.StateMachine.OnStateChange += ChangeFullBodyAnimation;
     }
 
-    private void ChangeFullBodyAnimation(Type newState)
+    private void ChangeFullBodyAnimation(State newState)
     {
-        if (fullBodyStates.ContainsKey(newState))
+        if (fullBodyStates.ContainsKey(newState.GetType()))
         {
             anim.speed = 1;
-            anim.CrossFade(fullBodyStates[newState], .05f, fullBodyLayerIndex);
+            anim.CrossFade(fullBodyStates[newState.GetType()], .05f, fullBodyLayerIndex);
         }
         else
         {
