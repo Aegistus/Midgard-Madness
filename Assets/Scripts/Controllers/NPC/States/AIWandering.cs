@@ -25,15 +25,19 @@ public class AIWandering : NPCState
 
     protected override void CreateTree()
     {
-        ActionNode findNewDestination = new ActionNode(() => controller.SetRandomDestination(false));
-        WaitNode waitNode = new WaitNode(findNewDestination, controller.wanderWaitTime);
-        ConditionNode atDestination = new ConditionNode(() => Node.ConvertToState(controller.AtDestination(1)));
-        SequenceNode findNewPointSequence = new SequenceNode(new List<Node>() { atDestination, waitNode, findNewDestination });
-
-        InverterNode notAtDestination = new InverterNode(new ConditionNode(() => Node.ConvertToState(controller.AtDestination(1))));
-        ActionNode walkToDestination = new ActionNode(() => controller.MoveToDestination(false));
-        SequenceNode walkingSequence = new SequenceNode(new List<Node> { notAtDestination, walkToDestination });
-
-        rootNode = new SelectorNode(new List<Node>() { findNewPointSequence, walkToDestination });
+        rootNode = new SelectorNode(new List<Node>()
+        {
+            // find new point sequence
+            new SequenceNode(new List<Node>()
+            {
+                new WaitNode(new ConditionNode(() => Node.ConvertToState(controller.AtDestination(1))), controller.wanderWaitTime),
+                new ActionNode(() => controller.SetRandomDestination(false)),
+            }),
+            // walk to destination sequence
+            new SequenceNode(new List<Node>()
+            {
+                new InverterNode(new ActionNode(() => controller.MoveToDestination(false))),
+            })
+        });
     }
 }

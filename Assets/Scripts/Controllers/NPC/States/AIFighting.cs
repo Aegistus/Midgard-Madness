@@ -40,15 +40,19 @@ public class AIFighting : NPCState
         //ActionNode isRunning = new ActionNode(IsRunning);
         //SequenceNode momentumAttackSequence = new SequenceNode(new List<Node> { isRunning, momentumAttack });
 
-        ActionNode attackTarget = new ActionNode(() => controller.AttackEnemy());
-        WaitNode attackDelay = new WaitNode(attackTarget, UnityEngine.Random.value * controller.attackWaitTime);
-        SequenceNode attackSequence = new SequenceNode(new List<Node>() { attackDelay, attackTarget });
-
-        ActionNode blockAttack = new ActionNode(() => controller.BlockAttack());
-        WaitNode blockDelay = new WaitNode(blockAttack, UnityEngine.Random.value * controller.attackWaitTime);
-        SequenceNode blockSequence = new SequenceNode(new List<Node>() { blockDelay, blockAttack });
-
-        rootNode = new SelectorNode(new List<Node>() { attackSequence, blockSequence });
+        rootNode = new SelectorNode(new List<Node>()
+        {
+            // attack sequence
+            new SequenceNode(new List<Node>()
+            {
+                new WaitNode(new ActionNode(() => controller.AttackEnemy()), UnityEngine.Random.value * controller.attackWaitTime)
+            }),
+            // block sequence
+            new SequenceNode(new List<Node>()
+            {
+                new WaitNode(new ActionNode(() => controller.BlockAttack()), UnityEngine.Random.value * controller.attackWaitTime)
+            }),
+        });
     }
 
 }
