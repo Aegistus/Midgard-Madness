@@ -18,8 +18,6 @@ public class AgentAnimation : MonoBehaviour
 
     Agent agent;
     Animator anim;
-    int upperBodyLayerIndex;
-    MultiDictionary<Type, int> upperBodyStates = new MultiDictionary<Type, int>();
     int fullBodyLayerIndex;
     MultiDictionary<Type, int> fullBodyStates = new MultiDictionary<Type, int>();
 
@@ -35,23 +33,6 @@ public class AgentAnimation : MonoBehaviour
             {typeof(Falling), Animator.StringToHash("Falling") },
             {typeof(Crouching), Animator.StringToHash("Crouching") },
         };
-    }
-
-    private void ChangeUpperBodyAnimation(Type newState)
-    {
-        if (newState == typeof(Idling))
-        {
-            anim.SetLayerWeight(upperBodyLayerIndex, 0);
-        }
-        else if (upperBodyStates.ContainsKey(newState))
-        {
-            anim.SetLayerWeight(upperBodyLayerIndex, 1);
-            anim.CrossFade(upperBodyStates[newState], .05f, upperBodyLayerIndex);
-        }
-        else
-        {
-            Debug.LogWarning("No Upper Body Animation Found For Current Agent State");
-        }
     }
 
     private void ChangeFullBodyAnimation(Type newState)

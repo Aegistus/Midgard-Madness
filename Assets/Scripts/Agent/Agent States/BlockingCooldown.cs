@@ -13,19 +13,17 @@ public class BlockingCooldown : AgentState
         transitionsTo.Add(new Transition(typeof(MeleeAttacking), Attack));
         transitionsTo.Add(new Transition(typeof(Walking), Move));
         transitionsTo.Add(new Transition(typeof(Rolling), Block, Jump, Move));
-        animationHash = Animator.StringToHash("Idling");
     }
 
     public override void AfterExecution()
     {
-        anim.SetBool(animationHash, false);
+
     }
 
     public override void BeforeExecution()
     {
         Debug.Log("Cooldown");
         timer = 0;
-        anim.SetBool(animationHash, true);
     }
 
     public override void DuringExecution()

@@ -12,7 +12,6 @@ public class RangedAiming : AgentState
     {
         transitionsTo.Add(new Transition(typeof(RangedAttacking), RangedEquipped, Not(Attack), () => timer >= maxTimer));
         transitionsTo.Add(new Transition(typeof(Idling), () => vigor.CurrentVigor < agentStats.rangedAimCost));
-        animationHash = Animator.StringToHash("RangedAim");
         animEvents.OnAnimationEvent += CheckAnimationEvents;
     }
 
@@ -30,7 +29,6 @@ public class RangedAiming : AgentState
     public override void AfterExecution()
     {
         isCurrentState = false;
-        anim.SetBool(animationHash, false);
         //if (controller.GetType() == typeof(PlayerController))
         //{
         //    PlayerController player = (PlayerController)controller;
@@ -42,7 +40,6 @@ public class RangedAiming : AgentState
     {
         Debug.Log("Aiming");
         isCurrentState = true;
-        anim.SetBool(animationHash, true);
         self.SetHorizontalVelocity(Vector3.zero);
         timer = 0;
         //if (controller.GetType() == typeof(PlayerController))

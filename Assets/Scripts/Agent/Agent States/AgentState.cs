@@ -6,8 +6,6 @@ using UnityEngine.AI;
 
 public abstract class AgentState : State
 {
-    protected Animator anim;
-    protected int animationHash;
 
     protected LayerMask groundLayer;
     protected Agent self;
@@ -55,7 +53,6 @@ public abstract class AgentState : State
         health = gameObject.GetComponent<AgentHealth>();
         stamina = gameObject.GetComponent<AgentStamina>();
         vigor = gameObject.GetComponent<AgentVigor>();
-        anim = gameObject.GetComponentInChildren<Animator>();
         audioManager = AudioManager.instance;
         poolManager = PoolManager.Instance;
         animEvents = gameObject.GetComponentInChildren<AgentAnimEvents>();

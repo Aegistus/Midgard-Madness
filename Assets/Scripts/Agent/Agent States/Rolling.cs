@@ -17,18 +17,16 @@ public class Rolling : OnGroundState
         transitionsTo.Add(new Transition(typeof(Idling), TimerUp, Not(Move)));
         transitionsTo.Add(new Transition(typeof(Walking), TimerUp, Move, Not(Run)));
         transitionsTo.Add(new Transition(typeof(Running), TimerUp, Move, Run));
-        animationHash = Animator.StringToHash("Rolling");
     }
 
     public override void AfterExecution()
     {
-        anim.SetBool(animationHash, false);
+
     }
 
     public override void BeforeExecution()
     {
         Debug.Log("Rolling");
-        anim.SetBool(animationHash, true);
         timer = 0;
         stamina.DepleteStamina(agentStats.rollCost);
     }

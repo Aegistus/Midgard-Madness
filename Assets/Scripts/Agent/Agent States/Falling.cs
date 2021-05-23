@@ -9,20 +9,18 @@ public class Falling : AgentState
 
     public Falling(GameObject gameObject) : base(gameObject)
     {
-        animationHash = Animator.StringToHash("Falling");
         transitionsTo.Add(new Transition(typeof(Idling), Not(Falling), OnGround));
     }
 
     public override void AfterExecution()
     {
-        anim.SetBool(animationHash, false);
+
     }
 
     public override void BeforeExecution()
     {
         Debug.Log("Falling");
         startingVelocity = self.Velocity;
-        anim.SetBool(animationHash, true);
     }
 
     Vector3 newVelocity;

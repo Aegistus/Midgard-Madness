@@ -8,7 +8,6 @@ public class Walking : OnGroundState
 
     public Walking(GameObject gameObject) : base(gameObject)
     {
-        animationHash = Animator.StringToHash("Walking");
         transitionsTo.Add(new Transition(typeof(Idling), Not(Move)));
         transitionsTo.Add(new Transition(typeof(MeleeAttacking), MeleeEquipped, Attack, () => vigor.CurrentVigor >= agentStats.meleeAttackCost));
         transitionsTo.Add(new Transition(typeof(RangedAiming), RangedEquipped, Attack, () => vigor.CurrentVigor >= agentStats.rangedAimCost));
@@ -21,7 +20,6 @@ public class Walking : OnGroundState
 
     public override void AfterExecution()
     {
-        anim.SetBool(animationHash, false);
         audio.Stop();
         audio.loop = false;
         animEvents.OnAnimationEvent -= FootstepEvent;
@@ -29,7 +27,6 @@ public class Walking : OnGroundState
 
     public override void BeforeExecution()
     {
-        anim.SetBool(animationHash, true);
         if (self.agentSounds)
         {
             audio.clip = self.agentSounds.breathing.GetRandomAudioClip();

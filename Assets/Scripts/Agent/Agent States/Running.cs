@@ -6,7 +6,6 @@ public class Running : OnGroundState
 {
     public Running(GameObject gameObject) : base(gameObject)
     {
-        animationHash = Animator.StringToHash("Running");
         transitionsTo.Add(new Transition(typeof(Walking), Not(Run)));
         transitionsTo.Add(new Transition(typeof(Idling), Not(Move), Not(Run)));
         transitionsTo.Add(new Transition(typeof(Walking), () => stamina.CurrentStamina < agentStats.runCost));
@@ -20,7 +19,6 @@ public class Running : OnGroundState
 
     public override void AfterExecution()
     {
-        anim.SetBool(animationHash, false);
         animEvents.OnAnimationEvent -= FootstepEvent;
         audio.Stop();
     }
@@ -28,7 +26,6 @@ public class Running : OnGroundState
     public override void BeforeExecution()
     {
         Debug.Log("Running");
-        anim.SetBool(animationHash, true);
         if (self.agentSounds)
         {
             audio.clip = self.agentSounds.heavyBreathing.GetRandomAudioClip();

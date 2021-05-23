@@ -7,8 +7,6 @@ public class MeleeAttacking : AgentState
 {
     private MeleeWeapon primary;
     private MeleeWeapon secondary;
-    private int animVariantHash;
-    private int animVariantNumber = 3;
     protected int attackAnimationSpeedHash;
     private bool animationFinished = false;
     private float timer = 0;
@@ -24,7 +22,6 @@ public class MeleeAttacking : AgentState
         };
         transitionsTo.Add(attackCombo);
         transitionsTo.Add(new Transition(typeof(Blocking), () => timer >= canAttackAgainTime, Block));
-        animVariantHash = Animator.StringToHash("AttackVariant");
         attackAnimationSpeedHash = Animator.StringToHash("AttackSpeed");
         animEvents.OnAnimationEvent += CheckAnimationEvent;
     }
@@ -56,7 +53,6 @@ public class MeleeAttacking : AgentState
     public override void AfterExecution()
     {
         isCurrentState = false;
-        anim.SetInteger(animVariantHash, -1);
         audio.Stop();
         primary?.ExitDamageState();
         secondary?.ExitDamageState();
@@ -68,9 +64,6 @@ public class MeleeAttacking : AgentState
         Debug.Log("Melee Attack");
         isCurrentState = true;
         animationFinished = false;
-        int variant = UnityEngine.Random.Range(0, animVariantNumber);
-        anim.SetInteger(animVariantHash, variant);
-        anim.SetFloat(attackAnimationSpeedHash, self.agentStats.attackSpeed);
         if (self.agentSounds)
         {
             audio.clip = self.agentSounds.attack.GetRandomAudioClip();
