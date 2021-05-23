@@ -25,7 +25,7 @@ public class Agent : MonoBehaviour
     private NavMeshAgent navAgent;
     private float verticalVelocity;
 
-    private void Start()
+    private void Awake()
     {
         StateMachine = new StateMachine();
         charController = GetComponent<CharacterController>();

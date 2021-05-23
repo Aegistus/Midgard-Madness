@@ -112,6 +112,8 @@ MonoBehaviour:
     m_Bits: 256
   lookDirection: {fileID: 39117237278920457}
   agentModel: {fileID: 2204843128261526487}
+  groundCheckRadius: 0.75
+  groundCheckHeight: 0
 --- !u!114 &6114739588612260356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2006,6 +2008,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2204843128261526487}
   - component: {fileID: 2295874962226005351}
+  - component: {fileID: 6505819499562687710}
   - component: {fileID: 2201665707028456858}
   - component: {fileID: 3424236942756868592}
   m_Layer: 0
@@ -2061,6 +2064,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6505819499562687710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2201665707028456837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15730ee6d65a0274b99b4b55bfc3f30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2201665707028456858
 MonoBehaviour:
   m_ObjectHideFlags: 0

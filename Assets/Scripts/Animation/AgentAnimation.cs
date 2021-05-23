@@ -18,20 +18,37 @@ public class AgentAnimation : MonoBehaviour
 
     Agent agent;
     Animator anim;
-    int fullBodyLayerIndex;
     MultiDictionary<Type, int> fullBodyStates = new MultiDictionary<Type, int>();
 
     private void Start()
     {
         agent = GetComponentInParent<Agent>();
         anim = GetComponent<Animator>();
-        fullBodyLayerIndex = anim.GetLayerIndex("Full Body");
         fullBodyStates = new MultiDictionary<Type, int>()
         {
-            {typeof(Running), Animator.StringToHash("Running") },
-            {typeof(Jumping), Animator.StringToHash("Jumping")},
-            {typeof(Falling), Animator.StringToHash("Falling") },
-            {typeof(Crouching), Animator.StringToHash("Crouching") },
+            {typeof(Idling), Animator.StringToHash("Idle") },
+            {typeof(Walking), Animator.StringToHash("Walk") },
+            {typeof(Running), Animator.StringToHash("Run") },
+            {typeof(Jumping), Animator.StringToHash("Jump")},
+            {typeof(Falling), Animator.StringToHash("Fall") },
+            {typeof(Crouching), Animator.StringToHash("Crouch") },
+            {typeof(Rolling), Animator.StringToHash("Roll") },
+            {typeof(TakingDamage), Animator.StringToHash("Impact") },
+            {typeof(Equipping), Animator.StringToHash("Equip Start") },
+            {typeof(Blocking), Animator.StringToHash("Block") },
+            {typeof(RangedAiming), Animator.StringToHash("Ranged Aim") },
+            {typeof(RangedAttacking), Animator.StringToHash("Ranged Attack") },
+            {typeof(MeleeAttacking), Animator.StringToHash("Attack 00") },
+            {typeof(MeleeAttacking), Animator.StringToHash("Attack 01") },
+            {typeof(MeleeAttacking), Animator.StringToHash("Attack 02") },
+            {typeof(MomentumAttacking), Animator.StringToHash("Momentum Attack 00") },
+            {typeof(MomentumAttacking), Animator.StringToHash("Momentum Attack 01") },
+            {typeof(MomentumAttacking), Animator.StringToHash("Momentum Attack 02") },
+            {typeof(Dying), Animator.StringToHash("Death 00") },
+            {typeof(Dying), Animator.StringToHash("Death 01") },
+            {typeof(Dying), Animator.StringToHash("Death 02") },
+            {typeof(Dying), Animator.StringToHash("Death 03") },
+            {typeof(Dying), Animator.StringToHash("Death 04") },
         };
         agent.StateMachine.OnStateChange += ChangeFullBodyAnimation;
     }
@@ -41,7 +58,7 @@ public class AgentAnimation : MonoBehaviour
         if (fullBodyStates.ContainsKey(newState.GetType()))
         {
             anim.speed = 1;
-            anim.CrossFade(fullBodyStates[newState.GetType()], .05f, fullBodyLayerIndex);
+            anim.CrossFade(fullBodyStates[newState.GetType()], .05f);
         }
         else
         {
