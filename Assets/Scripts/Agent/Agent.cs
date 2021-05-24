@@ -9,7 +9,6 @@ public class Agent : MonoBehaviour
     public AgentStats agentStats;
     public AgentSounds agentSounds;
 
-
     public AgentState CurrentState => (AgentState)StateMachine.CurrentState;
 
     public StateMachine StateMachine { get; private set; }
@@ -17,6 +16,10 @@ public class Agent : MonoBehaviour
     private void Awake()
     {
         StateMachine = new StateMachine();
+    }
+
+    private void Start()
+    {
         Dictionary<Type, State> states = new Dictionary<Type, State>()
         {
             {typeof(Idling), new Idling(gameObject) },
