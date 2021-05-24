@@ -19,7 +19,7 @@ public class Crouching : AgentState
     public override void BeforeExecution()
     {
         Debug.Log("Crouching");
-        self.SetHorizontalVelocity(Vector3.zero);
+        movement.SetHorizontalVelocity(Vector3.zero);
         //transform.position -= Vector3.down * crouchHeight;
     }
 

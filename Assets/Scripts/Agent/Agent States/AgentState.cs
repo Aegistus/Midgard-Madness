@@ -6,9 +6,9 @@ using UnityEngine.AI;
 
 public abstract class AgentState : State
 {
-
     protected LayerMask groundLayer;
     protected Agent self;
+    protected AgentMovement movement;
     protected AgentStats agentStats;
     protected AgentController controller;
     protected AgentWeapons weapons;
@@ -29,7 +29,7 @@ public abstract class AgentState : State
     public Func<bool> Jump => () => controller.Jump;
     public Func<bool> Run => () => controller.Run;
     public Func<bool> Crouch => () => controller.Crouch;
-    public Func<bool> OnGround => () => self.IsGrounded();
+    public Func<bool> OnGround => () => movement.IsGrounded();
     public Func<bool> NextToWall => () => IsNextToWall();
     public Func<bool> Rising => () => charController.velocity.y > .01f;
     public Func<bool> Falling => () => charController.velocity.y < -.1f;
@@ -45,9 +45,10 @@ public abstract class AgentState : State
     public AgentState(GameObject gameObject) : base(gameObject)
     {
         self = gameObject.GetComponent<Agent>();
+        movement = gameObject.GetComponent<AgentMovement>();
         agentStats = self.agentStats;
         controller = gameObject.GetComponent<AgentController>();
-        groundLayer = self.groundLayer;
+        groundLayer = movement.groundLayer;
         charController = gameObject.GetComponent<CharacterController>();
         weapons = gameObject.GetComponent<AgentWeapons>();
         health = gameObject.GetComponent<AgentHealth>();
@@ -82,19 +83,19 @@ public abstract class AgentState : State
         newVelocity = Vector3.zero;
         if (controller.Forwards)
         {
-            newVelocity += self.lookDirection.forward;
+            newVelocity += movement.lookDirection.forward;
         }
         if (controller.Backwards)
         {
-            newVelocity += -self.lookDirection.forward;
+            newVelocity += -movement.lookDirection.forward;
         }
         if (controller.Left)
         {
-            newVelocity += -self.lookDirection.right;
+            newVelocity += -movement.lookDirection.right;
         }
         if (controller.Right)
         {
-            newVelocity += self.lookDirection.right;
+            newVelocity += movement.lookDirection.right;
         }
         newVelocity = newVelocity.normalized;
         return newVelocity;

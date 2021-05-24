@@ -27,8 +27,8 @@ public class Idling : OnGroundState
     public override void BeforeExecution()
     {
         Debug.Log("Idling");
-        self.SetHorizontalVelocity(Vector3.zero);
-        self.SetVerticalVelocity(0);
+        movement.SetHorizontalVelocity(Vector3.zero);
+        movement.SetVerticalVelocity(0);
         KeepGrounded();
         if (self.agentSounds)
         {

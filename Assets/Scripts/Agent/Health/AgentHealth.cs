@@ -18,11 +18,13 @@ public class AgentHealth : MonoBehaviour
 
     private float currentHealth;
     private Agent agent;
+    private AgentMovement movement;
     private AgentStats stats;
 
     private void Awake()
     {
         agent = GetComponent<Agent>();
+        movement = GetComponent<AgentMovement>();
         stats = agent.agentStats;
         currentHealth = MaxHealth;
     }
@@ -30,7 +32,7 @@ public class AgentHealth : MonoBehaviour
     public void Damage(float damage, Vector3 origin, float force)
     {
         currentHealth -= damage;
-        agent.SetHorizontalVelocity((transform.position - origin) * force);
+        movement.SetHorizontalVelocity((transform.position - origin) * force);
         AudioManager.instance.PlaySoundAtPosition("Taking Damage", transform.position);
         OnAgentTakeDamage?.Invoke();
         if (currentHealth <= 0)

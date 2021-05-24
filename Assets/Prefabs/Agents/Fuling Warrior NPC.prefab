@@ -3561,6 +3561,7 @@ GameObject:
   - component: {fileID: 5334324645159237217}
   - component: {fileID: 5334324645159237222}
   - component: {fileID: 139568716642311914}
+  - component: {fileID: 6222814561485944588}
   - component: {fileID: 2186013462298071023}
   - component: {fileID: 3938181935033030986}
   - component: {fileID: 2399190500823037142}
@@ -3627,12 +3628,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agentStats: {fileID: 11400000, guid: efeb16d6c84d8234299f21ab115cceb7, type: 2}
   agentSounds: {fileID: 11400000, guid: dc048342c6a16f44ebd3057904896287, type: 2}
+--- !u!114 &6222814561485944588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5334324645159237216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2c30c51a0f0ea944a8cf7d3fc86875f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
   lookDirection: {fileID: 5334324646104122082}
   agentModel: {fileID: 5075219479475779228}
-  groundCheckRadius: 0.75
+  groundCheckRadius: 0.5
   groundCheckHeight: 0
 --- !u!114 &2186013462298071023
 MonoBehaviour:

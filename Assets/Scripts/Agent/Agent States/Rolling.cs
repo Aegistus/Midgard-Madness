@@ -37,10 +37,10 @@ public class Rolling : OnGroundState
         inputVelocity = GetAgentMovementInput();
         if (inputVelocity == Vector3.zero)
         {
-            inputVelocity = self.agentModel.forward;
+            inputVelocity = movement.agentModel.forward;
         }
-        self.SetHorizontalVelocity(inputVelocity * MoveSpeed);
-        self.RotateAgentModelToDirection(inputVelocity);
+        movement.SetHorizontalVelocity(inputVelocity * MoveSpeed);
+        movement.RotateAgentModelToDirection(inputVelocity);
         KeepGrounded();
     }
 }

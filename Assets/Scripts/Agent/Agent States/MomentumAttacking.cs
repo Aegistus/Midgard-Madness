@@ -37,7 +37,7 @@ public class MomentumAttacking : AgentState
     {
         Debug.Log("Momentum Attack");
         animationFinished = false;
-        self.SetHorizontalVelocity(self.Velocity * .5f);
+        movement.SetHorizontalVelocity(movement.Velocity * .5f);
         // have weapons enter damage state
         if (weapons.primarySlot.CurrentlyEquipped?.GetType() == typeof(MeleeWeapon))
         {
@@ -62,6 +62,6 @@ public class MomentumAttacking : AgentState
 
     public override void DuringExecution()
     {
-        self.RotateAgentModelToDirection(self.lookDirection.forward, .1f);
+        movement.RotateAgentModelToDirection(movement.lookDirection.forward, .1f);
     }
 }

@@ -18,7 +18,7 @@ public class Dying : AgentState
 
     public override void BeforeExecution()
     {
-        self.SetHorizontalVelocity(Vector3.zero);
+        movement.SetHorizontalVelocity(Vector3.zero);
         if (self.agentSounds)
         {
             audio.clip = self.agentSounds.death.GetRandomAudioClip();

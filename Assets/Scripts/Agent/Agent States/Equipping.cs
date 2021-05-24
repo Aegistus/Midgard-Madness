@@ -32,7 +32,7 @@ public class Equipping : AgentState
         weapons.EquipWeapon(controller.WeaponNumKey);
         animationDone = false;
         animEvents.OnAnimationEvent += EnableNewWeapon;
-        self.SetHorizontalVelocity(self.Velocity * .5f);
+        movement.SetHorizontalVelocity(movement.Velocity * .5f);
         audioManager.PlaySoundAtPosition("Blade Equip", transform.position);
     }
 

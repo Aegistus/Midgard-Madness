@@ -20,7 +20,7 @@ public class Falling : AgentState
     public override void BeforeExecution()
     {
         Debug.Log("Falling");
-        startingVelocity = self.Velocity;
+        startingVelocity = movement.Velocity;
     }
 
     Vector3 newVelocity;
@@ -29,8 +29,8 @@ public class Falling : AgentState
         newVelocity = GetAgentMovementInput();
         if (newVelocity.sqrMagnitude > 0)
         {
-            self.SetHorizontalVelocity(startingVelocity + newVelocity * airMoveSpeed);
-            self.RotateAgentModelToDirection(newVelocity);
+            movement.SetHorizontalVelocity(startingVelocity + newVelocity * airMoveSpeed);
+            movement.RotateAgentModelToDirection(newVelocity);
         }
     }
 }

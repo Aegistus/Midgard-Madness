@@ -16,6 +16,7 @@ public class NPCController : AgentController
     public float attackWaitTime = 2f;
 
     private Agent agent;
+    private AgentMovement movement;
     private AgentWeapons weapons;
     private NavMeshAgent navAgent;
     private FieldOfView fov;
@@ -29,6 +30,7 @@ public class NPCController : AgentController
     private void Awake()
     {
         agent = GetComponent<Agent>();
+        movement = GetComponent<AgentMovement>();
         weapons = GetComponent<AgentWeapons>();
         navAgent = GetComponent<NavMeshAgent>();
         fov = GetComponent<FieldOfView>();
@@ -141,7 +143,7 @@ public class NPCController : AgentController
 
     public void LookAt(Transform target)
     {
-        agent.lookDirection.LookAt(target);
+        movement.lookDirection.LookAt(target);
     }
 
     public NodeState MomentumAttackEnemy()

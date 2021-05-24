@@ -20,9 +20,9 @@ public class Jumping : AgentState
     public override void BeforeExecution()
     {
         Debug.Log("Jumping");
-        startingVelocity = self.Velocity;
-        self.SetVerticalVelocity(0);
-        self.AddVerticalVelocity(JumpForce);
+        startingVelocity = movement.Velocity;
+        movement.SetVerticalVelocity(0);
+        movement.AddVerticalVelocity(JumpForce);
         stamina.DepleteStamina(agentStats.jumpCost);
     }
 
@@ -30,7 +30,7 @@ public class Jumping : AgentState
     public override void DuringExecution()
     {
         newVelocity = GetAgentMovementInput();
-        self.SetHorizontalVelocity(startingVelocity + (newVelocity * AirMoveSpeed));
-        self.RotateAgentModelToDirection(newVelocity);
+        movement.SetHorizontalVelocity(startingVelocity + (newVelocity * AirMoveSpeed));
+        movement.RotateAgentModelToDirection(newVelocity);
     }
 }

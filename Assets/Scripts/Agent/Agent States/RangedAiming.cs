@@ -40,7 +40,7 @@ public class RangedAiming : AgentState
     {
         Debug.Log("Aiming");
         isCurrentState = true;
-        self.SetHorizontalVelocity(Vector3.zero);
+        movement.SetHorizontalVelocity(Vector3.zero);
         timer = 0;
         //if (controller.GetType() == typeof(PlayerController))
         //{
@@ -51,7 +51,7 @@ public class RangedAiming : AgentState
 
     public override void DuringExecution()
     {
-        self.RotateAgentModelToDirection(self.lookDirection.forward);
+        movement.RotateAgentModelToDirection(movement.lookDirection.forward);
         vigor.DepleteVigor(agentStats.rangedAimCost * Time.deltaTime);
         timer += Time.deltaTime;
     }

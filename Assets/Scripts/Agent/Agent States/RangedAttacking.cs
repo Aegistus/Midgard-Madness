@@ -51,7 +51,7 @@ public class RangedAttacking : AgentState
         {
             weapon = (RangedWeapon)weapons.secondarySlot.CurrentlyEquipped;
         }
-        self.SetHorizontalVelocity(Vector3.zero);
+        movement.SetHorizontalVelocity(Vector3.zero);
         if (weapon != null)
         {
             weapon.RangedAttack(controller.Aim);

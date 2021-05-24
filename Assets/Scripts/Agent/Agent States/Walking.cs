@@ -33,7 +33,7 @@ public class Walking : OnGroundState
             audio.loop = true;
             audio.Play();
         }
-        self.SetHorizontalVelocity(Vector3.zero);
+        movement.SetHorizontalVelocity(Vector3.zero);
         if (navAgent != null)
         {
             navAgent.speed = MoveSpeed;
@@ -55,8 +55,8 @@ public class Walking : OnGroundState
         if (navAgent == null)
         {
             inputVelocity = GetAgentMovementInput();
-            self.SetHorizontalVelocity(inputVelocity * MoveSpeed);
-            self.RotateAgentModelToDirection(inputVelocity);
+            movement.SetHorizontalVelocity(inputVelocity * MoveSpeed);
+            movement.RotateAgentModelToDirection(inputVelocity);
             KeepGrounded();
         }
     }

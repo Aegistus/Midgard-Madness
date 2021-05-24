@@ -71,7 +71,7 @@ public class MeleeAttacking : AgentState
             audio.Play();
         }
 
-        self.SetHorizontalVelocity(self.Velocity * .2f);
+        movement.SetHorizontalVelocity(movement.Velocity * .2f);
         // have weapons enter damage state
         if (weapons.primarySlot.CurrentlyEquipped?.GetType() == typeof(MeleeWeapon))
         {
@@ -96,13 +96,13 @@ public class MeleeAttacking : AgentState
     Vector3 inputVelocity;
     public override void DuringExecution()
     {
-        self.RotateAgentModelToDirection(self.lookDirection.forward);
+        movement.RotateAgentModelToDirection(movement.lookDirection.forward);
         timer += Time.deltaTime;
         if (navAgent == null)
         {
             inputVelocity = GetAgentMovementInput();
-            self.SetHorizontalVelocity(inputVelocity * MoveSpeed);
-            self.RotateAgentModelToDirection(inputVelocity);
+            movement.SetHorizontalVelocity(inputVelocity * MoveSpeed);
+            movement.RotateAgentModelToDirection(inputVelocity);
         }
     }
 }
