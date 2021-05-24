@@ -71,4 +71,9 @@ public class AgentAnimation : MonoBehaviour
         OnAnimationEvent?.Invoke(eventType);
     }
 
+    private void OnAnimatorMove()
+    {
+        transform.parent.position += anim.deltaPosition;
+    }
+
 }
