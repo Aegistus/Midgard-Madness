@@ -125,7 +125,7 @@ MonoBehaviour:
     m_Bits: 256
   lookDirection: {fileID: 7158519237732294475}
   agentModel: {fileID: 9095480311879251088}
-  groundCheckRadius: 0.5
+  groundCheckRadius: 0.6
   groundCheckHeight: 0
 --- !u!114 &3965763584730796614
 MonoBehaviour:

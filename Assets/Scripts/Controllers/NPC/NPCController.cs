@@ -74,10 +74,10 @@ public class NPCController : AgentController
         {
             navAgent?.SetDestination(position);
         }
-        Forwards = true;
+        agent.Forwards = true;
         if (running)
         {
-            Run = true;
+            agent.Run = true;
         }
     }
 
@@ -90,20 +90,20 @@ public class NPCController : AgentController
     {
         while (true)
         {
-            Attack = false;
-            Block = false;
-            Forwards = false;
-            Backwards = false;
-            Left = false;
-            Right = false;
-            Jump = false;
-            Crouch = false;
-            Run = false;
-            Equipping = false;
+            agent.Attack = false;
+            agent.Block = false;
+            agent.Forwards = false;
+            agent.Backwards = false;
+            agent.Left = false;
+            agent.Right = false;
+            agent.Jump = false;
+            agent.Crouch = false;
+            agent.Run = false;
+            agent.Equipping = false;
             if (Target != null)
             {
                 Vector3 randomOffset = Target.position + new Vector3(Random.Range(-.5f, .5f), Random.Range(-.5f, .5f), Random.Range(-.5f, .5f));
-                Aim = new Ray(transform.position, randomOffset - transform.position);
+                agent.Aim = new Ray(transform.position, randomOffset - transform.position);
             }
             AIStateMachine.ExecuteState();
             yield return new WaitForSeconds(tickInterval);
@@ -115,7 +115,7 @@ public class NPCController : AgentController
         print("Attempting to Equip");
         if (weaponChoice >= 0 && weaponChoice < weapons.CarriedWeapons.Count)
         {
-            Equipping = true;
+            agent.Equipping = true;
             weapons.EquipWeapon(weaponChoice);
         }
     }
@@ -127,17 +127,17 @@ public class NPCController : AgentController
 
     public void AttackEnemy()
     {
-        if (Attack != true)
+        if (agent.Attack != true)
         {
-            Attack = true;
+            agent.Attack = true;
         }
     }
 
     public void BlockAttack()
     {
-        if (Block != true)
+        if (agent.Block != true)
         {
-            Block = true;
+            agent.Block = true;
         }
     }
 
@@ -148,11 +148,11 @@ public class NPCController : AgentController
 
     public NodeState MomentumAttackEnemy()
     {
-        Forwards = true;
-        Run = true;
-        if (Attack != true)
+        agent.Forwards = true;
+        agent.Run = true;
+        if (agent.Attack != true)
         {
-            Attack = true;
+            agent.Attack = true;
         }
         return NodeState.SUCCESS;
     }
@@ -167,10 +167,10 @@ public class NPCController : AgentController
 
     public void MoveToDestination(bool running)
     {
-        Forwards = true;
+        agent.Forwards = true;
         if (running)
         {
-            Run = true;
+            agent.Run = true;
         }
     }
 

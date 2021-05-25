@@ -10,7 +10,6 @@ public abstract class AgentState : State
     protected Agent self;
     protected AgentMovement movement;
     protected AgentStats agentStats;
-    protected AgentController controller;
     protected AgentWeapons weapons;
     protected AgentHealth health;
     protected AgentStamina stamina;
@@ -25,18 +24,18 @@ public abstract class AgentState : State
 
     protected bool isCurrentState = false;
 
-    public Func<bool> Move => () => controller.Forwards || controller.Backwards || controller.Right || controller.Left;
-    public Func<bool> Jump => () => controller.Jump;
-    public Func<bool> Run => () => controller.Run;
-    public Func<bool> Crouch => () => controller.Crouch;
+    public Func<bool> Move => () => self.Forwards || self.Backwards || self.Right || self.Left;
+    public Func<bool> Jump => () => self.Jump;
+    public Func<bool> Run => () => self.Run;
+    public Func<bool> Crouch => () => self.Crouch;
     public Func<bool> OnGround => () => movement.IsGrounded();
     public Func<bool> NextToWall => () => IsNextToWall();
     public Func<bool> Rising => () => charController.velocity.y > .01f;
     public Func<bool> Falling => () => charController.velocity.y < -.1f;
-    public Func<bool> Attack => () => controller.Attack;
-    public Func<bool> Block => () => controller.Block;
-    public Func<bool> EquipWeaponInput => () => controller.Equipping;
-    public Func<bool> UnEquipWeapon => () => controller.UnEquipping;
+    public Func<bool> Attack => () => self.Attack;
+    public Func<bool> Block => () => self.Block;
+    public Func<bool> EquipWeaponInput => () => self.Equipping;
+    public Func<bool> UnEquipWeapon => () => self.UnEquipping;
     public Func<bool> MeleeEquipped => () => weapons.primarySlot.CurrentlyEquipped?.GetType() == typeof(MeleeWeapon);
     public Func<bool> RangedEquipped => () => weapons.primarySlot.CurrentlyEquipped?.GetType() == typeof(RangedWeapon) || weapons.secondarySlot.CurrentlyEquipped?.GetType() == typeof(RangedWeapon);
     public Func<bool> ShieldEquipped => () => weapons.secondarySlot.CurrentlyEquipped?.GetType() == typeof(Shield);
@@ -47,7 +46,6 @@ public abstract class AgentState : State
         self = gameObject.GetComponent<Agent>();
         movement = gameObject.GetComponent<AgentMovement>();
         agentStats = self.agentStats;
-        controller = gameObject.GetComponent<AgentController>();
         groundLayer = movement.groundLayer;
         charController = gameObject.GetComponent<CharacterController>();
         weapons = gameObject.GetComponent<AgentWeapons>();
@@ -81,19 +79,19 @@ public abstract class AgentState : State
     protected Vector3 GetAgentMovementInput()
     {
         newVelocity = Vector3.zero;
-        if (controller.Forwards)
+        if (self.Forwards)
         {
             newVelocity += movement.lookDirection.forward;
         }
-        if (controller.Backwards)
+        if (self.Backwards)
         {
             newVelocity += -movement.lookDirection.forward;
         }
-        if (controller.Left)
+        if (self.Left)
         {
             newVelocity += -movement.lookDirection.right;
         }
-        if (controller.Right)
+        if (self.Right)
         {
             newVelocity += movement.lookDirection.right;
         }

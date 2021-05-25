@@ -30,13 +30,14 @@ public class AIWandering : NPCState
             // find new point sequence
             new SequenceNode(new List<Node>()
             {
+                // idle for a few seconds if at destination
                 new WaitNode(new ConditionNode(() => Node.ConvertToState(controller.AtDestination(1))), controller.wanderWaitTime),
                 new ActionNode(() => controller.SetRandomDestination(false)),
             }),
             // walk to destination sequence
             new SequenceNode(new List<Node>()
             {
-                new InverterNode(new ActionNode(() => controller.MoveToDestination(false))),
+                new ActionNode(() => controller.MoveToDestination(false)),
             })
         });
     }

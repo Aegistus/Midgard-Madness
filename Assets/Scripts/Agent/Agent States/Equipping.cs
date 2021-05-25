@@ -29,7 +29,7 @@ public class Equipping : AgentState
 
     public override void BeforeExecution()
     {
-        weapons.EquipWeapon(controller.WeaponNumKey);
+        weapons.EquipWeapon(self.WeaponNumKey);
         animationDone = false;
         animEvents.OnAnimationEvent += EnableNewWeapon;
         movement.SetHorizontalVelocity(movement.Velocity * .5f);
