@@ -11,7 +11,7 @@ public class AISearching : NPCState
     {
         transitionsTo.Add(new Transition(typeof(AIChasing), PlayerInSight));
         transitionsTo.Add(new Transition(typeof(AIWandering), () => timer >= maxSearchTimer));
-        //transitionsTo.Add(new Transition(typeof(AIWandering), () => controller.AtDestination(1f)));
+        transitionsTo.Add(new Transition(typeof(AIWandering), () => controller.AtDestination(1f)));
     }
 
     public override void AfterExecution()
@@ -22,7 +22,7 @@ public class AISearching : NPCState
     public override void BeforeExecution()
     {
         Debug.Log("NPC Searching");
-        controller.SetDestination(controller.TargetLastPosition, false);
+        controller.SetDestination(controller.TargetLastPosition);
     }
 
     public override void DuringExecution()

@@ -66,16 +66,11 @@ public class NPCController : AgentController
         }
     }
 
-    public void SetDestination(Vector3 position, bool running)
+    public void SetDestination(Vector3 position)
     {
         if (navAgent.isOnNavMesh)
         {
             navAgent?.SetDestination(position);
-        }
-        agent.Forwards = true;
-        if (running)
-        {
-            agent.Run = true;
         }
     }
 
@@ -113,12 +108,11 @@ public class NPCController : AgentController
         movement.lookDirection.LookAt(target);
     }
 
-    public void SetRandomDestination(bool running)
+    public void SetRandomDestination()
     {
-        Debug.Log("Finding Patrol Point");
         Vector3 randomPoint = new Vector3((Random.value * wanderDiameter) - (wanderDiameter/2), 0, (Random.value * wanderDiameter) - (wanderDiameter / 2));
         randomPoint += transform.position;
-        SetDestination(randomPoint, running);
+        SetDestination(randomPoint);
     }
 
     public bool NearTarget(float distance)

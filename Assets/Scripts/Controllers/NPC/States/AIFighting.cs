@@ -21,7 +21,7 @@ public class AIFighting : NPCState
     public override void BeforeExecution()
     {
         Debug.Log("NPC Fighting");
-        controller.SetDestination(transform.position, false);
+        controller.SetDestination(transform.position);
         if (UnityEngine.Random.value > .5) // 50/50 chance
         {
             agent.Forwards = true;
@@ -37,10 +37,6 @@ public class AIFighting : NPCState
 
     protected override void CreateTree()
     {
-        //ActionNode momentumAttack = new ActionNode(() => controller.MomentumAttackEnemy());
-        //ActionNode isRunning = new ActionNode(IsRunning);
-        //SequenceNode momentumAttackSequence = new SequenceNode(new List<Node> { isRunning, momentumAttack });
-
         rootNode = new SelectorNode(new List<Node>()
         {
             // attack sequence

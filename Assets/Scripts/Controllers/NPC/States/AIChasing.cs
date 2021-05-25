@@ -19,7 +19,7 @@ public class AIChasing : NPCState
     public override void BeforeExecution()
     {
         Debug.Log("NPC Chasing");
-        controller.SetDestination(transform.position, true);
+        controller.SetDestination(transform.position);
     }
 
     protected override void CreateTree()
@@ -29,7 +29,7 @@ public class AIChasing : NPCState
             new SequenceNode(new List<Node>()
             {
                 new ConditionNode(() => Node.ConvertToState(controller.Target != null)), // has target
-                new ActionNode(() => controller.SetDestination(controller.Target.position, true)), // set target
+                new ActionNode(() => controller.SetDestination(controller.Target.position)), // set target
                 new ActionNode(() => agent.Forwards = true), // move to target
             }),
 

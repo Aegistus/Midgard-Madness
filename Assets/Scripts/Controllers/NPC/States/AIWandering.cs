@@ -18,8 +18,8 @@ public class AIWandering : NPCState
     public override void BeforeExecution()
     {
         Debug.Log("NPC Wandering");
-        controller.SetDestination(transform.position, false);
-        controller.SetRandomDestination(false);
+        controller.SetDestination(transform.position);
+        controller.SetRandomDestination();
         agent.UnEquipping = true;
     }
 
@@ -31,8 +31,8 @@ public class AIWandering : NPCState
             new SequenceNode(new List<Node>()
             {
                 // idle for a few seconds if at destination
-                new WaitNode(new ConditionNode(() => Node.ConvertToState(controller.AtDestination(1))), controller.wanderWaitTime),
-                new ActionNode(() => controller.SetRandomDestination(false)),
+                new ConditionNode(() => Node.ConvertToState(controller.AtDestination(1))),
+                new WaitNode(new ActionNode(() => controller.SetRandomDestination()), controller.wanderWaitTime),
             }),
             // walk to destination sequence
             new SequenceNode(new List<Node>()
