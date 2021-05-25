@@ -24,7 +24,8 @@ public class AIFighting : NPCState
         controller.SetDestination(transform.position, false);
         if (UnityEngine.Random.value > .5) // 50/50 chance
         {
-            controller.MomentumAttackEnemy();
+            agent.Forwards = true;
+            agent.Attack = true;
         }
     }
 
@@ -45,12 +46,12 @@ public class AIFighting : NPCState
             // attack sequence
             new SequenceNode(new List<Node>()
             {
-                new WaitNode(new ActionNode(() => controller.AttackEnemy()), UnityEngine.Random.value * controller.attackWaitTime)
+                new WaitNode(new ActionNode(() => agent.Attack = true), UnityEngine.Random.value * controller.attackWaitTime)
             }),
             // block sequence
             new SequenceNode(new List<Node>()
             {
-                new WaitNode(new ActionNode(() => controller.BlockAttack()), UnityEngine.Random.value * controller.attackWaitTime)
+                new WaitNode(new ActionNode(() => agent.Block = true), UnityEngine.Random.value * controller.attackWaitTime)
             }),
         });
     }

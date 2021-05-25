@@ -28,7 +28,7 @@ public class AISearching : NPCState
     public override void DuringExecution()
     {
         base.DuringExecution();
-        controller.MoveToDestination(false);
+        agent.Forwards = true;
         timer += Time.deltaTime;
     }
 

@@ -17,7 +17,6 @@ public class NPCController : AgentController
 
     private Agent agent;
     private AgentMovement movement;
-    private AgentWeapons weapons;
     private NavMeshAgent navAgent;
     private FieldOfView fov;
     public Transform Target { get; private set; }
@@ -31,7 +30,6 @@ public class NPCController : AgentController
     {
         agent = GetComponent<Agent>();
         movement = GetComponent<AgentMovement>();
-        weapons = GetComponent<AgentWeapons>();
         navAgent = GetComponent<NavMeshAgent>();
         fov = GetComponent<FieldOfView>();
         Dictionary<Type, State> states = new Dictionary<Type, State>()
@@ -110,51 +108,9 @@ public class NPCController : AgentController
         }
     }
 
-    public void EquipWeapon(int weaponChoice)
-    {
-        print("Attempting to Equip");
-        if (weaponChoice >= 0 && weaponChoice < weapons.CarriedWeapons.Count)
-        {
-            agent.Equipping = true;
-            weapons.EquipWeapon(weaponChoice);
-        }
-    }
-
-    public void UnEquipAll()
-    {
-        weapons.UnEquipAll();
-    }
-
-    public void AttackEnemy()
-    {
-        if (agent.Attack != true)
-        {
-            agent.Attack = true;
-        }
-    }
-
-    public void BlockAttack()
-    {
-        if (agent.Block != true)
-        {
-            agent.Block = true;
-        }
-    }
-
     public void LookAt(Transform target)
     {
         movement.lookDirection.LookAt(target);
-    }
-
-    public NodeState MomentumAttackEnemy()
-    {
-        agent.Forwards = true;
-        agent.Run = true;
-        if (agent.Attack != true)
-        {
-            agent.Attack = true;
-        }
-        return NodeState.SUCCESS;
     }
 
     public void SetRandomDestination(bool running)
@@ -163,15 +119,6 @@ public class NPCController : AgentController
         Vector3 randomPoint = new Vector3((Random.value * wanderDiameter) - (wanderDiameter/2), 0, (Random.value * wanderDiameter) - (wanderDiameter / 2));
         randomPoint += transform.position;
         SetDestination(randomPoint, running);
-    }
-
-    public void MoveToDestination(bool running)
-    {
-        agent.Forwards = true;
-        if (running)
-        {
-            agent.Run = true;
-        }
     }
 
     public bool NearTarget(float distance)

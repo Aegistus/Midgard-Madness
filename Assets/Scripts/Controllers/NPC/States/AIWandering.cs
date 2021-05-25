@@ -20,7 +20,7 @@ public class AIWandering : NPCState
         Debug.Log("NPC Wandering");
         controller.SetDestination(transform.position, false);
         controller.SetRandomDestination(false);
-        controller.UnEquipAll();
+        agent.UnEquipping = true;
     }
 
     protected override void CreateTree()
@@ -37,7 +37,7 @@ public class AIWandering : NPCState
             // walk to destination sequence
             new SequenceNode(new List<Node>()
             {
-                new ActionNode(() => controller.MoveToDestination(false)),
+                new ActionNode(() => agent.Forwards = true),
             })
         });
     }
