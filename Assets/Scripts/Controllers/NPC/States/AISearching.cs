@@ -5,7 +5,7 @@ using UnityEngine;
 public class AISearching : NPCState
 {
     private float timer = 0;
-    private float maxSearchTimer = 15f;
+    private float maxSearchTimer = 10f;
 
     public AISearching(GameObject gameObject) : base(gameObject)
     {

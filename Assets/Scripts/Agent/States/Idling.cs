@@ -22,6 +22,10 @@ public class Idling : OnGroundState
     {
         audio.loop = false;
         audio.Stop();
+        if (navAgent)
+        {
+            navAgent.isStopped = false;
+        }
     }
 
     public override void BeforeExecution()
@@ -35,6 +39,11 @@ public class Idling : OnGroundState
             audio.clip = self.agentSounds.breathing?.GetRandomAudioClip();
             audio.loop = true;
             audio.Play();
+        }
+        if (navAgent)
+        {
+            navAgent.velocity = Vector3.zero;
+            navAgent.isStopped = true;
         }
     }
 

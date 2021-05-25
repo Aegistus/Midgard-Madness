@@ -32,7 +32,6 @@ public class AIChasing : NPCState
                 new ActionNode(() => controller.SetDestination(controller.Target.position)), // set target
                 new ActionNode(() => agent.Forwards = true), // move to target
             }),
-
         });
     }
 }
