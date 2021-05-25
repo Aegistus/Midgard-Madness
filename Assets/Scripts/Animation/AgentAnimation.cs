@@ -35,6 +35,7 @@ public class AgentAnimation : MonoBehaviour
             {typeof(Rolling), Animator.StringToHash("Roll") },
             {typeof(TakingDamage), Animator.StringToHash("Impact") },
             {typeof(Equipping), Animator.StringToHash("Equip Start") },
+            {typeof(UnEquipping), Animator.StringToHash("Equip Start") },
             {typeof(Blocking), Animator.StringToHash("Block") },
             {typeof(RangedAiming), Animator.StringToHash("Ranged Aim") },
             {typeof(RangedAttacking), Animator.StringToHash("Ranged Attack") },
