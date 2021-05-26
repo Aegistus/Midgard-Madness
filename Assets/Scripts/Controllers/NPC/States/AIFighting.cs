@@ -11,7 +11,7 @@ public class AIFighting : NPCState
     {
         transitionsTo.Add(new Transition(typeof(AISearching), NotAttacking, Not(PlayerInSight)));
         transitionsTo.Add(new Transition(typeof(AIEquipping), Not(() => weapons.HasWeaponEquipped())));
-        transitionsTo.Add(new Transition(typeof(AIChasing), NotAttacking, PlayerInSight, Not(() => controller.NearTarget(controller.attackRadius))));
+        transitionsTo.Add(new Transition(typeof(AIChasing), PlayerInSight, Not(() => controller.NearTarget(controller.attackRadius))));
     }
 
     public override void AfterExecution()
@@ -37,7 +37,6 @@ public class AIFighting : NPCState
             // attack sequence
             new SequenceNode(new List<Node>()
             {
-                new ActionNode(() => controller.ChangeLookDirection(controller.Target)), // look at target
                 new WaitNode(new ActionNode(() => agent.Attack = true), UnityEngine.Random.value * controller.attackWaitTime)
             }),
             // block sequence
@@ -45,6 +44,7 @@ public class AIFighting : NPCState
             {
                 new WaitNode(new ActionNode(() => agent.Block = true), UnityEngine.Random.value * controller.attackWaitTime)
             }),
+            new ActionNode(() => controller.ChangeLookDirection(controller.Target)), // look at target
         });
     }
 
