@@ -104,7 +104,7 @@ public class NPCController : AgentController
         }
     }
 
-    public void LookAt(Transform target)
+    public void ChangeLookDirection(Transform target)
     {
         movement.lookDirection.LookAt(target);
     }

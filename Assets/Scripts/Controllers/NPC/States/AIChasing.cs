@@ -30,7 +30,7 @@ public class AIChasing : NPCState
             {
                 new ConditionNode(() => Node.ConvertToState(controller.Target != null)), // has target
                 new ActionNode(() => controller.SetDestination(controller.Target.position)), // set target
-                new ActionNode(() => controller.LookAt(controller.Target)),
+                new ActionNode(() => controller.ChangeLookDirection(controller.Target)), // look at target
                 new ActionNode(() => agent.Forwards = true), // move to target
                 new ActionNode(() => agent.Run = true)
             }),

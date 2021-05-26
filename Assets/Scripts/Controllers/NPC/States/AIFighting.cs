@@ -30,12 +30,6 @@ public class AIFighting : NPCState
         }
     }
 
-    public override void DuringExecution()
-    {
-        base.DuringExecution();
-        controller.LookAt(controller.Target);
-    }
-
     protected override void CreateTree()
     {
         rootNode = new SelectorNode(new List<Node>()
@@ -43,7 +37,7 @@ public class AIFighting : NPCState
             // attack sequence
             new SequenceNode(new List<Node>()
             {
-                new ActionNode(() => controller.LookAt(controller.Target)), // look at target
+                new ActionNode(() => controller.ChangeLookDirection(controller.Target)), // look at target
                 new WaitNode(new ActionNode(() => agent.Attack = true), UnityEngine.Random.value * controller.attackWaitTime)
             }),
             // block sequence
