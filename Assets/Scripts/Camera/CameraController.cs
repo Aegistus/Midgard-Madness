@@ -33,7 +33,7 @@ public class CameraController : MonoBehaviour
         cameraPivot.Rotate(Vector3.up, Input.GetAxis("Mouse X") * xSensitivity * Time.deltaTime);
         cameraPivot.Rotate(-Vector3.right, Input.GetAxis("Mouse Y") * ySensitivity * Time.deltaTime);
         cameraPivot.eulerAngles = new Vector3(cameraPivot.eulerAngles.x, cameraPivot.eulerAngles.y, 0);
-        if (transform.localPosition.y >= yMax || transform.localPosition.y <= yMin)
+        if (transform.position.y - cameraPivot.position.y >= yMax || transform.position.y - cameraPivot.position.y <= yMin)
         {
             cameraPivot.Rotate(-Vector3.right, -Input.GetAxis("Mouse Y") * ySensitivity * Time.deltaTime);
         }
