@@ -10,6 +10,7 @@ public class AIFighting : NPCState
     public AIFighting(GameObject gameObject) : base(gameObject)
     {
         transitionsTo.Add(new Transition(typeof(AISearching), NotAttacking, Not(PlayerInSight)));
+        transitionsTo.Add(new Transition(typeof(AIEquipping), Not(() => weapons.HasWeaponEquipped())));
         transitionsTo.Add(new Transition(typeof(AIChasing), NotAttacking, PlayerInSight, Not(() => controller.NearTarget(controller.attackRadius))));
     }
 
@@ -42,6 +43,7 @@ public class AIFighting : NPCState
             // attack sequence
             new SequenceNode(new List<Node>()
             {
+                new ActionNode(() => controller.LookAt(controller.Target)), // look at target
                 new WaitNode(new ActionNode(() => agent.Attack = true), UnityEngine.Random.value * controller.attackWaitTime)
             }),
             // block sequence

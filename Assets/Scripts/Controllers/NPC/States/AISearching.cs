@@ -22,6 +22,7 @@ public class AISearching : NPCState
     public override void BeforeExecution()
     {
         Debug.Log("NPC Searching");
+        timer = 0f;
         controller.SetDestination(controller.TargetLastPosition);
     }
 

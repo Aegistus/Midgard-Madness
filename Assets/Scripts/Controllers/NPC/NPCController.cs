@@ -93,6 +93,7 @@ public class NPCController : AgentController
             agent.Crouch = false;
             agent.Run = false;
             agent.Equipping = false;
+            agent.UnEquipping = false;
             if (Target != null)
             {
                 Vector3 randomOffset = Target.position + new Vector3(Random.Range(-.5f, .5f), Random.Range(-.5f, .5f), Random.Range(-.5f, .5f));
