@@ -17,7 +17,7 @@ public abstract class OnGroundState : AgentState
     {
         if (OnGround() && Not(Jump)())
         {
-            movement.SetVerticalVelocity(-10f);
+            movement.SetVerticalVelocity(-1000f);
         }
     }
 }

@@ -14,7 +14,7 @@ public class Jumping : AgentState
 
     public override void AfterExecution()
     {
-
+        movement.AddVerticalVelocity(-9.8f * Time.deltaTime);
     }
 
     public override void BeforeExecution()
@@ -29,6 +29,7 @@ public class Jumping : AgentState
     Vector3 newVelocity;
     public override void DuringExecution()
     {
+        movement.AddVerticalVelocity(-9.8f * Time.deltaTime);
         newVelocity = GetAgentMovementInput();
         movement.SetHorizontalVelocity(startingVelocity + (newVelocity * AirMoveSpeed));
         movement.RotateAgentModelToDirection(newVelocity);

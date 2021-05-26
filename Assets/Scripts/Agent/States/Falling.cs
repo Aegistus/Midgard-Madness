@@ -14,7 +14,7 @@ public class Falling : AgentState
 
     public override void AfterExecution()
     {
-
+        movement.SetVerticalVelocity(0f);
     }
 
     public override void BeforeExecution()
@@ -26,6 +26,7 @@ public class Falling : AgentState
     Vector3 newVelocity;
     public override void DuringExecution()
     {
+        movement.AddVerticalVelocity(-9.8f * Time.deltaTime);
         newVelocity = GetAgentMovementInput();
         if (newVelocity.sqrMagnitude > 0)
         {

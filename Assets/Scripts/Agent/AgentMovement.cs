@@ -63,14 +63,6 @@ public class AgentMovement : MonoBehaviour
 
     private void Update()
     {
-        if (!IsGrounded())
-        {
-            verticalVelocity += -9.8f * Time.deltaTime;
-        }
-        else
-        {
-            verticalVelocity = 0;
-        }
         velocity.y = verticalVelocity;
         if (charController.enabled)
         {
@@ -80,4 +72,5 @@ public class AgentMovement : MonoBehaviour
             }
         }
     }
+
 }
