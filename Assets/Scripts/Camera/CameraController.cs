@@ -31,11 +31,11 @@ public class CameraController : MonoBehaviour
         //transform.RotateAround(lookTarget.position, Vector3.up, Input.GetAxis("Mouse X") * xSensitivity * Time.deltaTime);
         //transform.RotateAround(lookTarget.position, -transform.right, Input.GetAxis("Mouse Y") * ySensitivity * Time.deltaTime);
         cameraPivot.Rotate(Vector3.up, Input.GetAxis("Mouse X") * xSensitivity * Time.deltaTime);
-        cameraPivot.Rotate(transform.right, Input.GetAxis("Mouse Y") * ySensitivity * Time.deltaTime);
+        cameraPivot.Rotate(-Vector3.right, Input.GetAxis("Mouse Y") * ySensitivity * Time.deltaTime);
         cameraPivot.eulerAngles = new Vector3(cameraPivot.eulerAngles.x, cameraPivot.eulerAngles.y, 0);
         if (transform.localPosition.y >= yMax || transform.localPosition.y <= yMin)
         {
-            transform.RotateAround(lookTarget.position, -transform.right, -Input.GetAxis("Mouse Y") * ySensitivity * Time.deltaTime);
+            cameraPivot.Rotate(-Vector3.right, -Input.GetAxis("Mouse Y") * ySensitivity * Time.deltaTime);
         }
     }
 }

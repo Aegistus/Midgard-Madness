@@ -57,8 +57,8 @@ public class Walking : OnGroundState
             inputVelocity = GetAgentMovementInput();
             movement.SetHorizontalVelocity(inputVelocity * MoveSpeed);
             movement.RotateAgentModelToDirection(inputVelocity);
-            KeepGrounded();
         }
+        KeepGrounded();
     }
 
 }

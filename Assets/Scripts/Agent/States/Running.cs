@@ -55,9 +55,9 @@ public class Running : OnGroundState
             inputVelocity = GetAgentMovementInput();
             movement.SetHorizontalVelocity(inputVelocity * agentStats.runSpeed);
             movement.RotateAgentModelToDirection(inputVelocity);
-            KeepGrounded();
         }
         stamina.DepleteStamina(agentStats.runCost * Time.deltaTime);
+        KeepGrounded();
     }
 
 }

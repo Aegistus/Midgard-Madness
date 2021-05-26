@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 720991043650343796}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.56, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4828917952222175164}
@@ -299,7 +299,7 @@ MonoBehaviour:
     m_Bits: 256
   lookDirection: {fileID: 4828917951431313739}
   agentModel: {fileID: 6801081108730475623}
-  groundCheckRadius: 0.6
+  groundCheckRadius: 0.75
   groundCheckHeight: 0
 --- !u!114 &1680635285654721201
 MonoBehaviour:
@@ -453,7 +453,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4828917952222175139}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.58, y: 0.49, z: 0}
+  m_LocalPosition: {x: 0.58, y: 0.859, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4828917950998017880}
