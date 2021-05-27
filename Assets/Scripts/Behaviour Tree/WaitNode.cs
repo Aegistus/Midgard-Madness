@@ -24,7 +24,7 @@ public class WaitNode : Node
         }
         else
         {
-            CurrentState = NodeState.RUNNING;
+            CurrentState = NodeState.FAILURE;
         }
         return CurrentState;
     }

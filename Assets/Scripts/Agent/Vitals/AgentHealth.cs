@@ -34,13 +34,11 @@ public class AgentHealth : MonoBehaviour
         float attackAngle = Vector3.Angle(agentModel.forward, attackDirection);
         if (agent.CurrentState.GetType() == typeof(Blocking) && attackAngle < 90 && attackAngle > -90) 
         {
-            print("Blocked");
             AudioManager.instance.PlaySoundAtPosition("Sword Block", transform.position);
             PoolManager.Instance.GetObjectFromPoolWithLifeTime(PoolManager.PoolTag.Spark, transform.position, Quaternion.identity, 1f);
         }
         else
         {
-            print("Not Blocked");
             currentHealth -= damage;
             //movement.SetHorizontalVelocity((transform.position - origin) * force);
             AudioManager.instance.PlaySoundAtPosition("Taking Damage", transform.position);

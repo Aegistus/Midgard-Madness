@@ -5,6 +5,7 @@ using System;
 
 public class AIFighting : NPCState
 {
+    Agent opponent;
     Func<bool> NotAttacking => Not(() => agent.CurrentState.GetType() != typeof(MeleeAttacking) && agent.CurrentState.GetType() != typeof(RangedAttacking));
 
     public AIFighting(GameObject gameObject) : base(gameObject)
@@ -23,6 +24,7 @@ public class AIFighting : NPCState
     {
         Debug.Log("NPC Fighting");
         controller.SetDestination(transform.position);
+        opponent = controller.Target.GetComponentInParent<Agent>();
         if (UnityEngine.Random.value > .5) // 50/50 chance
         {
             agent.Forwards = true;
@@ -34,17 +36,20 @@ public class AIFighting : NPCState
     {
         rootNode = new SelectorNode(new List<Node>()
         {
-            // attack sequence
-            new SequenceNode(new List<Node>()
-            {
-                new WaitNode(new ActionNode(() => agent.Attack = true), UnityEngine.Random.value * controller.attackWaitTime)
-            }),
             // block sequence
             new SequenceNode(new List<Node>()
             {
-                new WaitNode(new ActionNode(() => agent.Block = true), UnityEngine.Random.value * controller.attackWaitTime)
+                new ConditionNode(() => Node.ConvertToState(opponent.CurrentState.GetType() == typeof(MeleeAttacking))),
+                new ConditionNode(() => Node.ConvertToState(UnityEngine.Random.value >= .5)),
+                new ActionNode(() => agent.Block = true),
+                new ActionNode(() => controller.ChangeLookDirection(controller.Target)), // look at target
             }),
-            new ActionNode(() => controller.ChangeLookDirection(controller.Target)), // look at target
+            // attack sequence
+            new SequenceNode(new List<Node>()
+            {
+                new WaitNode(new ActionNode(() => agent.Attack = true), UnityEngine.Random.value * controller.attackWaitTime),
+                new ActionNode(() => controller.ChangeLookDirection(controller.Target)), // look at target
+            }),
         });
     }
 

@@ -37,6 +37,7 @@ public class AIWandering : NPCState
             // walk to destination sequence
             new SequenceNode(new List<Node>()
             {
+                new ConditionNode(() => Node.ConvertToState(!controller.AtDestination(1))),
                 new ActionNode(() => agent.Forwards = true),
             })
         });
