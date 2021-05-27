@@ -59,7 +59,7 @@ public abstract class AgentState : State
         audio = gameObject.GetComponentInChildren<AudioSource>();
 
         transitionsTo.Add(new Transition(typeof(Dying), IsDead));
-        transitionsTo.Add(new Transition(typeof(TakingDamage), () => health.TookSignificatDamage));
+        transitionsTo.Add(new Transition(typeof(TakingDamage), () => health.TookSignificantDamage));
     }
 
     private bool IsNextToWall()
