@@ -8,34 +8,31 @@ public class UnEquipping : AgentState
 
     public UnEquipping(GameObject gameObject) : base(gameObject)
     {
-        animationHash = Animator.StringToHash("Equipping");
         transitionsTo.Add(new Transition(typeof(Idling), () => animationDone));
         weapons = gameObject.GetComponent<AgentWeapons>();
         animEvents = gameObject.GetComponentInChildren<AgentAnimEvents>();
     }
 
-    private void EnableNewWeapon(EventType eventType)
+    private void DisableWeapon(EventType eventType)
     {
         if (eventType == EventType.Finish)
         {
             animationDone = true;
+            weapons.UnEquipAll();
         }
     }
 
     public override void AfterExecution()
     {
-        anim.SetBool(animationHash, false);
-        animEvents.OnAnimationEvent -= EnableNewWeapon;
+        animEvents.OnAnimationEvent -= DisableWeapon;
     }
 
     public override void BeforeExecution()
     {
         Debug.Log("UnEquipping");
-        weapons.UnEquipAll();
-        anim.SetBool(animationHash, true);
         animationDone = false;
-        animEvents.OnAnimationEvent += EnableNewWeapon;
-        self.SetHorizontalVelocity(self.Velocity * .5f);
+        animEvents.OnAnimationEvent += DisableWeapon;
+        movement.SetHorizontalVelocity(movement.Velocity * .5f);
         audioManager.PlaySoundAtPosition("Blade Equip", transform.position);
     }
 

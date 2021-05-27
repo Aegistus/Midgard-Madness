@@ -7,8 +7,6 @@ public class MeleeAttacking : AgentState
 {
     private MeleeWeapon primary;
     private MeleeWeapon secondary;
-    private int animVariantHash;
-    private int animVariantNumber = 3;
     protected int attackAnimationSpeedHash;
     private bool animationFinished = false;
     private float timer = 0;
@@ -24,7 +22,6 @@ public class MeleeAttacking : AgentState
         };
         transitionsTo.Add(attackCombo);
         transitionsTo.Add(new Transition(typeof(Blocking), () => timer >= canAttackAgainTime, Block));
-        animVariantHash = Animator.StringToHash("AttackVariant");
         attackAnimationSpeedHash = Animator.StringToHash("AttackSpeed");
         animEvents.OnAnimationEvent += CheckAnimationEvent;
     }
@@ -56,7 +53,6 @@ public class MeleeAttacking : AgentState
     public override void AfterExecution()
     {
         isCurrentState = false;
-        anim.SetInteger(animVariantHash, -1);
         audio.Stop();
         primary?.ExitDamageState();
         secondary?.ExitDamageState();
@@ -68,9 +64,6 @@ public class MeleeAttacking : AgentState
         Debug.Log("Melee Attack");
         isCurrentState = true;
         animationFinished = false;
-        int variant = UnityEngine.Random.Range(0, animVariantNumber);
-        anim.SetInteger(animVariantHash, variant);
-        anim.SetFloat(attackAnimationSpeedHash, self.agentStats.attackSpeed);
         if (self.agentSounds)
         {
             audio.clip = self.agentSounds.attack.GetRandomAudioClip();
@@ -78,7 +71,7 @@ public class MeleeAttacking : AgentState
             audio.Play();
         }
 
-        self.SetHorizontalVelocity(self.Velocity * .2f);
+        movement.SetHorizontalVelocity(movement.Velocity * .2f);
         // have weapons enter damage state
         if (weapons.primarySlot.CurrentlyEquipped?.GetType() == typeof(MeleeWeapon))
         {
@@ -103,13 +96,13 @@ public class MeleeAttacking : AgentState
     Vector3 inputVelocity;
     public override void DuringExecution()
     {
-        self.RotateAgentModelToDirection(self.lookDirection.forward);
+        movement.RotateAgentModelToDirection(movement.lookDirection.forward);
         timer += Time.deltaTime;
         if (navAgent == null)
         {
             inputVelocity = GetAgentMovementInput();
-            self.SetHorizontalVelocity(inputVelocity * MoveSpeed);
-            self.RotateAgentModelToDirection(inputVelocity);
+            movement.SetHorizontalVelocity(inputVelocity * MoveSpeed);
+            movement.RotateAgentModelToDirection(inputVelocity);
         }
     }
 }

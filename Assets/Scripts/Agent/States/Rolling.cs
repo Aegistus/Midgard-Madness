@@ -17,18 +17,16 @@ public class Rolling : OnGroundState
         transitionsTo.Add(new Transition(typeof(Idling), TimerUp, Not(Move)));
         transitionsTo.Add(new Transition(typeof(Walking), TimerUp, Move, Not(Run)));
         transitionsTo.Add(new Transition(typeof(Running), TimerUp, Move, Run));
-        animationHash = Animator.StringToHash("Rolling");
     }
 
     public override void AfterExecution()
     {
-        anim.SetBool(animationHash, false);
+
     }
 
     public override void BeforeExecution()
     {
         Debug.Log("Rolling");
-        anim.SetBool(animationHash, true);
         timer = 0;
         stamina.DepleteStamina(agentStats.rollCost);
     }
@@ -39,10 +37,10 @@ public class Rolling : OnGroundState
         inputVelocity = GetAgentMovementInput();
         if (inputVelocity == Vector3.zero)
         {
-            inputVelocity = self.agentModel.forward;
+            inputVelocity = movement.agentModel.forward;
         }
-        self.SetHorizontalVelocity(inputVelocity * MoveSpeed);
-        self.RotateAgentModelToDirection(inputVelocity);
+        movement.SetHorizontalVelocity(inputVelocity * MoveSpeed);
+        movement.RotateAgentModelToDirection(inputVelocity);
         KeepGrounded();
     }
 }

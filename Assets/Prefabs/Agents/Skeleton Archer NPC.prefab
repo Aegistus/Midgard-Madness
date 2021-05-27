@@ -1923,6 +1923,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2434456224995063705}
   - component: {fileID: 2434456225002706301}
+  - component: {fileID: 4988596435396397456}
   - component: {fileID: 2434456224995384489}
   - component: {fileID: 2434456224995384488}
   - component: {fileID: 1343296818648522324}
@@ -1972,6 +1973,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4988596435396397456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2434456224995384503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15730ee6d65a0274b99b4b55bfc3f30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2434456224995384489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3148,6 +3161,7 @@ GameObject:
   - component: {fileID: 6636826674764402803}
   - component: {fileID: 6636826674764402804}
   - component: {fileID: 1725498439170554104}
+  - component: {fileID: 5695078981151642535}
   - component: {fileID: 597761708643527165}
   - component: {fileID: 2358427328183910232}
   - component: {fileID: 3987455603033559748}
@@ -3214,12 +3228,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agentStats: {fileID: 11400000, guid: 8fd789cda856717409b3f3777c902de3, type: 2}
   agentSounds: {fileID: 11400000, guid: c42dfc172aa160b4caaa2bc3b2f9a06d, type: 2}
+--- !u!114 &5695078981151642535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6636826674764402802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2c30c51a0f0ea944a8cf7d3fc86875f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
   lookDirection: {fileID: 6636826676252468464}
   agentModel: {fileID: 2434456224995063705}
-  groundCheckRadius: 0.75
+  groundCheckRadius: 0.6
   groundCheckHeight: 0
 --- !u!114 &597761708643527165
 MonoBehaviour:
@@ -3248,6 +3274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6033328aa41e8df4ab95eb27a9f3ab37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agentModel: {fileID: 2434456224995063705}
 --- !u!114 &3987455603033559748
 MonoBehaviour:
   m_ObjectHideFlags: 0

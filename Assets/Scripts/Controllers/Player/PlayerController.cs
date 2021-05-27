@@ -6,6 +6,7 @@ public class PlayerController : AgentController
 {
     public GameObject playerCam;
 
+    private Agent agent;
     private Vector3 originalCamPosition;
     private Camera mainCam;
 
@@ -13,32 +14,33 @@ public class PlayerController : AgentController
 
     private void Start()
     {
+        agent = GetComponent<Agent>();
         originalCamPosition = playerCam.transform.localPosition;
         mainCam = playerCam.GetComponent<Camera>();
     }
 
     private void Update()
     {
-        Attack = Input.GetMouseButton(0);
-        Block = Input.GetMouseButton(1);
-        Forwards = Input.GetKey(KeyCode.W);
-        Backwards = Input.GetKey(KeyCode.S);
-        Left = Input.GetKey(KeyCode.A);
-        Right = Input.GetKey(KeyCode.D);
-        Run = Input.GetKey(KeyCode.LeftShift);
-        Jump = Input.GetKey(KeyCode.Space);
-        Crouch = Input.GetKey(KeyCode.LeftControl);
-        Equipping = false;
+        agent.Attack = Input.GetMouseButton(0);
+        agent.Block = Input.GetMouseButton(1);
+        agent.Forwards = Input.GetKey(KeyCode.W);
+        agent.Backwards = Input.GetKey(KeyCode.S);
+        agent.Left = Input.GetKey(KeyCode.A);
+        agent.Right = Input.GetKey(KeyCode.D);
+        agent.Run = Input.GetKey(KeyCode.LeftShift);
+        agent.Jump = Input.GetKey(KeyCode.Space);
+        agent.Crouch = Input.GetKey(KeyCode.LeftControl);
+        agent.Equipping = false;
         for (int i = 0; i < numberKeys.Length; i++)
         {
             if (Input.GetKeyDown(numberKeys[i]))
             {
-                WeaponNumKey = i;
-                Equipping = true;
+                agent.WeaponNumKey = i;
+                agent.Equipping = true;
             }
         }
-        UnEquipping = Input.GetKey(KeyCode.R);
-        Aim = mainCam.ScreenPointToRay(Input.mousePosition);
+        agent.UnEquipping = Input.GetKey(KeyCode.R);
+        agent.Aim = mainCam.ScreenPointToRay(Input.mousePosition);
     }
 
     public void ShiftCameraPosition(Vector3 newPosition)

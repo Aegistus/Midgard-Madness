@@ -9,13 +9,11 @@ public class TakingDamage : AgentState
 
     public TakingDamage(GameObject gameObject) : base(gameObject)
     {
-        animationHash = Animator.StringToHash("TakingDamage");
         transitionsTo.Add(new Transition(typeof(Idling), () => timer <= 0));
     }
 
     public override void AfterExecution()
     {
-        anim.SetBool(animationHash, false);
         audio.Stop();
         if (navAgent)
         {
@@ -26,7 +24,6 @@ public class TakingDamage : AgentState
     public override void BeforeExecution()
     {
         timer = maxTimer;
-        anim.SetBool(animationHash, true);
         if (self.agentSounds)
         {
             audio.clip = self.agentSounds.hit.GetRandomAudioClip();

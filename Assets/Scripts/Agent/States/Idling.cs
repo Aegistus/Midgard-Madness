@@ -8,7 +8,6 @@ public class Idling : OnGroundState
 
     public Idling(GameObject gameObject) : base(gameObject)
     {
-        animationHash = Animator.StringToHash("Idling");
         transitionsTo.Add(new Transition(typeof(Walking), Move));
         transitionsTo.Add(new Transition(typeof(Falling), Not(OnGround)));
         transitionsTo.Add(new Transition(typeof(Blocking), Block, () => vigor.CurrentVigor >= agentStats.blockCost));
@@ -23,22 +22,28 @@ public class Idling : OnGroundState
     {
         audio.loop = false;
         audio.Stop();
-        anim.SetBool(animationHash, false);
-
+        if (navAgent)
+        {
+            navAgent.isStopped = false;
+        }
     }
 
     public override void BeforeExecution()
     {
         Debug.Log("Idling");
-        anim.SetBool(animationHash, true);
-        self.SetHorizontalVelocity(Vector3.zero);
-        self.SetVerticalVelocity(0);
+        movement.SetHorizontalVelocity(Vector3.zero);
+        movement.SetVerticalVelocity(0);
         KeepGrounded();
         if (self.agentSounds)
         {
             audio.clip = self.agentSounds.breathing?.GetRandomAudioClip();
             audio.loop = true;
             audio.Play();
+        }
+        if (navAgent)
+        {
+            navAgent.velocity = Vector3.zero;
+            navAgent.isStopped = true;
         }
     }
 

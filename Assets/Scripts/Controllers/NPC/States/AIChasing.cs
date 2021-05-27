@@ -19,17 +19,21 @@ public class AIChasing : NPCState
     public override void BeforeExecution()
     {
         Debug.Log("NPC Chasing");
-        controller.SetDestination(transform.position, true);
+        controller.SetDestination(transform.position);
     }
 
     protected override void CreateTree()
     {
-        InverterNode notNearTarget = new InverterNode(new ConditionNode(() => Node.ConvertToState(controller.NearTarget(controller.attackRadius - 1))));
-        ActionNode setTarget = new ActionNode(() => controller.SetDestination(controller.Target.position, true));
-        ConditionNode hasTarget = new ConditionNode(() => Node.ConvertToState(controller.Target != null));
-        ActionNode moveToTarget = new ActionNode(() => controller.MoveToDestination(true));
-        SequenceNode chaseSequence = new SequenceNode(new List<Node>() { hasTarget, setTarget, moveToTarget });
-
-        rootNode = new SelectorNode(new List<Node>() { chaseSequence });
+        rootNode = new SelectorNode(new List<Node>()
+        {
+            new SequenceNode(new List<Node>()
+            {
+                new ConditionNode(() => Node.ConvertToState(controller.Target != null)), // has target
+                new ActionNode(() => controller.SetDestination(controller.Target.position)), // set target
+                new ActionNode(() => controller.ChangeLookDirection(controller.Target)), // look at target
+                new ActionNode(() => agent.Forwards = true), // move to target
+                new ActionNode(() => agent.Run = true)
+            }),
+        }) ;
     }
 }

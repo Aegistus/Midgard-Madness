@@ -8,31 +8,30 @@ public class Jumping : AgentState
 
     public Jumping(GameObject gameObject) : base(gameObject)
     {
-        animationHash = Animator.StringToHash("Jumping");
         transitionsTo.Add(new Transition(typeof(Falling), Falling));
         transitionsTo.Add(new Transition(typeof(Idling), OnGround, Not(Rising), Not(Falling)));
     }
 
     public override void AfterExecution()
     {
-        anim.SetBool(animationHash, false);
+        movement.AddVerticalVelocity(-9.8f * Time.deltaTime);
     }
 
     public override void BeforeExecution()
     {
         Debug.Log("Jumping");
-        anim.SetBool(animationHash, true);
-        startingVelocity = self.Velocity;
-        self.SetVerticalVelocity(0);
-        self.AddVerticalVelocity(JumpForce);
+        startingVelocity = movement.Velocity;
+        movement.SetVerticalVelocity(0);
+        movement.AddVerticalVelocity(JumpForce);
         stamina.DepleteStamina(agentStats.jumpCost);
     }
 
     Vector3 newVelocity;
     public override void DuringExecution()
     {
+        movement.AddVerticalVelocity(-9.8f * Time.deltaTime);
         newVelocity = GetAgentMovementInput();
-        self.SetHorizontalVelocity(startingVelocity + (newVelocity * AirMoveSpeed));
-        self.RotateAgentModelToDirection(newVelocity);
+        movement.SetHorizontalVelocity(startingVelocity + (newVelocity * AirMoveSpeed));
+        movement.RotateAgentModelToDirection(newVelocity);
     }
 }

@@ -5,12 +5,14 @@ using System;
 
 public class AIFighting : NPCState
 {
+    Agent opponent;
     Func<bool> NotAttacking => Not(() => agent.CurrentState.GetType() != typeof(MeleeAttacking) && agent.CurrentState.GetType() != typeof(RangedAttacking));
 
     public AIFighting(GameObject gameObject) : base(gameObject)
     {
         transitionsTo.Add(new Transition(typeof(AISearching), NotAttacking, Not(PlayerInSight)));
-        transitionsTo.Add(new Transition(typeof(AIChasing), NotAttacking, PlayerInSight, Not(() => controller.NearTarget(controller.attackRadius))));
+        transitionsTo.Add(new Transition(typeof(AIEquipping), Not(() => weapons.HasWeaponEquipped())));
+        transitionsTo.Add(new Transition(typeof(AIChasing), PlayerInSight, Not(() => controller.NearTarget(controller.attackRadius))));
     }
 
     public override void AfterExecution()
@@ -21,34 +23,34 @@ public class AIFighting : NPCState
     public override void BeforeExecution()
     {
         Debug.Log("NPC Fighting");
-        controller.SetDestination(transform.position, false);
+        controller.SetDestination(transform.position);
+        opponent = controller.Target.GetComponentInParent<Agent>();
         if (UnityEngine.Random.value > .5) // 50/50 chance
         {
-            controller.MomentumAttackEnemy();
+            agent.Forwards = true;
+            agent.Attack = true;
         }
-    }
-
-    public override void DuringExecution()
-    {
-        base.DuringExecution();
-        controller.LookAt(controller.Target);
     }
 
     protected override void CreateTree()
     {
-        //ActionNode momentumAttack = new ActionNode(() => controller.MomentumAttackEnemy());
-        //ActionNode isRunning = new ActionNode(IsRunning);
-        //SequenceNode momentumAttackSequence = new SequenceNode(new List<Node> { isRunning, momentumAttack });
-
-        ActionNode attackTarget = new ActionNode(() => controller.AttackEnemy());
-        WaitNode attackDelay = new WaitNode(attackTarget, UnityEngine.Random.value * controller.attackWaitTime);
-        SequenceNode attackSequence = new SequenceNode(new List<Node>() { attackDelay, attackTarget });
-
-        ActionNode blockAttack = new ActionNode(() => controller.BlockAttack());
-        WaitNode blockDelay = new WaitNode(blockAttack, UnityEngine.Random.value * controller.attackWaitTime);
-        SequenceNode blockSequence = new SequenceNode(new List<Node>() { blockDelay, blockAttack });
-
-        rootNode = new SelectorNode(new List<Node>() { attackSequence, blockSequence });
+        rootNode = new SelectorNode(new List<Node>()
+        {
+            // block sequence
+            new SequenceNode(new List<Node>()
+            {
+                new ConditionNode(() => Node.ConvertToState(opponent.CurrentState.GetType() == typeof(MeleeAttacking))),
+                new ConditionNode(() => Node.ConvertToState(UnityEngine.Random.value >= .5)),
+                new ActionNode(() => agent.Block = true),
+                new ActionNode(() => controller.ChangeLookDirection(controller.Target)), // look at target
+            }),
+            // attack sequence
+            new SequenceNode(new List<Node>()
+            {
+                new WaitNode(new ActionNode(() => agent.Attack = true), UnityEngine.Random.value * controller.attackWaitTime),
+                new ActionNode(() => controller.ChangeLookDirection(controller.Target)), // look at target
+            }),
+        });
     }
 
 }

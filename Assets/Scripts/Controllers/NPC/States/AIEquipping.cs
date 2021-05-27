@@ -22,7 +22,7 @@ public class AIEquipping : NPCState
         Debug.Log("AI Equipping Weapon");
         done = false;
         availableWeapons = weapons.CarriedWeapons;
-        controller.SetDestination(transform.position, false);
+        controller.SetDestination(transform.position);
         for (int i = 0; i < availableWeapons.Count; i++)
         {
             if (availableWeapons[i].stats.stance != WeaponStance.Shield && availableWeapons[i].stats.stance != WeaponStance.Unarmed)

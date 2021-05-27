@@ -52,23 +52,12 @@ public class MeleeWeapon : Weapon
             Agent agent = other.GetComponentInParent<Agent>();
             if (agent != null && health != null)
             {
-                if (agent.CurrentState.GetType() != typeof(Blocking) && agent.CurrentState.GetType() != typeof(Rolling))
+                // check to make sure not hitting self, multi-hitting one agent, or hitting someone with the same tag
+                if (!hitAgents.Contains(health) && !transform.IsChildOf(health.transform) && !transform.root.CompareTag(health.tag))
                 {
-                    // check to make sure not hitting self, multi-hitting one agent, or hitting someone with the same tag
-                    if (!hitAgents.Contains(health) && !transform.IsChildOf(health.transform) && !transform.root.CompareTag(health.tag))
-                    {
-                        health.Damage(stats.damage * damageModifier, transform.position, MeleeStats.knockbackForce);
-                        hitAgents.Add(health);
-                        AudioManager.instance.PlaySoundAtPosition("Sword Hit", transform.position);
-                        PoolManager.Instance.GetObjectFromPoolWithLifeTime(PoolManager.PoolTag.Blood, other.ClosestPoint(transform.position), Quaternion.identity, 3f);
-                    }
-                }
-                else
-                {
-                    print("Attack Blocked");
-                    ExitDamageState();
-                    AudioManager.instance.PlaySoundAtPosition("Sword Block", transform.position);
-                    PoolManager.Instance.GetObjectFromPoolWithLifeTime(PoolManager.PoolTag.Spark, other.ClosestPoint(transform.position), Quaternion.identity, 1f);
+                    health.Damage(stats.damage * damageModifier, transform.position, MeleeStats.knockbackForce);
+                    hitAgents.Add(health);
+                    AudioManager.instance.PlaySoundAtPosition("Sword Hit", transform.position);
                 }
             }
         }

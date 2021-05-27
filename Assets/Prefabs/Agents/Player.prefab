@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &720991043650343796
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3561195785734115257}
+  m_Layer: 10
+  m_Name: Camera Pivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3561195785734115257
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720991043650343796}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4828917952222175164}
+  m_Father: {fileID: 4828917951006747455}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4828917950998017885
 GameObject:
   m_ObjectHideFlags: 0
@@ -48,11 +79,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d17a920e5e10e4092364ef68d9caee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lookTarget: {fileID: 4828917952222175164}
+  cameraPivot: {fileID: 3561195785734115257}
   xSensitivity: 300
   ySensitivity: 300
-  yMin: -2
-  yMax: 2.5
-  lookTarget: {fileID: 4828917952222175164}
+  yMin: -0.75
+  yMax: 3
 --- !u!20 &4828917950998017887
 Camera:
   m_ObjectHideFlags: 0
@@ -192,6 +224,7 @@ GameObject:
   - component: {fileID: 4828917951006747455}
   - component: {fileID: 4828917951006747450}
   - component: {fileID: 642693443397125044}
+  - component: {fileID: 6178029552293869249}
   - component: {fileID: 1680635285654721201}
   - component: {fileID: 4585698859150296084}
   - component: {fileID: 2904597762984913288}
@@ -218,7 +251,7 @@ Transform:
   m_Children:
   - {fileID: 6801081108730475623}
   - {fileID: 3037093695944009794}
-  - {fileID: 4828917952222175164}
+  - {fileID: 3561195785734115257}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -249,6 +282,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agentStats: {fileID: 11400000, guid: b8bce07506ce9144588b8f1c2a969b62, type: 2}
   agentSounds: {fileID: 11400000, guid: 0467ffa7dfd53f248b124f286722688d, type: 2}
+--- !u!114 &6178029552293869249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4828917951006747454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2c30c51a0f0ea944a8cf7d3fc86875f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -283,6 +328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6033328aa41e8df4ab95eb27a9f3ab37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agentModel: {fileID: 6801081108730475623}
 --- !u!114 &2904597762984913288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,13 +453,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4828917952222175139}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.58, y: 0.859, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4828917950998017880}
-  m_Father: {fileID: 4828917951006747455}
-  m_RootOrder: 2
+  m_Father: {fileID: 3561195785734115257}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5642727351112796169
 GameObject:
@@ -2572,6 +2618,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6801081108730475623}
   - component: {fileID: 6801081108737424525}
+  - component: {fileID: 6014547329968788852}
   - component: {fileID: 3458643720057974785}
   - component: {fileID: 3451515371363561835}
   - component: {fileID: 8205480818235455136}
@@ -2623,6 +2670,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6014547329968788852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6801081108730128225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15730ee6d65a0274b99b4b55bfc3f30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3458643720057974785
 MonoBehaviour:
   m_ObjectHideFlags: 0

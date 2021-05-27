@@ -9,30 +9,29 @@ public class Falling : AgentState
 
     public Falling(GameObject gameObject) : base(gameObject)
     {
-        animationHash = Animator.StringToHash("Falling");
         transitionsTo.Add(new Transition(typeof(Idling), Not(Falling), OnGround));
     }
 
     public override void AfterExecution()
     {
-        anim.SetBool(animationHash, false);
+        movement.SetVerticalVelocity(0f);
     }
 
     public override void BeforeExecution()
     {
         Debug.Log("Falling");
-        startingVelocity = self.Velocity;
-        anim.SetBool(animationHash, true);
+        startingVelocity = movement.Velocity;
     }
 
     Vector3 newVelocity;
     public override void DuringExecution()
     {
+        movement.AddVerticalVelocity(-9.8f * Time.deltaTime);
         newVelocity = GetAgentMovementInput();
         if (newVelocity.sqrMagnitude > 0)
         {
-            self.SetHorizontalVelocity(startingVelocity + newVelocity * airMoveSpeed);
-            self.RotateAgentModelToDirection(newVelocity);
+            movement.SetHorizontalVelocity(startingVelocity + newVelocity * airMoveSpeed);
+            movement.RotateAgentModelToDirection(newVelocity);
         }
     }
 }

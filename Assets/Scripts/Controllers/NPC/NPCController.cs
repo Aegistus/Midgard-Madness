@@ -16,7 +16,7 @@ public class NPCController : AgentController
     public float attackWaitTime = 2f;
 
     private Agent agent;
-    private AgentWeapons weapons;
+    private AgentMovement movement;
     private NavMeshAgent navAgent;
     private FieldOfView fov;
     public Transform Target { get; private set; }
@@ -29,7 +29,7 @@ public class NPCController : AgentController
     private void Awake()
     {
         agent = GetComponent<Agent>();
-        weapons = GetComponent<AgentWeapons>();
+        movement = GetComponent<AgentMovement>();
         navAgent = GetComponent<NavMeshAgent>();
         fov = GetComponent<FieldOfView>();
         Dictionary<Type, State> states = new Dictionary<Type, State>()
@@ -66,16 +66,11 @@ public class NPCController : AgentController
         }
     }
 
-    public void SetDestination(Vector3 position, bool running)
+    public void SetDestination(Vector3 position)
     {
         if (navAgent.isOnNavMesh)
         {
             navAgent?.SetDestination(position);
-        }
-        Forwards = true;
-        if (running)
-        {
-            Run = true;
         }
     }
 
@@ -88,88 +83,37 @@ public class NPCController : AgentController
     {
         while (true)
         {
-            Attack = false;
-            Block = false;
-            Forwards = false;
-            Backwards = false;
-            Left = false;
-            Right = false;
-            Jump = false;
-            Crouch = false;
-            Run = false;
-            Equipping = false;
+            agent.Attack = false;
+            agent.Block = false;
+            agent.Forwards = false;
+            agent.Backwards = false;
+            agent.Left = false;
+            agent.Right = false;
+            agent.Jump = false;
+            agent.Crouch = false;
+            agent.Run = false;
+            agent.Equipping = false;
+            agent.UnEquipping = false;
             if (Target != null)
             {
                 Vector3 randomOffset = Target.position + new Vector3(Random.Range(-.5f, .5f), Random.Range(-.5f, .5f), Random.Range(-.5f, .5f));
-                Aim = new Ray(transform.position, randomOffset - transform.position);
+                agent.Aim = new Ray(transform.position, randomOffset - transform.position);
             }
             AIStateMachine.ExecuteState();
             yield return new WaitForSeconds(tickInterval);
         }
     }
 
-    public void EquipWeapon(int weaponChoice)
+    public void ChangeLookDirection(Transform target)
     {
-        print("Attempting to Equip");
-        if (weaponChoice >= 0 && weaponChoice < weapons.CarriedWeapons.Count)
-        {
-            Equipping = true;
-            weapons.EquipWeapon(weaponChoice);
-        }
+        movement.lookDirection.LookAt(target);
     }
 
-    public void UnEquipAll()
+    public void SetRandomDestination()
     {
-        weapons.UnEquipAll();
-    }
-
-    public void AttackEnemy()
-    {
-        if (Attack != true)
-        {
-            Attack = true;
-        }
-    }
-
-    public void BlockAttack()
-    {
-        if (Block != true)
-        {
-            Block = true;
-        }
-    }
-
-    public void LookAt(Transform target)
-    {
-        agent.lookDirection.LookAt(target);
-    }
-
-    public NodeState MomentumAttackEnemy()
-    {
-        Forwards = true;
-        Run = true;
-        if (Attack != true)
-        {
-            Attack = true;
-        }
-        return NodeState.SUCCESS;
-    }
-
-    public void SetRandomDestination(bool running)
-    {
-        Debug.Log("Finding Patrol Point");
         Vector3 randomPoint = new Vector3((Random.value * wanderDiameter) - (wanderDiameter/2), 0, (Random.value * wanderDiameter) - (wanderDiameter / 2));
         randomPoint += transform.position;
-        SetDestination(randomPoint, running);
-    }
-
-    public void MoveToDestination(bool running)
-    {
-        Forwards = true;
-        if (running)
-        {
-            Run = true;
-        }
+        SetDestination(randomPoint);
     }
 
     public bool NearTarget(float distance)

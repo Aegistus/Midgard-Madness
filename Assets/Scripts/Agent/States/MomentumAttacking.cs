@@ -6,15 +6,12 @@ public class MomentumAttacking : AgentState
 {
     private MeleeWeapon primary;
     private MeleeWeapon secondary;
-    private int animVariantHash;
-    private int animVariantNumber = 3;
     protected int attackAnimationSpeedHash;
     private bool animationFinished = false;
 
     public MomentumAttacking(GameObject gameObject) : base(gameObject)
     {
         transitionsTo.Add(new Transition(typeof(Idling), () => animationFinished));
-        animVariantHash = Animator.StringToHash("MomentumAttackVariant");
         attackAnimationSpeedHash = Animator.StringToHash("AttackSpeed");
         animEvents.OnAnimationEvent += CheckAnimationEvent;
     }
@@ -33,16 +30,14 @@ public class MomentumAttacking : AgentState
 
     public override void AfterExecution()
     {
-        anim.SetInteger(animVariantHash, -1);
+
     }
 
     public override void BeforeExecution()
     {
         Debug.Log("Momentum Attack");
         animationFinished = false;
-        int variant = Random.Range(0, animVariantNumber);
-        anim.SetInteger(animVariantHash, variant);
-        self.SetHorizontalVelocity(self.Velocity * .5f);
+        movement.SetHorizontalVelocity(Vector3.zero);
         // have weapons enter damage state
         if (weapons.primarySlot.CurrentlyEquipped?.GetType() == typeof(MeleeWeapon))
         {
@@ -67,6 +62,6 @@ public class MomentumAttacking : AgentState
 
     public override void DuringExecution()
     {
-        self.RotateAgentModelToDirection(self.lookDirection.forward, .1f);
+        movement.RotateAgentModelToDirection(movement.lookDirection.forward, .1f);
     }
 }

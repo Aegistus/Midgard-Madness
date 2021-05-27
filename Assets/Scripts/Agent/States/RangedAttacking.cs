@@ -10,7 +10,6 @@ public class RangedAttacking : AgentState
     public RangedAttacking(GameObject gameObject) : base(gameObject)
     {
         transitionsTo.Add(new Transition(typeof(Idling), () => animationFinished));
-        animationHash = Animator.StringToHash("RangedAttack");
         animEvents.OnAnimationEvent += CheckAnimationEvent;
     }
 
@@ -32,7 +31,6 @@ public class RangedAttacking : AgentState
     public override void AfterExecution()
     {
         isCurrentState = false;
-        anim.SetBool(animationHash, false);
         //if (controller.GetType() == typeof(PlayerController))
         //{
         //    PlayerController player = (PlayerController)controller;
@@ -53,11 +51,10 @@ public class RangedAttacking : AgentState
         {
             weapon = (RangedWeapon)weapons.secondarySlot.CurrentlyEquipped;
         }
-        anim.SetBool(animationHash, true);
-        self.SetHorizontalVelocity(Vector3.zero);
+        movement.SetHorizontalVelocity(Vector3.zero);
         if (weapon != null)
         {
-            weapon.RangedAttack(controller.Aim);
+            weapon.RangedAttack(self.Aim);
         }
     }
 

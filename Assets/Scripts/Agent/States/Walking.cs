@@ -8,7 +8,6 @@ public class Walking : OnGroundState
 
     public Walking(GameObject gameObject) : base(gameObject)
     {
-        animationHash = Animator.StringToHash("Walking");
         transitionsTo.Add(new Transition(typeof(Idling), Not(Move)));
         transitionsTo.Add(new Transition(typeof(MeleeAttacking), MeleeEquipped, Attack, () => vigor.CurrentVigor >= agentStats.meleeAttackCost));
         transitionsTo.Add(new Transition(typeof(RangedAiming), RangedEquipped, Attack, () => vigor.CurrentVigor >= agentStats.rangedAimCost));
@@ -21,7 +20,6 @@ public class Walking : OnGroundState
 
     public override void AfterExecution()
     {
-        anim.SetBool(animationHash, false);
         audio.Stop();
         audio.loop = false;
         animEvents.OnAnimationEvent -= FootstepEvent;
@@ -29,14 +27,13 @@ public class Walking : OnGroundState
 
     public override void BeforeExecution()
     {
-        anim.SetBool(animationHash, true);
         if (self.agentSounds)
         {
             audio.clip = self.agentSounds.breathing.GetRandomAudioClip();
             audio.loop = true;
             audio.Play();
         }
-        self.SetHorizontalVelocity(Vector3.zero);
+        movement.SetHorizontalVelocity(Vector3.zero);
         if (navAgent != null)
         {
             navAgent.speed = MoveSpeed;
@@ -58,10 +55,10 @@ public class Walking : OnGroundState
         if (navAgent == null)
         {
             inputVelocity = GetAgentMovementInput();
-            self.SetHorizontalVelocity(inputVelocity * MoveSpeed);
-            self.RotateAgentModelToDirection(inputVelocity);
-            KeepGrounded();
+            movement.SetHorizontalVelocity(inputVelocity * MoveSpeed);
+            movement.RotateAgentModelToDirection(inputVelocity);
         }
+        KeepGrounded();
     }
 
 }

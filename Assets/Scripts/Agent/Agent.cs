@@ -2,34 +2,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class Agent : MonoBehaviour
 {
     public AgentStats agentStats;
     public AgentSounds agentSounds;
-    public LayerMask groundLayer;
-    public Transform lookDirection;
-    public Transform agentModel;
-    public float groundCheckRadius = .75f;
-    public float groundCheckHeight = 0;
 
-    public Vector3 Velocity { get { return velocity; } private set { velocity = value; } }
-    private Vector3 velocity;
+    public bool Attack { get; set; }
+    public bool Block { get; set; }
+    public bool Forwards { get; set; }
+    public bool Backwards { get; set; }
+    public bool Left { get; set; }
+    public bool Right { get; set; }
+    public bool Jump { get; set; }
+    public bool Crouch { get; set; }
+    public bool Run { get; set; }
+    public bool Equipping { get; set; }
+    public int WeaponNumKey { get; set; }
+    public bool UnEquipping { get; set; }
+    public Ray Aim { get; set; }
 
     public AgentState CurrentState => (AgentState)StateMachine.CurrentState;
-    public bool Grounded { get; private set; }
 
     public StateMachine StateMachine { get; private set; }
-    private CharacterController charController;
-    private NavMeshAgent navAgent;
-    private float verticalVelocity;
+
+    private void Awake()
+    {
+        StateMachine = new StateMachine();
+    }
 
     private void Start()
     {
-        StateMachine = new StateMachine();
-        charController = GetComponent<CharacterController>();
-        navAgent = GetComponent<NavMeshAgent>();
         Dictionary<Type, State> states = new Dictionary<Type, State>()
         {
             {typeof(Idling), new Idling(gameObject) },
@@ -57,60 +60,9 @@ public class Agent : MonoBehaviour
         StateMachine.SetStates(states, typeof(Idling));
     }
 
-    public void SetHorizontalVelocity(Vector3 velocity)
-    {
-        Velocity = new Vector3(velocity.x, Velocity.y, velocity.z);
-    }
-
-    public void AddVerticalVelocity(float vertVelocity)
-    {
-        verticalVelocity += vertVelocity;
-    }
-
-    public void SetVerticalVelocity(float vertVelocity)
-    {
-        verticalVelocity = vertVelocity;
-    }
-
-    public bool IsGrounded()
-    {
-        if (Physics.CheckSphere(new Vector3(transform.position.x, transform.position.y + groundCheckHeight, transform.position.z), groundCheckRadius, groundLayer))
-        {
-            return true;
-        }
-        return false;
-    }
-
-    Quaternion targetRotation, currentRotation;
-    public void RotateAgentModelToDirection(Vector3 position, float rotationSpeed = 15f)
-    {
-        // make the agent's model rotate towards the direction
-        currentRotation = agentModel.rotation;
-        agentModel.LookAt(agentModel.position + position);
-        targetRotation.eulerAngles = new Vector3(0, agentModel.eulerAngles.y, 0);
-        agentModel.rotation = currentRotation;
-        agentModel.rotation = Quaternion.Lerp(currentRotation, targetRotation, rotationSpeed * Time.deltaTime);
-    }
-
     private void Update()
     {
-        if (!IsGrounded())
-        {
-            verticalVelocity += -9.8f * Time.deltaTime;
-        }
-        else
-        {
-            verticalVelocity = 0;
-        }
         StateMachine.ExecuteState();
-        velocity.y = verticalVelocity;
-        if (charController.enabled)
-        {
-            if (navAgent == null || navAgent.enabled == false)
-            {
-                charController.Move(Velocity * Time.deltaTime);
-            }
-        }
     }
 
 }
