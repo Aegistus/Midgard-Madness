@@ -15,10 +15,12 @@ public class Projectile : MonoBehaviour
 
     private Rigidbody rb;
     private List<AgentHealth> hitHealths = new List<AgentHealth>();
+    private Vector3 startingPosition;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        startingPosition = transform.position;
         AudioManager.instance.PlaySoundAtPosition(startSoundName, transform.position);
         rb.AddForce(transform.forward * force);
     }
@@ -29,19 +31,10 @@ public class Projectile : MonoBehaviour
         Agent agent = other.GetComponentInParent<Agent>();
         if (agent != null)
         {
-            if (agent.CurrentState.GetType() != typeof(Blocking))
+            if (!hitHealths.Contains(health))
             {
-                if (!hitHealths.Contains(health))
-                {
-                    health.Damage(damage * damageModifier, transform.position, knockbackForce);
-                    hitHealths.Add(health);
-                }
-            }
-            else
-            {
-                print("Projectile Blocked");
-                AudioManager.instance.PlaySoundAtPosition("Sword Block", transform.position);
-                PoolManager.Instance.GetObjectFromPoolWithLifeTime(PoolManager.PoolTag.Spark, other.ClosestPoint(transform.position), Quaternion.identity, 1f);
+                health.Damage(damage * damageModifier, startingPosition, knockbackForce);
+                hitHealths.Add(health);
             }
         }
         AudioManager.instance.PlaySoundAtPosition(impactSoundName, transform.position);

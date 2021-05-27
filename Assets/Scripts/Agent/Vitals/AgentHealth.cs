@@ -5,6 +5,8 @@ using System;
 
 public class AgentHealth : MonoBehaviour
 {
+    public Transform agentModel;
+
     public float MaxHealth => stats.maxHealth;
     public float Toughness => stats.toughness;
 
@@ -17,21 +19,19 @@ public class AgentHealth : MonoBehaviour
 
     private float currentHealth;
     private Agent agent;
-    private AgentMovement movement;
     private AgentStats stats;
 
     private void Awake()
     {
         agent = GetComponent<Agent>();
-        movement = GetComponent<AgentMovement>();
         stats = agent.agentStats;
         currentHealth = MaxHealth;
     }
 
     public void Damage(float damage, Vector3 origin, float force)
     {
-        Vector3 attackDirection = (origin - transform.position).normalized;
-        float attackAngle = Vector3.Angle(transform.forward, attackDirection);
+        Vector3 attackDirection = (origin - agentModel.position).normalized;
+        float attackAngle = Vector3.Angle(agentModel.forward, attackDirection);
         if (agent.CurrentState.GetType() == typeof(Blocking) && attackAngle < 90 && attackAngle > -90) 
         {
             print("Blocked");
