@@ -27,6 +27,7 @@ public class DodgingRight : OnGroundState
     public override void BeforeExecution()
     {
         finished = false;
+        movement.SetHorizontalVelocity(movement.agentModel.right * self.agentStats.dodgeBonusSpeed);
     }
 
     public override void DuringExecution()

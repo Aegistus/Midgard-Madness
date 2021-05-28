@@ -35,6 +35,7 @@ public class AgentStats : ScriptableObject
     public float walkSpeed = 3;
     public float runSpeed = 6;
     public float rollSpeed = 5;
+    public float dodgeBonusSpeed = 3f;
     public float attackSpeed = 1;
     public float jumpForce = 5;
     public float airMoveSpeed = 3.5f;

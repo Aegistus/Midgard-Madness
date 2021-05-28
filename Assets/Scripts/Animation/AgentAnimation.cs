@@ -71,7 +71,7 @@ public class AgentAnimation : MonoBehaviour
         if (fullBodyStates.ContainsKey(newState.GetType()))
         {
             anim.speed = 1;
-            anim.CrossFade(fullBodyStates[newState.GetType()], .05f);
+            anim.CrossFade(fullBodyStates[newState.GetType()], .1f);
         }
         else
         {

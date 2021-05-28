@@ -32,10 +32,10 @@ public class Running : OnGroundState
             audio.loop = true;
             audio.Play();
         }
-        if (navAgent != null)
-        {
-            navAgent.speed = agentStats.runSpeed;
-        }
+        //if (navAgent != null)
+        //{
+        //    navAgent.speed = agentStats.runSpeed;
+        //}
         animEvents.OnAnimationEvent += FootstepEvent;
     }
 

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d368d2497b95054b910e4093e9ee2dc, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
-  maxHealth: 150
+  maxHealth: 100
   healthRegenRate: 2
   toughness: 20
   maxStamina: 100
@@ -31,6 +31,7 @@ MonoBehaviour:
   walkSpeed: 3
   runSpeed: 6
   rollSpeed: 5
+  dodgeBonusSpeed: 3
   attackSpeed: 1
   jumpForce: 5
   airMoveSpeed: 3.5
