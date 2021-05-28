@@ -50,12 +50,8 @@ public class Running : OnGroundState
     Vector3 inputVelocity;
     public override void DuringExecution()
     {
-        if (navAgent == null)
-        {
-            inputVelocity = GetAgentMovementInput();
-            //movement.SetHorizontalVelocity(inputVelocity * agentStats.runSpeed);
-            movement.RotateAgentModelToDirection(inputVelocity);
-        }
+        inputVelocity = GetAgentMovementInput();
+        movement.RotateAgentModelToDirection(inputVelocity);
         stamina.DepleteStamina(agentStats.runCost * Time.deltaTime);
         KeepGrounded();
     }

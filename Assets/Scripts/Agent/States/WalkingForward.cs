@@ -34,10 +34,10 @@ public class WalkingForward : OnGroundState
             audio.Play();
         }
         movement.SetHorizontalVelocity(Vector3.zero);
-        if (navAgent != null)
-        {
-            navAgent.speed = MoveSpeed;
-        }
+        //if (navAgent != null)
+        //{
+        //    navAgent.speed = MoveSpeed;
+        //}
         animEvents.OnAnimationEvent += FootstepEvent;
     }
 
@@ -52,12 +52,9 @@ public class WalkingForward : OnGroundState
     Vector3 inputVelocity;
     public override void DuringExecution()
     {
-        if (navAgent == null)
-        {
-            inputVelocity = GetAgentMovementInput();
-            //movement.SetHorizontalVelocity(inputVelocity * MoveSpeed);
-            movement.RotateAgentModelToDirection(inputVelocity);
-        }
+        inputVelocity = GetAgentMovementInput();
+        //movement.SetHorizontalVelocity(inputVelocity * MoveSpeed);
+        movement.RotateAgentModelToDirection(inputVelocity);
         KeepGrounded();
     }
 

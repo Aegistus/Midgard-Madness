@@ -39,12 +39,9 @@ public class WalkingBackward : OnGroundState
     Vector3 inputVelocity;
     public override void DuringExecution()
     {
-        if (navAgent == null)
-        {
-            inputVelocity = GetAgentMovementInput();
-            //movement.SetHorizontalVelocity(inputVelocity * MoveSpeed);
-            movement.RotateAgentModelToDirection(-inputVelocity);
-        }
+        inputVelocity = GetAgentMovementInput();
+        //movement.SetHorizontalVelocity(inputVelocity * MoveSpeed);
+        movement.RotateAgentModelToDirection(-inputVelocity);
         KeepGrounded();
     }
 }
