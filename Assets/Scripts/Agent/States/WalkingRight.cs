@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WalkingBackward : OnGroundState
+public class WalkingRight : OnGroundState
 {
     private float MoveSpeed => agentStats.walkSpeed;
 
-    public WalkingBackward(GameObject gameObject) : base(gameObject)
+    public WalkingRight(GameObject gameObject) : base(gameObject)
     {
-        transitionsTo.Add(new Transition(typeof(Idling), Not(Backward)));
+        transitionsTo.Add(new Transition(typeof(Idling), Not(Right)));
         transitionsTo.Add(new Transition(typeof(MeleeAttacking), MeleeEquipped, Attack, () => vigor.CurrentVigor >= agentStats.meleeAttackCost));
         transitionsTo.Add(new Transition(typeof(RangedAiming), RangedEquipped, Attack, () => vigor.CurrentVigor >= agentStats.rangedAimCost));
         transitionsTo.Add(new Transition(typeof(Equipping), EquipWeaponInput));

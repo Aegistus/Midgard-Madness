@@ -30,8 +30,8 @@ public class AgentAnimation : MonoBehaviour
 
             {typeof(WalkingForward), Animator.StringToHash("Walk Forward") },
             {typeof(WalkingBackward), Animator.StringToHash("Walk Backward") },
-            {typeof(StrafingLeft), Animator.StringToHash("Walk Left") },
-            {typeof(StrafingRight), Animator.StringToHash("Walk Right") },
+            {typeof(WalkingLeft), Animator.StringToHash("Walk Left") },
+            {typeof(WalkingRight), Animator.StringToHash("Walk Right") },
 
             {typeof(Running), Animator.StringToHash("Run") },
             {typeof(Jumping), Animator.StringToHash("Jump")},

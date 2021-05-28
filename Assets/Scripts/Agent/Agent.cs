@@ -40,8 +40,8 @@ public class Agent : MonoBehaviour
 
             {typeof(WalkingForward), new WalkingForward(gameObject) },
             {typeof(WalkingBackward), new WalkingBackward(gameObject) },
-            {typeof(StrafingLeft), new StrafingLeft(gameObject) },
-            {typeof(StrafingRight), new StrafingRight(gameObject) },
+            {typeof(WalkingLeft), new WalkingLeft(gameObject) },
+            {typeof(WalkingRight), new WalkingRight(gameObject) },
 
             {typeof(Jumping), new Jumping(gameObject) },
             {typeof(Falling), new Falling(gameObject) },

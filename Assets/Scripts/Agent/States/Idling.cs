@@ -9,8 +9,8 @@ public class Idling : OnGroundState
     {
         transitionsTo.Add(new Transition(typeof(WalkingForward), Forward));
         transitionsTo.Add(new Transition(typeof(WalkingBackward), Backward));
-        transitionsTo.Add(new Transition(typeof(StrafingLeft), Left));
-        transitionsTo.Add(new Transition(typeof(StrafingRight), Right));
+        transitionsTo.Add(new Transition(typeof(WalkingLeft), Left));
+        transitionsTo.Add(new Transition(typeof(WalkingRight), Right));
 
         transitionsTo.Add(new Transition(typeof(Falling), Not(OnGround)));
         transitionsTo.Add(new Transition(typeof(Blocking), Block, () => vigor.CurrentVigor >= agentStats.blockCost));
