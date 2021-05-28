@@ -11,3 +11,4 @@ Inspired by all the hours I've spent playing Valheim. Explore different biomes, 
 - Bosses
 - Boats
 - More Maps/Biomes
+- Mercenaries
