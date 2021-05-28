@@ -30,6 +30,7 @@ public class PlayerController : AgentController
         agent.Run = Input.GetKey(KeyCode.LeftShift);
         agent.Jump = Input.GetKey(KeyCode.Space);
         agent.Crouch = Input.GetKey(KeyCode.LeftControl);
+        agent.Dodge = Input.GetKey(KeyCode.V);
         agent.Equipping = false;
         for (int i = 0; i < numberKeys.Length; i++)
         {

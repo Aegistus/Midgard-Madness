@@ -1,0 +1,36 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class DodgingRight : OnGroundState
+{
+    bool finished = false;
+
+    public DodgingRight(GameObject gameObject) : base(gameObject)
+    {
+        transitionsTo.Add(new Transition(typeof(Idling), () => finished));
+        animEvents.OnAnimationEvent += CheckAnimationEvent;
+    }
+
+    private void CheckAnimationEvent(EventType animEvent)
+    {
+        if (animEvent == EventType.Finish)
+        {
+            finished = true;
+        }
+    }
+
+    public override void AfterExecution()
+    {
+    }
+
+    public override void BeforeExecution()
+    {
+        finished = false;
+    }
+
+    public override void DuringExecution()
+    {
+        movement.RotateAgentModelToDirection(movement.lookDirection.forward);
+    }
+}

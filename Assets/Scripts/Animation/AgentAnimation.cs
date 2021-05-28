@@ -31,11 +31,15 @@ public class AgentAnimation : MonoBehaviour
             {typeof(Running), Animator.StringToHash("Run") },
             {typeof(Jumping), Animator.StringToHash("Jump")},
             {typeof(Falling), Animator.StringToHash("Fall") },
+
             {typeof(Crouching), Animator.StringToHash("Crouch") },
             {typeof(Rolling), Animator.StringToHash("Roll") },
-            {typeof(TakingDamage), Animator.StringToHash("Impact") },
+            {typeof(DodgingLeft), Animator.StringToHash("Dodge Left") },
+            {typeof(DodgingRight), Animator.StringToHash("Dodge Right") },
+
             {typeof(Equipping), Animator.StringToHash("Equip Start") },
             {typeof(UnEquipping), Animator.StringToHash("Equip Start") },
+
             {typeof(Blocking), Animator.StringToHash("Block") },
             {typeof(RangedAiming), Animator.StringToHash("Ranged Aim") },
             {typeof(RangedAttacking), Animator.StringToHash("Ranged Attack") },
@@ -45,6 +49,9 @@ public class AgentAnimation : MonoBehaviour
             {typeof(MomentumAttacking), Animator.StringToHash("Momentum Attack 00") },
             {typeof(MomentumAttacking), Animator.StringToHash("Momentum Attack 01") },
             {typeof(MomentumAttacking), Animator.StringToHash("Momentum Attack 02") },
+            
+            {typeof(TakingDamage), Animator.StringToHash("Impact") },
+
             {typeof(Dying), Animator.StringToHash("Death 00") },
             {typeof(Dying), Animator.StringToHash("Death 01") },
             {typeof(Dying), Animator.StringToHash("Death 02") },

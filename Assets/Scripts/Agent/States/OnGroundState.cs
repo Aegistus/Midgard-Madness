@@ -11,6 +11,8 @@ public abstract class OnGroundState : AgentState
         transitionsTo.Add(new Transition(typeof(Crouching), Crouch, Not(Move)));
         transitionsTo.Add(new Transition(typeof(Jumping), Jump, OnGround, Not(Block), () => stamina.CurrentStamina >= agentStats.jumpCost));
         transitionsTo.Add(new Transition(typeof(Rolling), Block, Jump, Move));
+        transitionsTo.Add(new Transition(typeof(DodgingLeft), () => self.Dodge, () => self.Left));
+        transitionsTo.Add(new Transition(typeof(DodgingRight), () => self.Dodge, () => self.Right));
     }
 
     protected void KeepGrounded()

@@ -17,6 +17,7 @@ public class Agent : MonoBehaviour
     public bool Jump { get; set; }
     public bool Crouch { get; set; }
     public bool Run { get; set; }
+    public bool Dodge { get; set; }
     public bool Equipping { get; set; }
     public int WeaponNumKey { get; set; }
     public bool UnEquipping { get; set; }
@@ -40,8 +41,12 @@ public class Agent : MonoBehaviour
             {typeof(Jumping), new Jumping(gameObject) },
             {typeof(Falling), new Falling(gameObject) },
             {typeof(Running), new Running(gameObject) },
+
             {typeof(Crouching), new Crouching(gameObject) },
             {typeof(Rolling), new Rolling(gameObject) },
+
+            {typeof(DodgingRight), new DodgingRight(gameObject) },
+            {typeof(DodgingLeft), new DodgingLeft(gameObject) },
 
             {typeof(Blocking), new Blocking(gameObject) },
             {typeof(BlockingCooldown), new BlockingCooldown(gameObject) },
