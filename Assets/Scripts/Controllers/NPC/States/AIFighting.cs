@@ -5,6 +5,7 @@ using System;
 
 public class AIFighting : NPCState
 {
+    bool strafeRight;
     Agent opponent;
     Func<bool> NotAttacking => Not(() => agent.CurrentState.GetType() != typeof(MeleeAttacking) && agent.CurrentState.GetType() != typeof(RangedAttacking));
 
@@ -25,11 +26,24 @@ public class AIFighting : NPCState
         Debug.Log("NPC Fighting");
         controller.SetDestination(transform.position);
         opponent = controller.Target.GetComponentInParent<Agent>();
-        if (UnityEngine.Random.value > .5) // 50/50 chance
+        strafeRight = UnityEngine.Random.value > .5;
+        if (UnityEngine.Random.value > .5) // 50/50 chance for momentum attack
         {
             agent.Forwards = true;
             agent.Attack = true;
         }
+    }
+
+    Vector3 directionToOpponent;
+    float angleToOpponent;
+    public override void DuringExecution()
+    {
+        if (opponent != null)
+        {
+            directionToOpponent = (opponent.transform.position - transform.position).normalized;
+            angleToOpponent = Vector3.SignedAngle(transform.forward, directionToOpponent, Vector3.up);
+        }
+        base.DuringExecution();
     }
 
     protected override void CreateTree()
@@ -49,6 +63,28 @@ public class AIFighting : NPCState
             {
                 new WaitNode(new ActionNode(() => agent.Attack = true), UnityEngine.Random.value * controller.attackWaitTime),
                 new ActionNode(() => controller.ChangeLookDirection(controller.Target)), // look at target
+            }),
+            // strafe if opponent blocking
+            new SequenceNode(new List<Node>()
+            {
+                new ConditionNode(() => Node.ConvertToState(opponent.CurrentState.GetType() == typeof(Blocking))),
+                new SelectorNode(new List<Node>()
+                {
+                    // right strafe sequence
+                    new SequenceNode(new List<Node>()
+                    {
+                        new ConditionNode(() => Node.ConvertToState(angleToOpponent <= 0)),
+                        new ActionNode(() => agent.Right = true),
+                        new ActionNode(() => controller.ChangeLookDirection(controller.Target)),
+                    }),
+                    // left strafe sequence
+                    new SequenceNode(new List<Node>()
+                    {
+                        new ConditionNode(() => Node.ConvertToState(angleToOpponent > 0)),
+                        new ActionNode(() => agent.Left = true),
+                        new ActionNode(() => controller.ChangeLookDirection(controller.Target)),
+                    })
+                }),
             }),
         });
     }
