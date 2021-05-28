@@ -22,21 +22,29 @@ public class WalkingLeft : OnGroundState
 
     public override void AfterExecution()
     {
-
+        animEvents.OnAnimationEvent -= FootstepEvent;
     }
 
     public override void BeforeExecution()
     {
-
+        animEvents.OnAnimationEvent += FootstepEvent;
     }
 
-    Vector3 inputVelocity;
+    private void FootstepEvent(EventType obj)
+    {
+        if (obj == EventType.Footstep && self.agentSounds != null)
+        {
+            audioManager.PlaySoundAtPosition(self.agentSounds.footsteps, transform.position);
+        }
+    }
+
+    //Vector3 inputVelocity;
     public override void DuringExecution()
     {
         movement.RotateAgentModelToDirection(movement.lookDirection.forward);
         if (navAgent == null)
         {
-            inputVelocity = GetAgentMovementInput();
+            //inputVelocity = GetAgentMovementInput();
             //movement.SetHorizontalVelocity(inputVelocity * MoveSpeed);
             //movement.RotateAgentModelToDirection(inputVelocity);
         }

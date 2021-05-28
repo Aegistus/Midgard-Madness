@@ -20,12 +20,20 @@ public class WalkingBackward : OnGroundState
 
     public override void AfterExecution()
     {
-
+        animEvents.OnAnimationEvent -= FootstepEvent;
     }
 
     public override void BeforeExecution()
     {
+        animEvents.OnAnimationEvent += FootstepEvent;
+    }
 
+    private void FootstepEvent(EventType obj)
+    {
+        if (obj == EventType.Footstep && self.agentSounds != null)
+        {
+            audioManager.PlaySoundAtPosition(self.agentSounds.footsteps, transform.position);
+        }
     }
 
     Vector3 inputVelocity;
