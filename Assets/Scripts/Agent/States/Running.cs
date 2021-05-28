@@ -53,7 +53,7 @@ public class Running : OnGroundState
         if (navAgent == null)
         {
             inputVelocity = GetAgentMovementInput();
-            movement.SetHorizontalVelocity(inputVelocity * agentStats.runSpeed);
+            //movement.SetHorizontalVelocity(inputVelocity * agentStats.runSpeed);
             movement.RotateAgentModelToDirection(inputVelocity);
         }
         stamina.DepleteStamina(agentStats.runCost * Time.deltaTime);

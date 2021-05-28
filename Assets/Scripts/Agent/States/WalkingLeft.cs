@@ -9,6 +9,8 @@ public class WalkingLeft : OnGroundState
     public WalkingLeft(GameObject gameObject) : base(gameObject)
     {
         transitionsTo.Add(new Transition(typeof(Idling), Not(Left)));
+        transitionsTo.Add(new Transition(typeof(WalkingForward), Forward));
+        transitionsTo.Add(new Transition(typeof(WalkingBackward), Backward));
         transitionsTo.Add(new Transition(typeof(MeleeAttacking), MeleeEquipped, Attack, () => vigor.CurrentVigor >= agentStats.meleeAttackCost));
         transitionsTo.Add(new Transition(typeof(RangedAiming), RangedEquipped, Attack, () => vigor.CurrentVigor >= agentStats.rangedAimCost));
         transitionsTo.Add(new Transition(typeof(Equipping), EquipWeaponInput));
@@ -35,7 +37,7 @@ public class WalkingLeft : OnGroundState
         if (navAgent == null)
         {
             inputVelocity = GetAgentMovementInput();
-            movement.SetHorizontalVelocity(inputVelocity * MoveSpeed);
+            //movement.SetHorizontalVelocity(inputVelocity * MoveSpeed);
             //movement.RotateAgentModelToDirection(inputVelocity);
         }
         KeepGrounded();

@@ -55,7 +55,7 @@ public class WalkingForward : OnGroundState
         if (navAgent == null)
         {
             inputVelocity = GetAgentMovementInput();
-            movement.SetHorizontalVelocity(inputVelocity * MoveSpeed);
+            //movement.SetHorizontalVelocity(inputVelocity * MoveSpeed);
             movement.RotateAgentModelToDirection(inputVelocity);
         }
         KeepGrounded();
