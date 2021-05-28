@@ -37,7 +37,12 @@ public class Agent : MonoBehaviour
         Dictionary<Type, State> states = new Dictionary<Type, State>()
         {
             {typeof(Idling), new Idling(gameObject) },
-            {typeof(Walking), new Walking(gameObject) },
+
+            {typeof(WalkingForward), new WalkingForward(gameObject) },
+            {typeof(WalkingBackward), new WalkingBackward(gameObject) },
+            {typeof(StrafingLeft), new StrafingLeft(gameObject) },
+            {typeof(StrafingRight), new StrafingRight(gameObject) },
+
             {typeof(Jumping), new Jumping(gameObject) },
             {typeof(Falling), new Falling(gameObject) },
             {typeof(Running), new Running(gameObject) },

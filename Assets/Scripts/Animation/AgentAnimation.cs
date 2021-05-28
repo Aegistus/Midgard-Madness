@@ -27,7 +27,12 @@ public class AgentAnimation : MonoBehaviour
         fullBodyStates = new MultiDictionary<Type, int>()
         {
             {typeof(Idling), Animator.StringToHash("Idle") },
-            {typeof(Walking), Animator.StringToHash("Walk") },
+
+            {typeof(WalkingForward), Animator.StringToHash("Walk Forward") },
+            {typeof(WalkingBackward), Animator.StringToHash("Walk Backward") },
+            {typeof(StrafingLeft), Animator.StringToHash("Walk Left") },
+            {typeof(StrafingRight), Animator.StringToHash("Walk Right") },
+
             {typeof(Running), Animator.StringToHash("Run") },
             {typeof(Jumping), Animator.StringToHash("Jump")},
             {typeof(Falling), Animator.StringToHash("Fall") },

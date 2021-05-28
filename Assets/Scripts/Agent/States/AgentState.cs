@@ -25,6 +25,10 @@ public abstract class AgentState : State
     protected bool isCurrentState = false;
 
     public Func<bool> Move => () => self.Forwards || self.Backwards || self.Right || self.Left;
+    public Func<bool> Forward => () => self.Forwards;
+    public Func<bool> Backward => () => self.Backwards;
+    public Func<bool> Left => () => self.Left;
+    public Func<bool> Right => () => self.Right;
     public Func<bool> Jump => () => self.Jump;
     public Func<bool> Run => () => self.Run;
     public Func<bool> Crouch => () => self.Crouch;

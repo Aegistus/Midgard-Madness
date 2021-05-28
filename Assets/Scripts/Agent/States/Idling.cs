@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +7,11 @@ public class Idling : OnGroundState
 
     public Idling(GameObject gameObject) : base(gameObject)
     {
-        transitionsTo.Add(new Transition(typeof(Walking), Move));
+        transitionsTo.Add(new Transition(typeof(WalkingForward), Forward));
+        transitionsTo.Add(new Transition(typeof(WalkingBackward), Backward));
+        transitionsTo.Add(new Transition(typeof(StrafingLeft), Left));
+        transitionsTo.Add(new Transition(typeof(StrafingRight), Right));
+
         transitionsTo.Add(new Transition(typeof(Falling), Not(OnGround)));
         transitionsTo.Add(new Transition(typeof(Blocking), Block, () => vigor.CurrentVigor >= agentStats.blockCost));
 

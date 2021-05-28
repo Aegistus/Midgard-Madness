@@ -15,7 +15,7 @@ public class Rolling : OnGroundState
     public Rolling(GameObject gameObject) : base(gameObject)
     {
         transitionsTo.Add(new Transition(typeof(Idling), TimerUp, Not(Move)));
-        transitionsTo.Add(new Transition(typeof(Walking), TimerUp, Move, Not(Run)));
+        transitionsTo.Add(new Transition(typeof(WalkingForward), TimerUp, Move, Not(Run)));
         transitionsTo.Add(new Transition(typeof(Running), TimerUp, Move, Run));
     }
 

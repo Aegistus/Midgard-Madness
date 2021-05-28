@@ -6,9 +6,9 @@ public class Running : OnGroundState
 {
     public Running(GameObject gameObject) : base(gameObject)
     {
-        transitionsTo.Add(new Transition(typeof(Walking), Not(Run)));
-        transitionsTo.Add(new Transition(typeof(Idling), Not(Move), Not(Run)));
-        transitionsTo.Add(new Transition(typeof(Walking), () => stamina.CurrentStamina < agentStats.runCost));
+        transitionsTo.Add(new Transition(typeof(WalkingForward), Not(Run)));
+        transitionsTo.Add(new Transition(typeof(Idling), Not(Forward), Not(Run)));
+        transitionsTo.Add(new Transition(typeof(WalkingForward), () => stamina.CurrentStamina < agentStats.runCost));
         transitionsTo.Add(new Transition(typeof(MomentumAttacking), MeleeEquipped, Attack, () => vigor.CurrentVigor >= agentStats.momentumAttackCost));
         transitionsTo.Add(new Transition(typeof(RangedAiming), RangedEquipped, Attack, () => vigor.CurrentVigor >= agentStats.rangedAimCost));
         transitionsTo.Add(new Transition(typeof(Equipping), EquipWeaponInput));
