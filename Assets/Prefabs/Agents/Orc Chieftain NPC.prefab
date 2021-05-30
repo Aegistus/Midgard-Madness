@@ -3257,8 +3257,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ab486e0d865a44389448ace0bf1139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentStats: {fileID: 11400000, guid: efeb16d6c84d8234299f21ab115cceb7, type: 2}
-  agentSounds: {fileID: 11400000, guid: dc048342c6a16f44ebd3057904896287, type: 2}
+  agentStats: {fileID: 11400000, guid: 6b6465d83d3b8a14c9e1e59ffc2c7b8a, type: 2}
+  agentSounds: {fileID: 11400000, guid: 1e3936d867e696142816cb89ac17f067, type: 2}
 --- !u!114 &6766823088575086855
 MonoBehaviour:
   m_ObjectHideFlags: 0
