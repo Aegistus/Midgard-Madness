@@ -34,15 +34,16 @@ public class AIFighting : NPCState
         }
     }
 
-    Vector3 directionToOpponent;
+    Vector3 directionFromOpponent;
     float angleToOpponent;
     public override void DuringExecution()
     {
         if (opponent != null)
         {
-            directionToOpponent = (opponent.transform.position - transform.position).normalized;
-            angleToOpponent = Vector3.SignedAngle(transform.forward, directionToOpponent, Vector3.up);
+            directionFromOpponent = (transform.position - opponent.transform.position).normalized;
+            angleToOpponent = Vector3.SignedAngle(opponent.transform.forward, directionFromOpponent, Vector3.up);
         }
+
         base.DuringExecution();
     }
 
@@ -54,37 +55,28 @@ public class AIFighting : NPCState
             new SequenceNode(new List<Node>()
             {
                 new ConditionNode(() => Node.ConvertToState(opponent.CurrentState.GetType() == typeof(MeleeAttacking))),
-                new ConditionNode(() => Node.ConvertToState(UnityEngine.Random.value >= .5)),
-                new ActionNode(() => agent.Block = true),
-                new ActionNode(() => controller.ChangeLookDirection(controller.Target)), // look at target
+                new ConditionNode(() => Node.ConvertToState(UnityEngine.Random.value >= .25)),
+                new SelectorNode(new List<Node>()
+                {
+                    new SequenceNode(new List<Node>()
+                    {
+                        new ConditionNode(() => Node.ConvertToState(UnityEngine.Random.value >= .5)),
+                        new ActionNode(() => agent.Block = true),
+                        new ActionNode(() => controller.ChangeLookDirection(controller.Target)), // look at target
+                    }),
+                    new SequenceNode(new List<Node>()
+                    {
+                        new ActionNode(() => agent.Dodge = true),
+                        new ActionNode(() => agent.Right = true),
+                        new ActionNode(() => controller.ChangeLookDirection(controller.Target)), // look at target
+                    }),
+                }),
             }),
             // attack sequence
             new SequenceNode(new List<Node>()
             {
                 new WaitNode(new ActionNode(() => agent.Attack = true), UnityEngine.Random.value * controller.attackWaitTime),
                 new ActionNode(() => controller.ChangeLookDirection(controller.Target)), // look at target
-            }),
-            // strafe if opponent blocking
-            new SequenceNode(new List<Node>()
-            {
-                new ConditionNode(() => Node.ConvertToState(opponent.CurrentState.GetType() == typeof(Blocking))),
-                new SelectorNode(new List<Node>()
-                {
-                    // right strafe sequence
-                    new SequenceNode(new List<Node>()
-                    {
-                        new ConditionNode(() => Node.ConvertToState(angleToOpponent <= 0)),
-                        new ActionNode(() => agent.Right = true),
-                        new ActionNode(() => controller.ChangeLookDirection(controller.Target)),
-                    }),
-                    // left strafe sequence
-                    new SequenceNode(new List<Node>()
-                    {
-                        new ConditionNode(() => Node.ConvertToState(angleToOpponent > 0)),
-                        new ActionNode(() => agent.Left = true),
-                        new ActionNode(() => controller.ChangeLookDirection(controller.Target)),
-                    })
-                }),
             }),
         });
     }

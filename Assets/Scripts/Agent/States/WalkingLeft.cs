@@ -27,6 +27,7 @@ public class WalkingLeft : OnGroundState
 
     public override void BeforeExecution()
     {
+        Debug.Log("Strafing Left");
         animEvents.OnAnimationEvent += FootstepEvent;
     }
 

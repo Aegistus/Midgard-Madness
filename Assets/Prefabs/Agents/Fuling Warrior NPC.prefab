@@ -3612,7 +3612,7 @@ MonoBehaviour:
     m_Bits: 1024
   wanderDiameter: 10
   wanderWaitTime: 5
-  attackRadius: 3
+  attackRadius: 3.5
   attackWaitTime: 2
 --- !u!114 &139568716642311914
 MonoBehaviour:
