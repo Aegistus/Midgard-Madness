@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   breathing:
     name: 
-    allSounds:
-    - {fileID: 8300000, guid: d9921e06592985846b6e9b7d250f3e2d, type: 3}
+    allSounds: []
     volume: 0.75
     volumeVariance: 0.1
     pitch: 1
