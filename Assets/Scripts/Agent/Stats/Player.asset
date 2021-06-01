@@ -16,14 +16,14 @@ MonoBehaviour:
   healthRegenRate: 2
   toughness: 20
   maxStamina: 100
-  staminaRegenRate: 15
-  staminaRegenDelay: 2
+  staminaRegenRate: 30
+  staminaRegenDelay: 1
   runCost: 5
   jumpCost: 5
   rollCost: 20
   maxVigor: 100
-  vigorRegenRate: 15
-  vigorRegenDelay: 2
+  vigorRegenRate: 30
+  vigorRegenDelay: 1
   meleeAttackCost: 10
   momentumAttackCost: 25
   rangedAimCost: 2
