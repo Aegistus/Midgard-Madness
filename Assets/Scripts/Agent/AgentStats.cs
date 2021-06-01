@@ -32,11 +32,10 @@ public class AgentStats : ScriptableObject
     public float blockCost = 5f;
 
     [Header("Movement")]
-    public float walkSpeed = 3;
-    public float runSpeed = 6;
-    public float rollSpeed = 5;
+    public float moveSpeed = 1f;
+    public float rollSpeed = 2f;
     public float dodgeBonusSpeed = 3f;
-    public float attackSpeed = 1;
+    public float attackSpeed = 1f;
     public float jumpForce = 5;
     public float airMoveSpeed = 3.5f;
     

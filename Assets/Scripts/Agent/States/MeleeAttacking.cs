@@ -11,7 +11,6 @@ public class MeleeAttacking : AgentState
     private bool animationFinished = false;
     private float timer = 0;
     private float canAttackAgainTime = .75f;
-    private float MoveSpeed => agentStats.walkSpeed * .5f;
 
     public MeleeAttacking(GameObject gameObject) : base(gameObject)
     {
@@ -101,7 +100,7 @@ public class MeleeAttacking : AgentState
         if (navAgent == null)
         {
             inputVelocity = GetAgentMovementInput();
-            movement.SetHorizontalVelocity(inputVelocity * MoveSpeed);
+            //movement.SetHorizontalVelocity(inputVelocity * MoveSpeed);
             movement.RotateAgentModelToDirection(inputVelocity);
         }
     }

@@ -14,16 +14,23 @@ public enum AnimEventType
 [RequireComponent(typeof(Animator))]
 public class AgentAnimation : MonoBehaviour
 {
+    public RuntimeAnimatorController unarmedController;
+
     public event Action<AnimEventType> OnAnimationEvent;
 
     Agent agent;
     Animator anim;
+    AgentWeapons weapons;
     MultiDictionary<Type, int> fullBodyStates = new MultiDictionary<Type, int>();
+    int attackSpeedHash = Animator.StringToHash("AttackSpeed");
+    int moveSpeedHash = Animator.StringToHash("MoveSpeed");
 
     private void Start()
     {
         agent = GetComponentInParent<Agent>();
         anim = GetComponent<Animator>();
+        weapons = GetComponentInParent<AgentWeapons>();
+        weapons.OnEquippedChange += UpdateAnimatorController;
         fullBodyStates = new MultiDictionary<Type, int>()
         {
             {typeof(Idling), Animator.StringToHash("Idle") },
@@ -64,6 +71,7 @@ public class AgentAnimation : MonoBehaviour
             {typeof(Dying), Animator.StringToHash("Death 04") },
         };
         agent.StateMachine.OnStateChange += ChangeFullBodyAnimation;
+        UpdateAnimatorController();
     }
 
     private void ChangeFullBodyAnimation(State newState)
@@ -77,6 +85,30 @@ public class AgentAnimation : MonoBehaviour
         {
             Debug.LogWarning("No Full Body Animation Found For Current Agent State");
         }
+    }
+
+    public void UpdateAnimatorController()
+    {
+        AnimatorOverrideController animController = null;
+        if (weapons.primarySlot.CurrentlyEquipped != null)
+        {
+            animController = weapons.primarySlot.CurrentlyEquipped.stats.weaponAnimationSet;
+        }
+        else if (weapons.secondarySlot.CurrentlyEquipped != null)
+        {
+            animController = weapons.secondarySlot.CurrentlyEquipped.stats.weaponAnimationSet;
+        }
+        // set animation controller to the weapon's controller
+        if (animController != null)
+        {
+            anim.runtimeAnimatorController = animController;
+        }
+        else
+        {
+            anim.runtimeAnimatorController = unarmedController;
+        }
+        anim.SetFloat(attackSpeedHash, agent.agentStats.attackSpeed);
+        anim.SetFloat(moveSpeedHash, agent.agentStats.moveSpeed);
     }
 
     public void CallAnimationEvent(AnimEventType eventType)
