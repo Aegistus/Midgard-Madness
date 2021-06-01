@@ -3245,6 +3245,8 @@ MonoBehaviour:
   wanderWaitTime: 5
   attackRadius: 3.5
   attackWaitTime: 2
+  defensiveReactionChance: 0.31
+  dodgeChance: 0.1
 --- !u!114 &746661177914403041
 MonoBehaviour:
   m_ObjectHideFlags: 0

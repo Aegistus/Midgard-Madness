@@ -51,23 +51,23 @@ public class AIFighting : NPCState
     {
         rootNode = new SelectorNode(new List<Node>()
         {
-            // block sequence
+            // block/dodge sequence
             new SequenceNode(new List<Node>()
             {
                 new ConditionNode(() => Node.ConvertToState(opponent.CurrentState.GetType() == typeof(MeleeAttacking))),
-                new ConditionNode(() => Node.ConvertToState(UnityEngine.Random.value >= .25)),
+                new ConditionNode(() => Node.ConvertToState(UnityEngine.Random.value <= controller.defensiveReactionChance)),
                 new SelectorNode(new List<Node>()
                 {
                     new SequenceNode(new List<Node>()
                     {
-                        new ConditionNode(() => Node.ConvertToState(UnityEngine.Random.value >= .5)),
-                        new ActionNode(() => agent.Block = true),
+                        new ConditionNode(() => Node.ConvertToState(UnityEngine.Random.value <= controller.dodgeChance)),
+                        new ActionNode(() => agent.Dodge = true),
+                        new ActionNode(() => agent.Right = true),
                         new ActionNode(() => controller.ChangeLookDirection(controller.Target)), // look at target
                     }),
                     new SequenceNode(new List<Node>()
                     {
-                        new ActionNode(() => agent.Dodge = true),
-                        new ActionNode(() => agent.Right = true),
+                        new ActionNode(() => agent.Block = true),
                         new ActionNode(() => controller.ChangeLookDirection(controller.Target)), // look at target
                     }),
                 }),

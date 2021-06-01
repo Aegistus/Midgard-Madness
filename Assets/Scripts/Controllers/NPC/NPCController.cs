@@ -14,6 +14,10 @@ public class NPCController : AgentController
     public float wanderWaitTime = 5f;
     public float attackRadius = 2f;
     public float attackWaitTime = 2f;
+    [Range(0f, 1f)]
+    public float defensiveReactionChance = .5f;
+    [Range(0f, 1f)]
+    public float dodgeChance = .5f;
 
     private Agent agent;
     private AgentMovement movement;
