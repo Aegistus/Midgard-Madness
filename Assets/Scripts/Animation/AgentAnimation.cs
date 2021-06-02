@@ -48,6 +48,7 @@ public class AgentAnimation : MonoBehaviour
             {typeof(Rolling), Animator.StringToHash("Roll") },
             {typeof(DodgingLeft), Animator.StringToHash("Dodge Left") },
             {typeof(DodgingRight), Animator.StringToHash("Dodge Right") },
+            {typeof(DodgingBackward), Animator.StringToHash("Dodge Backward") },
 
             {typeof(Equipping), Animator.StringToHash("Equip Start") },
             {typeof(UnEquipping), Animator.StringToHash("Equip Start") },

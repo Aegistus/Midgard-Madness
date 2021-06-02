@@ -83,6 +83,11 @@ public class NPCController : AgentController
         return Vector3.Distance(transform.position, Destination) <= maxDistance;
     }
 
+    public void LookAtNextWaypoint()
+    {
+        ChangeLookDirection(navAgent.steeringTarget);
+    }
+
     private IEnumerator RunAIStateMachine()
     {
         while (true)
@@ -109,6 +114,11 @@ public class NPCController : AgentController
     }
 
     public void ChangeLookDirection(Transform target)
+    {
+        movement.lookDirection.LookAt(target);
+    }
+    
+    public void ChangeLookDirection(Vector3 target)
     {
         movement.lookDirection.LookAt(target);
     }

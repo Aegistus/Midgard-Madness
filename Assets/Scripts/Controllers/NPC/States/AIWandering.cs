@@ -39,6 +39,7 @@ public class AIWandering : NPCState
             {
                 new ConditionNode(() => Node.ConvertToState(!controller.AtDestination(1))),
                 new ActionNode(() => agent.Forwards = true),
+                new ActionNode(() => controller.LookAtNextWaypoint()),
             })
         });
     }

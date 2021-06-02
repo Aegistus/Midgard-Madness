@@ -938,7 +938,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4828917951006747455, guid: 30b3028583673d04d9a7d7da078b9454, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.94
+      value: 13.7
       objectReference: {fileID: 0}
     - target: {fileID: 4828917951006747455, guid: 30b3028583673d04d9a7d7da078b9454, type: 3}
       propertyPath: m_LocalPosition.y
@@ -946,7 +946,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4828917951006747455, guid: 30b3028583673d04d9a7d7da078b9454, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -16.67
+      value: 13.28
       objectReference: {fileID: 0}
     - target: {fileID: 4828917951006747455, guid: 30b3028583673d04d9a7d7da078b9454, type: 3}
       propertyPath: m_LocalRotation.x
@@ -6690,7 +6690,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6977930941514205864, guid: e830a77845cf71a4c81dbf01990fb137, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6977930941514205865, guid: e830a77845cf71a4c81dbf01990fb137, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11427,7 +11427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1902240685712516250, guid: 8d712467523dc2e468d1e93e95087135, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1902240685712516251, guid: 8d712467523dc2e468d1e93e95087135, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15144,6 +15144,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Orc Chieftain NPC
       objectReference: {fileID: 0}
+    - target: {fileID: 4734445804796936299, guid: 8fc96ec7038b71546a0df9c9c8c2089e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fc96ec7038b71546a0df9c9c8c2089e, type: 3}
 --- !u!1001 &6838420914199248600
@@ -15159,7 +15163,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6636826674764402802, guid: 04d9f5c7974316d4ba515bbd70b10873, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6636826674764402803, guid: 04d9f5c7974316d4ba515bbd70b10873, type: 3}
       propertyPath: m_LocalPosition.x

@@ -28,10 +28,9 @@ MonoBehaviour:
   momentumAttackCost: 25
   rangedAimCost: 2
   blockCost: 5
-  walkSpeed: 3
-  runSpeed: 6
+  moveSpeed: 1
   rollSpeed: 5
   dodgeBonusSpeed: 3
   attackSpeed: 1
-  jumpForce: 5
+  jumpForce: 4
   airMoveSpeed: 3.5

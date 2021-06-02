@@ -13,6 +13,7 @@ public abstract class OnGroundState : AgentState
         transitionsTo.Add(new Transition(typeof(Rolling), Block, Jump, Move));
         transitionsTo.Add(new Transition(typeof(DodgingLeft), () => self.Dodge, () => self.Left));
         transitionsTo.Add(new Transition(typeof(DodgingRight), () => self.Dodge, () => self.Right));
+        transitionsTo.Add(new Transition(typeof(DodgingBackward), () => self.Dodge, () => self.Backwards));
     }
 
     protected void KeepGrounded()
