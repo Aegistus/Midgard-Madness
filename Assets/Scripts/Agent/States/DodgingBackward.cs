@@ -28,6 +28,7 @@ public class DodgingBackward : OnGroundState
     {
         finished = false;
         movement.SetHorizontalVelocity(-movement.agentModel.forward * self.agentStats.dodgeBonusSpeed);
+        stamina.DepleteStamina(agentStats.dodgeCost);
     }
 
     public override void DuringExecution()

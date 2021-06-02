@@ -19,6 +19,7 @@ public class AgentStats : ScriptableObject
     public float runCost = 2;
     public float jumpCost = 10;
     public float rollCost = 20;
+    public float dodgeCost = 20f;
 
     [Header("Vigor")]
     public float maxVigor = 50;
