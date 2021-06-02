@@ -95,10 +95,10 @@ MonoBehaviour:
     m_Bits: 1024
   wanderDiameter: 10
   wanderWaitTime: 5
-  attackRadius: 2
+  attackRadius: 3.5
   attackWaitTime: 5
   defensiveReactionChance: 0.5
-  dodgeChance: 0.5
+  dodgeChance: 0
 --- !u!114 &5876793793425673232
 MonoBehaviour:
   m_ObjectHideFlags: 0

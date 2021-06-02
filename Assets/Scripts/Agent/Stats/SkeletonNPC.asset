@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   healthRegenRate: 2
+  toughness: 20
   maxStamina: 0
   staminaRegenRate: 5
   staminaRegenDelay: 2
@@ -27,9 +28,9 @@ MonoBehaviour:
   momentumAttackCost: 25
   rangedAimCost: 2
   blockCost: 5
-  walkSpeed: 2
-  runSpeed: 4
+  moveSpeed: 0.8
   rollSpeed: 5
-  attackSpeed: 1
+  dodgeBonusSpeed: 3
+  attackSpeed: 0.9
   jumpForce: 5
   airMoveSpeed: 3.5
