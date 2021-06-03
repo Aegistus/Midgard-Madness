@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0427fe8126008c46966dcfd1efd83fa, type: 3}
   m_Name: Warlock Staff
   m_EditorClassIdentifier: 
-  stance: 2
+  stance: 6
   damage: 20
   attackSpeed: 1
   movementMultiplier: 1
-  weaponAnimationSet: {fileID: 22100000, guid: 238db5fe2e5770b47886c3f5cd3e8d1e, type: 2}
+  weaponAnimationSet: {fileID: 22100000, guid: 1754e5363e8f9e746827fa3e1c00d5c8, type: 2}
   projectile: {fileID: 3035754738187643190, guid: 96f08887f3d2fb94c8c98b17f4320a04, type: 3}

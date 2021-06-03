@@ -13926,6 +13926,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fuling Warlock
       objectReference: {fileID: 0}
+    - target: {fileID: 7902049083411858353, guid: fe8d1a4555df2b44592aad9dbca842f2, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 1754e5363e8f9e746827fa3e1c00d5c8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe8d1a4555df2b44592aad9dbca842f2, type: 3}
 --- !u!1001 &5251660443185873783

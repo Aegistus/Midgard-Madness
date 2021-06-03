@@ -124,7 +124,7 @@ MonoBehaviour:
     m_Bits: 1024
   wanderDiameter: 10
   wanderWaitTime: 5
-  attackRadius: 3.5
+  attackRadius: 20
   attackWaitTime: 2
   defensiveReactionChance: 0.5
   dodgeChance: 0.5
