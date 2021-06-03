@@ -79,8 +79,8 @@ MonoBehaviour:
   damage: 20
   damageModifier: 1
   knockbackForce: 1
-  startSoundName: Arrow Loose
-  impactSoundName: Projectile Impact
+  startSoundName: Fireball Cast
+  impactSoundName: 
 --- !u!1001 &1403750050727904239
 PrefabInstance:
   m_ObjectHideFlags: 0
