@@ -9,7 +9,7 @@ namespace Tests
     public class WanderingTests
     {
         #region Transition Tests
-        // Transition to Fighting When Player is Not In LOS
+        // Transition to Fighting When Player is In LOS
 
         // Stay in Wandering if Player is Not In LOS
 
