@@ -13914,8 +13914,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fuling Warlock
       objectReference: {fileID: 0}
-    - target: {fileID: 1238703884569042273, guid: fe8d1a4555df2b44592aad9dbca842f2, type: 3}
-      propertyPath: m_Speed
+    - target: {fileID: 2450219525770742478, guid: fe8d1a4555df2b44592aad9dbca842f2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -55.279
+      objectReference: {fileID: 0}
+    - target: {fileID: 2450219525770742478, guid: fe8d1a4555df2b44592aad9dbca842f2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2450219525770742478, guid: fe8d1a4555df2b44592aad9dbca842f2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
