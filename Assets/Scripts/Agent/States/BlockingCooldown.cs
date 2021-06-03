@@ -22,7 +22,6 @@ public class BlockingCooldown : AgentState
 
     public override void BeforeExecution()
     {
-        Debug.Log("Cooldown");
         timer = 0;
     }
 

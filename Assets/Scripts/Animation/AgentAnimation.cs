@@ -14,19 +14,29 @@ public enum AnimEventType
 [RequireComponent(typeof(Animator))]
 public class AgentAnimation : MonoBehaviour
 {
+    public RuntimeAnimatorController unarmedController;
+
     public event Action<AnimEventType> OnAnimationEvent;
 
     Agent agent;
     Animator anim;
+    AgentWeapons weapons;
     MultiDictionary<Type, int> fullBodyStates = new MultiDictionary<Type, int>();
+    int attackSpeedHash = Animator.StringToHash("AttackSpeed");
+    int moveSpeedHash = Animator.StringToHash("MoveSpeed");
 
     private void Start()
     {
         agent = GetComponentInParent<Agent>();
         anim = GetComponent<Animator>();
+        weapons = GetComponentInParent<AgentWeapons>();
+        weapons.OnEquippedChange += UpdateAnimatorController;
         fullBodyStates = new MultiDictionary<Type, int>()
         {
-            {typeof(Idling), Animator.StringToHash("Idle") },
+            {typeof(Idling), Animator.StringToHash("Idle Main") },
+            {typeof(Idling), Animator.StringToHash("Idle 00") },
+            {typeof(Idling), Animator.StringToHash("Idle 01") },
+            {typeof(Idling), Animator.StringToHash("Idle 02") },
 
             {typeof(WalkingForward), Animator.StringToHash("Walk Forward") },
             {typeof(WalkingBackward), Animator.StringToHash("Walk Backward") },
@@ -41,6 +51,7 @@ public class AgentAnimation : MonoBehaviour
             {typeof(Rolling), Animator.StringToHash("Roll") },
             {typeof(DodgingLeft), Animator.StringToHash("Dodge Left") },
             {typeof(DodgingRight), Animator.StringToHash("Dodge Right") },
+            {typeof(DodgingBackward), Animator.StringToHash("Dodge Backward") },
 
             {typeof(Equipping), Animator.StringToHash("Equip Start") },
             {typeof(UnEquipping), Animator.StringToHash("Equip Start") },
@@ -64,6 +75,7 @@ public class AgentAnimation : MonoBehaviour
             {typeof(Dying), Animator.StringToHash("Death 04") },
         };
         agent.StateMachine.OnStateChange += ChangeFullBodyAnimation;
+        UpdateAnimatorController();
     }
 
     private void ChangeFullBodyAnimation(State newState)
@@ -77,6 +89,30 @@ public class AgentAnimation : MonoBehaviour
         {
             Debug.LogWarning("No Full Body Animation Found For Current Agent State");
         }
+    }
+
+    public void UpdateAnimatorController()
+    {
+        AnimatorOverrideController animController = null;
+        if (weapons.primarySlot.CurrentlyEquipped != null)
+        {
+            animController = weapons.primarySlot.CurrentlyEquipped.stats.weaponAnimationSet;
+        }
+        else if (weapons.secondarySlot.CurrentlyEquipped != null)
+        {
+            animController = weapons.secondarySlot.CurrentlyEquipped.stats.weaponAnimationSet;
+        }
+        // set animation controller to the weapon's controller
+        if (animController != null)
+        {
+            anim.runtimeAnimatorController = animController;
+        }
+        else
+        {
+            anim.runtimeAnimatorController = unarmedController;
+        }
+        anim.SetFloat(attackSpeedHash, agent.agentStats.attackSpeed);
+        anim.SetFloat(moveSpeedHash, agent.agentStats.moveSpeed);
     }
 
     public void CallAnimationEvent(AnimEventType eventType)

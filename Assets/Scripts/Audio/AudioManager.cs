@@ -64,7 +64,7 @@ public class AudioManager : MonoBehaviour
 	public void PlaySoundAtPosition(string soundGroupName, Vector3 position)
     {
 		SoundGroup group = Array.Find(soundGroups, item => item.name == soundGroupName);
-		if (group == null)
+		if (group == null && soundGroupName != "")
 		{
 			Debug.LogWarning("Sound Group: " + soundGroupName + " not found!");
 			return;

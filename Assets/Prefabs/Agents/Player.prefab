@@ -315,7 +315,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   primarySlot: {fileID: 6358931597213034794}
   secondarySlot: {fileID: 4977307109343357893}
-  unarmedController: {fileID: 9100000, guid: 66ef409bd95faa6498ecfeb9535fbbb6, type: 2}
 --- !u!114 &4585698859150296084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2682,6 +2681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15730ee6d65a0274b99b4b55bfc3f30b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unarmedController: {fileID: 9100000, guid: 66ef409bd95faa6498ecfeb9535fbbb6, type: 2}
 --- !u!114 &3458643720057974785
 MonoBehaviour:
   m_ObjectHideFlags: 0

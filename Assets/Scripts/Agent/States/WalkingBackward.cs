@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WalkingBackward : OnGroundState
 {
-    private float MoveSpeed => agentStats.walkSpeed;
 
     public WalkingBackward(GameObject gameObject) : base(gameObject)
     {

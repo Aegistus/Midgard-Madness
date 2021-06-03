@@ -28,6 +28,7 @@ public class DodgingLeft : OnGroundState
     {
         finished = false;
         movement.SetHorizontalVelocity(-movement.agentModel.right * self.agentStats.dodgeBonusSpeed);
+        stamina.DepleteStamina(agentStats.dodgeCost);
     }
 
     public override void DuringExecution()

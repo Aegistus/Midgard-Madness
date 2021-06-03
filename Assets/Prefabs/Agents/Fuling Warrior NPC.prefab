@@ -1203,6 +1203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15730ee6d65a0274b99b4b55bfc3f30b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unarmedController: {fileID: 9100000, guid: 66ef409bd95faa6498ecfeb9535fbbb6, type: 2}
 --- !u!114 &5075219479475812142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3612,8 +3613,10 @@ MonoBehaviour:
     m_Bits: 1024
   wanderDiameter: 10
   wanderWaitTime: 5
-  attackRadius: 3
+  attackRadius: 3.5
   attackWaitTime: 2
+  defensiveReactionChance: 0.5
+  dodgeChance: 0.5
 --- !u!114 &139568716642311914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3661,7 +3664,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   primarySlot: {fileID: 565068732218422191}
   secondarySlot: {fileID: 2422155858712741909}
-  unarmedController: {fileID: 9100000, guid: 66ef409bd95faa6498ecfeb9535fbbb6, type: 2}
 --- !u!114 &3938181935033030986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3711,6 +3713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 933f27ed8a5cf43359d7caf0a5f5e732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minDetectionRadius: 2
   viewRadius: 20
   viewAngle: 190
   targetMask:
@@ -3764,7 +3767,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 0.1
+  m_Speed: 0
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 360

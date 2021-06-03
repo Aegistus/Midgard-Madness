@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WalkingRight : OnGroundState
 {
-    private float MoveSpeed => agentStats.walkSpeed;
 
     public WalkingRight(GameObject gameObject) : base(gameObject)
     {
@@ -27,6 +26,7 @@ public class WalkingRight : OnGroundState
 
     public override void BeforeExecution()
     {
+        Debug.Log("Strafing Right");
         animEvents.OnAnimationEvent += FootstepEvent;
     }
 

@@ -95,8 +95,10 @@ MonoBehaviour:
     m_Bits: 1024
   wanderDiameter: 10
   wanderWaitTime: 5
-  attackRadius: 2
+  attackRadius: 3.5
   attackWaitTime: 5
+  defensiveReactionChance: 0.5
+  dodgeChance: 0
 --- !u!114 &5876793793425673232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,7 +146,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   primarySlot: {fileID: 4130572712970026806}
   secondarySlot: {fileID: 4130572712969779440}
-  unarmedController: {fileID: 22100000, guid: 5cdbaabffad45384d9b07297e0f86b77, type: 2}
 --- !u!114 &7405732296875199408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1204,6 +1205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15730ee6d65a0274b99b4b55bfc3f30b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unarmedController: {fileID: 9100000, guid: 66ef409bd95faa6498ecfeb9535fbbb6, type: 2}
 --- !u!114 &7472683892110878785
 MonoBehaviour:
   m_ObjectHideFlags: 0

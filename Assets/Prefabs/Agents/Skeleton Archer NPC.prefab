@@ -1985,6 +1985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15730ee6d65a0274b99b4b55bfc3f30b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unarmedController: {fileID: 9100000, guid: 66ef409bd95faa6498ecfeb9535fbbb6, type: 2}
 --- !u!114 &2434456224995384489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3214,6 +3215,8 @@ MonoBehaviour:
   wanderWaitTime: 5
   attackRadius: 20
   attackWaitTime: 5
+  defensiveReactionChance: 0.5
+  dodgeChance: 0.5
 --- !u!114 &1725498439170554104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3261,7 +3264,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   primarySlot: {fileID: 9164295959312862174}
   secondarySlot: {fileID: 9164295959313107992}
-  unarmedController: {fileID: 22100000, guid: 5cdbaabffad45384d9b07297e0f86b77, type: 2}
 --- !u!114 &2358427328183910232
 MonoBehaviour:
   m_ObjectHideFlags: 0

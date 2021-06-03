@@ -30,6 +30,7 @@ public class AISearching : NPCState
     {
         base.DuringExecution();
         agent.Forwards = true;
+        controller.LookAtNextWaypoint();
         timer += Time.deltaTime;
     }
 

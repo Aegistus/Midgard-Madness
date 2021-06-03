@@ -52,6 +52,7 @@ public class Agent : MonoBehaviour
 
             {typeof(DodgingRight), new DodgingRight(gameObject) },
             {typeof(DodgingLeft), new DodgingLeft(gameObject) },
+            {typeof(DodgingBackward), new DodgingBackward(gameObject) },
 
             {typeof(Blocking), new Blocking(gameObject) },
             {typeof(BlockingCooldown), new BlockingCooldown(gameObject) },

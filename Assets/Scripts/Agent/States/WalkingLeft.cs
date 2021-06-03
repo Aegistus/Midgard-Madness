@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class WalkingLeft : OnGroundState
 {
-    private float MoveSpeed => agentStats.walkSpeed;
-
     public WalkingLeft(GameObject gameObject) : base(gameObject)
     {
         transitionsTo.Add(new Transition(typeof(Idling), Not(Left)));
@@ -27,6 +25,7 @@ public class WalkingLeft : OnGroundState
 
     public override void BeforeExecution()
     {
+        Debug.Log("Strafing Left");
         animEvents.OnAnimationEvent += FootstepEvent;
     }
 

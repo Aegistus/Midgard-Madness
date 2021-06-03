@@ -232,6 +232,36 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
+  - name: Fireball Cast
+    allSounds:
+    - {fileID: 8300000, guid: d8467043d0c013c409bfa3006dc18ce8, type: 3}
+    - {fileID: 8300000, guid: 2a8e0c1c0afde5a4e96c29088f9b56fc, type: 3}
+    - {fileID: 8300000, guid: b12c023e1be69b54f9121efc8e641048, type: 3}
+    - {fileID: 8300000, guid: d442c43606e4d6e4990579004b341fc9, type: 3}
+    - {fileID: 8300000, guid: 64a941d960c9bb243b8c24db3b1d8d9f, type: 3}
+    - {fileID: 8300000, guid: 337c84a64e2a7ee4b9b441dc5fab7d89, type: 3}
+    - {fileID: 8300000, guid: 92fb097e92505fb458463c18f7ddfc2d, type: 3}
+    - {fileID: 8300000, guid: 44002ac4e47350d4b988c76096b78044, type: 3}
+    - {fileID: 8300000, guid: 01b889df6bd152243b8b002edc675c14, type: 3}
+    - {fileID: 8300000, guid: f7671218e6d3a834198e93a84a58cfbb, type: 3}
+    - {fileID: 8300000, guid: 63a008828f08c8a45aabb5cf7b18556a, type: 3}
+    - {fileID: 8300000, guid: c4fb86507ba875a479a09d885f5d412b, type: 3}
+    - {fileID: 8300000, guid: aef6774f554c79844b7a60b1330d06d5, type: 3}
+    - {fileID: 8300000, guid: 3c18d2abfef9bbc4ab73df4fe10640b5, type: 3}
+    - {fileID: 8300000, guid: aa0420f0a3b5f6b429e47dddcf6ab0e0, type: 3}
+    - {fileID: 8300000, guid: 2d8f3942d9a4c2545b6d4acd24c44203, type: 3}
+    - {fileID: 8300000, guid: a7a8d7b3b5a01924382e666f16c9251e, type: 3}
+    - {fileID: 8300000, guid: 2eeb62479bc304f4d93193e250fe3847, type: 3}
+    - {fileID: 8300000, guid: 41df3206110eeb04ea54bed9647444f6, type: 3}
+    - {fileID: 8300000, guid: 95b72ff34f280a242b1cad1e94a823b9, type: 3}
+    volume: 0.429
+    volumeVariance: 0.1
+    pitch: 0.64
+    pitchVariance: 0.1
+    minimunDistance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
 --- !u!114 &2214367657740723276
 MonoBehaviour:
   m_ObjectHideFlags: 0
