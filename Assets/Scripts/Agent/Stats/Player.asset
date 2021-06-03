@@ -21,6 +21,7 @@ MonoBehaviour:
   runCost: 5
   jumpCost: 5
   rollCost: 20
+  dodgeCost: 20
   maxVigor: 100
   vigorRegenRate: 30
   vigorRegenDelay: 1
