@@ -33,7 +33,10 @@ public class AgentAnimation : MonoBehaviour
         weapons.OnEquippedChange += UpdateAnimatorController;
         fullBodyStates = new MultiDictionary<Type, int>()
         {
-            {typeof(Idling), Animator.StringToHash("Idle") },
+            {typeof(Idling), Animator.StringToHash("Idle Main") },
+            {typeof(Idling), Animator.StringToHash("Idle 00") },
+            {typeof(Idling), Animator.StringToHash("Idle 01") },
+            {typeof(Idling), Animator.StringToHash("Idle 02") },
 
             {typeof(WalkingForward), Animator.StringToHash("Walk Forward") },
             {typeof(WalkingBackward), Animator.StringToHash("Walk Backward") },
