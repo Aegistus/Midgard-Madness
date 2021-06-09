@@ -3203,7 +3203,7 @@ GameObject:
   - component: {fileID: 8212119974057699048}
   - component: {fileID: 6599265208984121481}
   m_Layer: 0
-  m_Name: Orc Chieftain NPC
+  m_Name: Fuling Chieftain NPC
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

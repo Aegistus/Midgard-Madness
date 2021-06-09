@@ -47,6 +47,10 @@ public class AudioManager : MonoBehaviour
 
 	public void PlaySound(string soundGroupName)
     {
+		if (soundGroupName == "")
+		{
+			return;
+		}
 		SoundGroup group = Array.Find(soundGroups, item => item.name == soundGroupName);
 		if (group == null)
 		{
@@ -63,8 +67,12 @@ public class AudioManager : MonoBehaviour
 
 	public void PlaySoundAtPosition(string soundGroupName, Vector3 position)
     {
+		if (soundGroupName == "")
+		{
+			return;
+		}
 		SoundGroup group = Array.Find(soundGroups, item => item.name == soundGroupName);
-		if (group == null && soundGroupName != "")
+		if (group == null)
 		{
 			Debug.LogWarning("Sound Group: " + soundGroupName + " not found!");
 			return;
@@ -108,6 +116,10 @@ public class AudioManager : MonoBehaviour
 		if (sound == null)
 		{
 			Debug.LogWarning("Sound: " + soundName + " not found!");
+			return;
+		}
+		if (soundName == "")
+		{
 			return;
 		}
 
